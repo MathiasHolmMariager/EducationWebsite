@@ -5,5 +5,9 @@ import { router } from './Router/router';
 import { RouterProvider} from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <RouterProvider router={router}/>   
+    <div className='mainPage'>
+        <RouterProvider router={router}/>   
+
+    </div>
 )
+    
