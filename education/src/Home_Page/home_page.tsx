@@ -18,14 +18,16 @@ function HomePage() {
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal} style={{ margin: "20px" }}>
+        Create user
+      </button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
         style={{
           content: {
-            width: "50%",
+            width: "30%",
             height: "90%",
             margin: "auto",
             textAlign: "center",
@@ -33,9 +35,20 @@ function HomePage() {
         }}
       >
         <h2>Create user to compare study programs</h2>
-        <p>content of the modal.</p>
-        <button onClick={closeModal}>No, thanks</button>
-        <button onClick={closeModal}>Create user</button>
+
+        <button onClick={closeModal} style={{ margin: "20px" }}>
+          No, thanks
+        </button>
+        <button
+          onClick={closeModal}
+          style={{
+            margin: "20px",
+            backgroundColor: "rgb(33, 26, 82)",
+            color: "white",
+          }}
+        >
+          Create user
+        </button>
       </Modal>
     </div>
   );
