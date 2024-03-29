@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Modal from "react-modal";
+import UserModal from "../Components/login_create_user";
 
 function HomePage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -13,45 +13,22 @@ function HomePage() {
   };
 
   useEffect(() => {
-    setModalIsOpen(true);
+    const uid = localStorage.getItem("UID");
+    if (!uid) {
+      setModalIsOpen(true);
+    }
   }, []);
 
   return (
     <div>
       <button onClick={openModal} style={{ margin: "20px" }}>
-        Create user
+        Log ind
       </button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        style={{
-          content: {
-            width: "30%",
-            height: "90%",
-            margin: "auto",
-            textAlign: "center",
-          },
-        }}
-      >
-        <h2>Create user to compare study programs</h2>
-
-        <button onClick={closeModal} style={{ margin: "20px" }}>
-          No, thanks
-        </button>
-        <button
-          onClick={closeModal}
-          style={{
-            margin: "20px",
-            backgroundColor: "rgb(33, 26, 82)",
-            color: "white",
-          }}
-        >
-          Create user
-        </button>
-      </Modal>
+      <UserModal isOpen={modalIsOpen} onRequestClose={closeModal} />
     </div>
   );
 }
 
 export default HomePage;
+
+
