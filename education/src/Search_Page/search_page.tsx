@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
-import './search_page.css';
-import Select from 'react-select'
+import React, { useState } from "react";
+import "./search_page.css";
+import Select from "react-select";
+import { Link } from "react-router-dom";
+
+interface DataItem {
+  name: string;
+  code: string;
+}
 
 interface SearchProps {
-  data: string[];
+  data: DataItem[];
 }
 
 const Search: React.FC<SearchProps> = ({ data }) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
 
-  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const query = event.target.value;
     setSearchQuery(query);
     setShowResults(query.trim().length > 0);
   };
 
-  const filteredData = data.filter(item =>
-    item.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -33,7 +41,9 @@ const Search: React.FC<SearchProps> = ({ data }) => {
         <div className="search-results">
           <ul>
             {filteredData.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={index}>
+                <Link to={`/${item.code}`}>{item.name}</Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -43,34 +53,66 @@ const Search: React.FC<SearchProps> = ({ data }) => {
 };
 
 const options = [
-  { value: 'a-å', label: 'A-Å' },
-  { value: 'å-a', label: 'Å-A' },
-  { value: 'popularitet', label: 'Popularitet' }
-]
+  { value: "a-å", label: "A-Å" },
+  { value: "å-a", label: "Å-A" },
+  { value: "popularitet", label: "Popularitet" },
+];
 
 const interests = [
-  { value: 'matematik', label: 'Matematik' },
-  { value: 'fysik', label: 'Fysik' },
-  { value: 'programmering', label: 'Programmering' }
-]
+  { value: "matematik", label: "Matematik" },
+  { value: "fysik", label: "Fysik" },
+  { value: "programmering", label: "Programmering" },
+];
 
 function SearchPage() {
-  const data = [
-    'Interaktionsdesign - Aalborg - Bachelor', 
-    'Software - Aalborg - Bachelor', 
-    'Computer science (Int) - Aalborg - Kandidat', 
-    'Interaktionsdesign - Aalborg - Kandidat', 
-    'Uddannelse 5 - Esbjerg - Bachelor'];
-  
+  const data: DataItem[] = [
+    { name: "Interaktionsdesign - Aalborg - Bachelor", code: "study" },
+    {
+      name: "Software - Aalborg - Bachelor",
+      code: "nopage",
+    },
+    {
+      name: "Computer science (Int) - Aalborg - Kandidat",
+      code: "nopage",
+    },
+    {
+      name: "Interaktionsdesign - Aalborg - Kandidat",
+      code: "nopage",
+    },
+    {
+      name: "Uddannelse 5 - Esbjerg - Bachelor",
+      code: "nopage",
+    },
+  ];
+
   return (
     <div>
       <Search data={data} />
-      <div className='filter-container'>
-          <Select className='select-sort' options={options} placeholder='Sorter efter:'/>
-        <div className='filter-box'>
-          <Select className='filter' options={interests} isMulti placeholder='Interesser'/>
-          <Select className='filter' options={interests} isMulti placeholder='Interesser'/>
-          <Select className='filter' options={interests} isMulti placeholder='Interesser'/>
+      <div className="filter-container">
+        <Select
+          className="select-sort"
+          options={options}
+          placeholder="Sorter efter:"
+        />
+        <div className="filter-box">
+          <Select
+            className="filter"
+            options={interests}
+            isMulti
+            placeholder="Interesser"
+          />
+          <Select
+            className="filter"
+            options={interests}
+            isMulti
+            placeholder="Interesser"
+          />
+          <Select
+            className="filter"
+            options={interests}
+            isMulti
+            placeholder="Interesser"
+          />
         </div>
       </div>
     </div>

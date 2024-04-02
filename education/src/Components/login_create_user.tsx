@@ -5,6 +5,7 @@ import {
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { auth } from "./firebase";
+import { getDatabase, ref, set } from "firebase/database";
 
 Modal.setAppElement("#root");
 
@@ -36,12 +37,18 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password).then(
         (userCredential) => {
-          const user = userCredential.user;
+          const user = userCredential.user.uid;
+          const db = getDatabase();
+          set(ref(db, "users/" + `"${user}"`), {
+            email: email,
+          });
           localStorage.setItem("UID", JSON.stringify(user));
           handleCloseModal();
         }
       );
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
   };
 
   const handleLogin = async (e: { preventDefault: () => void }) => {

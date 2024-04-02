@@ -52,7 +52,7 @@ function Header() {
     <div
       style={{
         display: "flex",
-        height: "60px",
+        height: "8vh",
         justifyContent: "space-between",
         alignItems: "center",
         width: "calc(100% + 16px)",
