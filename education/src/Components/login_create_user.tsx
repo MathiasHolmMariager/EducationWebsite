@@ -39,7 +39,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
         (userCredential) => {
           const user = userCredential.user.uid;
           const db = getDatabase();
-          set(ref(db, "users/" + `"${user}"`), {
+          set(ref(db, "users/" + user), {
             email: email,
           });
           localStorage.setItem("UID", JSON.stringify(user));

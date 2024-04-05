@@ -3,7 +3,9 @@ import Interaction_Design from "../assets/Interaction_Design.jpg";
 import Star from "../assets/Star.png";
 import StarGold from "../assets/Star_Gold.png";
 import "./study_program_page.css";
-import { getDatabase, ref, set } from "firebase/database";
+import { User, getAuth, onAuthStateChanged } from "firebase/auth";
+import { get, getDatabase, ref, remove, set } from "firebase/database";
+import Chatbox from "../Components/ChatBox/chatbox";
 
 function StudyProgramPage() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
@@ -11,7 +13,29 @@ function StudyProgramPage() {
   const [dropdown3Visible, setDropdown3Visible] = useState(false);
   const [dropdown4Visible, setDropdown4Visible] = useState(false);
   const [isStarClicked, setIsStarClicked] = useState(false);
+  const [uid, setUid] = useState<string | null>(null);
 
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+      if (user) {
+        setUid(user.uid);
+        const db = getDatabase();
+        const title = "Interaktionsdesign, Bachlor";
+        const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
+        get(favRef).then((snapshot: { exists: () => any; }) => {
+          if (snapshot.exists()) {
+            setIsStarClicked(true);
+          }
+        }).catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+      } else {
+        setUid(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
     const pairToSave = { title: "Interaktionsdesign, Bachlor", code: "study" };
@@ -58,15 +82,26 @@ function StudyProgramPage() {
   };
 
   const handleStarClick = () => {
-    setIsStarClicked(!isStarClicked);
-    const uid = localStorage.getItem("UID");
-    const title = "interaktionsdesign, Bachlor";
-    const code = "study";
-    const db = getDatabase();
-    set(ref(db, "users/" + uid + "/favorits/" + title), {
-      code: code,
-      title: title,
-    });
+    if (uid) {
+      const title = "Interaktionsdesign, Bachlor";
+      const code = "study";
+      const db = getDatabase();
+      const favRef = ref(db, `users/${uid}/favorites/${title}`);
+      
+      if (isStarClicked) {
+        remove(favRef).then(() => {
+          setIsStarClicked(false);
+        }).catch((error) => {
+          console.error("Error removing data:", error);
+        });
+      } else {
+        set(favRef, { code: code, title: title }).then(() => {
+          setIsStarClicked(true);
+        }).catch((error) => {
+          console.error("Error adding data:", error);
+        });
+      }
+    }
   };
 
   return (
@@ -191,6 +226,7 @@ function StudyProgramPage() {
           )}
         </div>
       </div>
+      <Chatbox />
     </div>
   );
 }

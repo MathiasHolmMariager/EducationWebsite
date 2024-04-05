@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@mui/material": "^5.15.14",
+    "firebase": "^10.6.0",
+    "openai": "^4.32.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1"

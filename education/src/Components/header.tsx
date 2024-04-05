@@ -4,6 +4,8 @@ import search_icon from "../assets/search.png";
 import chat_icon from "../assets/chat.png";
 import profile_icon from "../assets/profile.png";
 import UserModal from "./login_create_user";
+import { signOut } from "firebase/auth";
+import { auth } from "./firebase";
 
 function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -24,9 +26,14 @@ function Header() {
     };
   }, []);
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
+  const openDropdown = () => {
+    setShowDropdown(false);
   };
+
+  const closeDropdown = () => {
+    setShowDropdown(true);
+  };
+
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -40,10 +47,15 @@ function Header() {
   const signInButtonClick = () => {
     openModal();
   };
-
-  const signOutButtonClick = () => {
-    localStorage.removeItem("UID");
-    setShowDropdown(false);
+  
+  const signOutButtonClick = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("UID");
+      setShowDropdown(false);
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
   };
 
   const uidExists = !!localStorage.getItem("UID");
@@ -95,7 +107,7 @@ function Header() {
               marginRight: "40px",
               cursor: "pointer",
             }}
-            onClick={toggleDropdown}
+            onClick={showDropdown ? openDropdown : closeDropdown}
             alt="Profile"
           />
           {showDropdown && (
