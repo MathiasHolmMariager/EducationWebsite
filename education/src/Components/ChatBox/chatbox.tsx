@@ -88,7 +88,7 @@ function Chatbox() {
             bottom: "9%",
             right: "20px",
             width: "20%",
-            height: "80%",
+            height: "70%",
             backgroundColor: "#fff",
             border: "1px solid ",
             borderRadius: "5px",
@@ -120,7 +120,7 @@ function Chatbox() {
             {conversationHistory.map((message, index) => (
               <div key={index} style={{ textAlign: message.role === "user" ? "right" : "left" }}>
                 {message.role === "user" ? (
-                  <p style={{ textAlign: "right", background: "lightgreen", margin: 0, padding: "2%", borderRadius: "5px", marginTop: "2%", display: "inline-block", maxWidth: "80%"   }}>{message.content}</p>
+                  <p style={{ textAlign: "left", background: "lightgreen", margin: 0, padding: "2%", borderRadius: "5px", marginTop: "2%", display: "inline-block", maxWidth: "80%"   }}>{message.content}</p>
                 ) : (
                   <p style={{ background: "lightgrey", margin: 0, padding: "2%", borderRadius: "5px", marginTop: "2%", display: "inline-block", maxWidth: "80%"   }} >{message.content}</p>
                 )}
@@ -140,10 +140,10 @@ function Chatbox() {
               placeholder="Type your message..."
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
-              style={{ width: "65%", height: "76%", marginRight: "4px", border:"1px solid transparent", borderRadius: "8px", margin:"auto", marginTop:"3.5%", paddingLeft: "2%" }}
+              style={{ width: "65%", height: "76%", marginRight: "4px", border:"1px solid transparent", borderRadius: "8px", margin:"auto", marginTop:"3%", paddingLeft: "2%" }}
               onKeyPress={handleKeyPress}
             />
-            <button onClick={handleUserInput} style={{ height: "85%", margin: "auto", width: "25%", marginLeft: "0%", marginTop:"3.5%" }}>
+            <button onClick={handleUserInput} style={{ height: "85%", margin: "auto", width: "25%", marginLeft: "0%", marginTop:"3%" }}>
               Send
             </button>
           </div>
