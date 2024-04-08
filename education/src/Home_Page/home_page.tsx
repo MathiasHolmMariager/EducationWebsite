@@ -38,7 +38,6 @@ function HomePage() {
   return (
     <div
       style={{
-        background: "blue",
         width: "80%",
         margin: "auto",
         height: "90vh",
@@ -48,7 +47,6 @@ function HomePage() {
     >
       <div
         style={{
-          background: "yellow",
           width: "100%",
           margin: "auto",
           display: "flex",
@@ -57,6 +55,7 @@ function HomePage() {
           textAlign: "center",
           justifyContent: "center",
           height: "40%",
+          border: "1px solid",
         }}
       >
         <h1>Welcome</h1>
@@ -68,17 +67,18 @@ function HomePage() {
           height: "60%",
           display: "flex",
           flexDirection: "row",
+          border: "1px solid",
         }}
       >
         <div
           style={{
-            background: "green",
             width: "40%",
             margin: "auto",
             height: "60%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            border: "1px solid",
           }}
         >
           <h2>Sidst sete uddannelser:</h2>
@@ -93,13 +93,13 @@ function HomePage() {
         </div>
         <div
           style={{
-            background: "red",
             width: "40%",
             margin: "auto",
             height: "60%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            border: "1px solid",
           }}
         >
           {uidExists ? (

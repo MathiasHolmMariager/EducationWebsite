@@ -1,3 +1,9 @@
+.container {
+    position: relative;
+    width: 90%;
+    margin: auto;
+}
+
 .search-container {
     position: relative;
     width: 100%;
@@ -35,31 +41,26 @@
   }
 
 .filter-container {
+    width: 100%;
     display: flex;
 }
 
 .select-sort {
-    width: 20%;
+    width: 25%;
     margin-top: 10px;
-    font-size: 22px;
     border: 1px solid black;
     border-radius: 4px;
 }
 
 .filter-box {
     display: flex;
-    border: 1px solid black;
-    width: 80%;
-    margin-left: 10px;
-    margin-top: 10px;
-    border-radius: 4px;
+    width: 100%;
 }
 
 .filter {
-    margin-left: 5px;
-    margin-top: 2px;
-    margin-bottom: 5px;
-    width: 30%;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100%;
     border: 1px solid black;
     border-radius: 4px;
 }

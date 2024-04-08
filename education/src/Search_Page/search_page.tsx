@@ -86,7 +86,7 @@ function SearchPage() {
   ];
 
   return (
-    <div>
+    <div className="container">
       <Search data={data} />
       <div className="filter-container">
         <Select
