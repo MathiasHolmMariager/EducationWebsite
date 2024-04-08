@@ -38,7 +38,7 @@ function HomePage() {
   return (
     <div
       style={{
-        width: "80%",
+        width: "90%",
         margin: "auto",
         height: "90vh",
         display: "flex",
