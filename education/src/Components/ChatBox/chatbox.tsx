@@ -168,7 +168,7 @@ function Chatbox() {
               alignItems: "center"
             }}
           >
-            <h2 style={{color:"white", marginTop:"5%", fontSize:"90%", marginRight:"auto", marginLeft:"auto"}}>{pageID} Chat</h2>
+            <h2 style={{color:"white", marginTop:"5%", fontSize:"90%", marginRight:"auto", marginLeft:"4%"}}>{pageID} Chat</h2>
             
             <button onClick={toggleChatbox} style={{background:"rgb(33, 26, 82)", width:"12%", height:"80%", padding:"0%", marginTop:"-1%", marginLeft:"auto", marginRight:"2%"}}>
             <img
