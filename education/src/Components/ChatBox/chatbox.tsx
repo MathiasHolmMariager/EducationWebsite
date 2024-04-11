@@ -170,7 +170,7 @@ function Chatbox() {
           >
             <h2 style={{color:"white", marginTop:"5%", fontSize:"90%", marginRight:"auto", marginLeft:"auto"}}>{pageID} Chat</h2>
             
-            <button onClick={toggleChatbox} style={{background:"rgb(33, 26, 82)", width:"12%", height:"80%", padding:"0%", marginTop:"-1%", marginLeft:"auto", marginRight:"auto"}}>
+            <button onClick={toggleChatbox} style={{background:"rgb(33, 26, 82)", width:"12%", height:"80%", padding:"0%", marginTop:"-1%", marginLeft:"auto", marginRight:"2%"}}>
             <img
             src={close_icon}
             style={{ width: "30px", height: "30px", marginLeft: "-0.05%", marginTop:"0%", padding:"0%" }}
