@@ -155,7 +155,7 @@ function ChatPage() {
             flexDirection: "column",
           }}
         >
-          <div style={{ background: "grey", width: "100%", height: "5%" }}>
+          <div style={{ background: "grey", width: "100%", height: "5.5%" }}>
             <h2
               style={{
                 background: "lightgrey",

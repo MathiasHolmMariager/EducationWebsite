@@ -4,6 +4,8 @@ import "../ChatBox/chatbox.css";
 import React from "react";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
+import chat_icon from "../../assets/chat.png";
+import close_icon from "../../assets/close.png";
 
 interface Message {
   role: string;
@@ -105,31 +107,40 @@ function Chatbox() {
     }
   };
 
+ 
   return (
     <div>
+      {!isChatboxOpen && (
       <button
         style={{
           position: "fixed",
-          bottom: "20px",
-          right: "20px",
+          bottom: "2%",
+          right: "2%",
           zIndex: 999,
-          backgroundColor: "#007bff",
+          backgroundColor: "rgb(33, 26, 82)",
           color: "#fff",
           border: "none",
-          borderRadius: "5px",
+          borderRadius: "40px",
+          height:"80px",
+          width:"80px",
           cursor: "pointer",
         }}
         onClick={toggleChatbox}
       >
-        Chat
+          <img
+            src={chat_icon}
+            style={{ width: "43px", height: "43px", marginLeft: "auto", marginTop:"10%" }}
+            alt="Chat"
+          />
       </button>
+      )}
       {isChatboxOpen && (
         <div
           id="chatbox"
           style={{
             position: "fixed",
-            bottom: "9%",
-            right: "20px",
+            bottom: "2%",
+            right: "2%",
             width: "20%",
             height: "70%",
             backgroundColor: "#fff",
@@ -145,16 +156,26 @@ function Chatbox() {
         >
           <h2
             style={{
-              background: "lightgrey",
+              background: "rgb(33, 26, 82)",
               height: "7%",
               margin: "0%",
               textAlign: "center",
               justifyContent: "center",
               paddingTop: "0%",
-              fontSize: "150%"
+              fontSize: "150%",
+              display:"flex",
+              flexDirection: "row"
             }}
           >
-            {pageID} Chat
+            <h2 style={{color:"white", margin:"0%", fontSize:"90%", marginRight:"2.5%", marginLeft:"7%"}}>{pageID} Chat</h2>
+            
+            <button onClick={toggleChatbox} style={{background:"rgb(33, 26, 82)", width:"12%", height:"80%", padding:"0%", marginTop:"0.5%", marginLeft:"2.5%", marginRight:"auto"}}>
+            <img
+            src={close_icon}
+            style={{ width: "30px", height: "30px", marginLeft: "-0.05%", marginTop:"0%", padding:"0%" }}
+            alt="Close"
+          />
+            </button>
           </h2>
           <div
             className="chat"

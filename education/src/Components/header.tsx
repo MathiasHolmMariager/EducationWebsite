@@ -4,13 +4,14 @@ import search_icon from "../assets/search.png";
 import chat_icon from "../assets/chat.png";
 import profile_icon from "../assets/profile.png";
 import UserModal from "./login_create_user";
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 
 function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [user, setUser] = useState<any | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: { target: any }) => {
@@ -26,6 +27,14 @@ function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const openDropdown = () => {
     setShowDropdown(false);
   };
@@ -33,7 +42,6 @@ function Header() {
   const closeDropdown = () => {
     setShowDropdown(true);
   };
-
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -45,24 +53,27 @@ function Header() {
   };
 
   const signInButtonClick = () => {
-    openModal();
+    if (!user) {
+      openModal();
+    }
   };
-  
+
   const signOutButtonClick = async () => {
     try {
       await signOut(auth);
-      localStorage.removeItem("UID");
       setShowDropdown(false);
     } catch (error) {
       console.error("Error signing out:", error);
     }
   };
 
-  const uidExists = !!localStorage.getItem("UID");
-
   return (
     <div
       style={{
+        position: "fixed",
+        top: "0px",
+        right: "0px",
+        zIndex: 9999,
         display: "flex",
         height: "8vh",
         justifyContent: "space-between",
@@ -70,7 +81,7 @@ function Header() {
         width: "calc(100% + 16px)",
         backgroundColor: "rgb(33, 26, 82)",
         margin: "auto",
-        marginTop: "-8px",
+        marginTop: "-0px",
         marginLeft: "-8px",
       }}
     >
@@ -123,7 +134,7 @@ function Header() {
                 top: "52px",
               }}
             >
-              {uidExists ? (
+              {user ? (
                 <div>
                   <a href="/profile">
                     <button
@@ -168,7 +179,7 @@ function Header() {
           )}
         </div>
       </div>
-      <UserModal isOpen={modalIsOpen} onRequestClose={closeModal} />
+      {user ? null : <UserModal isOpen={modalIsOpen} onRequestClose={closeModal} />}
     </div>
   );
 }
