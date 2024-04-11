@@ -6,7 +6,6 @@ import dropdownContent from "./Dictionaries/IxdBach";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
 import Chatbox from "../Components/ChatBox/chatbox";
-import { Style } from "@mui/icons-material";
 
 function StudyProgramPage() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
