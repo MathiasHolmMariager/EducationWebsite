@@ -118,28 +118,37 @@ function ChatPage() {
     <div
       style={{
         width: "90%",
-        background: "grey",
         margin: "auto",
         height: "90vh",
         display: "flex",
         flexDirection: "row",
       }}
     >
-      <div style={{ background: "green", width: "25%"}}>
-        <div className="chatChoices"style={{ background: "green", overflow: "auto", height:"100%", padding:"0%"  }}>
-      <ul style={{ listStyleType: "none", background: "lightblue", width: "100%", padding:"0%", height: "100%", marginTop:"0%", marginBottom:"0%" }}>
+      <div style={{ width: "25%", borderLeft:"1px solid", borderBottom: "1px solid"}}>
+        <div className="chatChoices"style={{ overflow: "auto", height:"100%", padding:"0%"  }}>
+          <div style={{
+                background: "lightgrey",
+                height: "5.1%",
+                width: "100%",
+                margin: "0%",
+                textAlign: "center",
+                justifyContent: "center",
+                paddingTop: "0%",
+                fontSize: "150%",
+                fontWeight: "bold"
+              }}>Chats</div>
+      <ul style={{ listStyleType: "none", width: "100%", padding:"0%", height: "90%", marginTop:"0%", marginBottom:"0%" }}>
       {chats.map((chatID) => (
-          <li key={chatID} onClick={() => handleListItemClick(chatID)} style={{background: "orange", cursor: "pointer", marginTop:"9.5%", textAlign: "center", width:"80%", marginLeft:"10%", marginRight:"10%"}}>
+          <li key={chatID} onClick={() => handleListItemClick(chatID)} style={{border:"1px solid",background: "lightgrey", cursor: "pointer", marginTop:"2.5%", textAlign: "center", width:"95%", marginLeft:"2.5%", marginRight:"2.5%", height:"10%", borderRadius:"8px", justifyContent:"center", display: "flex", alignItems:"center", fontSize:"150%"}}>
             {chatID}
           </li>
         ))}
         </ul>
         </div>
       </div>
-      <div style={{ background: "yellow", width: "75%" }}>
+      <div style={{ width: "75%", borderLeft:"1px solid", borderRight:"1px solid", borderBottom:"1px solid" }}>
         <div
           style={{
-            background: "blue",
             width: "100%",
             height: "100%",
             display: "flex",
@@ -149,7 +158,7 @@ function ChatPage() {
           <div style={{ background: "grey", width: "100%", height: "5%" }}>
             <h2
               style={{
-                background: "yellow",
+                background: "lightgrey",
                 height: "100%",
                 width: "100%",
                 margin: "0%",
@@ -165,7 +174,6 @@ function ChatPage() {
           <div
             className="chat"
             style={{
-              background: "blue",
               height: "87%",
               overflowY: "auto",
             }}
@@ -213,7 +221,7 @@ function ChatPage() {
           </div>
           <div
             style={{
-              background: "red",
+              background: "lightgrey",
               width: "100%",
               height: "8%",
               textAlign: "center",
@@ -231,7 +239,7 @@ function ChatPage() {
                 borderRadius: "8px",
                 margin: "auto",
                 paddingLeft: "2%",
-                marginTop: "0.3%",
+                marginTop: "0.5%",
               }}
               onKeyPress={handleKeyPress}
               value={userInput}
@@ -243,7 +251,7 @@ function ChatPage() {
                 margin: "auto",
                 width: "25%",
                 marginLeft: "0%",
-                marginTop: "0.3%",
+                marginTop: "0.5%",
               }}
               onClick={handleUserInput}
               disabled={isLoading}

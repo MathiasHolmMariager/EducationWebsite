@@ -139,13 +139,13 @@ function Chatbox() {
             zIndex: 999,
             display: "flex",
             flexDirection: "column",
-            background: "red",
+            background: "lightgrey",
             overflow: "hidden",
           }}
         >
           <h2
             style={{
-              background: "yellow",
+              background: "lightgrey",
               height: "7%",
               margin: "0%",
               textAlign: "center",
@@ -158,7 +158,7 @@ function Chatbox() {
           </h2>
           <div
             className="chat"
-            style={{ background: "blue", height: "80%", overflowY: "auto", paddingTop: "0px"}}
+            style={{ background: "white", height: "80%", overflowY: "auto", paddingTop: "0px"}}
             ref={conversationHistoryRef}
           >
             {conversationHistory.map((message, index) => (
