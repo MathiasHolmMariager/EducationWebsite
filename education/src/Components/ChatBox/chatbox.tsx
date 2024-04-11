@@ -115,7 +115,7 @@ function Chatbox() {
         style={{
           position: "fixed",
           bottom: "2%",
-          right: "2%",
+          right: "1%",
           zIndex: 999,
           backgroundColor: "rgb(33, 26, 82)",
           color: "#fff",
@@ -140,7 +140,7 @@ function Chatbox() {
           style={{
             position: "fixed",
             bottom: "2%",
-            right: "2%",
+            right: "1%",
             width: "20%",
             height: "70%",
             backgroundColor: "#fff",
@@ -164,12 +164,13 @@ function Chatbox() {
               paddingTop: "0%",
               fontSize: "150%",
               display:"flex",
-              flexDirection: "row"
+              flexDirection: "row",
+              alignItems: "center"
             }}
           >
-            <h2 style={{color:"white", margin:"0%", fontSize:"90%", marginRight:"2.5%", marginLeft:"7%"}}>{pageID} Chat</h2>
+            <h2 style={{color:"white", marginTop:"5%", fontSize:"90%", marginRight:"auto", marginLeft:"auto"}}>{pageID} Chat</h2>
             
-            <button onClick={toggleChatbox} style={{background:"rgb(33, 26, 82)", width:"12%", height:"80%", padding:"0%", marginTop:"0.5%", marginLeft:"2.5%", marginRight:"auto"}}>
+            <button onClick={toggleChatbox} style={{background:"rgb(33, 26, 82)", width:"12%", height:"80%", padding:"0%", marginTop:"-1%", marginLeft:"auto", marginRight:"auto"}}>
             <img
             src={close_icon}
             style={{ width: "30px", height: "30px", marginLeft: "-0.05%", marginTop:"0%", padding:"0%" }}
