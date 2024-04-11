@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Interaction_Design from "../assets/Interaction_Design.jpg";
 import Star from "../assets/Star.png";
 import StarGold from "../assets/Star_Gold.png";
 import "./study_program_page.css";
@@ -7,7 +6,6 @@ import dropdownContent from "./Dictionaries/IxdBach";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
 import Chatbox from "../Components/ChatBox/chatbox";
-import GoogleMaps from "./Maps/IxdBachMaps";
 
 function StudyProgramPage() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
@@ -17,6 +15,7 @@ function StudyProgramPage() {
   const [dropdown5Visible, setDropdown5Visible] = useState(false);
   const [dropdown6Visible, setDropdown6Visible] = useState(false);
   const [dropdown7Visible, setDropdown7Visible] = useState(false);
+  const [dropdown8Visible, setDropdown8Visible] = useState(false);
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [uid, setUid] = useState<string | null>(null);
 
@@ -92,6 +91,9 @@ function StudyProgramPage() {
       case 7:
         setDropdown7Visible(!dropdown7Visible);
         break;
+      case 8:
+        setDropdown8Visible(!dropdown8Visible);
+        break;
       default:
         break;
     }
@@ -137,16 +139,44 @@ function StudyProgramPage() {
           </p>
         </div>
         <div className="picture">
-          <img src={Interaction_Design}/>
+        <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/DgJl6oxDY8o" 
+            title="YouTube video player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen={true}
+          ></iframe>
         </div>
       </div>
       <div className="dropdowns">
 
-        <div className="dropdown">
+      <div className="dropdown">
           <button className="dropdown-button" onClick={() => toggleDropdown(1)}>
-            Adgangskrav
+            Beskrivelse
           </button>
           {dropdown1Visible && (
+            <div className="dropdown-content">
+              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Længere beskrivelse"] }}/>
+                <div className="iframe-container">
+                  <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/M2tW5UH21Po?si=glrP6o_xwRIrONZ4" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen={true}
+                  ></iframe>
+                </div>
+            </div>
+          )}
+        </div>
+
+        <div className="dropdown">
+          <button className="dropdown-button" onClick={() => toggleDropdown(2)}>
+            Adgangskrav
+          </button>
+          {dropdown2Visible && (
             <div className="dropdown-content">
               <div dangerouslySetInnerHTML={{ __html: dropdownContent["Adgangskrav"] }}/>
             </div>
@@ -154,10 +184,10 @@ function StudyProgramPage() {
         </div>
 
         <div className="dropdown">
-          <button className="dropdown-button" onClick={() => toggleDropdown(2)}>
+          <button className="dropdown-button" onClick={() => toggleDropdown(3)}>
             Adgangskvotient
           </button>
-          {dropdown2Visible && (
+          {dropdown3Visible && (
             <div className="dropdown-content">
               <div dangerouslySetInnerHTML={{ __html: dropdownContent["Adgangskvotient"] }}/>
             </div>
@@ -165,10 +195,10 @@ function StudyProgramPage() {
         </div>
 
         <div className="dropdown">
-          <button className="dropdown-button" onClick={() => toggleDropdown(3)}>
+          <button className="dropdown-button" onClick={() => toggleDropdown(4)}>
             Kandidat muligheder
           </button>
-          {dropdown3Visible && (
+          {dropdown4Visible && (
             <div className="dropdown-content">
               <div dangerouslySetInnerHTML={{ __html: dropdownContent["Kandidat muligheder"] }}/>
             </div>
@@ -176,21 +206,29 @@ function StudyProgramPage() {
         </div>
 
         <div className="dropdown">
-          <button className="dropdown-button" onClick={() => toggleDropdown(4)}>
+          <button className="dropdown-button" onClick={() => toggleDropdown(5)}>
             Lokation
           </button>
-          {dropdown4Visible && (
+          {dropdown5Visible && (
             <div className="dropdown-content">
-              <GoogleMaps/>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2599.3901224246843!2d9.988981277169266!3d57.0123952942769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464eccdc3b849cf3%3A0xf858a47b27302972!2sCassiopeia%20-%20Institut%20for%20Datalogi%2C%20Selma%20Lagerl%C3%B8fs%20Vej%20300%2C%209220%20Aalborg!5e1!3m2!1sda!2sdk!4v1712823764726!5m2!1sda!2sdk"
+                width= "100%"
+                height="500"
+                style={{ border: "0" }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           )}
         </div>
 
         <div className="dropdown">
-          <button className="dropdown-button" onClick={() => toggleDropdown(5)}>
+          <button className="dropdown-button" onClick={() => toggleDropdown(6)}>
             Semestre
           </button>
-          {dropdown5Visible && (
+          {dropdown6Visible && (
             <div className="dropdown-content">
               <div dangerouslySetInnerHTML={{ __html: dropdownContent["Semestre"] }}/>
             </div>
@@ -198,10 +236,10 @@ function StudyProgramPage() {
         </div>
 
         <div className="dropdown">
-          <button className="dropdown-button" onClick={() => toggleDropdown(6)}>
+          <button className="dropdown-button" onClick={() => toggleDropdown(7)}>
             Frafald
           </button>
-          {dropdown6Visible && (
+          {dropdown7Visible && (
             <div className="dropdown-content">
               <div dangerouslySetInnerHTML={{ __html: dropdownContent["Frafald"] }}/>
             </div>
@@ -209,10 +247,10 @@ function StudyProgramPage() {
         </div>
 
         <div className="dropdown">
-          <button className="dropdown-button" onClick={() => toggleDropdown(7)}>
+          <button className="dropdown-button" onClick={() => toggleDropdown(8)}>
             Tidsforbrug
           </button>
-          {dropdown7Visible && (
+          {dropdown8Visible && (
             <div className="dropdown-content">
               <div dangerouslySetInnerHTML={{ __html: dropdownContent["Tidsforbrug"] }}/>
             </div>
