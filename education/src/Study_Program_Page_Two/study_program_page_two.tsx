@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import Interaction_Design from "../assets/Interaction_Design.jpg";
 import Star from "../assets/Star.png";
 import StarGold from "../assets/Star_Gold.png";
-import "./study_program_page.css";
+import "./study_program_page_two.css";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
 import Chatbox from "../Components/ChatBox/chatbox";
 
-function StudyProgramPage() {
+function StudyProgramPageTwo() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [dropdown3Visible, setDropdown3Visible] = useState(false);
@@ -21,7 +21,7 @@ function StudyProgramPage() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Interaktionsdesign, Bachlor";
+        const title = "software";
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef).then((snapshot: { exists: () => any; }) => {
           if (snapshot.exists()) {
@@ -36,10 +36,9 @@ function StudyProgramPage() {
     });
     return () => unsubscribe();
   }, []);
-  
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
-    const pairToSave = { title: "Interaktionsdesign, Bachlor", code: "study" };
+    const pairToSave = { title: "software", code: "studytwo" };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
     let index = -1;
@@ -60,7 +59,7 @@ function StudyProgramPage() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Interaktiondesign");
+    localStorage.setItem("PAGE_ID", "software");
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -85,8 +84,8 @@ function StudyProgramPage() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Interaktionsdesign, Bachlor";
-      const code = "study";
+      const title = "software";
+      const code = "studytwo";
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
       
@@ -233,4 +232,4 @@ function StudyProgramPage() {
   );
 }
 
-export default StudyProgramPage;
+export default StudyProgramPageTwo;

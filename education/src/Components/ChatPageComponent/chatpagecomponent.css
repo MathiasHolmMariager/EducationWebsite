@@ -1,0 +1,6 @@
+.chat {
+    padding: 2%;
+}
+.chat::-webkit-scrollbar {
+    display: none;
+  }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { OpenAIchat } from "../openai";
-import "../ChatBox/chatbox.css";
+import "../ChatPageComponent/chatpagecomponent.css";
 import React from "react";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
@@ -10,21 +10,31 @@ interface Message {
   content: string;
 }
 
-function Chatbox() {
-  const [isChatboxOpen, setIsChatboxOpen] = useState(false);
+function ChatPageComponent() {
   const [conversationHistory, setConversationHistory] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState("");
   const [, setAssistantReply] = useState<string | null>(null);
-  const conversationHistoryRef = useRef<HTMLDivElement | null>(null);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const pageID = localStorage.getItem("PAGE_ID");
+  const conversationHistoryRef = useRef<HTMLDivElement | null>(null);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
 
   useEffect(() => {
-    if (isChatboxOpen && user) {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+
+
+  useEffect(() => {
+    if (user) {
       const db = getDatabase();
       const chatRef = ref(db, `users/${user.uid}/chat/${pageID}`);
-  
+   
       const fetchConversationHistory = async () => {
         try {
           const snapshot = await get(chatRef);
@@ -37,22 +47,10 @@ function Chatbox() {
           console.error("Error fetching conversation history:", error);
         }
       };
-  
+    
       fetchConversationHistory();
     }
-  }, [isChatboxOpen, user, pageID]);
-  
-
-
-
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  }, [ user, pageID]);
 
   const scrollToBottom = () => {
     if (conversationHistoryRef.current) {
@@ -61,10 +59,6 @@ function Chatbox() {
         behavior: "smooth"
       });
     }
-  };
-
-  const toggleChatbox = () => {
-    setIsChatboxOpen(!isChatboxOpen);
   };
 
   const handleUserInput = async () => {
@@ -82,16 +76,7 @@ function Chatbox() {
     setUserInput("");
     setIsLoading(false);
   };
-
-  useEffect(() => {
-    if (isChatboxOpen) {
-      const chatbox = document.getElementById("chatbox");
-      if (chatbox) {
-        scrollToBottom();
-      }
-    }
-  }, [isChatboxOpen]);
-
+    
   useEffect(() => {
     if (!isLoading) {
       scrollToBottom();
@@ -105,48 +90,24 @@ function Chatbox() {
     }
   };
 
+
+
   return (
-    <div>
-      <button
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          zIndex: 999,
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-        onClick={toggleChatbox}
-      >
-        Chat
-      </button>
-      {isChatboxOpen && (
-        <div
-          id="chatbox"
-          style={{
-            position: "fixed",
-            bottom: "9%",
-            right: "20px",
-            width: "20%",
-            height: "70%",
-            backgroundColor: "#fff",
-            border: "1px solid ",
-            borderRadius: "5px",
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
-            zIndex: 999,
-            display: "flex",
-            flexDirection: "column",
-            background: "red",
-            overflow: "hidden",
-          }}
-        >
-          <h2
+    <div
+      style={{
+        background: "blue",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div style={{ background: "grey", width: "100%", height: "5%" }}>
+      <h2
             style={{
               background: "yellow",
-              height: "7%",
+              height: "100%",
+              width: "100%",
               margin: "0%",
               textAlign: "center",
               justifyContent: "center",
@@ -156,12 +117,9 @@ function Chatbox() {
           >
             {pageID} Chat
           </h2>
-          <div
-            className="chat"
-            style={{ background: "blue", height: "80%", overflowY: "auto", paddingTop: "0px"}}
-            ref={conversationHistoryRef}
-          >
-            {conversationHistory.map((message, index) => (
+      </div>
+      <div className="chat" style={{ background: "lightblue", height: "87%", overflowY: "auto" }} ref={conversationHistoryRef}>
+      {conversationHistory.map((message, index) => (
               <div key={index} style={{ textAlign: message.role === "user" ? "right" : "left" }}>
                 {message.role === "user" ? (
                   <p style={{ textAlign: "left", background: "lightgreen", margin: 0, padding: "2%", borderRadius: "5px", marginTop: "2%", display: "inline-block", maxWidth: "80%"   }}>{message.content}</p>
@@ -170,31 +128,25 @@ function Chatbox() {
                 )}
               </div>
             ))}
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              height: "10%",
-              
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Type your message..."
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              style={{ width: "65%", height: "76%", marginRight: "4px", border:"1px solid transparent", borderRadius: "8px", margin:"auto", marginTop:"3%", paddingLeft: "2%" }}
-              onKeyPress={handleKeyPress}
-            />
-            <button onClick={handleUserInput} disabled={isLoading} style={{ height: "85%", margin: "auto", width: "25%", marginLeft: "0%", marginTop:"3%" }}>
-              Send
-            </button>
-          </div>
-        </div>
-      )}
+      </div>
+      <div style={{ background: "grey", width: "100%", height: "8%", textAlign:"center", display: "flex", }}>
+        <input
+          type="text"
+          placeholder="Type your message..."
+          style={{ width: "65%", height: "76%", marginRight: "5px", border:"1px solid transparent", borderRadius: "8px", margin:"auto", paddingLeft: "2%", marginTop:"0.3%" }}
+          onKeyPress={handleKeyPress}
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+        />
+        <button
+          style={{ height: "85%", margin: "auto", width: "25%", marginLeft: "0%", marginTop:"0.3%" }}
+          onClick={handleUserInput} disabled={isLoading}
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 }
 
-export default Chatbox;
+export default ChatPageComponent;
