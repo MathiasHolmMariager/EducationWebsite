@@ -91,7 +91,7 @@ function Header() {
             alt="Search"
           />
         </a>
-        <a href="/">
+        <a href="/chat">
           <img
             src={chat_icon}
             style={{ width: "43px", height: "43px", marginRight: "40px" }}

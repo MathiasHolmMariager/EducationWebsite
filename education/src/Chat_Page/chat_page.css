@@ -1,0 +1,7 @@
+.chatChoices {
+    padding: 0px;
+
+}
+.chatChoices::-webkit-scrollbar {
+    display: none;
+  }

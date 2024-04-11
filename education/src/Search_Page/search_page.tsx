@@ -66,10 +66,10 @@ const interests = [
 
 function SearchPage() {
   const data: DataItem[] = [
-    { name: "Interaktionsdesign - Aalborg - Bachelor", code: "study" },
+    { name: "Interaktionsdesign - Aalborg - Bachelor", code: "study"},
     {
       name: "Software - Aalborg - Bachelor",
-      code: "nopage",
+      code: "studytwo",
     },
     {
       name: "Computer science (Int) - Aalborg - Kandidat",

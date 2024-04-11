@@ -1,15 +1,69 @@
 import { useEffect, useState } from "react";
 import UserModal from "../Components/login_create_user";
+import { User, getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDatabase, onValue, ref } from "firebase/database";
 
 interface LastSeenItem {
   title: string;
   code: string;
 }
 
+interface FavoriteItem {
+  code: string;
+  title: string;
+}
+
 function HomePage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [lastSeenList, setLastSeenList] = useState<LastSeenItem[]>([]);
   const uidExists = localStorage.getItem("UID");
+  const [user, setUser] = useState<User | null>(null);
+  const [favoritesStudy, setFavoritesStudy] = useState<FavoriteItem[]>([]);
+  const [, setFavoritesCode] = useState<string[]>([]);
+
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      const db = getDatabase();
+      const favsRef = ref(db, `users/${user.uid}/favorites`);
+
+      onValue(favsRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const favoritesArray: FavoriteItem[] = Object.values(data);
+          setFavoritesStudy(favoritesArray);
+        } else {
+          setFavoritesStudy([]);
+        }
+      });
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      const db = getDatabase();
+      const favsRef = ref(db, `users/${user.uid}/favorites`);
+
+      onValue(favsRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const favoritesArray: FavoriteItem[] = Object.values(data);
+          setFavoritesCode(favoritesArray.map((item) => item.code));
+        } else {
+          setFavoritesCode([]);
+        }
+      });
+    }
+  }, [user]);
 
   //#####################login/opret_popup########################
   const openModal = () => {
@@ -105,6 +159,13 @@ function HomePage() {
           {uidExists ? (
             <div>
               <h2>Your Saved Educations:</h2>
+              <ul>
+            {favoritesStudy.map((favorite, index) => (
+              <li key={index}>
+                <a href={`/${favorite.code}`}>{favorite.title}</a>
+              </li>
+            ))}
+          </ul>
             </div>
           ) : (
             <div>
@@ -122,3 +183,4 @@ function HomePage() {
 }
 
 export default HomePage;
+

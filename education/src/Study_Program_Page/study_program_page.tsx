@@ -41,6 +41,7 @@ function StudyProgramPage() {
     });
     return () => unsubscribe();
   }, []);
+  
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
     const pairToSave = { title: "Interaktionsdesign, Bachlor", code: "study" };
@@ -64,6 +65,7 @@ function StudyProgramPage() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
+    localStorage.setItem("PAGE_ID", "Interaktiondesign");
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
