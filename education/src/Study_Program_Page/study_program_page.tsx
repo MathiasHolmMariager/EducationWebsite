@@ -6,6 +6,7 @@ import dropdownContent from "./Dictionaries/IxdBach";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
 import Chatbox from "../Components/ChatBox/chatbox";
+import { Style } from "@mui/icons-material";
 
 function StudyProgramPage() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
@@ -138,14 +139,11 @@ function StudyProgramPage() {
             {dropdownContent["Beskrivelse"]}
           </p>
         </div>
-        <div className="picture">
-        <iframe 
+        <div>
+        <iframe className="iframe-container"
             width="560" 
             height="315" 
-            src="https://www.youtube.com/embed/DgJl6oxDY8o" 
-            title="YouTube video player" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen={true}
+            src="https://www.youtube.com/embed/DgJl6oxDY8o"
           ></iframe>
         </div>
       </div>
@@ -158,16 +156,11 @@ function StudyProgramPage() {
           {dropdown1Visible && (
             <div className="dropdown-content">
               <div dangerouslySetInnerHTML={{ __html: dropdownContent["Længere beskrivelse"] }}/>
-                <div className="iframe-container">
-                  <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/M2tW5UH21Po?si=glrP6o_xwRIrONZ4" 
-                    title="YouTube video player" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen={true}
-                  ></iframe>
-                </div>
+                <iframe className="iframe-container"
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/M2tW5UH21Po?si=glrP6o_xwRIrONZ4"
+                ></iframe>
             </div>
           )}
         </div>
