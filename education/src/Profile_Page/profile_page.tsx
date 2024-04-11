@@ -10,7 +10,6 @@ interface FavoriteItem {
 function ProfilePage() {
   const [user, setUser] = useState<User | null>(null);
   const [favoritesStudy, setFavoritesStudy] = useState<FavoriteItem[]>([]);
-  const [, setFavoritesCode] = useState<string[]>([]);
 
   useEffect(() => {
     const auth = getAuth();
@@ -38,22 +37,6 @@ function ProfilePage() {
     }
   }, [user]);
 
-  useEffect(() => {
-    if (user) {
-      const db = getDatabase();
-      const favsRef = ref(db, `users/${user.uid}/favorites`);
-
-      onValue(favsRef, (snapshot) => {
-        const data = snapshot.val();
-        if (data) {
-          const favoritesArray: FavoriteItem[] = Object.values(data);
-          setFavoritesCode(favoritesArray.map((item) => item.code));
-        } else {
-          setFavoritesCode([]);
-        }
-      });
-    }
-  }, [user]);
 
   const handleSignOut = async () => {
     try {
