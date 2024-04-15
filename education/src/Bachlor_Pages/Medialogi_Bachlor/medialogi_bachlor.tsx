@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import Star from "../assets/Star.png";
-import StarGold from "../assets/Star_Gold.png";
-import "./study_program_page.css";
-import dropdownContent from "./Dictionaries/IxdBach";
+import Star from "../../assets/Star.png"
+import StarGold from "../../assets/Star_Gold.png";
+import "./medialogi_bachlor.css";
+import dropdownContent from "./Dictionaries/MedialogiBach";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
-import Chatbox from "../Components/ChatBox/chatbox";
+import Chatbox from "../../Components/ChatBox/chatbox";
 
-function StudyProgramPage() {
+function MedialogiBachlor() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [dropdown3Visible, setDropdown3Visible] = useState(false);
@@ -25,7 +25,7 @@ function StudyProgramPage() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Interaktionsdesign, Bachlor";
+        const title = "Medialogi, Bachlor";
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef).then((snapshot: { exists: () => any; }) => {
           if (snapshot.exists()) {
@@ -43,7 +43,7 @@ function StudyProgramPage() {
   
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
-    const pairToSave = { title: "Interaktionsdesign, Bachlor", code: "study" };
+    const pairToSave = { title: "Medialogi, Bachlor", code: "Medialogi, Bachlor" };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
     let index = -1;
@@ -64,7 +64,7 @@ function StudyProgramPage() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Interaktiondesign");
+    localStorage.setItem("PAGE_ID", "Medialogi, Bachlor");
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -101,8 +101,8 @@ function StudyProgramPage() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Interaktionsdesign, Bachlor";
-      const code = "study";
+      const title = "Medialogi, Bachlor";
+      const code = "Medialogi, Bachlor";
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
       
@@ -125,7 +125,7 @@ function StudyProgramPage() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Interaktionsdesign - Aalborg - Bachelor</h1>
+        <h1>Medialogi - Aalborg - Bachelor</h1>
         <img
           src={isStarClicked ? StarGold : Star}
           onClick={handleStarClick}
@@ -251,4 +251,4 @@ function StudyProgramPage() {
   );
 }
 
-export default StudyProgramPage;
+export default MedialogiBachlor;
