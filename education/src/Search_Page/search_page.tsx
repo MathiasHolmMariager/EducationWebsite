@@ -72,7 +72,7 @@ function SearchPage() {
       code: "Software, Bachlor",
     },
     {
-      name: "Computer science (Int) - Aalborg - Kandidat",
+      name: "Computer science (It) - Aalborg - Kandidat",
       code: "nopage",
     },
     {
