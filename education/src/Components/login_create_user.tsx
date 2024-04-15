@@ -17,6 +17,8 @@ type UserModalProps = {
   onRequestClose: () => void;
 };
 
+type OptionType = { value: string; label: string; };
+
 const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +27,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
   const [bachelorText, setBachelorText] = useState('Hent bachelorbevis');
   const [highSchoolDiploma, setHighSchoolDiploma] = useState({});
   const [bachelorDiploma, setBachelorDiploma] = useState({});
+  const [selectedInterests, setSelectedInterests] = useState<OptionType[]>([]);
   
   useEffect(() => {
     if (isOpen) {
@@ -47,6 +50,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
       const db = getDatabase();
       const userData = {
         email: email,
+        interests: selectedInterests.map((interest) => interest.value), // Extract selected values
       };
       set(ref(db, "users/" + user), userData);
       set(ref(db, "users/" + user+ "/diploma"), {
@@ -153,7 +157,8 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 options={interests}
                 placeholder="Vælg interesser (valgfri)"
                 isMulti
-                
+                value={selectedInterests} // Set value prop to selectedInterests state
+                onChange={(selectedOptions) => setSelectedInterests(selectedOptions as OptionType[])} // Update selectedInterests state
               />
             </div>
             <button
