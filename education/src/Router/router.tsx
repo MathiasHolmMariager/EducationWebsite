@@ -9,6 +9,7 @@ import ChatPage from "../Chat_Page/chat_page.tsx";
 import SoftwareBachlor from "../Bachlor_Pages/Software_Bachlor/software_bachlor.tsx";
 import InformationsteknologiBachlor from "../Bachlor_Pages/Informationsteknologi_Bachlor/informationsteknologi_bachlor.tsx";
 import MedialogiBachlor from "../Bachlor_Pages/Medialogi_Bachlor/medialogi_bachlor.tsx";
+import InteraktionsdesignKandidat from "../Kandidat_Pages/Interaktionsdesign_Kandidat/interaktionsdesign_kandidat.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       { path: "/Interaktionsdesign, Bachlor", element: <InteractionsdesignBachlor /> },
       { path: "/Software, Bachlor", element: <SoftwareBachlor /> },
       { path: "/Informationsteknologi, Bachlor", element: <InformationsteknologiBachlor /> },
+      { path: "/Interaktionsdesign, Kandidat", element: <InteraktionsdesignKandidat /> },
       { path: "/Medialogi, Bachlor", element: <MedialogiBachlor /> },
       { path: "/profile", element: <ProfilePage /> },
       { path: "/chat", element: <ChatPage/> },

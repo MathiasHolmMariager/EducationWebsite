@@ -77,7 +77,7 @@ function SearchPage() {
     },
     {
       name: "Interaktionsdesign - Aalborg - Kandidat",
-      code: "nopage",
+      code: "Interaktionsdesign, Kandidat",
     },
     {
       name: "Informationsteknologi - Aalborg - Bachelor",

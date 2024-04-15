@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import Star from "../assets/Star.png";
-import StarGold from "../assets/Star_Gold.png";
-import "./Study_program_page_three.css";
-import dropdownContent from "./Dictionaries/IxdKandidat";
+import Star from "../../assets/Star.png";
+import StarGold from "../../assets/Star_Gold.png";
+import "./interaktionsdesign_kandidat.css";
+import dropdownContent from "./Dictionaries/InteraktionsdesignKand";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
-import Chatbox from "../Components/ChatBox/chatbox";
+import Chatbox from "../../Components/ChatBox/chatbox";
 
-function StudyProgramPage() {
+function InteraktionsdesignKandidat() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [dropdown3Visible, setDropdown3Visible] = useState(false);
@@ -42,7 +42,7 @@ function StudyProgramPage() {
   
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
-    const pairToSave = { title: "Interaktionsdesign, Kandidat", code: "study" };
+    const pairToSave = { title: "Interaktionsdesign, Kandidat", code: "Interaktionsdesign, Kandidat" };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
     let index = -1;
@@ -63,7 +63,7 @@ function StudyProgramPage() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Interaktiondesign");
+    localStorage.setItem("PAGE_ID", "Interaktionsdesign, Kandidat");
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -135,7 +135,6 @@ function StudyProgramPage() {
           </p>
         </div>
         <div className="picture">
-            <img src={}/>
         </div>
       </div>
       <div className="dropdowns">
@@ -227,4 +226,4 @@ function StudyProgramPage() {
   );
 }
 
-export default StudyProgramPage;
+export default InteraktionsdesignKandidat;
