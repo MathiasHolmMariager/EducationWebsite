@@ -1,4 +1,4 @@
-.container {
+.profile_container {
     width: 90%;
     margin: auto;
     display: flex;
@@ -6,22 +6,22 @@
     align-items: center;
 }
 
-.dropdown {
+.profile_dropdown {
     margin-bottom: 10px;
     border: 1px solid #000000;
     border-radius: 10px;
     background-color: rgba(100, 100, 100, 0.1);
-    width: 1000px; /* Ved ikke lige hvad vi gør med den her, for width: 100% dur ikke ordentligt */
+    width: 100%;
 }
 
-.dropdown-content {
+.profile_dropdown-content {
     width: 100%; 
     overflow-y: auto;
     font-size: 20px;
     padding: 10px;
 }
 
-.dropdown-button {
+.profile_dropdown-button {
     width: 100%;
     font-size: 30px;
     font-weight: bold;
@@ -31,6 +31,6 @@
     background-color: rgba(100, 100, 100, 0.1);
 }
 
-.dropdown-button:focus {
+.profile_dropdown-button:focus {
     outline: none;
 }

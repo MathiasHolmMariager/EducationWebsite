@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
 import { getDatabase, ref, onValue } from "firebase/database";
 import "./profile_page.css"
@@ -99,17 +99,18 @@ function ProfilePage() {
   };
 
   return (
-    <div className="container">
+    <div className="profile_container">
       {user ? (
-        <div>
+        <div style={{ width: "60%"}}>
           <p>Welcome, {user.email}!</p>
           <button onClick={handleSignOut}>Sign Out</button>
-          <div className="dropdown">
-            <button className="dropdown-button" onClick={() => toggleDropdown("favorites")}>
+          <div></div>
+          <div className="profile_dropdown">
+            <button className="profile_dropdown-button" onClick={() => toggleDropdown("favorites")}>
               Favorites
             </button>
             {favoritesDropdownVisible && (
-              <div className="dropdown-content">
+              <div className="profile_dropdown-content">
                 <ul>
                   {favoritesStudy.map((favorite, index) => (
                     <li key={index}>
@@ -120,12 +121,12 @@ function ProfilePage() {
               </div>
             )}
           </div>
-          <div className="dropdown">
-            <button className="dropdown-button" onClick={() => toggleDropdown("interests")}>
+          <div className="profile_dropdown">
+            <button className="profile_dropdown-button" onClick={() => toggleDropdown("interests")}>
               Interests
             </button>
             {interestsDropdownVisible && (
-              <div className="dropdown-content">
+              <div className="profile_dropdown-content">
                 <ul>
                   {pickedInterests.map((interest, index) => (
                     <li key={index}>{interest}</li>
@@ -135,12 +136,12 @@ function ProfilePage() {
             )}
           </div>
           {diploma.highSchoolDiploma && (
-            <div className="dropdown">
-              <button className="dropdown-button" onClick={() => toggleDropdown("highSchoolDiploma")}>
+            <div className="profile_dropdown">
+              <button className="profile_dropdown-button" onClick={() => toggleDropdown("highSchoolDiploma")}>
                 High School Diploma
               </button>
               {highSchoolDiplomaDropdownVisible && (
-                <div className="dropdown-content">
+                <div className="profile_dropdown-content">
                   <ul>
                     {Object.values(diploma.highSchoolDiploma).map((subject: any, index: number) => (
                       <li key={index}>
@@ -153,12 +154,12 @@ function ProfilePage() {
             </div>
           )}
           {diploma.bachelorDiploma && (
-            <div className="dropdown">
-              <button className="dropdown-button" onClick={() => toggleDropdown("bachelorDiploma")}>
+            <div className="profile_dropdown">
+              <button className="profile_dropdown-button" onClick={() => toggleDropdown("bachelorDiploma")}>
                 Bachelor's Diploma
               </button>
               {bachelorDiplomaDropdownVisible && (
-                <div className="dropdown-content">
+                <div className="profile_dropdown-content">
                   <ul>
                     {Object.values(diploma.bachelorDiploma).map((subject: any, index: number) => (
                       <li key={index}>

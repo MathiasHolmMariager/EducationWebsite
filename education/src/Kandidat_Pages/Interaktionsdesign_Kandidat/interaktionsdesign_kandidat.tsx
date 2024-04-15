@@ -98,7 +98,7 @@ function InteraktionsdesignKandidat() {
   const handleStarClick = () => {
     if (uid) {
       const title = "Interaktionsdesign, Kandidat";
-      const code = "study";
+      const code = "Interaktionsdesign, Kandidat";
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
       
