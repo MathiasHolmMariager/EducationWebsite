@@ -11,6 +11,7 @@ import InformationsteknologiBachlor from "../Bachlor_Pages/Informationsteknologi
 import MedialogiBachlor from "../Bachlor_Pages/Medialogi_Bachlor/medialogi_bachlor.tsx";
 import InteraktionsdesignKandidat from "../Kandidat_Pages/Interaktionsdesign_Kandidat/interaktionsdesign_kandidat.tsx";
 
+
 export const router = createBrowserRouter([
   {
     path: "/",

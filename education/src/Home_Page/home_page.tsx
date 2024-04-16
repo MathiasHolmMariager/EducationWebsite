@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import UserModal from "../Components/login_create_user";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase, onValue, ref } from "firebase/database";
+import "../Home_Page/home_page.css";
+import arrowClick from "../assets/arrow.png"
 
 interface LastSeenItem {
   title: string;
@@ -19,7 +21,6 @@ function HomePage() {
   const uidExists = localStorage.getItem("UID");
   const [user, setUser] = useState<User | null>(null);
   const [favoritesStudy, setFavoritesStudy] = useState<FavoriteItem[]>([]);
-
 
   useEffect(() => {
     const auth = getAuth();
@@ -46,8 +47,6 @@ function HomePage() {
       });
     }
   }, [user]);
-
-
 
   //#####################login/opret_popup########################
   const openModal = () => {
@@ -93,63 +92,164 @@ function HomePage() {
           textAlign: "center",
           justifyContent: "center",
           height: "40%",
-          border: "1px solid",
         }}
       >
-        <h1>Welcome</h1>
+        <div>
+          <h1>EducationHelper</h1>
+          <h2>Guiding your path to academic success</h2>
+        </div>
       </div>
       <div
         style={{
           width: "100%",
           margin: "auto",
-          height: "60%",
+          height: "80%",
           display: "flex",
           flexDirection: "row",
-          border: "1px solid",
         }}
       >
         <div
           style={{
             width: "40%",
             margin: "auto",
-            height: "60%",
+            height: "90%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            border: "1px solid",
+            borderRadius: "10px",
+            padding: "0%",
+            boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)",
           }}
         >
-          <h2>Sidst sete uddannelser:</h2>
+          <div
+            style={{
+              background: "rgb(33, 26, 82)",
+              color: "white",
+              width: "100%",
+              borderTopLeftRadius: "8px",
+              borderTopRightRadius: "8px",
+              height: "20%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <h2>Sidst sete uddannelser:</h2>
+          </div>
+          <div
+            className="likeList"
+            style={{
+              width: "100%",
+              overflow: "auto",
+              borderBottomLeftRadius: "10px",
+              borderBottomRightRadius: "10px",
 
-          <ul>
-            {lastSeenList.map((item, index) => (
-              <li key={index}>
-                <a href={item.code}>{item.title}</a>
-              </li>
-            ))}
-          </ul>
+            }}
+          >
+            <ul style={{ margin: "0%", padding:"0%", marginTop:"2%" }}>
+              {lastSeenList.map((item, index) => (
+                <li
+                  key={index}
+                  style={{
+                    background: "lightgrey",
+                    margin: "auto",
+                    width: "96%",
+                    marginBottom: "2%",
+                    height: "50px",
+                    borderRadius: "8px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <a href={item.code} style={{ width:"100%", height:"100%", borderRadius:"8px", display:"flex", alignItems:"center", textAlign:"left", color:"rgb(75,75,75)", paddingLeft:"2%"}}>
+                    <p style={{width:"92%"}}>{item.title}</p>
+                    <img src={arrowClick} style={{width:"30px", height:"30px", marginTop:"0.2%"}} />
+                    </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div
           style={{
             width: "40%",
             margin: "auto",
-            height: "60%",
+            height: "90%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            border: "1px solid",
+            justifyContent: "center",
+            borderRadius: "11px",
+            boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)",
           }}
         >
           {uidExists ? (
-            <div>
-              <h2>Your Saved Educations:</h2>
-              <ul>
-            {favoritesStudy.map((favorite, index) => (
-              <li key={index}>
-                <a href={`/${favorite.code}`}>{favorite.title}</a>
-              </li>
-            ))}
-          </ul>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                
+              }}
+            >
+              <div
+                style={{
+                  background: "rgb(33, 26, 82)",
+                  color: "white",
+                  width: "100%",
+                  borderTopLeftRadius: "8px",
+                  borderTopRightRadius: "8px",
+                  height: "20%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  
+                }}
+              >
+                <h2>Dine favorit uddannelser:</h2>
+              </div>
+              <div
+                className="likeList"
+                style={{
+                  width: "100%",
+                  height: "80%",
+                  overflow: "auto",
+                  borderBottomLeftRadius: "10px",
+                  borderBottomRightRadius: "10px",
+                  background:"white"
+                }}
+              >
+                <ul
+                  style={{
+                    listStyleType: "none",
+                    margin: "0%",
+                    padding: "0%",
+                    marginTop: "2%",
+                  }}
+                >
+                  {favoritesStudy.map((favorite, index) => (
+                    <li
+                      key={index}
+                      style={{
+                        background: "lightgrey",
+                        margin: "auto",
+                        width: "96%",
+                        marginBottom: "2%",
+                        height: "50px",
+                        borderRadius: "8px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <a href={`/${favorite.code}`} style={{ width:"100%", height:"100%", borderRadius:"8px", display:"flex", alignItems:"center", textAlign:"left", color:"rgb(75,75,75)", paddingLeft:"2%"}}>
+                        <p style={{width:"92%"}}>{favorite.title}</p>
+                        <img src={arrowClick} style={{width:"30px", height:"30px", marginTop:"0.2%"}} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ) : (
             <div>
@@ -167,4 +267,3 @@ function HomePage() {
 }
 
 export default HomePage;
-

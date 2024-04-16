@@ -1,0 +1,7 @@
+.likeList {
+    padding: 0px;
+
+}
+.likeList::-webkit-scrollbar {
+    display: none;
+  }
