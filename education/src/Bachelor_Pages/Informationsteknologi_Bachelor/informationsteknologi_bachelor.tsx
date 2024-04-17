@@ -136,7 +136,7 @@ function InformationsteknologiBachelor() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Informatonsteknologi - Aalborg - Bachelor</h1>
+        <h1>Informationsteknologi - Aalborg - Bachelor</h1>
         <img
           src={isStarClicked ? StarGold : Star}
           onClick={handleStarClick}

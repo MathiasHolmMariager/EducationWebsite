@@ -145,7 +145,7 @@ function ProfilePage() {
                   <ul>
                     {Object.values(diploma.highSchoolDiploma).map((subject: any, index: number) => (
                       <li key={index}>
-                        Fag: {subject.fag} {subject.niveau} {subject.type}  Karakter: {subject.årsKarakter}
+                        {subject.fag} {subject.niveau} {subject.type}  Karakter: {subject.årsKarakter}
                       </li>
                     ))}
                   </ul>
@@ -163,7 +163,7 @@ function ProfilePage() {
                   <ul>
                     {Object.values(diploma.bachelorDiploma).map((subject: any, index: number) => (
                       <li key={index}>
-                        Kursus: {subject.fag}, Semester: {subject.semester}, Karakter: {subject.karakter}, ECTS Points: {subject.ectsPoint}
+                        {subject.fag}, Semester: {subject.semester}, Karakter: {subject.karakter}, ECTS Points: {subject.ectsPoint}
                       </li>
                     ))}
                   </ul>
