@@ -25,7 +25,7 @@ function InteractionsdesignBachlor() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Interaktionsdesign, Bachlor";
+        const title = "Interaktionsdesign, Bachelor";
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef).then((snapshot: { exists: () => any; }) => {
           if (snapshot.exists()) {
@@ -43,7 +43,7 @@ function InteractionsdesignBachlor() {
   
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
-    const pairToSave = { title: "Interaktionsdesign, Bachlor", code: "Interaktionsdesign, Bachlor" };
+    const pairToSave = { title: "Interaktionsdesign, Bachelor", code: "Interaktionsdesign, Bachelor" };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
     let index = -1;
@@ -64,7 +64,7 @@ function InteractionsdesignBachlor() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Interaktionsdesign, Bachlor");
+    localStorage.setItem("PAGE_ID", "Interaktionsdesign, Bachelor");
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -101,8 +101,8 @@ function InteractionsdesignBachlor() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Interaktionsdesign, Bachlor";
-      const code = "Interaktionsdesign, Bachlor";
+      const title = "Interaktionsdesign, Bachelor";
+      const code = "Interaktionsdesign, Bachelor";
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
       

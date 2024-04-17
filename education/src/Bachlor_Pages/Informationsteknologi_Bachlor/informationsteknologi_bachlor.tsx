@@ -186,8 +186,8 @@ function InformationsteknologiBachlor() {
                 style={{
                   width:"30px",
                   height:"30px",
-                  marginLeft: "7%",
-                  marginTop:"0.7%",
+                  marginLeft: !dropdown1Visible ? "75px": "100px",
+                  marginTop:"0.5%",
                 }}
               />
             </div>
@@ -230,8 +230,8 @@ function InformationsteknologiBachlor() {
                 style={{
                   width:"30px",
                   height:"30px",
-                  marginLeft: "7%",
-                  marginTop:"0.7%",
+                  marginLeft: !dropdown2Visible ? "75px": "100px",
+                  marginTop:"0.5%",
                 }}
               />
             </div>
@@ -267,8 +267,8 @@ function InformationsteknologiBachlor() {
                 style={{
                   width:"30px",
                   height:"30px",
-                  marginLeft: "7%",
-                  marginTop:"0.7%",
+                  marginLeft: !dropdown3Visible ? "75px": "100px",
+                  marginTop:"0.5%",
                 }}
               />
             </div>
@@ -304,8 +304,8 @@ function InformationsteknologiBachlor() {
                 style={{
                   width:"30px",
                   height:"30px",
-                  marginLeft: "7%",
-                  marginTop:"0.7%",
+                  marginLeft: !dropdown4Visible ? "75px": "100px",
+                  marginTop:"0.5%",
                 }}
               />
             </div>
@@ -341,8 +341,8 @@ function InformationsteknologiBachlor() {
                 style={{
                   width:"30px",
                   height:"30px",
-                  marginLeft: "7%",
-                  marginTop:"0.7%",
+                  marginLeft: !dropdown5Visible ? "75px": "100px",
+                  marginTop:"0.5%",
                 }}
               />
             </div>
@@ -380,8 +380,8 @@ function InformationsteknologiBachlor() {
                 style={{
                   width:"30px",
                   height:"30px",
-                  marginLeft: "7%",
-                  marginTop:"0.7%",
+                  marginLeft: !dropdown6Visible ? "75px": "100px",
+                  marginTop:"0.5%",
                 }}
               />
             </div>
@@ -417,8 +417,8 @@ function InformationsteknologiBachlor() {
                 style={{
                   width:"30px",
                   height:"30px",
-                  marginLeft: "7%",
-                  marginTop:"0.7%",
+                  marginLeft: !dropdown7Visible ? "75px": "100px",
+                  marginTop:"0.5%",
                 }}
               />
             </div>
@@ -452,8 +452,8 @@ function InformationsteknologiBachlor() {
                 style={{
                   width:"30px",
                   height:"30px",
-                  marginLeft: "7%",
-                  marginTop:"0.7%",
+                  marginLeft: !dropdown8Visible ? "75px": "100px",
+                  marginTop:"0.5%",
                 }}
               />
             </div>
