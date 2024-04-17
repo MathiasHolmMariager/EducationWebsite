@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Star from "../../assets/Star.png";
 import StarGold from "../../assets/Star_Gold.png";
-import "./informationsteknologi_bachlor.css";
+import "./informationsteknologi_bachelor.css";
 import dropdownContent from "./Dictionaries/InformationsteknologiBach";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
@@ -9,7 +9,7 @@ import Chatbox from "../../Components/ChatBox/chatbox";
 import collapseLogo from "../../assets/collapse.png";
 import expandLogo from "../../assets/expand.png";
 
-function InformationsteknologiBachlor() {
+function InformationsteknologiBachelor() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [dropdown3Visible, setDropdown3Visible] = useState(false);
@@ -474,4 +474,4 @@ function InformationsteknologiBachlor() {
   );
 }
 
-export default InformationsteknologiBachlor;
+export default InformationsteknologiBachelor;

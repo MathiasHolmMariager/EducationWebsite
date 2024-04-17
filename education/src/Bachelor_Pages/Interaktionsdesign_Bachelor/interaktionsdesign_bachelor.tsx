@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Star from "../../assets/Star.png"
 import StarGold from "../../assets/Star_Gold.png";
-import "./interaktionsdesign_bachlor.css";
+import "./interaktionsdesign_bachelor.css";
 import dropdownContent from "./Dictionaries/IxdBach";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
 import Chatbox from "../../Components/ChatBox/chatbox";
 
-function InteractionsdesignBachlor() {
+function InteractionsdesignBachelor() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [dropdown3Visible, setDropdown3Visible] = useState(false);
@@ -251,4 +251,4 @@ function InteractionsdesignBachlor() {
   );
 }
 
-export default InteractionsdesignBachlor;
+export default InteractionsdesignBachelor;
