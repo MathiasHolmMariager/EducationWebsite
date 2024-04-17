@@ -25,7 +25,7 @@ function MedialogiBachlor() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Medialogi, Bachlor";
+        const title = "Medialogi, Bachelor";
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef).then((snapshot: { exists: () => any; }) => {
           if (snapshot.exists()) {
@@ -43,7 +43,7 @@ function MedialogiBachlor() {
   
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
-    const pairToSave = { title: "Medialogi, Bachlor", code: "Medialogi, Bachlor" };
+    const pairToSave = { title: "Medialogi, Bachelor", code: "Medialogi, Bachelor" };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
     let index = -1;
@@ -64,7 +64,7 @@ function MedialogiBachlor() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Medialogi, Bachlor");
+    localStorage.setItem("PAGE_ID", "Medialogi, Bachelor");
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -101,8 +101,8 @@ function MedialogiBachlor() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Medialogi, Bachlor";
-      const code = "Medialogi, Bachlor";
+      const title = "Medialogi, Bachelor";
+      const code = "Medialogi, Bachelor";
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
       

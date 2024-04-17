@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./search_page.css";
 import Select from "react-select";
-import { Link } from "react-router-dom";
 import ArrowLink from "../assets/arrow.png";
 
 interface DataItem {
@@ -77,7 +76,7 @@ function SearchPage() {
   const data: DataItem[] = [
     { 
       name: "Interaktionsdesign - Aalborg - Bachelor", 
-      code: "Interaktionsdesign, Bachlor"
+      code: "Interaktionsdesign, Bachelor"
     },
     {
       name: "Computer science (It) - Aalborg - Kandidat",
@@ -89,11 +88,11 @@ function SearchPage() {
     },
     {
       name: "Informationsteknologi - Aalborg - Bachelor",
-      code: "Informationsteknologi, Bachlor",
+      code: "Informationsteknologi, Bachelor",
     },
     {
       name: "Medialogi - Aalborg - Bachelor",
-      code: "Medialogi, Bachlor",
+      code: "Medialogi, Bachelor",
     },
   ];
 

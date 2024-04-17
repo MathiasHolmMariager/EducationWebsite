@@ -27,7 +27,7 @@ function InformationsteknologiBachlor() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Informationsteknologi, Bachlor";
+        const title = "Informationsteknologi, Bachelor";
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef)
           .then((snapshot: { exists: () => any }) => {
@@ -48,8 +48,8 @@ function InformationsteknologiBachlor() {
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
     const pairToSave = {
-      title: "Informationsteknologi, Bachlor",
-      code: "Informationsteknologi, Bachlor",
+      title: "Informationsteknologi, Bachelor",
+      code: "Informationsteknologi, Bachelor",
     };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
@@ -71,7 +71,7 @@ function InformationsteknologiBachlor() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Informationsteknologi, Bachlor");
+    localStorage.setItem("PAGE_ID", "Informationsteknologi, Bachelor");
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -108,8 +108,8 @@ function InformationsteknologiBachlor() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Informationsteknologi, Bachlor";
-      const code = "Informationsteknologi, Bachlor";
+      const title = "Informationsteknologi, Bachelor";
+      const code = "Informationsteknologi, Bachelor";
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
 

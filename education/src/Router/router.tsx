@@ -18,10 +18,10 @@ export const router = createBrowserRouter([
     children: [
       { path: "", element: <HomePage /> },
       { path: "/search", element: <SearchPage /> },
-      { path: "/Interaktionsdesign, Bachlor", element: <InteractionsdesignBachlor /> },
-      { path: "/Informationsteknologi, Bachlor", element: <InformationsteknologiBachlor /> },
+      { path: "/Interaktionsdesign, Bachelor", element: <InteractionsdesignBachlor /> },
+      { path: "/Informationsteknologi, Bachelor", element: <InformationsteknologiBachlor /> },
       { path: "/Interaktionsdesign, Kandidat", element: <InteraktionsdesignKandidat /> },
-      { path: "/Medialogi, Bachlor", element: <MedialogiBachlor /> },
+      { path: "/Medialogi, Bachelor", element: <MedialogiBachlor /> },
       { path: "/profile", element: <ProfilePage /> },
       { path: "/chat", element: <ChatPage/> },
       { path: "/nopage", element: <NoPage /> },
