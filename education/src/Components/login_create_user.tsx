@@ -130,7 +130,9 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
     >
       {isSigningUp ? (
         <>
-          <h2>Opret konto for at sammenligne uddannelser</h2>
+          <h2 style={{marginTop:"50px"}}>
+            Opret konto for at sammenligne uddannelser
+          </h2>
           <form onSubmit={handleSignup} onKeyPress={handleKeyPress}>
             <div style={{ width: "100%", marginTop: "20px" }}>
               <input
@@ -139,7 +141,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ width: "250px", height: "30px", padding: "10px" }}
+                style={{ width: "250px", height: "30px", padding: "10px", border:"1px solid", borderRadius:"8px" }}
               />
             </div>
             <div style={{ width: "100%", marginTop: "20px" }}>
@@ -149,7 +151,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ width: "250px", height: "30px", padding: "10px" }}
+                style={{ width: "250px", height: "30px", padding: "10px", border:"1px solid", borderRadius:"8px" }}
               />
             </div>
             <div style={{ width: "60%", margin: "auto", marginTop: "20px" }}>
@@ -161,46 +163,55 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 onChange={(selectedOptions) => setSelectedInterests(selectedOptions as OptionType[])} // Update selectedInterests state
               />
             </div>
-            <button
-              type="button"
-              onClick={highSchoolClick}
-              style={{ margin: "20px", width: "60%" }}
-            >
-              {highSchoolText}
-            </button>
-            <button
-              type="button"
-              onClick={bachelorClick}
-              style={{ margin: "20px", width: "60%" }}
-            >
-              {bachelorText}
-            </button>
-            <button
-              onClick={handleCloseModal}
-              style={{ margin: "20px", width: "120px" }}
-            >
-              Forsæt uden
-            </button>
-            <button
-              type="submit"
-              style={{
-                margin: "20px",
-                backgroundColor: "rgb(33, 26, 82)",
-                color: "white",
-                width: "120px",
-              }}
-            >
-              opret
-            </button>
+            <div style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+              <button
+                type="button"
+                onClick={highSchoolClick}
+                style={{ margin: "20px", width: "60%", backgroundColor:"rgba(100, 100, 100, 0.1)" }}
+              >
+                {highSchoolText}
+              </button>
+              <button
+                type="button"
+                onClick={bachelorClick}
+                style={{width: "60%", backgroundColor:"rgba(100, 100, 100, 0.1)" }}
+              >
+                {bachelorText}
+              </button>
+              <div style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center", width:"100%"}}>
+                <button
+                  onClick={handleCloseModal}
+                  style={{ margin: "20px", width: "25%", backgroundColor:"rgba(100, 100, 100, 0.1)" }}
+                >
+                  Forsæt uden
+                </button>
+                <button
+                  type="submit"
+                  style={{
+                    margin: "20px",
+                    backgroundColor: "rgb(33, 26, 82)",
+                    color: "white",
+                    width: "25%",
+                  }}
+                >
+                  Opret
+                </button>
+              </div>
+            </div>
           </form>
-          <p>
+          <p style={{marginTop:"0px"}}>
             Har du allerede en konto?{" "}
-            <button onClick={handleToggleForm}>Login</button>
+            <button onClick={handleToggleForm} 
+            style={{backgroundColor:"rgba(100, 100, 100, 0.1)"}}>
+              Login
+            </button>
           </p>
         </>
       ) : (
         <>
-          <h2>Login for at sammenligne uddanelser</h2>
+          <h2 style={{marginTop:"50px"}}>
+            Login for at sammenligne uddanelser
+          </h2>
           <form onSubmit={handleLogin} onKeyPress={handleKeyPress}>
             <div style={{ width: "100%", marginTop: "20px" }}>
               <input
@@ -209,7 +220,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ width: "250px", height: "30px", padding: "10px" }}
+                style={{ width: "250px", height: "30px", padding: "10px", border:"1px solid", borderRadius:"8px" }}
               />
             </div>
             <div style={{ width: "100%", marginTop: "20px" }}>
@@ -219,12 +230,12 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ width: "250px", height: "30px", padding: "10px" }}
+                style={{ width: "250px", height: "30px", padding: "10px", border:"1px solid", borderRadius:"8px" }}
               />
             </div>
             <button
               onClick={handleCloseModal}
-              style={{ margin: "20px", width: "120px" }}
+              style={{ margin: "20px", width: "120px", backgroundColor:"rgba(100, 100, 100, 0.1)" }}
             >
               Annuller
             </button>
@@ -240,9 +251,12 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
               Log ind
             </button>
           </form>
-          <p>
+          <p style={{marginTop:"0px"}}>
             Har du ikke allerede en konto?{" "}
-            <button onClick={handleToggleForm}>Signup</button>
+            <button onClick={handleToggleForm}
+            style={{backgroundColor:"rgba(100, 100, 100, 0.1)"}}>
+              Opret bruger
+            </button>
           </p>
         </>
       )}

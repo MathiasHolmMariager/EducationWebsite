@@ -6,7 +6,6 @@ import InteractionsdesignBachlor from "../Bachlor_Pages/Interaktionsdesign_Bachl
 import ProfilePage from "../Profile_Page/profile_page.tsx";
 import NoPage from "../No_Page/no_page.tsx";
 import ChatPage from "../Chat_Page/chat_page.tsx";
-import SoftwareBachlor from "../Bachlor_Pages/Software_Bachlor/software_bachlor.tsx";
 import InformationsteknologiBachlor from "../Bachlor_Pages/Informationsteknologi_Bachlor/informationsteknologi_bachlor.tsx";
 import MedialogiBachlor from "../Bachlor_Pages/Medialogi_Bachlor/medialogi_bachlor.tsx";
 import InteraktionsdesignKandidat from "../Kandidat_Pages/Interaktionsdesign_Kandidat/interaktionsdesign_kandidat.tsx";
@@ -20,7 +19,6 @@ export const router = createBrowserRouter([
       { path: "", element: <HomePage /> },
       { path: "/search", element: <SearchPage /> },
       { path: "/Interaktionsdesign, Bachlor", element: <InteractionsdesignBachlor /> },
-      { path: "/Software, Bachlor", element: <SoftwareBachlor /> },
       { path: "/Informationsteknologi, Bachlor", element: <InformationsteknologiBachlor /> },
       { path: "/Interaktionsdesign, Kandidat", element: <InteraktionsdesignKandidat /> },
       { path: "/Medialogi, Bachlor", element: <MedialogiBachlor /> },

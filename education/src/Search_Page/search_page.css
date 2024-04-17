@@ -2,16 +2,17 @@
     position: relative;
     width: 90%;
     margin: auto;
+    height: 100%;
 }
 
 .search-container {
     position: relative;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0px;
   }
   
   .search-input {
-    width: calc(100% - 20px);
+    width: 97.3%;
     padding: 10px;
     font-size: 30px;
     border-radius: 4px;
@@ -24,7 +25,6 @@
     left: 0;
     width: 100%;
     background-color: white;
-    border: 1px solid black;
     border-radius: 4px;
     z-index: 1;
     font-size: 20px;
@@ -36,8 +36,8 @@
   }
   
   .search-results li {
-    padding: 20px;
-    border: 1px solid black;
+    padding: 0px;
+
   }
 
 .filter-container {
@@ -46,9 +46,9 @@
 }
 
 .select-sort {
-    width: 25%;
-    margin-top: 10px;
-    border: 1px solid black;
+    width: calc(25% - 5px);
+    height: 100%;
+    font-size: 28px;
     border-radius: 4px;
 }
 
@@ -61,6 +61,9 @@
     margin-left: 10px;
     margin-top: 10px;
     width: 100%;
-    border: 1px solid black;
     border-radius: 4px;
+}
+
+.filter:first-child{
+  margin-left: 0px;
 }
