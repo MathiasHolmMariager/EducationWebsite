@@ -1,115 +1,135 @@
 const dropdownContent = {
-  "Beskrivelse": 
-  `På uddannelsen lærer du at designe interaktive, 
-  digitale løsninger med fokus på brugeroplevelse, anvendelseskvalitet 
-  og æstetik. Du skal bl.a. fordybe dig i visuelt design, prototyping, 
-  usability og user experience. Du bliver en nøglespiller i fremtidens produktudvikling.`,
+  //ændret
+  Beskrivelse: `På uddannelsen lærer du at skabe løsninger med fokus på både kommunikation, teknologi- og forretningsudvikling. Du skal fordybe dig i emner som analyse og usability-evaluering, teknikker til softwareudvikling og design af brugergrænseflader. Du får en eftertragtet tværfaglig jobprofil.`,
 
-  "Længere beskrivelse": 
-  `Interaktionsdesign er en uddannelse for dig, der gerne vil skabe forandringer gennem 
-  udvikling af kreative og brugerorienterede digitale løsninger. Du får viden og kompetencer 
-  til at skabe nye produkter og teknologier og kan se frem til at blive en vigtig brik i fremtidens samspil mellem mennesker og IT. 
+  //ændret (lidt i tvivl om hvor meget vi ska have med her) 
+  "Længere beskrivelse": `Informationsteknologi er en uddannelse for dig, der gerne vil udvikle kommunikations- og IT-løsninger, der gør en forskel for mennesker og virksomheder. Du lærer at analysere og forstå data i tæt samspil med design af IT-systemer og du bliver en værdifuld medspiller i udviklingen af software, forretningssystemer, apps, business intelligence og meget mere.
   <br><br>
-  På Interaktionsdesign studerer du interaktive teknologier og deres sammenhæng med verden 
-  omkring dig. Du lærer, hvordan teknologierne påvirker og former vores hverdag, vores arbejdsliv 
-  og kommunikation med hinanden. Du lærer – kort sagt – at der er teknologi og design i (næsten) alt. 
+  Uddannelsen bygger på tre elementer:  Teknologiudvikling, informationsstudier og forretningsudvikling. Tilsammen med fag som bl.a. programmering, innovation og forretningsledelse og med direkte adgang til den nyeste viden på området får du metoder og værktøjer til at påvirke og forandre vores forhold til og brug af IT. 
   <br><br>
-  Du bliver undervist i konstruktion og design af de interaktive dele af informations- og kommunikationsteknologi, 
-  og du bliver introduceret til websystemer, desktopsystemer og mobile systemer. Samtidig lærer du at se kulturelle 
-  og æstetiske processer i en større sammenhæng og vurdere færdigdesignede produkter. En stor del af studiet har 
-  nemlig fokus på at give dig en systematisk, kritisk sans i forhold til at arbejde med interaktive digitale medier. 
+  På første semester får du en indføring i grundlæggende programmering og bliver samtidig introduceret til gruppearbejde, projektbaseret læring og IT-systemer – og hvordan de fungerer i en kulturel kontekst. Senere på studiet skal du til at arbejde med brugergrænseflader og selv lære selv at designe, bygge og afprøve et IT-system. På det tredje år kan du se frem til at styrke vigtige færdigheder inden for organisationsudvikling og computerarkitektur. Du slutter af med et bachelorprojekt.
   <br><br>
-  På første semester får du en indføring i grundlæggende programmering, introduktion til gruppearbejde og et modul i 
-  interaktionsdesign. Målet er, at du fra starten lærer at udvikle et produkt med udgangspunkt i brugerens oplevelse. 
-  I løbet af uddannelsen udvikler du færdigheder inden for prototyping, systemanalyse, user experience og computergrafik mm. 
-  Du slutter af med et bachelorprojekt. 
+  Du får kompetencer, du kan gøre brug af med det samme, fx i et studiejob. Det er også de samme kompetencer, der efterfølgende gør dig attraktiv som fx IT-konsulent eller systemudvikler. Det er ingen hemmelighed, at mulighederne på arbejdsmarkedet er mange, når du er færdig.
   <br><br>
-  Interaktionsdesign tager som alle andre uddannelser på Aalborg Universitet udgangspunkt i problembaseret læring, PBL. 
-  Det betyder, at undervisningen er baseret på en helt særlig form for team- og projektarbejde – ofte i tæt samarbejde 
-  med erhvervslivet og andre eksterne partnere. 
-  <br><br>
-  Du vil opleve, at denne tilgang ikke bare giver studiet en ekstra social dimension, og de forskellige projekter en 
-  øget kvalitet og relevans, men også gør dig endnu mere eftertragtet på et arbejdsmarked, som i forvejen ikke kan få 
-  nok medarbejdere med stærke digitale kompetencer og solide samarbejdsevner.
+  Informationsteknologi er som alle andre uddannelser på AAU formet af problembaseret læring, PBL. Det betyder, at undervisningen ved siden af forelæsninger og øvelser består af team- og projektarbejde i tæt samarbejde med erhvervslivet og andre eksterne partnere. Du vil opleve, at denne tilgang ikke bare giver studiet en ekstra social dimension, men også gør, at du hurtigt får indsigt i de forskellige udfordringer, som IT-teams arbejder med i virkeligheden.
   <br><br>
   `,
 
-  "Adgangskrav": 
-  `- Bestået adgangsgivende eksamen 
+  //ændret
+  Adgangskrav: `- Bestået adgangsgivende eksamen 
   <br>- Dansk A 
   <br>- Engelsk B 
   <br>- Matematik B`,
 
-  "Adgangskvotient": 
-  `Alle optaget (2023)`,
+  //ændret
+  Adgangskvotient: `Alle optaget (2023)`,
 
-  "Kandidat muligheder": 
-  `<a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/service-systems-design" target="_blank">- Service Systems Design</a>
+  //ændret
+  "Kandidat muligheder": `<a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Computer Science (IT)</a>
+  <br><a href="https://www.en.aau.dk/education/master/information-studies" target="_blank">- Information Studies (Human Centered Informatics)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/interaktive-digitale-medier" target="_blank">- Interaktive digitale medier</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/it-ledelse" target="_blank">- It-ledelse</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/it-laering-organisatorisk-omstilling" target="_blank">- It, læring og organisatorisk omstilling (Aalborg)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/it-laering-organisatorisk-omstilling-kbh" target="_blank">- It, læring og organisatorisk omstilling (København)</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/informationsvidenskab" target="_blank">- Informationsvidenskab</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/information-studies" target="_blank">- Information Studies (Human Centered Informatics)</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Computer Science (IT)</a>`,
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign (Teknologiudviklings-spor)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/cyber-security" target="_blank">- Cyber Security</a>`,
 
-  "Semestre": 
-  `<font size="5"><b><u>1 Semester</u></b></font>
+  //ændret
+  Semestre: `<font size="5"><b><u>1 Semester</u></b></font>
   <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB101?lang=da-DK" target="_blank">- Det mindre projekt: Interaktionsdesign (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB111?lang=da-DK" target="_blank">- Det større projekt: Evaluering af design (10 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB110?lang=da-DK" target="_blank">- Det mindre projekt: Pervasive Computing: Kommunikation, teknologi og forretning i en digital tidsalder (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB111?lang=da-DK" target="_blank">- Det større projekt: Vurdering af et IT-system i brug (10 ECTS)</a></i>
   <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB103?lang=da-DK" target="_blank">- Usability og skitsering (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITFB104?lang=da-DK" target="_blank">- Grundlæggende programmering (5 ECTS)</a></i>
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/TECHENGPBL20?lang=da-DK" target="_blank">- Problembaseret læring (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB113?lang=da-DK" target="_blank">- Grundlæggende programmering (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB114?lang=da-DK" target="_blank">- IT-systemer: Kulturel kontekst, kommunikation, brugbarhed og brugbarhedsevaluering (5 ECTS)</a></i>
   <br>
   <br><font size="5"><b><u>2 Semester</u></b></font>
   <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB210?lang=da-DK" target="_blank">- Design og konstruktion af en webapplikation (15 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB210?lang=da-DK" target="_blank">- Konstruktion og afprøvning af et IT-system (15 ECTS)</a></i>
   <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB211?lang=da-DK" target="_blank">- Funktionelt og grafisk design (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB212?lang=da-DK" target="_blank">- Anvendt grundlæggende programmering (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/B-MAT2-DMG?lang=da-DK" target="_blank">- Datalogiens matematiske grundlag (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/B-MAT2-DMG?lang=da-DK" target="_blank">- Datalogiens matematiske grundlag (5 ECTS</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB212?lang=da-DK" target="_blank">- Design og evaluering af brugergrænseflader (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/BAIDIT20214?lang=da-DK" target="_blank">- Innovation og forandringsledelse (5 ECTS)</a></i>
   <br>
   <br><font size="5"><b><u>3 Semester</u></b></font>
   <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB301?lang=da-DK" target="_blank">- Design med brugere (15 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB310?lang=da-DK" target="_blank">- Udvikling af et databasesystem til en specifik anvendelse (15 ECTS)</a></i>
   <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB302?lang=da-DK" target="_blank">- Brugercentreret design (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB313?lang=da-DK" target="_blank">- Databaseudvikling (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB312?lang=da-DK" target="_blank">- Grundlæggende objektorienteret programmering (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB311?lang=da-DK" target="_blank">- Systemanalyse og design (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB312?lang=da-DK" target="_blank">- Grundlæggende objektorienteret programmering (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB313?lang=da-DK" target="_blank">- Databaseudvikling (5 ECTS)</a></i>
   <br>
   <br><font size="5"><b><u>4 Semester</u></b></font>
-  <br>Projekter (vælg en):
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB410?lang=da-DK" target="_blank">- Interaktivt fysisk design (15 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB411?lang=da-DK" target="_blank">- Interaktivt mobilt applikationsdesign (15 ECTS)</a></i>
+  <br> Semesteret består af 3 mini projekter 
+  <br>
+  <br>Projekter:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB410?lang=da-DK" target="_blank">- Udvikling af mobil applikation (10 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB411?lang=da-DK" target="_blank">- Video som metode til design (10 ECTS)</a></i>
   <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB412?lang=da-DK" target="_blank">- Interaktivt fysisk design (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB513?lang=da-DK" target="_blank">- Kvalitativ metode (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB611?lang=da-DK" target="_blank">- Programmering af mobile applikationer (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAIDIT20213?lang=da-DK" target="_blank">- IT-baseret forretningsudvikling (10 ECTS)</a></i>
   <br>
   <br><font size="5"><b><u>5 Semester</u></b></font>
+  <br> På dette semester vælger man en retning mellem tre spor:
+  <br>
+  <br><b>Forretningsudvikling</b> 
   <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB510?lang=da-DK" target="_blank">- Design af interaktion med data (15 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202020?lang=da-DK" target="_blank">- IT som styringsredskab (15 ECTS)</a></i>
   <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB512?lang=da-DK" target="_blank">- Brugercentreret interaktion med kunstig intelligens(5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB513?lang=da-DK" target="_blank">- Kvantitativ metode (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB311?lang=da-DK" target="_blank">- Systemanalyse og design (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202017?lang=da-DK" target="_blank">- IT og digitalisering: Business Intelligence (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202018?lang=da-DK" target="_blank">- Organisation og ledelse: Offentlig budgetlægning og økonomistyring (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202019?lang=da-DK" target="_blank">- Innovation og forandring: Ledelse af innovation: Gevinster og gevinstrealisering (5 ECTS)</a></i>
+  <br>
+  <br><b>Informationsstudier</b> 
+  <br>Projekter:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM20208?lang=da-DK" target="_blank">- Organisationskommunikation (20 ECTS)</a></i>
+  <br>Kurser:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM202019?lang=da-DK" target="_blank">- Kommunikationsdesign: Kultur og værdier (10 ECTS)</a></i>
+  <br>
+  <br><b>Teknologiudvikling</b> 
+  <br>Projekter:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB510?lang=da-DK" target="_blank">- Agil systemudvikling på tværs af projekter (15 ECTS)</a></i>
+  <br>Kurser:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB512?lang=da-DK" target="_blank">- Agil software engineering (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB511?lang=da-DK" target="_blank">- Computerarkitektur og operativsystemer (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB512?lang=da-DK" target="_blank">- Algoritmik og datastrukturer (5 ECTS)</a></i>
   <br>
   <br><font size="5"><b><u>6 Semester</u></b></font>
+  <br> De tre spor fortsætter hver for sig på 6. semester:
+  <br>
+  <br><b>Forretningsudvikling</b> 
   <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB601?lang=da-DK" target="_blank">- Bachelorprojekt (20 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202022?lang=da-DK" target="_blank">- Bachelorprojekt (15 ECTS)</a></i>
   <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB602?lang=da-DK" target="_blank">- User Experience (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB611?lang=da-DK" target="_blank">- Programmering af IoT applikationer (5 ECTS)</a></i>`,
-
-  "Frafald": 
-  `- Første år: <i>25%</i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAIDIT20211?lang=da-DK" target="_blank">- Design og styring af digitaliserings- og innovationsprojekter (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAIDIT20212?lang=da-DK" target="_blank">- Fra data til værdi og forandring i organisation og samfund (10 ECTS)</a></i>
+  <br>
+  <br><b>Informationsstudier</b> 
+  <br>Projekter:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM202021?lang=da-DK" target="_blank">- Bachelorprojekt: IKT i brug (15 ECTS)</a></i>
+  <br>Kurser:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM202040?lang=da-DK" target="_blank">- Datadrevet design, udvikling og evaluering af IKT (10 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM202034?lang=da-DK" target="_blank">- Virksomhedsledelse (5 ECTS)</a></i>
+  <br>
+  <br><b>Teknologiudvikling</b> 
+  <br>Projekter:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB610?lang=da-DK" target="_blank">- Bachelorprojekt: Udvikling af en IoT-solution (15 ECTS)</a></i>
+  <br>Kurser:
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB611?lang=da-DK" target="_blank">- Programmering af IoT-applikationer (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB412?lang=da-DK" target="_blank">- Syntaks og semantik (5 ECTS)</a></i>
+  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB212?lang=da-DK" target="_blank">- Internetværk og web-programmering (5 ECTS)</a></i>
+  <br>`,
+  //ændret
+  Frafald: `- Første år: <i>17%</i>
   <br>- Andet år: <i>?%</i>
   <br>- Tredje år: <i>?%</i>`,
-
-  "Tidsforbrug": 
-  `35 timer om ugen
-  <br>- 70% undervisning
-  <br>- 30% forberedelse`,
-
+  //ændret
+  Tidsforbrug: `-70 timer gennemsnit 
+  -26 timer informationsteknologi `,
+  //ændret
+  Tidsfordeling: `-57% forberedelse
+  -43% undevisnig`,
 };
 
 export default dropdownContent;

@@ -1,57 +1,39 @@
 const dropdownContent = {
-  "Beskrivelse": 
-  `På uddannelsen lærer du at designe interaktive, 
-  digitale løsninger med fokus på brugeroplevelse, anvendelseskvalitet 
-  og æstetik. Du skal bl.a. fordybe dig i visuelt design, prototyping, 
-  usability og user experience. Du bliver en nøglespiller i fremtidens produktudvikling.`,
+  //ændret
+  Beskrivelse: `Medialogi er en uddannelse for dig, der har lyst til at skabe teknologiske løsninger og kombinere din kreativitet med en solid teknologisk indsigt. På uddannelsen lærer du at udvikle løsninger med fokus på samarbejdet mellem mennesker og teknologi, og du kommer bla. til at arbejde med medieteknologi, spilteknologi, digital lyd, kunstig intelligens, programmering, sensorteknologi, 3D-modellering, grafik og animation.`,
 
-  "Længere beskrivelse": 
-  `Interaktionsdesign er en uddannelse for dig, der gerne vil skabe forandringer gennem 
-  udvikling af kreative og brugerorienterede digitale løsninger. Du får viden og kompetencer 
-  til at skabe nye produkter og teknologier og kan se frem til at blive en vigtig brik i fremtidens samspil mellem mennesker og IT. 
+  //ændret (lidt i tvivl om hvad der skal med)
+  "Længere beskrivelse": `Vil du være med til at ændre verden ved at løse problemer for mennesker gennem veldesignet teknologi og interaktive oplevelser, der engagerer? Har du lyst til at udvikle nye grønne eller sociale teknologiske løsninger, der gør livet lidt nemmere (eller bare sjovere)? 
   <br><br>
-  På Interaktionsdesign studerer du interaktive teknologier og deres sammenhæng med verden 
-  omkring dig. Du lærer, hvordan teknologierne påvirker og former vores hverdag, vores arbejdsliv 
-  og kommunikation med hinanden. Du lærer – kort sagt – at der er teknologi og design i (næsten) alt. 
+  På Medialogi tænker vi ikke kun nyt – vi designer det, bygger det, tester det, og vi lærer om den teknologi, vi skaber, og om dem, der bruger den. Vi samarbejder både med hinanden i gruppearbejde, og med tech-virksomheder, institutioner, organisationer, museer, spiludviklere, start-ups og ikke mindst vores mange internationale partnere. Så du får mulighed for at opbygge et fagligt netværk allerede i studietiden, og det er en fordel, når du skal søge jobs efterfølgende. 
   <br><br>
-  Du bliver undervist i konstruktion og design af de interaktive dele af informations- og kommunikationsteknologi, 
-  og du bliver introduceret til websystemer, desktopsystemer og mobile systemer. Samtidig lærer du at se kulturelle 
-  og æstetiske processer i en større sammenhæng og vurdere færdigdesignede produkter. En stor del af studiet har 
-  nemlig fokus på at give dig en systematisk, kritisk sans i forhold til at arbejde med interaktive digitale medier. 
+  Vi har hænderne helt nede i teknologien, og du vil undervejs prøve kræfter med at udvikle og videreudvikle medieteknologi – og løse udfordringer i den virkelige verden.
   <br><br>
-  På første semester får du en indføring i grundlæggende programmering, introduktion til gruppearbejde og et modul i 
-  interaktionsdesign. Målet er, at du fra starten lærer at udvikle et produkt med udgangspunkt i brugerens oplevelse. 
-  I løbet af uddannelsen udvikler du færdigheder inden for prototyping, systemanalyse, user experience og computergrafik mm. 
-  Du slutter af med et bachelorprojekt. 
-  <br><br>
-  Interaktionsdesign tager som alle andre uddannelser på Aalborg Universitet udgangspunkt i problembaseret læring, PBL. 
-  Det betyder, at undervisningen er baseret på en helt særlig form for team- og projektarbejde – ofte i tæt samarbejde 
-  med erhvervslivet og andre eksterne partnere. 
-  <br><br>
-  Du vil opleve, at denne tilgang ikke bare giver studiet en ekstra social dimension, og de forskellige projekter en 
-  øget kvalitet og relevans, men også gør dig endnu mere eftertragtet på et arbejdsmarked, som i forvejen ikke kan få 
-  nok medarbejdere med stærke digitale kompetencer og solide samarbejdsevner.
-  <br><br>
-  `,
+  Du kan læse Medialogi i både Aalborg og i København.
+  <br><br>`,
 
-  "Adgangskrav": 
-  `- Bestået adgangsgivende eksamen 
+  //ændret
+  Adgangskrav: `- Bestået adgangsgivende eksamen 
   <br>- Dansk A 
   <br>- Engelsk B 
-  <br>- Matematik B`,
+  <br>- Matematik B med et gennemsnit på minimum 7,0 eller Matematik A med et gennemsnit på minimum 2,0`,
 
-  "Adgangskvotient": 
-  `Alle optaget (2023)`,
+  //ændret
+  Adgangskvotient: `Alle optaget (2023)`,
 
-  "Kandidat muligheder": 
-  `<a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/service-systems-design" target="_blank">- Service Systems Design</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/informationsvidenskab" target="_blank">- Informationsvidenskab</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/information-studies" target="_blank">- Information Studies (Human Centered Informatics)</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Computer Science (IT)</a>`,
+  //ændret (mangler korekte links)
+  "Kandidat muligheder": `<a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Medialogy (Aalborg og København)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/service-systems-design" target="_blank">- Cyber Security, Civilingeniør (København)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/informationsvidenskab" target="_blank">- Information Studies (Human centered informatics) (København)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/information-studies" target="_blank">- Informationsvidenskab (Aalborg))</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Interaktionsdesign (Aalborg)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- IT, læring og organisatorisk omstilling (Aalborg og København)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Sound and music computing (København)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Lighting design, CAND.SCIENT. (København)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Service systems design (København)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Techno-Anthropology (Aalborg og København)</a>`,
 
-  "Semestre": 
-  `<font size="5"><b><u>1 Semester</u></b></font>
+  Semestre: `<font size="5"><b><u>1 Semester</u></b></font>
   <br>Projekter:
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB101?lang=da-DK" target="_blank">- Det mindre projekt: Interaktionsdesign (5 ECTS)</a></i>
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB111?lang=da-DK" target="_blank">- Det større projekt: Evaluering af design (10 ECTS)</a></i>
@@ -100,16 +82,18 @@ const dropdownContent = {
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB602?lang=da-DK" target="_blank">- User Experience (5 ECTS)</a></i>
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB611?lang=da-DK" target="_blank">- Programmering af IoT applikationer (5 ECTS)</a></i>`,
 
-  "Frafald": 
-  `- Første år: <i>25%</i>
+  //ændret (bare stats fra kandidaten)
+  Frafald: `- Første år: <i>8%</i>
   <br>- Andet år: <i>?%</i>
   <br>- Tredje år: <i>?%</i>`,
 
-  "Tidsforbrug": 
-  `35 timer om ugen
-  <br>- 70% undervisning
-  <br>- 30% forberedelse`,
-
+  //ændret (bare stats fra kandidaten)
+    Tidsforbrug: `-70 timer gennemsnit 
+    -39 timer medialogi `,
+  //ændret (bare stats fra kandidaten)
+    Tidsfordeling: `-25% forberedelse
+    -50% undevisnig
+    -25 afsluttende opgaver`,
 };
 
 export default dropdownContent;

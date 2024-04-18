@@ -1,12 +1,10 @@
 const dropdownContent = {
-  "Beskrivelse": 
-  `På uddannelsen lærer du at designe interaktive, 
+  Beskrivelse: `På uddannelsen lærer du at designe interaktive, 
   digitale løsninger med fokus på brugeroplevelse, anvendelseskvalitet 
   og æstetik. Du skal bl.a. fordybe dig i visuelt design, prototyping, 
   usability og user experience. Du bliver en nøglespiller i fremtidens produktudvikling.`,
 
-  "Længere beskrivelse": 
-  `Interaktionsdesign er en uddannelse for dig, der gerne vil skabe forandringer gennem 
+  "Længere beskrivelse": `Interaktionsdesign er en uddannelse for dig, der gerne vil skabe forandringer gennem 
   udvikling af kreative og brugerorienterede digitale løsninger. Du får viden og kompetencer 
   til at skabe nye produkter og teknologier og kan se frem til at blive en vigtig brik i fremtidens samspil mellem mennesker og IT. 
   <br><br>
@@ -34,24 +32,20 @@ const dropdownContent = {
   <br><br>
   `,
 
-  "Adgangskrav": 
-  `- Bestået adgangsgivende eksamen 
+  Adgangskrav: `- Bestået adgangsgivende eksamen 
   <br>- Dansk A 
   <br>- Engelsk B 
   <br>- Matematik B`,
 
-  "Adgangskvotient": 
-  `Alle optaget (2023)`,
+  Adgangskvotient: `Alle optaget (2023)`,
 
-  "Kandidat muligheder": 
-  `<a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign</a>
+  "Kandidat muligheder": `<a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/service-systems-design" target="_blank">- Service Systems Design</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/informationsvidenskab" target="_blank">- Informationsvidenskab</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/information-studies" target="_blank">- Information Studies (Human Centered Informatics)</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Computer Science (IT)</a>`,
 
-  "Semestre": 
-  `<font size="5"><b><u>1 Semester</u></b></font>
+  Semestre: `<font size="5"><b><u>1 Semester</u></b></font>
   <br>Projekter:
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB101?lang=da-DK" target="_blank">- Det mindre projekt: Interaktionsdesign (5 ECTS)</a></i>
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB111?lang=da-DK" target="_blank">- Det større projekt: Evaluering af design (10 ECTS)</a></i>
@@ -100,16 +94,15 @@ const dropdownContent = {
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB602?lang=da-DK" target="_blank">- User Experience (5 ECTS)</a></i>
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB611?lang=da-DK" target="_blank">- Programmering af IoT applikationer (5 ECTS)</a></i>`,
 
-  "Frafald": 
-  `- Første år: <i>25%</i>
+  Frafald: `- Første år: <i>25%</i>
   <br>- Andet år: <i>?%</i>
   <br>- Tredje år: <i>?%</i>`,
 
-  "Tidsforbrug": 
-  `35 timer om ugen
-  <br>- 70% undervisning
-  <br>- 30% forberedelse`,
-
+  Tidsforbrug: `-70 timer gennemsnit 
+  -35 timer interaktionsdesign `,
+  //ændret
+  Tidsfordeling: `-30% forberedelse
+  -70% undevisnig`,
 };
 
 export default dropdownContent;

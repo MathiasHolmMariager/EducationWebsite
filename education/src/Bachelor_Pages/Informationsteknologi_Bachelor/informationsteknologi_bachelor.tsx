@@ -8,6 +8,9 @@ import { get, getDatabase, ref, remove, set } from "firebase/database";
 import Chatbox from "../../Components/ChatBox/chatbox";
 import collapseLogo from "../../assets/collapse.png";
 import expandLogo from "../../assets/expand.png";
+import BarChart from "../../Components/barchart";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import studieBillede from "../../assets/studieguide_pic_bait2.png"
 
 function InformationsteknologiBachelor() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
@@ -20,6 +23,44 @@ function InformationsteknologiBachelor() {
   const [dropdown8Visible, setDropdown8Visible] = useState(false);
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [uid, setUid] = useState<string | null>(null);
+  const value1 = parseFloat(dropdownContent.Tidsforbrug.split("-")[1]);
+  const value2 = parseFloat(dropdownContent.Tidsforbrug.split("-")[2]);
+  const value3 = parseFloat(dropdownContent.Tidsfordeling.split("-")[1]);
+  const value4 = parseFloat(dropdownContent.Tidsfordeling.split("-")[2]);
+
+  const tidsforbrug = [
+    { name: "Informationsteknologi", value: value2, fill: "lightgreen" },
+    { name: "Gns. bachelor", value: value1, fill: "lightblue" },
+  ];
+
+  const Tidsfordeling = [
+    { name: "Forberedelse", value: value3, fill: "orange" },
+    { name: "Undervisning", value: value4, fill: "pink" },
+  ];
+
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    outerRadius,
+    percent,
+  }: any) => {
+    const radius = outerRadius + 30;
+    const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180));
+    const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180));
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="black"
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
 
   useEffect(() => {
     const auth = getAuth();
@@ -156,13 +197,13 @@ function InformationsteknologiBachelor() {
           <p>{dropdownContent["Beskrivelse"]}</p>
         </div>
         <div>
-          <iframe
+          <img
             className="iframe-container"
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/DgJl6oxDY8o"
+            src={studieBillede}
             style={{ border: "0px" }}
-          ></iframe>
+          ></img>
         </div>
       </div>
       <div className="dropdowns">
@@ -176,7 +217,7 @@ function InformationsteknologiBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown1Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Beskrivelse
@@ -184,10 +225,10 @@ function InformationsteknologiBachelor() {
               <img
                 src={!dropdown1Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown1Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown1Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
@@ -203,7 +244,7 @@ function InformationsteknologiBachelor() {
                 className="iframe-container"
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/M2tW5UH21Po?si=glrP6o_xwRIrONZ4"
+                src="https://www.youtube-nocookie.com/embed/2GCY7KQvAY4?autoplay=1&enablejsapi=1&origin=https%3A%2F%2Fwww.aau.dk"
                 style={{ border: "0px" }}
               ></iframe>
             </div>
@@ -220,7 +261,7 @@ function InformationsteknologiBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown2Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Adgangskrav
@@ -228,10 +269,10 @@ function InformationsteknologiBachelor() {
               <img
                 src={!dropdown2Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown2Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown2Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
@@ -257,7 +298,7 @@ function InformationsteknologiBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown3Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Adgangskvotient
@@ -265,10 +306,10 @@ function InformationsteknologiBachelor() {
               <img
                 src={!dropdown3Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown3Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown3Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
@@ -294,7 +335,7 @@ function InformationsteknologiBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown4Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Kandidat muligheder
@@ -302,10 +343,10 @@ function InformationsteknologiBachelor() {
               <img
                 src={!dropdown4Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown4Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown4Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
@@ -331,7 +372,7 @@ function InformationsteknologiBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown5Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Lokation
@@ -339,10 +380,10 @@ function InformationsteknologiBachelor() {
               <img
                 src={!dropdown5Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown5Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown5Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
@@ -370,7 +411,7 @@ function InformationsteknologiBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown6Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Semestre
@@ -378,10 +419,10 @@ function InformationsteknologiBachelor() {
               <img
                 src={!dropdown6Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown6Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown6Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
@@ -407,7 +448,7 @@ function InformationsteknologiBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown7Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Frafald
@@ -415,10 +456,10 @@ function InformationsteknologiBachelor() {
               <img
                 src={!dropdown7Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown7Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown7Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
@@ -442,7 +483,7 @@ function InformationsteknologiBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown8Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Tidsforbrug
@@ -450,21 +491,104 @@ function InformationsteknologiBachelor() {
               <img
                 src={!dropdown8Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown8Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown8Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
           </button>
           {dropdown8Visible && (
             <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Tidsforbrug"],
-                }}
-              />
+              <div style={{ pointerEvents: 'none' }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <h4 style={{ margin: "auto" }}>Ugentlige arbejdstimer:</h4>
+                  <h4 style={{ margin: "auto" }}>Fordeling af arbejdstimer:</h4>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      padding: "0px",
+                      margin: "0px",
+                      width: "50%",
+                    }}
+                  >
+                    <BarChart data={tidsforbrug} width={200} height={250} />
+                  </div>
+                  <div
+                    style={{
+                      width: "50%",
+                    }}
+                  >
+                    <div style={{ marginBottom: "20px" }}>
+                      <ResponsiveContainer width="100%" height={336}>
+                        <PieChart >
+                          <Pie
+                            data={Tidsfordeling}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius="20%"
+                            outerRadius="70%"
+                            paddingAngle={0}
+                            dataKey="value"
+                            label={renderCustomizedLabel}
+                            labelLine={false}
+                            isAnimationActive={false}
+                          >
+                            {Tidsfordeling.map((_entry, index) => (
+                              <Cell key={`cell-${index}`} />
+                            ))}
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "-45px",
+                        marginLeft: "0%",
+                        width: "100%",
+                      }}
+                    >
+                      {Tidsfordeling.map((item, index) => (
+                        <div
+                          key={index}
+                          style={{
+                            display: "flex",
+                            padding: "2%",
+                            margin: "auto",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "10px",
+                              height: "10px",
+                              marginRight: "5px",
+                              backgroundColor: item.fill,
+                              marginTop: "11px",
+                            }}
+                          ></div>
+                          {item.name}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import UserModal from "../Components/login_create_user";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase, onValue, ref } from "firebase/database";
 import "../Home_Page/home_page.css";
@@ -16,7 +15,6 @@ interface FavoriteItem {
 }
 
 function HomePage() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [lastSeenList, setLastSeenList] = useState<LastSeenItem[]>([]);
   const uidExists = localStorage.getItem("UID");
   const [user, setUser] = useState<User | null>(null);
@@ -48,20 +46,6 @@ function HomePage() {
     }
   }, [user]);
 
-  //#####################login/opret_popup########################
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
-  useEffect(() => {
-    const uid = localStorage.getItem("UID");
-    if (!uid) {
-      setModalIsOpen(true);
-    }
-  }, []);
-  //#####################login/opret_popup########################
 
   //#####################Sidst_Sete_uddan#########################
   useEffect(() => {
@@ -253,15 +237,11 @@ function HomePage() {
             </div>
           ) : (
             <div>
-              <h2>Log ind for at se dine gemte uddannelser:</h2>
-              <button onClick={openModal} style={{ marginTop: "15%" }}>
-                Log ind
-              </button>
+              ikk logget ind
             </div>
           )}
         </div>
       </div>
-      <UserModal isOpen={modalIsOpen} onRequestClose={closeModal} />
     </div>
   );
 }

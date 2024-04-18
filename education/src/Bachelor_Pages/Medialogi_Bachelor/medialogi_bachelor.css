@@ -26,15 +26,6 @@
     margin-bottom: 10px;
 }
 
-.text {
-    flex: 7;
-    font-size: 30px;
-}
-
-.picture {
-    flex: 3;
-}
-
 .dropdowns {
     width: 60%;
     padding: 20px;
@@ -47,6 +38,13 @@
     background-color: rgba(100, 100, 100, 0.1);
 }
 
+.dropdown-content {
+    width: calc(100% - 20px);
+    overflow: auto;
+    font-size: 20px;
+    padding: 10px;
+}
+
 .dropdown-button {
     width: 100%;
     font-size: 30px;
@@ -57,9 +55,15 @@
     background-color: rgba(100, 100, 100, 0.1);
 }
 
-.dropdown-content {
-    width: calc(100% - 20px);
-    overflow: auto;
-    font-size: 20px;
-    padding: 10px;
+.dropdown-button:focus {
+    outline: none;
+}
+
+.iframe-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border: 1px solid #000000;
+    overflow: hidden;
 }

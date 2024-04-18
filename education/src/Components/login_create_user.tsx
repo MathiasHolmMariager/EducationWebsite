@@ -3,64 +3,72 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import Modal from "react-modal";
 import { auth } from "./firebase";
 import { getDatabase, ref, set } from "firebase/database";
 import Select from "react-select";
 import { highSchoolDiplomaDict } from "./high_school_diploma";
 import { bachelorDiplomaDict } from "./bachelor_diploma";
 
-Modal.setAppElement("#root");
-
 type UserModalProps = {
-  isOpen: boolean;
   onRequestClose: () => void;
 };
 
-type OptionType = { value: string; label: string; };
+type OptionType = { value: string; label: string };
 
-const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
+const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSigningUp, setIsSigningUp] = useState(false);
-  const [highSchoolText, setHighSchoolText] = useState('Hent gymnasiebevis');
-  const [bachelorText, setBachelorText] = useState('Hent bachelorbevis');
+  const [highSchoolText, setHighSchoolText] = useState("Hent gymnasiebevis");
+  const [bachelorText, setBachelorText] = useState("Hent bachelorbevis");
   const [highSchoolDiploma, setHighSchoolDiploma] = useState({});
   const [bachelorDiploma, setBachelorDiploma] = useState({});
   const [selectedInterests, setSelectedInterests] = useState<OptionType[]>([]);
-  
+  const [error, setError] = useState("");
+
   useEffect(() => {
-    if (isOpen) {
-      setEmail("");
-      setPassword("");
-    }
-  }, [isOpen]);
+    setIsSigningUp(false);
+    setEmail("");
+    setPassword("");
+    setError("");
+  }, [onRequestClose]);
+
+  
 
   const handleToggleForm = () => {
     setIsSigningUp(!isSigningUp);
     setEmail("");
     setPassword("");
+    setError("");
   };
 
   const handleSignup = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user.uid;
       const db = getDatabase();
       const userData = {
         email: email,
-        interests: selectedInterests.map((interest) => interest.value), // Extract selected values
+        interests: selectedInterests.map((interest) => interest.value),
       };
       set(ref(db, "users/" + user), userData);
-      set(ref(db, "users/" + user+ "/diploma"), {
+      set(ref(db, "users/" + user + "/diploma"), {
         highSchoolDiploma: highSchoolDiploma,
-        bachelorDiploma: bachelorDiploma
-      })
+        bachelorDiploma: bachelorDiploma,
+      });
       localStorage.setItem("UID", JSON.stringify(user));
       handleCloseModal();
     } catch (error) {
-      console.error("Error signing up:", error);
+      if (password.length < 6) {
+        setError("Password skal være mindst 6 tegn");
+      } else {
+        setError("Email skal være i et navn@email.com format");
+      }
     }
   };
 
@@ -74,12 +82,17 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
           handleCloseModal();
         }
       );
-    } catch (error) {}
+    } catch (error) {
+      setError("Login mislykkedes ");
+    }
   };
 
   const handleCloseModal = () => {
     onRequestClose();
     setIsSigningUp(false);
+    setEmail("");
+    setPassword("");
+    setError("");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -95,42 +108,31 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
   ];
 
   const highSchoolClick = () => {
-    if (highSchoolText === 'Hent gymnasiebevis') {
-      setHighSchoolText('Gemt');
+    if (highSchoolText === "Hent gymnasiebevis") {
+      setHighSchoolText("Gemt");
       setHighSchoolDiploma(highSchoolDiplomaDict);
     } else {
-      setHighSchoolText('Hent gymnasiebevis');
+      setHighSchoolText("Hent gymnasiebevis");
       setHighSchoolDiploma({});
     }
   };
 
   const bachelorClick = () => {
-    if (bachelorText === 'Hent bachelorbevis') {
-      setBachelorText('Gemt');
+    if (bachelorText === "Hent bachelorbevis") {
+      setBachelorText("Gemt");
       setBachelorDiploma(bachelorDiplomaDict);
     } else {
-      setBachelorText('Hent bachelorbevis');
+      setBachelorText("Hent bachelorbevis");
       setBachelorDiploma({});
     }
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={handleCloseModal}
-      contentLabel="Example Modal"
-      style={{
-        content: {
-          width: "30%",
-          height: "90%",
-          margin: "auto",
-          textAlign: "center",
-        },
-      }}
-    >
+    <div className="modal-content" style={{width:"60vh", padding:"30px", margin:"0px",borderRadius:"8px", background:"white", paddingBottom:"0px"}}>
+      <div style={{ width:"100%", height:"100%"}}>
       {isSigningUp ? (
         <>
-          <h2 style={{marginTop:"50px"}}>
+          <h2 style={{ width: "100%", marginTop: "25px" }}>
             Opret konto for at sammenligne uddannelser
           </h2>
           <form onSubmit={handleSignup} onKeyPress={handleKeyPress}>
@@ -141,7 +143,13 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ width: "250px", height: "30px", padding: "10px", border:"1px solid", borderRadius:"8px" }}
+                style={{
+                  width: "250px",
+                  height: "30px",
+                  padding: "10px",
+                  border: "1px solid",
+                  borderRadius: "8px",
+                }}
               />
             </div>
             <div style={{ width: "100%", marginTop: "20px" }}>
@@ -151,7 +159,13 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ width: "250px", height: "30px", padding: "10px", border:"1px solid", borderRadius:"8px" }}
+                style={{
+                  width: "250px",
+                  height: "30px",
+                  padding: "10px",
+                  border: "1px solid",
+                  borderRadius: "8px",
+                }}
               />
             </div>
             <div style={{ width: "60%", margin: "auto", marginTop: "20px" }}>
@@ -160,38 +174,71 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 placeholder="Vælg interesser (valgfri)"
                 isMulti
                 value={selectedInterests} // Set value prop to selectedInterests state
-                onChange={(selectedOptions) => setSelectedInterests(selectedOptions as OptionType[])} // Update selectedInterests state
+                onChange={(selectedOptions) =>
+                  setSelectedInterests(selectedOptions as OptionType[])
+                } // Update selectedInterests state
               />
             </div>
-            <div style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <button
                 type="button"
                 onClick={highSchoolClick}
-                style={{ margin: "20px", width: "60%", backgroundColor:"rgba(100, 100, 100, 0.1)" }}
+                style={{
+                  margin: "20px",
+                  width: "60%",
+                  backgroundColor: "rgba(100, 100, 100, 0.1)",
+                }}
               >
                 {highSchoolText}
               </button>
               <button
                 type="button"
                 onClick={bachelorClick}
-                style={{width: "60%", backgroundColor:"rgba(100, 100, 100, 0.1)" }}
+                style={{
+                  width: "60%",
+                  backgroundColor: "rgba(100, 100, 100, 0.1)",
+                }}
               >
                 {bachelorText}
               </button>
-              <div style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center", width:"100%"}}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                  marginTop: "25px",
+                }}
+              >
                 <button
                   onClick={handleCloseModal}
-                  style={{ margin: "20px", width: "25%", backgroundColor:"rgba(100, 100, 100, 0.1)" }}
+                  style={{
+                    margin: "15px",
+                    width: "130px",
+                    paddingLeft: "0px",
+                    paddingRight: "0px",
+                    backgroundColor: "rgba(100, 100, 100, 0.1)",
+                  }}
                 >
                   Forsæt uden
                 </button>
                 <button
                   type="submit"
                   style={{
-                    margin: "20px",
+                    margin: "15px",
                     backgroundColor: "rgb(33, 26, 82)",
                     color: "white",
-                    width: "25%",
+                    width: "130px",
+                    paddingLeft: "0px",
+                    paddingRight: "0px",
                   }}
                 >
                   Opret
@@ -199,20 +246,29 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
               </div>
             </div>
           </form>
-          <p style={{marginTop:"0px"}}>
-            Har du allerede en konto?{" "}
-            <button onClick={handleToggleForm} 
-            style={{backgroundColor:"rgba(100, 100, 100, 0.1)"}}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p style={{ padding: "5px" }}>Har du allerede en konto? </p>
+            <p
+              onClick={handleToggleForm}
+              style={{ padding: "5px", color: "blue", cursor: "pointer" }}
+            >
               Login
-            </button>
-          </p>
+            </p>
+          </div>
         </>
       ) : (
         <>
-          <h2 style={{marginTop:"50px"}}>
+          <h2 style={{ marginTop: "25px" }}>
             Login for at sammenligne uddanelser
           </h2>
-          <form onSubmit={handleLogin} onKeyPress={handleKeyPress}>
+          <form onSubmit={handleLogin} onKeyPress={handleKeyPress} style={{marginBottom:"-10px"}}>
             <div style={{ width: "100%", marginTop: "20px" }}>
               <input
                 type="email"
@@ -220,7 +276,13 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ width: "250px", height: "30px", padding: "10px", border:"1px solid", borderRadius:"8px" }}
+                style={{
+                  width: "250px",
+                  height: "30px",
+                  padding: "10px",
+                  border: "1px solid",
+                  borderRadius: "8px",
+                }}
               />
             </div>
             <div style={{ width: "100%", marginTop: "20px" }}>
@@ -230,12 +292,22 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ width: "250px", height: "30px", padding: "10px", border:"1px solid", borderRadius:"8px" }}
+                style={{
+                  width: "250px",
+                  height: "30px",
+                  padding: "10px",
+                  border: "1px solid",
+                  borderRadius: "8px",
+                }}
               />
             </div>
             <button
               onClick={handleCloseModal}
-              style={{ margin: "20px", width: "120px", backgroundColor:"rgba(100, 100, 100, 0.1)" }}
+              style={{
+                margin: "20px",
+                width: "120px",
+                backgroundColor: "rgba(100, 100, 100, 0.1)",
+              }}
             >
               Annuller
             </button>
@@ -243,6 +315,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
               type="submit"
               style={{
                 margin: "20px",
+                marginTop:"39px",
                 backgroundColor: "rgb(33, 26, 82)",
                 color: "white",
                 width: "120px",
@@ -251,16 +324,44 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onRequestClose }) => {
               Log ind
             </button>
           </form>
-          <p style={{marginTop:"0px"}}>
-            Har du ikke allerede en konto?{" "}
-            <button onClick={handleToggleForm}
-            style={{backgroundColor:"rgba(100, 100, 100, 0.1)"}}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p style={{ padding: "5px" }}>Har du ikke allerede en konto? </p>
+            <p
+              onClick={handleToggleForm}
+              style={{ padding: "5px", color: "blue", cursor: "pointer" }}
+            >
               Opret bruger
-            </button>
-          </p>
+            </p>
+          </div>
         </>
       )}
-    </Modal>
+      </div>
+      <div style={{ width:"calc(100% + 60px)", height:"40px", marginLeft:"-30px", marginTop:"0px", borderRadius: "0 0 8px 8px", }}>
+      {error && (
+        <div
+          style={{
+            width: "100%",
+            height:"100%  ",
+            backgroundColor: "#FF5252",
+            color: "black",
+            borderRadius: "0 0 8px 8px",
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center",
+          }}
+        >
+          {error}
+        </div>
+      )}
+      </div>
+    </div>
   );
 };
 
