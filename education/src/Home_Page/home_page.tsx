@@ -3,6 +3,8 @@ import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase, onValue, ref } from "firebase/database";
 import "../Home_Page/home_page.css";
 import arrowClick from "../assets/arrow.png"
+import loginIcon from "../assets/loginIcon.png"
+import UserModal from "../Components/login_create_user";
 
 interface LastSeenItem {
   title: string;
@@ -16,9 +18,9 @@ interface FavoriteItem {
 
 function HomePage() {
   const [lastSeenList, setLastSeenList] = useState<LastSeenItem[]>([]);
-  const uidExists = localStorage.getItem("UID");
   const [user, setUser] = useState<User | null>(null);
   const [favoritesStudy, setFavoritesStudy] = useState<FavoriteItem[]>([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -54,7 +56,17 @@ function HomePage() {
       setLastSeenList(JSON.parse(storedList));
     }
   }, []);
-  //#####################Sidst_Sete_uddan#########################
+  //##############################################################
+
+  const signInButtonClick = () => {
+    if (!user) {
+      setModalIsOpen(true);
+    }
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   return (
     <div
@@ -168,7 +180,7 @@ function HomePage() {
             boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)",
           }}
         >
-          {uidExists ? (
+          {user ? (
             <div
               style={{
                 width: "100%",
@@ -236,12 +248,84 @@ function HomePage() {
               </div>
             </div>
           ) : (
-            <div>
-              ikk logget ind
+<div
+              style={{
+                width: "100%",
+                height: "100%",
+                
+              }}
+            >
+              <div
+                style={{
+                  background: "rgb(33, 26, 82)",
+                  color: "white",
+                  width: "100%",
+                  borderTopLeftRadius: "8px",
+                  borderTopRightRadius: "8px",
+                  height: "20%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  
+                }}
+              >
+                <h2>Dine favorit uddannelser:</h2>
+              </div>
+              <div
+                style={{
+                  width: "100%",
+                  height: "80%",
+                  borderBottomLeftRadius: "10px",
+                  borderBottomRightRadius: "10px",
+                  background:"white",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection:"column"
+
+                }}
+              >
+                <p style={{color:"75,75,75", fontSize:"100%", fontWeight:"500", marginTop:"-5%"}}>Log ind for at gemme dine favorit uddannelser:</p>
+                <button style={{ display:"flex", width:"25%", height:"15%", alignItems:"center", justifyContent:"center", marginTop:"5%"}} >
+                  <img src={loginIcon} style={{width:"20%",}} />
+                  <p style={{width:"70%", textAlign:"left", paddingLeft:"20%"}} onClick={signInButtonClick}>Log ind</p>
+                </button>
+              </div>
             </div>
           )}
         </div>
       </div>
+      {user ? null : (
+        <div
+          style={{
+            display: modalIsOpen ? "block" : "none",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: 99999,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          }}
+          onClick={closeModal}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <UserModal onRequestClose={closeModal} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

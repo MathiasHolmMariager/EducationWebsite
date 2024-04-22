@@ -13,6 +13,7 @@ import MedialogyKandidat from "../Kandidat_Pages/Medialogy_Kandidat/medialogy_ka
 import Computerscience from "../Kandidat_Pages/ComputerScience_Kandidat/computerscience_kandidat.tsx";
 
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -29,7 +30,6 @@ export const router = createBrowserRouter([
       { path: "/profile", element: <ProfilePage /> },
       { path: "/chat", element: <ChatPage/> },
       { path: "/nopage", element: <NoPage /> },
-
     ],
   },
 ]);

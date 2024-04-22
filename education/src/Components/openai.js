@@ -16,7 +16,6 @@ export async function OpenAIchat(prompt, conversationHistory = []) {
   });
 
   const assistantReply = completion.choices[0].message.content;
-  conversationHistory.push({ role: "user", content: prompt });
   conversationHistory.push({ role: "assistant", content: assistantReply });
 
   return { assistantReply, conversationHistory};

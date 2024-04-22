@@ -15,11 +15,24 @@ const dropdownContent = {
   <br><br>
   `,
 
-  //ændret
-  Adgangskrav: `- Bestået adgangsgivende eksamen 
-  <br>- Dansk A 
-  <br>- Engelsk B 
-  <br>- Matematik B`,
+  Adgangskrav: [
+    {
+      fag: 'Dansk',
+      niveau: 'A',
+      n: 3 
+    },
+    {
+      fag: 'Engelsk',
+      niveau: 'B',
+      n: 2
+    },
+    {
+      fag: 'Matematik',
+      niveau: 'A',
+      n: 3 
+    },
+  ],
+
 
   //ændret
   Adgangskvotient: `Alle optaget (2023)`,
@@ -125,7 +138,7 @@ const dropdownContent = {
   <br>- Andet år: <i>?%</i>
   <br>- Tredje år: <i>?%</i>`,
   //ændret
-  Tidsforbrug: `-70 timer gennemsnit 
+  Tidsforbrug: `-33 timer gennemsnit 
   -26 timer informationsteknologi `,
   //ændret
   Tidsfordeling: `-57% forberedelse
