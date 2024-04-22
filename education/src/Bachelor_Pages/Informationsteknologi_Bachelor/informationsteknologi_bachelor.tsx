@@ -245,11 +245,11 @@ function InformationsteknologiBachelor() {
         }}
       >
         <div className="text" style={{display:"flex", flexDirection:"column", height:"100%"}}>
-          {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
-          {accesStatus === "partly" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
-          {accesStatus === "false" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
-          {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"13.7%", display: "flex", alignItems:"center"}}></div>}
-          <p style={{marginBottom:"10%"}}>{dropdownContent["Beskrivelse"]}</p>
+          {accesStatus === "true" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
+          {accesStatus === "partly" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
+          {accesStatus === "false" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+          {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"7.8%", display: "flex", alignItems:"center"}}></div>}
+          <p style={{marginBottom:"10%", fontSize:"20px", fontWeight:500}}>{dropdownContent["Beskrivelse"]}</p>
         </div>
           <img
             className="iframe-container"
