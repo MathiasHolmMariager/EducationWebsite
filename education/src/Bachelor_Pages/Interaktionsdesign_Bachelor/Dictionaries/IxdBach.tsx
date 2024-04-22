@@ -98,7 +98,7 @@ const dropdownContent = {
   <br>- Andet år: <i>?%</i>
   <br>- Tredje år: <i>?%</i>`,
 
-  Tidsforbrug: `-70 timer gennemsnit 
+  Tidsforbrug: `-33 timer gennemsnit 
   -35 timer interaktionsdesign `,
   //ændret
   Tidsfordeling: `-30% forberedelse

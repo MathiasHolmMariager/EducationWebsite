@@ -1,12 +1,4 @@
-.container {
-    position: relative;
-    width: 90%;
-    margin: auto;
-    height: 100%;
-}
-
 .search-container {
-    position: relative;
     width: 100%;
     margin-top: 0px;
   }
@@ -19,27 +11,6 @@
     border: 1px solid black;
   }
   
-  .search-results {
-    position: absolute;
-    margin-top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    border-radius: 4px;
-    z-index: 1;
-    font-size: 20px;
-  }
-  
-  .search-results ul {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .search-results li {
-    padding: 0px;
-
-  }
-
 .filter-container {
     width: 100%;
     display: flex;

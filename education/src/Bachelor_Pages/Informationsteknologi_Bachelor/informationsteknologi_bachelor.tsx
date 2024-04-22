@@ -4,13 +4,18 @@ import StarGold from "../../assets/Star_Gold.png";
 import "./informationsteknologi_bachelor.css";
 import dropdownContent from "./Dictionaries/InformationsteknologiBach";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import { get, getDatabase, ref, remove, set } from "firebase/database";
+import { get, getDatabase, onValue, ref, remove, set } from "firebase/database";
 import Chatbox from "../../Components/ChatBox/chatbox";
 import collapseLogo from "../../assets/collapse.png";
 import expandLogo from "../../assets/expand.png";
 import BarChart from "../../Components/barchart";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import studieBillede from "../../assets/studieguide_pic_bait2.png"
+import checkIcon from "../../assets/checkmark.png"
+import redExIcon from "../../assets/redExMark.png"
+import yellowExIcon from "../../assets/yellowExMark.png"
+import checkedIcon from "../../assets/checked.png"
+import uncheckedIcon from "../../assets/unchecked.png"
 
 function InformationsteknologiBachelor() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
@@ -114,7 +119,50 @@ function InformationsteknologiBachelor() {
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
     localStorage.setItem("PAGE_ID", "Informationsteknologi, Bachelor");
   }, []);
-  //#####################LAST_SEEN_STUDY_PROGRAMS############################
+  //##########################################################################
+
+  const [accesStatus, setAccesStatus] = useState<"true" | "partly" | "false" | "na">("na");
+  const [firebaseData, setFirebaseData] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (uid) {
+      const db = getDatabase();
+      const diplomaRef = ref(db, `users/${uid}/diploma/highSchoolDiploma`);
+  
+      onValue(diplomaRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          setFirebaseData(data);
+          const adgangskravSubjects = dropdownContent.Adgangskrav;
+  
+          const allExist = adgangskravSubjects.every(subject => (
+            data.some((item: any) => (
+              item.fag === subject.fag && item.n >= subject.n
+            ))
+          ));
+  
+          const someExist = adgangskravSubjects.some(subject => (
+            data.some((item: any) => (
+              item.fag === subject.fag && item.n >= subject.n
+            ))
+          ));
+  
+          if (allExist) {
+            setAccesStatus("true");
+          } else if (!allExist && someExist) {
+            setAccesStatus("partly");
+          } else {
+            setAccesStatus("false");
+          }
+        } else {
+          console.log("No data in Firebase!");
+          setAccesStatus("na");
+        }
+      });
+    }
+  }, [uid]);
+  
+  
 
   const toggleDropdown = (dropdownNumber: number) => {
     switch (dropdownNumber) {
@@ -193,8 +241,12 @@ function InformationsteknologiBachelor() {
           borderRadius: "10px",
         }}
       >
-        <div className="text">
-          <p>{dropdownContent["Beskrivelse"]}</p>
+        <div className="text" style={{display:"flex", flexDirection:"column",}}>
+          {accesStatus === "true" && <div style={{marginTop:"-6%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
+          {accesStatus === "partly" && <div style={{marginTop:"-6%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
+          {accesStatus === "false" && <div style={{marginTop:"-6%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+          {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"7.8%", display: "flex", alignItems:"center"}}></div>}
+          <p style={{marginBottom:"10%"}}>{dropdownContent["Beskrivelse"]}</p>
         </div>
         <div>
           <img
@@ -279,15 +331,40 @@ function InformationsteknologiBachelor() {
           </button>
           {dropdown2Visible && (
             <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Adgangskrav"],
-                }}
-              />
+            <div/>
+            {uid ? (
+            <><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul style={{ listStyleType: "none" }}>
+                  {dropdownContent.Adgangskrav.map((subject, index) => {
+                    const existsInFirebase = firebaseData.length > 0 && firebaseData.some((item: any) => (item.fag === subject.fag && item.n >= subject.n));
+                    return (
+                      <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
+                        <img src={existsInFirebase ? checkedIcon : uncheckedIcon} style={{width:"3%", marginTop:"0.2%"}} />
+                        <li key={index} style={{ marginLeft: "1%" }}>
+                          {subject.fag} {subject.niveau}
+                        </li>
+                      </div>
+                    );
+                  })}
+                </ul></>
+          ) : (
+            <><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul>
+            {dropdownContent.Adgangskrav.map((subject, index) => {
+              return (
+                <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
+                  <li key={index} style={{ marginLeft: "1%" }}>
+                    {subject.fag} {subject.niveau}
+                  </li>
+                </div>
+              );
+            })}
+          </ul></>
+
+
+            )}          
+            
             </div>
           )}
         </div>
-
         <div
           className="dropdown"
           style={{ background: "white", border: "0px", width: "100%" }}

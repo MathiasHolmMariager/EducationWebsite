@@ -102,9 +102,9 @@ const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
   };
 
   const interests = [
-    { value: "matematik", label: "Matematik" },
-    { value: "fysik", label: "Fysik" },
-    { value: "programmering", label: "Programmering" },
+    { value: "Matematik", label: "Matematik" },
+    { value: "Fysik", label: "Fysik" },
+    { value: "Programmering", label: "Programmering" },
   ];
 
   const highSchoolClick = () => {

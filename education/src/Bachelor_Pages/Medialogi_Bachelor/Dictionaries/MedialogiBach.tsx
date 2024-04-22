@@ -88,7 +88,7 @@ const dropdownContent = {
   <br>- Tredje år: <i>?%</i>`,
 
   //ændret (bare stats fra kandidaten)
-    Tidsforbrug: `-70 timer gennemsnit 
+    Tidsforbrug: `-33 timer gennemsnit 
     -39 timer medialogi `,
   //ændret (bare stats fra kandidaten)
     Tidsfordeling: `-25% forberedelse

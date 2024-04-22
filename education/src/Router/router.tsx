@@ -11,6 +11,7 @@ import MedialogiBachelor from "../Bachelor_Pages/Medialogi_Bachelor/medialogi_ba
 import InteraktionsdesignKandidat from "../Kandidat_Pages/Interaktionsdesign_Kandidat/interaktionsdesign_kandidat.tsx";
 
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +26,6 @@ export const router = createBrowserRouter([
       { path: "/profile", element: <ProfilePage /> },
       { path: "/chat", element: <ChatPage/> },
       { path: "/nopage", element: <NoPage /> },
-
     ],
   },
 ]);

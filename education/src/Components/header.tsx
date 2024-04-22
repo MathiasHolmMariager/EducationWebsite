@@ -1,219 +1,239 @@
-  import { useState, useEffect, useRef } from "react";
-  import home_icon from "../assets/home.png";
-  import search_icon from "../assets/search.png";
-  import chat_icon from "../assets/chat.png";
-  import profile_icon from "../assets/profile.png";
-  import { signOut, onAuthStateChanged } from "firebase/auth";
-  import { auth } from "./firebase";
-  import UserModal from "./login_create_user";
+import { useState, useEffect } from "react";
+import home_icon from "../assets/home.png";
+import search_icon from "../assets/search.png";
+import chat_icon from "../assets/chat.png";
+import profile_icon from "../assets/profile.png";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+import UserModal from "./login_create_user";
+import profileIcon from "../assets/profileLogo.png"
+import loginIcon from "../assets/loginIcon.png"
+import logoutIcon from "../assets/logoutIcon.png"
 
-  function Header() {
-    const [showDropdown, setShowDropdown] = useState(false);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
-    const [user, setUser] = useState<any | null>(null);
+function Header() {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [user, setUser] = useState<any | null>(null);
 
-
-    useEffect(() => {
-      const handleClickOutside = (event: { target: any }) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-          setShowDropdown(false);
-        }
-      };
-
-      document.addEventListener("mousedown", handleClickOutside);
-
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, []);
-
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        setUser(user);
-      });
-
-      return () => unsubscribe();
-    }, []);
-
-    const openDropdown = () => {
-      setShowDropdown(false);
-    };
-
-    const closeDropdown = () => {
-      setShowDropdown(true);
-    };
-
-    const openModal = () => {
-      setModalIsOpen(true);
-      setShowDropdown(false);
-    };
-
-    const closeModal = () => {
-      setModalIsOpen(false);
-    };
-
-    const signInButtonClick = () => {
-      if (!user) {
-        openModal();
-      }
-    };
-
-    const signOutButtonClick = async () => {
-      try {
-        await signOut(auth);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (event.target instanceof Element && !event.target.closest('.profileDropdown')) {
         setShowDropdown(false);
-      } catch (error) {
-        console.error("Error signing out:", error);
       }
     };
+  
+    window.addEventListener("mousedown", handleClickOutside);
+  
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
-    return (
-      <div
-        style={{
-          position: "fixed",
-          top: "0px",
-          right: "0px",
-          zIndex: 9999,
-          display: "flex",
-          height: "8vh",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "calc(100% + 16px)",
-          backgroundColor: "rgb(33, 26, 82)",
-          margin: "auto",
-          marginTop: "-0px",
-          marginLeft: "-8px",
-        }}
-      >
-        <div>
-          <a href="/">
-            <img
-              src={home_icon}
-              style={{ width: "40px", height: "40px", marginLeft: "40px" }}
-              alt="Home"
-            />
-          </a>
-        </div>
-        <div>
-          <a href="/search">
-            <img
-              src={search_icon}
-              style={{ width: "40px", height: "40px", marginRight: "40px" }}
-              alt="Search"
-            />
-          </a>
-          <a href="/chat">
-            <img
-              src={chat_icon}
-              style={{ width: "43px", height: "43px", marginRight: "40px" }}
-              alt="Chat"
-            />
-          </a>
-          <div style={{ position: "relative", display: "inline-block" }}>
-            <img
-              src={profile_icon}
-              style={{
-                width: "40px",
-                height: "40px",
-                marginRight: "30px",
-                cursor: "pointer",
-              }}
-              onClick={showDropdown ? openDropdown : closeDropdown}
-              alt="Profile"
-            />
-            {showDropdown && (
-              <div
-                ref={dropdownRef}
-                style={{
-                  position: "absolute",
-                  backgroundColor: "white",
-                  minWidth: "200px",
-                  boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)",
-                  zIndex: 1,
-                  right: "40px",
-                  top: "52px",
-                }}
-              >
-                {user ? (
-                  <div>
-                    <a href="/profile">
-                      <button
-                        style={{
-                          marginLeft: "10%",
-                          width: "80%",
-                          marginTop: "10px",
-                          marginBottom: "5px",
-                          background:"white"
-                        }}
-                      >
-                        Se profil
-                      </button>
-                    </a>
-                    <button
-                      onClick={signOutButtonClick}
-                      style={{
-                        marginLeft: "10%",
-                        width: "80%",
-                        marginTop: "5px",
-                        marginBottom: "13px",
-                        background:"white"
-                      }}
-                    >
-                      Log ud
-                    </button>
-                  </div>
-                ) : (
-                  <div>
-                    <button
-                      onClick={signInButtonClick}
-                      style={{
-                        marginLeft: "10%",
-                        width: "80%",
-                        marginTop: "5px",
-                        marginBottom: "5px",
-                      }}
-                    >
-                      Log ind
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-        {user ? null : (
-          <div
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const openDropdown = () => {
+    setShowDropdown(true);
+  };
+
+  const closeDropdown = () => {
+    setShowDropdown(false);
+  };
+
+  const openModal = () => {
+    setModalIsOpen(true);
+    setShowDropdown(false);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const signInButtonClick = () => {
+    if (!user) {
+      openModal();
+    }
+  };
+
+  const signOutButtonClick = async () => {
+    try {
+      await signOut(auth);
+      setShowDropdown(false);
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: "0px",
+        right: "0px",
+        zIndex: 9999,
+        display: "flex",
+        height: "8vh",
+        justifyContent: "left",
+        alignItems: "center",
+        width: "calc(100% + 16px)",
+        backgroundColor: "rgb(33, 26, 82)",
+        margin: "auto",
+        marginTop: "-0px",
+        marginLeft: "-8px"
+      }}
+    >
+      <div style={{ width: "2.5%", height: "70%", marginLeft: "2.5%", marginRight:"79.8%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+        <a href="/" style={{ width: "100%", height: "100%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+          <img
+            src={home_icon}
+            style={{ width: "90%", height: "90%",}}
+          />
+        </a>
+      </div>
+      <div style={{ width: "2.5%", height: "70%", marginLeft: "2%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+        <a href="/search" style={{ width: "100%", height: "100%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+          <img
+            src={search_icon}
+            style={{ width: "90%", height: "90%",}}
+          />
+        </a>
+      </div>
+      <div style={{ width: "2.5%", height: "70%", marginLeft: "2%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+        <a href="/chat" style={{ width: "100%", height: "100%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+          <img
+            src={chat_icon}
+            style={{ width: "95%", height: "100%",}}
+          />
+        </a>
+      </div>
+
+        <div className="profileDropdown" style={{ width: "2.5%", height: "70%", marginLeft: "2%", marginRight:"0%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+          <img
+            src={profile_icon}
             style={{
-              display: modalIsOpen ? "block" : "none",
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              width: "90%",
+              height: "90%",
+              cursor: "pointer",
             }}
-            onClick={closeModal}
-          >
+            onClick={!showDropdown ? openDropdown : closeDropdown}
+            alt="Profile"
+          />
+          {showDropdown && (
             <div
+              className="dropdown"
               style={{
                 position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                textAlign: "center",
-                display:"flex",
-                alignItems:"center",
-                justifyContent:"center",
+                backgroundColor: "white",
+                minWidth: "200px",
+                boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)",
+                zIndex: 1,
+                right: "1vh",
+                top: "8vh",
+                border:"none",
+                borderRadius:"0px 0px 6px 6px"
               }}
-              onClick={(e) => e.stopPropagation()}
             >
-              <UserModal onRequestClose={closeModal} />
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
+              {user ? (
+                <div>
+                  <a href="/profile">
+                    <button
+                      style={{
+                        marginLeft: "10%",
+                        width: "80%",
+                        marginTop: "10px",
+                        marginBottom: "5px",
+                        background: "white",
+                        display:"flex",
+                        justifyContent:"left",
+                        alignItems:"center",
+                        padding:"0%"
+                      }}
 
-  export default Header;
+                    >
+                      <img src={profileIcon} style={{width:"20%", marginLeft:"10%"}} />
+                      <p style={{width:"", height:"100%", textAlign:"left", paddingLeft:"20%"}}>Profil</p>
+                      
+                    </button>
+                  </a>
+                  <button
+                    onClick={signOutButtonClick}
+                    style={{
+                      marginLeft: "10%",
+                      width: "80%",
+                      marginTop: "5px",
+                      marginBottom: "13px",
+                      background: "white",
+                      display:"flex",
+                      justifyContent:"left",
+                      alignItems:"center",
+                      padding:"0%"
+                    }}
+                  >
+                      <img src={logoutIcon} style={{width:"20%", marginLeft:"11%"}} />
+                      <p style={{width:"", height:"100%", textAlign:"left", paddingLeft:"19%"}}>Log ud</p>
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button
+                    onClick={signInButtonClick}
+                    style={{
+                      marginLeft: "10%",
+                      width: "80%",
+                      marginTop: "5px",
+                      marginBottom: "7px",
+                      background: "white",
+                      display:"flex",
+                      justifyContent:"left",
+                      alignItems:"center",
+                      padding:"0%"
+                    }}
+                  >
+                      <img src={loginIcon} style={{width:"20%", marginLeft:"11%"}} />
+                      <p style={{width:"", height:"100%", textAlign:"left", paddingLeft:"19%"}}>Log ind</p>
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      {user ? null : (
+        <div
+          style={{
+            display: modalIsOpen ? "block" : "none",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          }}
+          onClick={closeModal}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <UserModal onRequestClose={closeModal} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Header;
