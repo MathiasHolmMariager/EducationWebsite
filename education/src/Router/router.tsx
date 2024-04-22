@@ -9,6 +9,8 @@ import ChatPage from "../Chat_Page/chat_page.tsx";
 import InformationsteknologiBachelor from "../Bachelor_Pages/Informationsteknologi_Bachelor/informationsteknologi_bachelor.tsx";
 import MedialogiBachelor from "../Bachelor_Pages/Medialogi_Bachelor/medialogi_bachelor.tsx";
 import InteraktionsdesignKandidat from "../Kandidat_Pages/Interaktionsdesign_Kandidat/interaktionsdesign_kandidat.tsx";
+import MedialogyKandidat from "../Kandidat_Pages/Medialogy_Kandidat/medialogy_kandidat.tsx";
+import Computerscience from "../Kandidat_Pages/ComputerScience_Kandidat/computerscience_kandidat.tsx";
 
 
 
@@ -21,8 +23,10 @@ export const router = createBrowserRouter([
       { path: "/search", element: <SearchPage /> },
       { path: "/Interaktionsdesign, Bachelor", element: <InteractionsdesignBachelor /> },
       { path: "/Informationsteknologi, Bachelor", element: <InformationsteknologiBachelor /> },
-      { path: "/Interaktionsdesign, Kandidat", element: <InteraktionsdesignKandidat /> },
       { path: "/Medialogi, Bachelor", element: <MedialogiBachelor /> },
+      { path: "/Interaktionsdesign, Kandidat", element: <InteraktionsdesignKandidat /> },
+      { path: "/Medialogy, Kandidat", element: <MedialogyKandidat /> },
+      { path: "/Computerscience, Kandidat", element: <Computerscience /> },
       { path: "/profile", element: <ProfilePage /> },
       { path: "/chat", element: <ChatPage/> },
       { path: "/nopage", element: <NoPage /> },

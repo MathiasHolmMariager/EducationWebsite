@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Star from "../../assets/Star.png";
 import StarGold from "../../assets/Star_Gold.png";
-import "./interaktionsdesign_kandidat.css";
-import dropdownContent from "./Dictionaries/InteraktionsdesignKand";
+import "./medialogy_kandidat.css";
+import dropdownContent from "./Dictionaries/MedialogyKand";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, ref, remove, set } from "firebase/database";
 import Chatbox from "../../Components/ChatBox/chatbox";
 
-function InteraktionsdesignKandidat() {
+function MedialogyKandidat() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [dropdown3Visible, setDropdown3Visible] = useState(false);
@@ -28,7 +28,7 @@ function InteraktionsdesignKandidat() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Interaktionsdesign, Kandidat";
+        const title = "Medialogy, Kandidat";
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef).then((snapshot: { exists: () => any; }) => {
           if (snapshot.exists()) {
@@ -46,7 +46,7 @@ function InteraktionsdesignKandidat() {
 
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
-    const pairToSave = { title: "Interaktionsdesign, Kandidat", code: "Interaktionsdesign, Kandidat" };
+    const pairToSave = { title: "Medialogy, Kandidat", code: "Medialogy, Kandidat" };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
     let index = -1;
@@ -67,7 +67,7 @@ function InteraktionsdesignKandidat() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Interaktionsdesign, Kandidat");
+    localStorage.setItem("PAGE_ID", "Medialogy, Kandidat");
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -113,8 +113,8 @@ function InteraktionsdesignKandidat() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Interaktionsdesign, Kandidat";
-      const code = "Interaktionsdesign, Kandidat";
+      const title = "Medialogy, Kandidat";
+      const code = "Medialogy, Kandidat";
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
       
@@ -137,7 +137,7 @@ function InteraktionsdesignKandidat() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Interaktionsdesign - Aalborg - Kanidat</h1>
+        <h1>Medialogy - Aalborg - Kanidat</h1>
         <img
           src={isStarClicked ? StarGold : Star}
           onClick={handleStarClick}
@@ -195,7 +195,7 @@ function InteraktionsdesignKandidat() {
           {dropdown4Visible && (
             <div className="dropdown-content">
               <iframe className="iframe-container"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2599.3901224246843!2d9.988981277169266!3d57.0123952942769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464eccdc3b849cf3%3A0xf858a47b27302972!2sCassiopeia%20-%20Institut%20for%20Datalogi%2C%20Selma%20Lagerl%C3%B8fs%20Vej%20300%2C%209220%20Aalborg!5e1!3m2!1sda!2sdk!4v1712823764726!5m2!1sda!2sdk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2596.8731057849654!2d9.927234377171036!3d57.04840009146357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46493292e965474d%3A0xca60b6afd66137eb!2sRendsburggade%2014%2C%209000%20Aalborg!5e1!3m2!1sda!2sdk!4v1713733326886!5m2!1sda!2sdk"
                 width= "99%"
                 height="500px"
               ></iframe>
@@ -290,4 +290,4 @@ function InteraktionsdesignKandidat() {
   );
 }
 
-export default InteraktionsdesignKandidat;
+export default MedialogyKandidat;
