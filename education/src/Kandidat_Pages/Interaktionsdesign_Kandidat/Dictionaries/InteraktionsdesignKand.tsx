@@ -1,115 +1,89 @@
 const dropdownContent = {
     "Beskrivelse": 
-    `På uddannelsen lærer du at designe interaktive, 
-    digitale løsninger med fokus på brugeroplevelse, anvendelseskvalitet 
-    og æstetik. Du skal bl.a. fordybe dig i visuelt design, prototyping, 
-    usability og user experience. Du bliver en nøglespiller i fremtidens produktudvikling.`,
+    `Uddannelsen sætter fokus på design af interaktion og samspillet mellem design og interaktive egenskaber.
+    Du lærer at arbejde professionelt med design, konstruktion og evaluering af interaktive produkter, 
+    og du får kompetencer inden for både design- og brugerorienteret innovation.`,
   
     "Længere beskrivelse": 
-    `Interaktionsdesign er en uddannelse for dig, der gerne vil skabe forandringer gennem 
-    udvikling af kreative og brugerorienterede digitale løsninger. Du får viden og kompetencer 
-    til at skabe nye produkter og teknologier og kan se frem til at blive en vigtig brik i fremtidens samspil mellem mennesker og IT. 
+    `Med en kandidatuddannelse i Interaktionsdesign bliver du i stand til at arbejde professionelt med design, 
+    konstruktion og evaluering af interaktive produkter. Du får kompetencer inden for både design- og brugerorienteret 
+    innovation, og du kommer til at arbejde med og ikke mindst bidrage til den nyeste teknologiske og designmæssige udvikling.
     <br><br>
-    På Interaktionsdesign studerer du interaktive teknologier og deres sammenhæng med verden 
-    omkring dig. Du lærer, hvordan teknologierne påvirker og former vores hverdag, vores arbejdsliv 
-    og kommunikation med hinanden. Du lærer – kort sagt – at der er teknologi og design i (næsten) alt. 
+    Aalborg Universitets kandidatuddannelse i Interaktionsdesign er stærkt designorienteret, og den knytter sig til 
+    internationalt anerkendt forskning i interaktionsdesign ved AAU. Som kandidat i Interaktionsdesign er man i stand 
+    til at vurdere kvaliteten af et avanceret interaktionsdesign og at analysere et kompliceret interaktionsdesignproblem. 
+    Desuden lægger uddannelsen op til, at du selv udforsker og søger at anvende de nyeste teknologier fra forskningen i 
+    interaktionsdesign. Endelig lærer du at konstruere avancerede prototyper og at arbejde med systemudviklingsprocesser 
+    fra a-z, og du får erfaring med avancerede interaktive teknologier som pervasive computing, 
+    surface-computing, multi-touch, tangible UIs og 3D.
     <br><br>
-    Du bliver undervist i konstruktion og design af de interaktive dele af informations- og kommunikationsteknologi, 
-    og du bliver introduceret til websystemer, desktopsystemer og mobile systemer. Samtidig lærer du at se kulturelle 
-    og æstetiske processer i en større sammenhæng og vurdere færdigdesignede produkter. En stor del af studiet har 
-    nemlig fokus på at give dig en systematisk, kritisk sans i forhold til at arbejde med interaktive digitale medier. 
-    <br><br>
-    På første semester får du en indføring i grundlæggende programmering, introduktion til gruppearbejde og et modul i 
-    interaktionsdesign. Målet er, at du fra starten lærer at udvikle et produkt med udgangspunkt i brugerens oplevelse. 
-    I løbet af uddannelsen udvikler du færdigheder inden for prototyping, systemanalyse, user experience og computergrafik mm. 
-    Du slutter af med et bachelorprojekt. 
-    <br><br>
-    Interaktionsdesign tager som alle andre uddannelser på Aalborg Universitet udgangspunkt i problembaseret læring, PBL. 
-    Det betyder, at undervisningen er baseret på en helt særlig form for team- og projektarbejde – ofte i tæt samarbejde 
-    med erhvervslivet og andre eksterne partnere. 
-    <br><br>
-    Du vil opleve, at denne tilgang ikke bare giver studiet en ekstra social dimension, og de forskellige projekter en 
-    øget kvalitet og relevans, men også gør dig endnu mere eftertragtet på et arbejdsmarked, som i forvejen ikke kan få 
-    nok medarbejdere med stærke digitale kompetencer og solide samarbejdsevner.
-    <br><br>
+    Kandidatuddannelsen i Interaktionsdesign indeholder, ligesom bacheloruddannelsen, elementer fra 
+    fagområderne interaktionsdesign og datalogi.
     `,
   
     "Adgangskrav": 
-    `- Bestået adgangsgivende eksamen 
-    <br>- Dansk A 
-    <br>- Engelsk B 
-    <br>- Matematik B`,
+    `<i><a href="?">- Interaktionsdesign, Aalborg Universitet</a></i>
+    <br><i><a href="?">- Informationsteknologi (T-spor på 6. semester), Aalborg Universitet</a></i>
+    <br><i><a href="?">- Medialogi, Aalborg Universitet</a></i>
+    <br><i><a href="?">- Datalogi, Aalborg Universitet</a></i>
+    <br><i><a href="?">- Software, Aalborg Universitet</a></i>
+    <br><i><a href="?">- Digital design, Aarhus Universitet</a></i>
+    <br><i><a href="?">- Datalogi, Aarhus Universitet</a></i>`,
   
     "Adgangskvotient": 
-    `Alle optaget (2023)`,
-  
-    "Kandidat muligheder": 
-    `<a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign</a>
-    <br><a href="https://www.aau.dk/uddannelser/kandidat/service-systems-design" target="_blank">- Service Systems Design</a>
-    <br><a href="https://www.aau.dk/uddannelser/kandidat/informationsvidenskab" target="_blank">- Informationsvidenskab</a>
-    <br><a href="https://www.aau.dk/uddannelser/kandidat/information-studies" target="_blank">- Information Studies (Human Centered Informatics)</a>
-    <br><a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Computer Science (IT)</a>`,
+    `?`,
   
     "Semestre": 
     `<font size="5"><b><u>1 Semester</u></b></font>
     <br>Projekter:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB101?lang=da-DK" target="_blank">- Det mindre projekt: Interaktionsdesign (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB111?lang=da-DK" target="_blank">- Det større projekt: Evaluering af design (10 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Designstudie 1 (15 ECTS)</a></i>
     <br>Kurser:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB103?lang=da-DK" target="_blank">- Usability og skitsering (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITFB104?lang=da-DK" target="_blank">- Grundlæggende programmering (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/TECHENGPBL20?lang=da-DK" target="_blank">- Problembaseret læring (5 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Agil Software Engineering (5 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Designstudiemetoder (5 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Udvalgte emner inden for HCI (5 ECTS)</a></i>
     <br>
     <br><font size="5"><b><u>2 Semester</u></b></font>
-    <br>Projekter:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB210?lang=da-DK" target="_blank">- Design og konstruktion af en webapplikation (15 ECTS)</a></i>
+    <br>Projekter (vælg en):
+    <br><i><a href="?" target="_blank">- Virksomhedssamarbejde (20 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Spirende teknologier (20 ECTS)</a></i>
     <br>Kurser:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB211?lang=da-DK" target="_blank">- Funktionelt og grafisk design (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB212?lang=da-DK" target="_blank">- Anvendt grundlæggende programmering (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/B-MAT2-DMG?lang=da-DK" target="_blank">- Datalogiens matematiske grundlag (5 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Software innovation (5 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Systemudvikling i praksis (5 ECTS)</a></i>
     <br>
     <br><font size="5"><b><u>3 Semester</u></b></font>
     <br>Projekter:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB301?lang=da-DK" target="_blank">- Design med brugere (15 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Forspecialisering i interaktionsdesign (20 ECTS)</a></i>
     <br>Kurser:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB302?lang=da-DK" target="_blank">- Brugercentreret design (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB313?lang=da-DK" target="_blank">- Databaseudvikling (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB312?lang=da-DK" target="_blank">- Grundlæggende objektorienteret programmering (5 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Entreprenørskab (5 ECTS)</a></i>
+    <br>Vælg en af følgende:
+    <br><i><a href="?" target="_blank">- Specialiseringskursus i menneske-maskine interaktion (5 ECTS)</a></i>
+    <br><i><a href="?" target="_blank">- Specialiseringskursus i systemudvikling (5 ECTS)</a></i>
     <br>
     <br><font size="5"><b><u>4 Semester</u></b></font>
-    <br>Projekter (vælg en):
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB410?lang=da-DK" target="_blank">- Interaktivt fysisk design (15 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB411?lang=da-DK" target="_blank">- Interaktivt mobilt applikationsdesign (15 ECTS)</a></i>
-    <br>Kurser:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB412?lang=da-DK" target="_blank">- Interaktivt fysisk design (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB513?lang=da-DK" target="_blank">- Kvalitativ metode (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB611?lang=da-DK" target="_blank">- Programmering af mobile applikationer (5 ECTS)</a></i>
-    <br>
-    <br><font size="5"><b><u>5 Semester</u></b></font>
     <br>Projekter:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB510?lang=da-DK" target="_blank">- Design af interaktion med data (15 ECTS)</a></i>
-    <br>Kurser:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB512?lang=da-DK" target="_blank">- Brugercentreret interaktion med kunstig intelligens(5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB513?lang=da-DK" target="_blank">- Kvantitativ metode (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB311?lang=da-DK" target="_blank">- Systemanalyse og design (5 ECTS)</a></i>
-    <br>
-    <br><font size="5"><b><u>6 Semester</u></b></font>
-    <br>Projekter:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB601?lang=da-DK" target="_blank">- Bachelorprojekt (20 ECTS)</a></i>
-    <br>Kurser:
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNIXDB602?lang=da-DK" target="_blank">- User Experience (5 ECTS)</a></i>
-    <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB611?lang=da-DK" target="_blank">- Programmering af IoT applikationer (5 ECTS)</a></i>`,
+    <br><i><a href="?" target="_blank">- Kandidatspeciale (30 ECTS)</a></i>
+    `,
   
     "Frafald": 
-    `- Første år: <i>25%</i>
-    <br>- Andet år: <i>?%</i>
-    <br>- Tredje år: <i>?%</i>`,
+    `- Første år: <i>7%</i>
+    <br>- Andet år: <i>?%</i>`,
   
     "Tidsforbrug": 
     `35 timer om ugen
-    <br>- 70% undervisning
-    <br>- 30% forberedelse`,
+    <br>- 50% undervisning
+    <br>- 50% forberedelse`,
   
+    "Mulige jobs": 
+    `?`,
+
+    "Gennemsnitlig løn": 
+    `?`,
+
+    "Social bedømmelse": 
+    `3`,
+
+    "Jobmulighed bedømmelse": 
+    `4`,
   };
   
   export default dropdownContent;
