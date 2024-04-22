@@ -393,7 +393,7 @@ function MedialogiBachelor() {
             <div className="dropdown-content">
               <iframe
                 className="iframe-container"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2170.188285715064!2d9.926606476662919!3d57.04831649147073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4649329294ac998b%3A0xbd50d3ce4a38634c!2sDepartment%20of%20Architecture%2C%20Design%20%26%20Media%20Technology!5e0!3m2!1sda!2sdk!4v1713470798242!5m2!1sda!2sdk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5193.746211569931!2d9.927234377171036!3d57.04840009146357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46493292e965474d%3A0xca60b6afd66137eb!2sRendsburggade%2014%2C%209000%20Aalborg!5e1!3m2!1sda!2sdk!4v1713776049680!5m2!1sda!2sdk"
                 width="99%"
                 height="500px"
                 style={{ border: "0px" }}
@@ -401,7 +401,7 @@ function MedialogiBachelor() {
             </div>
           )}
         </div>
-
+        
         <div
           className="dropdown"
           style={{ background: "white", border: "0px", width: "100%" }}
