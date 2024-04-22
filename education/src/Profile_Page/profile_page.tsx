@@ -10,6 +10,7 @@ import uncheckIcon from "../assets/unchecked.png"
 interface Diploma {
   highSchoolDiploma?: { [key: number]: any };
   bachelorDiploma?: { [key: number]: any };
+  bachelorTitel?: string;
 }
 
 
@@ -148,7 +149,10 @@ function ProfilePage() {
         )}
         {underPage === 'bac' && (
           <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
-            <h2 style={{marginTop:"-1.5%"}}>Karakterblad for bachelor:</h2>
+            <div style={{display:"flex", width:"100%", alignItems:"center", justifyContent:"space-between" , }}>
+            <h2 style={{marginTop:"-1.5%",}}>Karakterblad for bachelor:</h2>
+            <h2 style={{marginTop:"-1.5%",}}>{diploma.bachelorTitel}</h2>
+            </div>
             <ul style={{listStyleType:"none"}}>
               {diploma.bachelorDiploma && Object.values(diploma.bachelorDiploma).map((subject: any, index: number) => (
                 <li key={index}>

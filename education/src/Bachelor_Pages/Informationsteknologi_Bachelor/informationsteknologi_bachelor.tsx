@@ -155,7 +155,6 @@ function InformationsteknologiBachelor() {
             setAccesStatus("false");
           }
         } else {
-          console.log("No data in Firebase!");
           setAccesStatus("na");
         }
       });
@@ -239,25 +238,26 @@ function InformationsteknologiBachelor() {
           border: "0px",
           boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)",
           borderRadius: "10px",
-          height:"40vh"
+          height:"40vh",
+          display:"flex",
+          justifyContent:"center",
+          alignItems:"center"
         }}
       >
         <div className="text" style={{display:"flex", flexDirection:"column", height:"100%"}}>
-          {accesStatus === "true" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
-          {accesStatus === "partly" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
-          {accesStatus === "false" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
-          {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"7.8%", display: "flex", alignItems:"center"}}></div>}
+          {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
+          {accesStatus === "partly" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
+          {accesStatus === "false" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+          {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"13.7%", display: "flex", alignItems:"center"}}></div>}
           <p style={{marginBottom:"10%"}}>{dropdownContent["Beskrivelse"]}</p>
         </div>
-        <div>
           <img
             className="iframe-container"
-            width="560"
-            height="315"
+            width="80%"
+            height="100%"
             src={studieBillede}
             style={{ border: "0px" }}
           ></img>
-        </div>
       </div>
       <div className="dropdowns">
         <div
@@ -334,7 +334,7 @@ function InformationsteknologiBachelor() {
             <div className="dropdown-content">
             <div/>
             {uid ? (
-            <><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul style={{ listStyleType: "none" }}>
+            < div style={{ width:"98%", margin:"auto"}}><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul style={{ listStyleType: "none" }}>
                   {dropdownContent.Adgangskrav.map((subject, index) => {
                     const existsInFirebase = firebaseData.length > 0 && firebaseData.some((item: any) => (item.fag === subject.fag && item.n >= subject.n));
                     return (
@@ -346,9 +346,9 @@ function InformationsteknologiBachelor() {
                       </div>
                     );
                   })}
-                </ul></>
+                </ul><p>Alle optage (2023)</p></div>
           ) : (
-            <><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul>
+            <div style={{ width:"98%", margin:"auto"}}><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul>
             {dropdownContent.Adgangskrav.map((subject, index) => {
               return (
                 <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
@@ -358,51 +358,11 @@ function InformationsteknologiBachelor() {
                 </div>
               );
             })}
-          </ul></>
-
-
+          </ul><p>Alle optage (2023)</p></div>
             )}          
-            
             </div>
           )}
         </div>
-        <div
-          className="dropdown"
-          style={{ background: "white", border: "0px", width: "100%" }}
-        >
-          <button className="dropdown-button" onClick={() => toggleDropdown(3)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown3Visible ? "90%" : "calc(90% - 5px)",
-                  color: "rgb(75,75,75)",
-                }}
-              >
-                Adgangskvotient
-              </p>
-              <img
-                src={!dropdown3Visible ? expandLogo : collapseLogo}
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  marginLeft: !dropdown3Visible ? "75px" : "100px",
-                  marginTop: "0.5%",
-                }}
-              />
-            </div>
-          </button>
-          {dropdown3Visible && (
-            <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Adgangskvotient"],
-                }}
-              />
-            </div>
-          )}
-        </div>
-
         <div
           className="dropdown"
           style={{ background: "white", border: "0px", width: "100%" }}

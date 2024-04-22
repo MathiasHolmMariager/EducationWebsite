@@ -1,3 +1,5 @@
+
+
 const dropdownContent = {
     "Beskrivelse": 
     `Are you interested in programming, programming languages, software engineering, machine intelligence, 
@@ -20,7 +22,7 @@ const dropdownContent = {
     as well as discrete mathematics, you are able to be enrolled.
     `,
   
-    "Adgangskrav": 
+    "Adgangsgivende": 
     `<i><a href="?">- Informationsteknologi med specialisering i teknologi, Aalborg Universitet</a></i>
     <br><i><a href="?">- Datavidenskab, Aalborg Universitet</a></i>
     <br><i><a href="?">- Interaktionsdesign, Aalborg Universitet</a></i>
@@ -84,11 +86,13 @@ const dropdownContent = {
     "Frafald": 
     `- Første år: <i>?%</i>
     <br>- Andet år: <i>?%</i>`,
-  
-    "Tidsforbrug": 
-    `? timer om ugen
-    <br>- ?% undervisning
-    <br>- ?% forberedelse`,
+    
+    //ændret
+    Tidsforbrug: `-33 timer gennemsnit 
+    -36 timer informationsteknologi `,
+    //ændret
+    Tidsfordeling: `-57% forberedelse
+    -43% undevisnig`,
   
     "Mulige jobs": 
     `?`,
@@ -101,6 +105,39 @@ const dropdownContent = {
   
     "Jobmulighed bedømmelse": 
     `4`,
+
+    Adgangskrav: [
+      {
+        bachelor: 'Informationsteknologi',
+        location: 'Aalborg Universitet',
+        Note: 'med specialisering i teknologi',
+      },
+      {
+        bachelor: 'Datavidenskab',
+        location: 'Aalborg Universitet',
+        Note: '',
+      },
+      {
+        bachelor: 'Interaktionsdesign',
+        location: 'Aalborg Universitet',
+        Note: '',
+      },
+      {
+        bachelor: 'Data Science',
+        location: 'IT-Universitetet i København',
+        Note: '',
+      },
+      {
+        bachelor: 'Data Science',
+        location: 'Aarhus Universitet',
+        Note: '',
+      },
+      {
+        bachelor: 'Professionsbachelor i Softwareudvikling',
+        location: 'Aalborg Universitet',
+        Note: 'University College Nordjylland',
+      },
+    ],
   };
   
   export default dropdownContent;

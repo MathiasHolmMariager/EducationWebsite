@@ -60,6 +60,7 @@ const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
       set(ref(db, "users/" + user + "/diploma"), {
         highSchoolDiploma: highSchoolDiploma,
         bachelorDiploma: bachelorDiploma,
+        bachelorTitel: "Interaktionsdesign"
       });
       localStorage.setItem("UID", JSON.stringify(user));
       handleCloseModal();
