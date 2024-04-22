@@ -23,8 +23,8 @@ function SearchPage() {
       degree: "bachelor",
     },
     {
-      name: "Computer science (It) - Aalborg - Kandidat",
-      code: "nopage",
+      name: "Computer science (IT) - Aalborg - Kandidat",
+      code: "Computerscience, Kandidat",
       students: 200,
       degree: "master",
     },
@@ -45,6 +45,12 @@ function SearchPage() {
       code: "Medialogi, Bachelor",
       students: 113,
       degree: "bachelor",
+    },
+    {
+      name: "Medialogy - Aalborg - Kandidat",
+      code: "Medialogiy, Kandidat",
+      students: 248,
+      degree: "master",
     },
   ];
 
