@@ -22,26 +22,14 @@ const dropdownContent = {
     as well as discrete mathematics, you are able to be enrolled.
     `,
   
-    "Adgangsgivende": 
-    `<i><a href="?">- Informationsteknologi med specialisering i teknologi, Aalborg Universitet</a></i>
-    <br><i><a href="?">- Datavidenskab, Aalborg Universitet</a></i>
-    <br><i><a href="?">- Interaktionsdesign, Aalborg Universitet</a></i>
-    <br><i><a href="?">- Data Science, IT-Universitetet i København</a></i>
-    <br><i><a href="?">- Data Science, Aarhus Universitet</a></i>
-    <br><i><a href="?">- Professionsbachelor i Softwareudvikling, University College Nordjylland
-    (requires passed courses in syntax and semantics as well as discrete mathematics)</a></i>`,
-  
-    "Adgangskvotient": 
-    `?`,
-  
     "Semestre": 
     `<font size="5"><b><u>1 Semester</u></b></font>
-    <br>Projekter:
+    <br>Projects:
     <br><i><a href="?" target="_blank">- Secure, Scalable and Useful Systems (15 ECTS)</a></i>
-    <br>Kurser:
+    <br>Courses:
     <br><i><a href="?" target="_blank">- Programming Paradigms (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Machine Intelligence (5 ECTS)</a></i>
-    <br>Vælg en af følgende:
+    <br>Choose one of the following:
     <br><i><a href="?" target="_blank">- Selected Topics in Database Research and Practice (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Distributed Systems (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Selected Topics in HCI (5 ECTS)</a></i>
@@ -49,27 +37,27 @@ const dropdownContent = {
     <br><i><a href="?" target="_blank">- Systems Development in Praxis (5 ECTS)</a></i>
     <br>
     <br><font size="5"><b><u>2 Semester</u></b></font>
-    <br>Spor A (Computer science)
-    <br>Projekter:
+    <br>Track A (Computer science)
+    <br>Projects:
     <br><i><a href="?" target="_blank">- Reliable Innovative Systems (15 ECTS)</a></i>
-    <br>Kurser:
+    <br>Courses:
     <br><i><a href="?" target="_blank">- Machine Learning (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Selected Topics in Modelling and Verification (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Software Innovation (5 ECTS)</a></i>
-    <br>Spor B (Information technology)
-    <br>Projekter:
+    <br>Track B (Information technology)
+    <br>Projects:
     <br><i><a href="?" target="_blank">- Design, Definition and Implementation of Programming Languages (15 ECTS)</a></i>
-    <br>Kurser:
+    <br>Courses:
     <br><i><a href="?" target="_blank">- Agile Software Engineering (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Languages and Compilers (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Computability and Complexity (5 ECTS)</a></i>
     <br>
     <br><font size="5"><b><u>3 Semester</u></b></font>
-    <br>Projekter:
+    <br>Projects:
     <br><i><a href="?" target="_blank">- Pre-Specialisation in Computer Science (20 ECTS)</a></i>
-    <br>Kurser:
+    <br>Courses:
     <br><i><a href="?" target="_blank">- Entrepreneurship (5 ECTS)</a></i>
-    <br>Vælg en af følgende:
+    <br>Choose one of the following:
     <br><i><a href="?" target="_blank">- Specialisation Course in Human-Computer Interaction (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Specialisation Course in Database Technology (5 ECTS)</a></i>
     <br><i><a href="?" target="_blank">- Specialisation Course in Distributed Systems (5 ECTS)</a></i>
@@ -79,18 +67,13 @@ const dropdownContent = {
     <br><i><a href="?" target="_blank">- Specialisation Course in System Development (5 ECTS)</a></i>
     <br>
     <br><font size="5"><b><u>4 Semester</u></b></font>
-    <br>Projekter:
+    <br>Projects:
     <br><i><a href="?" target="_blank">- Master's Thesis (30 ECTS)</a></i>
     `,
   
-    "Frafald": 
-    `- Første år: <i>?%</i>
-    <br>- Andet år: <i>?%</i>`,
-    
-    //ændret
     Tidsforbrug: `-33 timer gennemsnit 
     -36 timer informationsteknologi `,
-    //ændret
+
     Tidsfordeling: `-57% forberedelse
     -43% undevisnig`,
   
@@ -111,33 +94,39 @@ const dropdownContent = {
         bachelor: 'Informationsteknologi',
         location: 'Aalborg Universitet',
         Note: 'med specialisering i teknologi',
+        href: 'https://www.google.dk/',
       },
       {
         bachelor: 'Datavidenskab',
         location: 'Aalborg Universitet',
         Note: '',
+        href: 'https://www.google.dk/',
       },
       {
         bachelor: 'Interaktionsdesign',
         location: 'Aalborg Universitet',
         Note: '',
+        href: 'https://www.google.dk/',
       },
       {
         bachelor: 'Data Science',
         location: 'IT-Universitetet i København',
         Note: '',
+        href: 'https://www.google.dk/',
       },
       {
         bachelor: 'Data Science',
         location: 'Aarhus Universitet',
         Note: '',
+        href: 'https://www.google.dk/',
       },
       {
         bachelor: 'Professionsbachelor i Softwareudvikling',
         location: 'Aalborg Universitet',
         Note: 'University College Nordjylland',
+        href: 'https://www.google.dk/',
       },
     ],
-  };
+  };  
   
   export default dropdownContent;

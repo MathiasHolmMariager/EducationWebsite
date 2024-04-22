@@ -23,8 +23,6 @@ function ComputerscienceKandidat() {
   const [dropdown7Visible, setDropdown7Visible] = useState(false);
   const [dropdown8Visible, setDropdown8Visible] = useState(false);
   const [dropdown9Visible, setDropdown9Visible] = useState(false);
-  const [dropdown10Visible, setDropdown10Visible] = useState(false);
-  const [dropdown11Visible, setDropdown11Visible] = useState(false);
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [uid, setUid] = useState<string | null>(null);
 
@@ -34,13 +32,13 @@ function ComputerscienceKandidat() {
   const value4 = parseFloat(dropdownContent.Tidsfordeling.split("-")[2]);
 
   const tidsforbrug = [
-    { name: "Computerscience", value: value2, fill: "lightgreen" },
-    { name: "Gns. kandidat", value: value1, fill: "lightblue" },
+    { name: "Computerscience", value: value2, fill: "lightgreen", unit: "Hours" },
+    { name: "Avg. masters", value: value1, fill: "lightblue", unit: "Hours" },
   ];
 
   const Tidsfordeling = [
-    { name: "Forberedelse", value: value3, fill: "orange" },
-    { name: "Undervisning", value: value4, fill: "pink" },
+    { name: "Preparation", value: value3, fill: "orange" },
+    { name: "Lectures", value: value4, fill: "pink" },
   ];
 
   const renderCustomizedLabel = ({
@@ -145,12 +143,6 @@ function ComputerscienceKandidat() {
       case 9:
         setDropdown9Visible(!dropdown9Visible);
         break;
-      case 10:
-        setDropdown10Visible(!dropdown10Visible);
-        break;
-      case 11:
-        setDropdown11Visible(!dropdown11Visible);
-        break;
       default:
         break;
     }
@@ -214,7 +206,7 @@ function ComputerscienceKandidat() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Computerscience (IT) - Aalborg - Kanidat</h1>
+        <h1>Computerscience (IT) - Aalborg - Masters</h1>
         <img
           src={isStarClicked ? StarGold : Star}
           onClick={handleStarClick}
@@ -232,22 +224,28 @@ function ComputerscienceKandidat() {
           height:"40vh",
           display:"flex", 
           justifyContent:"center",
-          alignItems:"center"
+          alignItems:"center",
 
         }}>
-        <div className="text" style={{display:"flex", flexDirection:"column", height:"100%"}}>
-          {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
-          {accesStatus === "false" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+        <div className="text" style={{display:"flex", flexDirection:"row", height:"100%"}}>
+          <div style={{width:"60%"}}>
+          {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"4%", marginRight:"1%"}}/><p >  You meet all requirements for this education </p></div>}
+          {accesStatus === "false" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Unfortunately, you do not meet any of the requirements for this education </p></div>}
           {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"13.7%", display: "flex", alignItems:"center"}}></div>}
-          <p style={{marginTop:"0%", paddingRight:"1%"}}>{dropdownContent["Beskrivelse"]}</p>
-        </div>
+          <div>
+          <p style={{marginTop:"0%", fontSize:"20px",paddingRight:"1%", fontWeight:500}}>{dropdownContent["Beskrivelse"]}</p>
+          </div>
+          </div>
+          <div style={{width:"40%"}}>
           <img
             className="iframe-container"
-            width="80%"
+            width="100%"
             height="100%"
             src="https://prod-aaudxp-cms-001-app.azurewebsites.net/media/vibdkgbz/292717_computer-science-it-aalborg-universitet-kandidatuddannelse-2.jpg?width=960"
             style={{ border: "0px" }}
           ></img>
+          </div>
+        </div>
         </div>
         <div className="picture">
         </div>
@@ -264,7 +262,7 @@ function ComputerscienceKandidat() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Beskrivelse
+                Description
               </p>
               <img
                 src={!dropdown1Visible ? expandLogo : collapseLogo}
@@ -294,7 +292,7 @@ function ComputerscienceKandidat() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Adgangskrav
+                Admission requirements
               </p>
               <img
                 src={!dropdown2Visible ? expandLogo : collapseLogo}
@@ -308,17 +306,53 @@ function ComputerscienceKandidat() {
             </div>
           </button>
           {dropdown2Visible && (
-            <div style={{ width:"98%", margin:"auto"}}><h3>Adgangskrav:</h3><p>Adgangsgivende bachelor:</p><ul>
+            <div style={{ width:"98%", margin:"auto"}}><p style={{fontSize:"20px"}}>Bachelor’s degrees that qualify for admission</p><ul>
             {dropdownContent.Adgangskrav.map((subject, index) => {
               return (
                 <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
-                  <li key={index} style={{ marginLeft: "1%" }}>
+                  <a style={{width:"100%"}} href={subject.href} target="_blank">
+                  <li key={index} style={{ marginLeft: "1%", fontSize:"20px" }}>
                     {subject.bachelor}, {subject.location}
                   </li>
+                  </a>
                 </div>
               );
             })}
-          </ul><p>Alle kvalificerede ansøgere, der søger om optagelse inden ansøgningsfristen den 1. marts, bliver tilbudt optagelse.</p></div>
+          </ul><p style={{fontSize:"20px"}}>All qualified applicants who apply before the application deadline 1 March will be offered admission.</p></div>
+          )}
+        </div>
+
+        <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
+      <button className="dropdown-button" onClick={() => toggleDropdown(3)}>
+            <div style={{ display: "flex" }}>
+              <p
+                style={{
+                  margin: "0%",
+                  width: dropdown3Visible ? "90%" : "calc(90% - 5px)",
+                  color: "rgb(75,75,75)",
+                }}
+              >
+                Location
+              </p>
+              <img
+                src={!dropdown3Visible ? expandLogo : collapseLogo}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown3Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
+                }}
+              />
+            </div>
+          </button>
+          {dropdown3Visible && (
+            <div className="dropdown-content">
+              <iframe className="iframe-container"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2599.3901224246843!2d9.988981277169266!3d57.0123952942769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464eccdc3b849cf3%3A0xf858a47b27302972!2sCassiopeia%20-%20Institut%20for%20Datalogi%2C%20Selma%20Lagerl%C3%B8fs%20Vej%20300%2C%209220%20Aalborg!5e1!3m2!1sda!2sdk!4v1712823764726!5m2!1sda!2sdk"
+                width= "99%"
+                height="500px"
+              ></iframe>
+            </div>
           )}
         </div>
 
@@ -332,7 +366,7 @@ function ComputerscienceKandidat() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Lokation
+                Semesters
               </p>
               <img
                 src={!dropdown4Visible ? expandLogo : collapseLogo}
@@ -347,11 +381,7 @@ function ComputerscienceKandidat() {
           </button>
           {dropdown4Visible && (
             <div className="dropdown-content">
-              <iframe className="iframe-container"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2599.3901224246843!2d9.988981277169266!3d57.0123952942769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464eccdc3b849cf3%3A0xf858a47b27302972!2sCassiopeia%20-%20Institut%20for%20Datalogi%2C%20Selma%20Lagerl%C3%B8fs%20Vej%20300%2C%209220%20Aalborg!5e1!3m2!1sda!2sdk!4v1712823764726!5m2!1sda!2sdk"
-                width= "99%"
-                height="500px"
-              ></iframe>
+              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Semestre"] }}/>
             </div>
           )}
         </div>
@@ -366,7 +396,7 @@ function ComputerscienceKandidat() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Semestre
+                Time consumption
               </p>
               <img
                 src={!dropdown5Visible ? expandLogo : collapseLogo}
@@ -381,66 +411,6 @@ function ComputerscienceKandidat() {
           </button>
           {dropdown5Visible && (
             <div className="dropdown-content">
-              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Semestre"] }}/>
-            </div>
-          )}
-        </div>
-
-        <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
-      <button className="dropdown-button" onClick={() => toggleDropdown(6)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown6Visible ? "90%" : "calc(90% - 5px)",
-                  color: "rgb(75,75,75)",
-                }}
-              >
-                Frafald
-              </p>
-              <img
-                src={!dropdown6Visible ? expandLogo : collapseLogo}
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  marginLeft: !dropdown6Visible ? "75px" : "100px",
-                  marginTop: "0.5%",
-                }}
-              />
-            </div>
-          </button>
-          {dropdown6Visible && (
-            <div className="dropdown-content">
-              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Frafald"] }}/>
-            </div>
-          )}
-        </div>
-
-        <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
-      <button className="dropdown-button" onClick={() => toggleDropdown(7)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown7Visible ? "90%" : "calc(90% - 5px)",
-                  color: "rgb(75,75,75)",
-                }}
-              >
-                Tidsforbrug
-              </p>
-              <img
-                src={!dropdown7Visible ? expandLogo : collapseLogo}
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  marginLeft: !dropdown7Visible ? "75px" : "100px",
-                  marginTop: "0.5%",
-                }}
-              />
-            </div>
-          </button>
-          {dropdown7Visible && (
-            <div className="dropdown-content">
               <div style={{ pointerEvents: 'none' }}>
                 <div
                   style={{
@@ -449,8 +419,8 @@ function ComputerscienceKandidat() {
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{ margin: "auto" }}>Ugentlige arbejdstimer:</h4>
-                  <h4 style={{ margin: "auto" }}>Fordeling af arbejdstimer:</h4>
+                  <h4 style={{ margin: "auto" }}>Weekly working hours:</h4>
+                  <h4 style={{ margin: "auto" }}>Distribution of working hours:</h4>
                 </div>
                 <div
                   style={{
@@ -534,6 +504,66 @@ function ComputerscienceKandidat() {
         </div>
 
         <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
+      <button className="dropdown-button" onClick={() => toggleDropdown(6)}>
+            <div style={{ display: "flex" }}>
+              <p
+                style={{
+                  margin: "0%",
+                  width: dropdown6Visible ? "90%" : "calc(90% - 5px)",
+                  color: "rgb(75,75,75)",
+                }}
+              >
+                Possible jobs
+              </p>
+              <img
+                src={!dropdown6Visible ? expandLogo : collapseLogo}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown6Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
+                }}
+              />
+            </div>
+          </button>
+          {dropdown6Visible && (
+            <div className="dropdown-content">
+              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Mulige jobs"] }}/>
+            </div>
+          )}
+        </div>
+
+        <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
+      <button className="dropdown-button" onClick={() => toggleDropdown(7)}>
+            <div style={{ display: "flex" }}>
+              <p
+                style={{
+                  margin: "0%",
+                  width: dropdown7Visible ? "90%" : "calc(90% - 5px)",
+                  color: "rgb(75,75,75)",
+                }}
+              >
+                Average salary
+              </p>
+              <img
+                src={!dropdown7Visible ? expandLogo : collapseLogo}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown7Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
+                }}
+              />
+            </div>
+          </button>
+          {dropdown7Visible && (
+            <div className="dropdown-content">
+              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Gennemsnitlig løn"] }}/>
+            </div>
+          )}
+        </div>
+
+        <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
       <button className="dropdown-button" onClick={() => toggleDropdown(8)}>
             <div style={{ display: "flex" }}>
               <p
@@ -543,7 +573,7 @@ function ComputerscienceKandidat() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Mulige jobs
+                Social evaluation
               </p>
               <img
                 src={!dropdown8Visible ? expandLogo : collapseLogo}
@@ -556,14 +586,17 @@ function ComputerscienceKandidat() {
               />
             </div>
           </button>
-          {dropdown8Visible && (
-            <div className="dropdown-content">
-              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Mulige jobs"] }}/>
+        {dropdown8Visible && (
+          <div className="dropdown-content">
+            <div>
+              <p>The evaluation of the socail aspects</p>
+              <progress className="progress-bar" value={dropdownContent["Social bedømmelse"]} max="5"></progress>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
 
-        <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
+      <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
       <button className="dropdown-button" onClick={() => toggleDropdown(9)}>
             <div style={{ display: "flex" }}>
               <p
@@ -573,7 +606,7 @@ function ComputerscienceKandidat() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Gennemsnitlig løn
+                Job possibility evaluation
               </p>
               <img
                 src={!dropdown9Visible ? expandLogo : collapseLogo}
@@ -586,71 +619,10 @@ function ComputerscienceKandidat() {
               />
             </div>
           </button>
-          {dropdown9Visible && (
-            <div className="dropdown-content">
-              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Gennemsnitlig løn"] }}/>
-            </div>
-          )}
-        </div>
-
-        <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
-      <button className="dropdown-button" onClick={() => toggleDropdown(10)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown10Visible ? "90%" : "calc(90% - 5px)",
-                  color: "rgb(75,75,75)",
-                }}
-              >
-                Social bedømmelse
-              </p>
-              <img
-                src={!dropdown10Visible ? expandLogo : collapseLogo}
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  marginLeft: !dropdown10Visible ? "75px" : "100px",
-                  marginTop: "0.5%",
-                }}
-              />
-            </div>
-          </button>
-        {dropdown10Visible && (
+        {dropdown9Visible && (
           <div className="dropdown-content">
             <div>
-              <progress className="progress-bar" value={dropdownContent["Social bedømmelse"]} max="5"></progress>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
-      <button className="dropdown-button" onClick={() => toggleDropdown(11)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown11Visible ? "90%" : "calc(90% - 5px)",
-                  color: "rgb(75,75,75)",
-                }}
-              >
-                Jobmulighed bedømmelse
-              </p>
-              <img
-                src={!dropdown11Visible ? expandLogo : collapseLogo}
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  marginLeft: !dropdown11Visible ? "75px" : "100px",
-                  marginTop: "0.5%",
-                }}
-              />
-            </div>
-          </button>
-        {dropdown11Visible && (
-          <div className="dropdown-content">
-            <div>
+              <p>The evaluation of the job possibility</p>
               <progress className="progress-bar" value={dropdownContent["Jobmulighed bedømmelse"]} max="5"></progress>
             </div>
           </div>

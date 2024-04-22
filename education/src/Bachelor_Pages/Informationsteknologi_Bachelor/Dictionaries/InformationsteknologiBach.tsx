@@ -1,8 +1,7 @@
 const dropdownContent = {
-  //ændret
+ 
   Beskrivelse: `På uddannelsen lærer du at skabe løsninger med fokus på både kommunikation, teknologi- og forretningsudvikling. Du skal fordybe dig i emner som analyse og usability-evaluering, teknikker til softwareudvikling og design af brugergrænseflader. Du får en eftertragtet tværfaglig jobprofil.`,
 
-  //ændret (lidt i tvivl om hvor meget vi ska have med her) 
   "Længere beskrivelse": `Informationsteknologi er en uddannelse for dig, der gerne vil udvikle kommunikations- og IT-løsninger, der gør en forskel for mennesker og virksomheder. Du lærer at analysere og forstå data i tæt samspil med design af IT-systemer og du bliver en værdifuld medspiller i udviklingen af software, forretningssystemer, apps, business intelligence og meget mere.
   <br><br>
   Uddannelsen bygger på tre elementer:  Teknologiudvikling, informationsstudier og forretningsudvikling. Tilsammen med fag som bl.a. programmering, innovation og forretningsledelse og med direkte adgang til den nyeste viden på området får du metoder og værktøjer til at påvirke og forandre vores forhold til og brug af IT. 
@@ -33,22 +32,20 @@ const dropdownContent = {
     },
   ],
 
-
-  //ændret
   Adgangskvotient: `Alle optaget (2023)`,
 
-  //ændret
-  "Kandidat muligheder": `<a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Computer Science (IT)</a>
+
+  "Kandidat muligheder": `
+  <a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Computer Science (IT)</a>
   <br><a href="https://www.en.aau.dk/education/master/information-studies" target="_blank">- Information Studies (Human Centered Informatics)</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/interaktive-digitale-medier" target="_blank">- Interaktive digitale medier</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/it-ledelse" target="_blank">- It-ledelse</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/it-laering-organisatorisk-omstilling" target="_blank">- It, læring og organisatorisk omstilling (Aalborg)</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/it-laering-organisatorisk-omstilling-kbh" target="_blank">- It, læring og organisatorisk omstilling (København)</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/informationsvidenskab" target="_blank">- Informationsvidenskab</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign (Teknologiudviklings-spor)</a>
+  <br><a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign</a>
   <br><a href="https://www.aau.dk/uddannelser/kandidat/cyber-security" target="_blank">- Cyber Security</a>`,
 
-  //ændret
   Semestre: `<font size="5"><b><u>1 Semester</u></b></font>
   <br>Projekter:
   <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB110?lang=da-DK" target="_blank">- Det mindre projekt: Pervasive Computing: Kommunikation, teknologi og forretning i en digital tidsalder (5 ECTS)</a></i>
@@ -75,8 +72,6 @@ const dropdownContent = {
   <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB313?lang=da-DK" target="_blank">- Databaseudvikling (5 ECTS)</a></i>
   <br>
   <br><font size="5"><b><u>4 Semester</u></b></font>
-  <br> Semesteret består af 3 mini projekter 
-  <br>
   <br>Projekter:
   <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB410?lang=da-DK" target="_blank">- Udvikling af mobil applikation (10 ECTS)</a></i>
   <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB411?lang=da-DK" target="_blank">- Video som metode til design (10 ECTS)</a></i>
@@ -133,14 +128,14 @@ const dropdownContent = {
   <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB412?lang=da-DK" target="_blank">- Syntaks og semantik (5 ECTS)</a></i>
   <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB212?lang=da-DK" target="_blank">- Internetværk og web-programmering (5 ECTS)</a></i>
   <br>`,
-  //ændret
+  
   Frafald: `- Første år: <i>17%</i>
   <br>- Andet år: <i>?%</i>
   <br>- Tredje år: <i>?%</i>`,
-  //ændret
+  
   Tidsforbrug: `-33 timer gennemsnit 
   -26 timer informationsteknologi `,
-  //ændret
+  
   Tidsfordeling: `-57% forberedelse
   -43% undevisnig`,
 };

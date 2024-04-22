@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface BarChartProps {
-  data: { name: string; value: number; fill: string }[];
+  data: { name: string; value: number; fill: string; unit:string }[];
   width?: number;
   height?: number;
 }
@@ -39,7 +39,7 @@ const BarChart: React.FC<BarChartProps> = ({
                   textAnchor="middle"
                   fontSize="100%"
                 >
-                  {`${item.value} Timer`}
+                  {`${item.value} ${item.unit} `}
                 </text>
               </g>
             );

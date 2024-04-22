@@ -24,8 +24,6 @@ function InformationsteknologiBachelor() {
   const [dropdown4Visible, setDropdown4Visible] = useState(false);
   const [dropdown5Visible, setDropdown5Visible] = useState(false);
   const [dropdown6Visible, setDropdown6Visible] = useState(false);
-  const [dropdown7Visible, setDropdown7Visible] = useState(false);
-  const [dropdown8Visible, setDropdown8Visible] = useState(false);
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [uid, setUid] = useState<string | null>(null);
   const value1 = parseFloat(dropdownContent.Tidsforbrug.split("-")[1]);
@@ -34,8 +32,8 @@ function InformationsteknologiBachelor() {
   const value4 = parseFloat(dropdownContent.Tidsfordeling.split("-")[2]);
 
   const tidsforbrug = [
-    { name: "Informationsteknologi", value: value2, fill: "lightgreen" },
-    { name: "Gns. bachelor", value: value1, fill: "lightblue" },
+    { name: "Informationsteknologi", value: value2, fill: "lightgreen", unit: "Timer" },
+    { name: "Gns. bachelor", value: value1, fill: "lightblue", unit: "Timer" },
   ];
 
   const Tidsfordeling = [
@@ -183,12 +181,6 @@ function InformationsteknologiBachelor() {
       case 6:
         setDropdown6Visible(!dropdown6Visible);
         break;
-      case 7:
-        setDropdown7Visible(!dropdown7Visible);
-        break;
-      case 8:
-        setDropdown8Visible(!dropdown8Visible);
-        break;
       default:
         break;
     }
@@ -244,20 +236,26 @@ function InformationsteknologiBachelor() {
           alignItems:"center"
         }}
       >
-        <div className="text" style={{display:"flex", flexDirection:"column", height:"100%"}}>
-          {accesStatus === "true" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
-          {accesStatus === "partly" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
-          {accesStatus === "false" && <div style={{marginTop:"-1%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"5%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+        <div className="text" style={{display:"flex", flexDirection:"row", height:"100%"}}>
+        <div style={{width:"60%"}}>
+          {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
+          {accesStatus === "partly" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
+          {accesStatus === "false" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
           {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"7.8%", display: "flex", alignItems:"center"}}></div>}
-          <p style={{marginBottom:"10%", fontSize:"20px", fontWeight:500}}>{dropdownContent["Beskrivelse"]}</p>
-        </div>
+          <div>
+          <p style={{marginBottom:"10%", fontSize:"20px",paddingRight:"1%", fontWeight:500}}>{dropdownContent["Beskrivelse"]}</p>
+          </div>
+          </div>
+          <div style={{width:"40%"}}>
           <img
             className="iframe-container"
-            width="80%"
+            width="100%"
             height="100%"
             src={studieBillede}
             style={{ border: "0px" }}
           ></img>
+          </div>
+        </div>
       </div>
       <div className="dropdowns">
         <div
@@ -334,19 +332,19 @@ function InformationsteknologiBachelor() {
             <div className="dropdown-content">
             <div/>
             {uid ? (
-            < div style={{ width:"98%", margin:"auto"}}><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul style={{ listStyleType: "none" }}>
+            < div style={{ width:"98%", margin:"auto"}}><p>Bestået adgangsgivende eksamen:</p><ul style={{ listStyleType: "none" }}>
                   {dropdownContent.Adgangskrav.map((subject, index) => {
                     const existsInFirebase = firebaseData.length > 0 && firebaseData.some((item: any) => (item.fag === subject.fag && item.n >= subject.n));
                     return (
                       <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
                         <img src={existsInFirebase ? checkedIcon : uncheckedIcon} style={{width:"3%", marginTop:"0.2%"}} />
-                        <li key={index} style={{ marginLeft: "1%" }}>
+                        <li key={index} style={{ marginLeft: "1%", fontSize:"20px" }}>
                           {subject.fag} {subject.niveau}
                         </li>
                       </div>
                     );
                   })}
-                </ul><p>Alle optage (2023)</p></div>
+                </ul><p>{dropdownContent.Adgangskvotient}</p></div>
           ) : (
             <div style={{ width:"98%", margin:"auto"}}><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul>
             {dropdownContent.Adgangskrav.map((subject, index) => {
@@ -358,11 +356,48 @@ function InformationsteknologiBachelor() {
                 </div>
               );
             })}
-          </ul><p>Alle optage (2023)</p></div>
+          </ul><p>{dropdownContent.Adgangskvotient}</p></div>
             )}          
             </div>
           )}
         </div>
+        <div
+          className="dropdown"
+          style={{ background: "white", border: "0px", width: "100%" }}
+        >
+          <button className="dropdown-button" onClick={() => toggleDropdown(3)}>
+            <div style={{ display: "flex" }}>
+              <p
+                style={{
+                  margin: "0%",
+                  width: dropdown3Visible ? "90%" : "calc(90% - 5px)",
+                  color: "rgb(75,75,75)",
+                }}
+              >
+                Kandidat muligheder
+              </p>
+              <img
+                src={!dropdown3Visible ? expandLogo : collapseLogo}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown3Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
+                }}
+              />
+            </div>
+          </button>
+          {dropdown3Visible && (
+            <div className="dropdown-content">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dropdownContent["Kandidat muligheder"],
+                }}
+              />
+            </div>
+          )}
+        </div>
+
         <div
           className="dropdown"
           style={{ background: "white", border: "0px", width: "100%" }}
@@ -376,7 +411,7 @@ function InformationsteknologiBachelor() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Kandidat muligheder
+                Lokation
               </p>
               <img
                 src={!dropdown4Visible ? expandLogo : collapseLogo}
@@ -391,11 +426,13 @@ function InformationsteknologiBachelor() {
           </button>
           {dropdown4Visible && (
             <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Kandidat muligheder"],
-                }}
-              />
+              <iframe
+                className="iframe-container"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2599.3901224246843!2d9.988981277169266!3d57.0123952942769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464eccdc3b849cf3%3A0xf858a47b27302972!2sCassiopeia%20-%20Institut%20for%20Datalogi%2C%20Selma%20Lagerl%C3%B8fs%20Vej%20300%2C%209220%20Aalborg!5e1!3m2!1sda!2sdk!4v1712823764726!5m2!1sda!2sdk"
+                width="99%"
+                height="500px"
+                style={{ border: "0px" }}
+              ></iframe>
             </div>
           )}
         </div>
@@ -413,7 +450,7 @@ function InformationsteknologiBachelor() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Lokation
+                Semestre
               </p>
               <img
                 src={!dropdown5Visible ? expandLogo : collapseLogo}
@@ -428,13 +465,11 @@ function InformationsteknologiBachelor() {
           </button>
           {dropdown5Visible && (
             <div className="dropdown-content">
-              <iframe
-                className="iframe-container"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2599.3901224246843!2d9.988981277169266!3d57.0123952942769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464eccdc3b849cf3%3A0xf858a47b27302972!2sCassiopeia%20-%20Institut%20for%20Datalogi%2C%20Selma%20Lagerl%C3%B8fs%20Vej%20300%2C%209220%20Aalborg!5e1!3m2!1sda!2sdk!4v1712823764726!5m2!1sda!2sdk"
-                width="99%"
-                height="500px"
-                style={{ border: "0px" }}
-              ></iframe>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dropdownContent["Semestre"],
+                }}
+              />
             </div>
           )}
         </div>
@@ -452,7 +487,7 @@ function InformationsteknologiBachelor() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Semestre
+                Tidsforbrug
               </p>
               <img
                 src={!dropdown6Visible ? expandLogo : collapseLogo}
@@ -466,78 +501,6 @@ function InformationsteknologiBachelor() {
             </div>
           </button>
           {dropdown6Visible && (
-            <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Semestre"],
-                }}
-              />
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown"
-          style={{ background: "white", border: "0px", width: "100%" }}
-        >
-          <button className="dropdown-button" onClick={() => toggleDropdown(7)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown7Visible ? "90%" : "calc(90% - 5px)",
-                  color: "rgb(75,75,75)",
-                }}
-              >
-                Frafald
-              </p>
-              <img
-                src={!dropdown7Visible ? expandLogo : collapseLogo}
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  marginLeft: !dropdown7Visible ? "75px" : "100px",
-                  marginTop: "0.5%",
-                }}
-              />
-            </div>
-          </button>
-          {dropdown7Visible && (
-            <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{ __html: dropdownContent["Frafald"] }}
-              />
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown"
-          style={{ background: "white", border: "0px", width: "100%" }}
-        >
-          <button className="dropdown-button" onClick={() => toggleDropdown(8)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown8Visible ? "90%" : "calc(90% - 5px)",
-                  color: "rgb(75,75,75)",
-                }}
-              >
-                Tidsforbrug
-              </p>
-              <img
-                src={!dropdown8Visible ? expandLogo : collapseLogo}
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  marginLeft: !dropdown8Visible ? "75px" : "100px",
-                  marginTop: "0.5%",
-                }}
-              />
-            </div>
-          </button>
-          {dropdown8Visible && (
             <div className="dropdown-content">
               <div style={{ pointerEvents: 'none' }}>
                 <div
