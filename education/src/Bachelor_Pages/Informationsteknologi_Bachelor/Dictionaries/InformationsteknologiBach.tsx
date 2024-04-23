@@ -84,300 +84,251 @@ const dropdownContent = {
 
   Semestrene: [
     {
-      name: "1. semester",
+      name: "1. Semester",
       semester: [
         {
+          track: "",
           projects: [
             {
               projectName: "Det mindre projekt: Pervasive Computing: Kommunikation, teknologi og forretning i en digital tidsalder (5 ECTS)",
-              href: ""
+              href: "https://moduler.aau.dk/course/2022-2023/DSNBAITB110?lang=da-DK"
             },
             {
               projectName: "Det større projekt: Vurdering af et IT-system i brug (10 ECTS)",
-              href: ""
+              href: "https://moduler.aau.dk/course/2022-2023/DSNBAITB111?lang=da-DK"
             }
           ],
           courses: [
             {
               courseName: "Problembaseret læring (5 ECTS)",
-              href: ""
+              href: "https://moduler.aau.dk/course/2022-2023/TECHENGPBL20?lang=da-DK"
             },
             {
-              courseName: "kursus1",
-              href: ""
+              courseName: "Grundlæggende programmering (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2022-2023/DSNBAITB113?lang=da-DK"
             },
             {
-              courseName: "kursus1",
-              href: ""
+              courseName: "IT-systemer: Kulturel kontekst, kommunikation, brugbarhed og brugbarhedsevaluering (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2022-2023/DSNBAITB114?lang=da-DK"
             }
           ],
         }        
       ],
     },
     {
-      name: "2. semester",
+      name: "2. Semester",
       semester: [
         {
+          track: "",
           projects: [
             {
-              projectName: "projekt2",
-              href: ""
+              projectName: "Konstruktion og afprøvning af et IT-system (15 ECTS)",
+              href: "https://moduler.aau.dk/course/2022-2023/DSNBAITB210?lang=da-DK"
             }
           ],
           courses: [
             {
-              courseName: "kursus2",
-              href: ""
+              courseName: "Datalogiens matematiske grundlag (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2022-2023/B-MAT2-DMG?lang=da-DK"
             },
             {
-              courseName: "kursus2",
-              href: ""
+              courseName: "Design og evaluering af brugergrænseflader (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2022-2023/DSNBAITB212?lang=da-DK"
             },
             {
-              courseName: "kursus2",
-              href: ""
+              courseName: "Innovation og forandringsledelse (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2022-2023/BAIDIT20214?lang=da-DK"
             }
           ],
         }        
       ],
     },
     {
-      name: "3. semester",
+      name: "3. Semester",
       semester: [
         {
+          track: "",
           projects: [
             {
-              projectName: "projekt3",
-              href: ""
+              projectName: "Udvikling af et databasesystem til en specifik anvendelse (15 ECTS)",
+              href: "https://moduler.aau.dk/course/2022-2023/DSNBAITB310?lang=da-DK"
             }
           ],
           courses: [
             {
-              courseName: "kursus3",
-              href: ""
+              courseName: "Systemanalyse og design (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB311?lang=da-DK"
             },
             {
-              courseName: "kursus3",
-              href: ""
+              courseName: "Grundlæggende objektorienteret programmering (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB312?lang=da-DK"
             },
             {
-              courseName: "kursus3",
-              href: ""
+              courseName: "Databaseudvikling (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB313?lang=da-DK"
             }
           ],
         }        
       ],
     },
     {
-      name: "4. semester",
+      name: "4. Semester",
       semester: [
         {
+          track: "",
           projects: [
             {
-              projectName: "projekt4",
-              href: ""
+              projectName: "Udvikling af mobil applikation (10 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB410?lang=da-DK"
+            },
+            {
+              projectName: "Video som metode til design (10 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB411?lang=da-DK"
             },
           ],
           courses: [
             {
-              courseName: "kursus4",
-              href: ""
+              courseName: "IT-baseret forretningsudvikling (10 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/BAIDIT20213?lang=da-DK"
             },
-            {
-              courseName: "kursus4",
-              href: ""
-            },
-            {
-              courseName: "kursus4",
-              href: ""
-            }
           ],
         }        
       ],
     },
     {
-      name: "5. semester",
+      name: "5. Semester",
       semester: [
         {
+          track: "Forretningsudvikling",
           projects: [
             {
-              projectName: "projekt5a",
-              href: ""
+              projectName: "IT som styringsredskab (15 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/baid202020?lang=da-DK"
             }
           ],
           courses: [
             {
-              courseName: "kursus5",
-              href: ""
+              courseName: "IT og digitalisering: Business Intelligence (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/baid202017?lang=da-DK"
             },
             {
-              courseName: "kursus5",
-              href: ""
+              courseName: "Organisation og ledelse: Offentlig budgetlægning og økonomistyring (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/baid202018?lang=da-DK"
             },
             {
-              courseName: "kursus5",
-              href: ""
+              courseName: "Innovation og forandring: Ledelse af innovation: Gevinster og gevinstrealisering (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/baid202019?lang=da-DK"
             }
           ],
         },
         {
+          track: "Informationsstudier",
           projects: [
             {
-              projectName: "projekt5b",
-              href: ""
+              projectName: "Organisationskommunikation (20 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/BAKDM20208?lang=da-DK"
             }
           ],
           courses: [
             {
-              courseName: "kursus5",
-              href: ""
+              courseName: "Kommunikationsdesign: Kultur og værdier (10 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/BAKDM202019?lang=da-DK"
             },
-            {
-              courseName: "kursus5",
-              href: ""
-            },
-            {
-              courseName: "kursus5",
-              href: ""
-            }
           ],
         },
         {
+          track: "TeknologiudviklingTeknologiudvikling",
           projects: [
             {
-              projectName: "projekt5c",
-              href: ""
+              projectName: "Agil systemudvikling på tværs af projekter (15 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB510?lang=da-DK"
             }
           ],
           courses: [
             {
-              courseName: "kursus5",
-              href: ""
+              courseName: "Agil software engineering (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNDATFB512?lang=da-DK"
             },
             {
-              courseName: "kursus5",
-              href: ""
+              courseName: "Computerarkitektur og operativsystemer (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB511?lang=da-DK"
             },
             {
-              courseName: "kursus5",
-              href: ""
+              courseName: "Algoritmik og datastrukturer (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB512?lang=da-DK"
             }
           ],
         }        
       ],
     },
     {
-      name: "6. semester",
+      name: "6. Semester",
       semester: [
         {
+          track: "",
           projects: [
             {
-              projectName: "projekt6",
-              href: ""
+              projectName: "Bachelorprojekt (15 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/baid202022?lang=da-DK"
             }
           ],
           courses: [
             {
-              courseName: "kursus6",
-              href: ""
+              courseName: "Design og styring af digitaliserings- og innovationsprojekter (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/BAIDIT20211?lang=da-DK"
             },
             {
-              courseName: "kursus6",
-              href: ""
+              courseName: "Fra data til værdi og forandring i organisation og samfund (10 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/BAIDIT20212?lang=da-DK"
             },
+          ],
+        },   
+        {
+          track: "",
+          projects: [
             {
-              courseName: "kursus6",
-              href: ""
+              projectName: "Bachelorprojekt: IKT i brug (15 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/BAKDM202021?lang=da-DK",
             }
           ],
-        }        
+          courses: [
+            {
+              courseName: "Datadrevet design, udvikling og evaluering af IKT (10 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/BAKDM202040?lang=da-DK"
+            },
+            {
+              courseName: "Virksomhedsledelse (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/BAKDM202034?lang=da-DK"
+            },
+          ],
+        },
+        {
+          track: "",
+          projects: [
+            {
+              projectName: "Bachelorprojekt: Udvikling af en IoT-solution (15 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB610?lang=da-DK"
+            }
+          ],
+          courses: [
+            {
+              courseName: "Programmering af IoT-applikationer (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNBAITB611?lang=da-DK"
+            },
+            {
+              courseName: "Syntaks og semantik (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNDATFB412?lang=da-DK"
+            },
+            {
+              courseName: "Internetværk og web-programmering (5 ECTS)",
+              href: "https://moduler.aau.dk/course/2021-2022/DSNDATFB212?lang=da-DK"
+            },
+          ],
+        },     
       ],
     },
   ],
 
-  Semestre: `<font size="5"><b><u>1 Semester</u></b></font>
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB110?lang=da-DK" target="_blank">- Det mindre projekt: Pervasive Computing: Kommunikation, teknologi og forretning i en digital tidsalder (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB111?lang=da-DK" target="_blank">- Det større projekt: Vurdering af et IT-system i brug (10 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/TECHENGPBL20?lang=da-DK" target="_blank">- Problembaseret læring (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB113?lang=da-DK" target="_blank">- Grundlæggende programmering (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB114?lang=da-DK" target="_blank">- IT-systemer: Kulturel kontekst, kommunikation, brugbarhed og brugbarhedsevaluering (5 ECTS)</a></i>
-  <br>
-  <br><font size="5"><b><u>2 Semester</u></b></font>
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB210?lang=da-DK" target="_blank">- Konstruktion og afprøvning af et IT-system (15 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/B-MAT2-DMG?lang=da-DK" target="_blank">- Datalogiens matematiske grundlag (5 ECTS</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB212?lang=da-DK" target="_blank">- Design og evaluering af brugergrænseflader (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/BAIDIT20214?lang=da-DK" target="_blank">- Innovation og forandringsledelse (5 ECTS)</a></i>
-  <br>
-  <br><font size="5"><b><u>3 Semester</u></b></font>
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2022-2023/DSNBAITB310?lang=da-DK" target="_blank">- Udvikling af et databasesystem til en specifik anvendelse (15 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB311?lang=da-DK" target="_blank">- Systemanalyse og design (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB312?lang=da-DK" target="_blank">- Grundlæggende objektorienteret programmering (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB313?lang=da-DK" target="_blank">- Databaseudvikling (5 ECTS)</a></i>
-  <br>
-  <br><font size="5"><b><u>4 Semester</u></b></font>
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB410?lang=da-DK" target="_blank">- Udvikling af mobil applikation (10 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB411?lang=da-DK" target="_blank">- Video som metode til design (10 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAIDIT20213?lang=da-DK" target="_blank">- IT-baseret forretningsudvikling (10 ECTS)</a></i>
-  <br>
-  <br><font size="5"><b><u>5 Semester</u></b></font>
-  <br> På dette semester vælger man en retning mellem tre spor:
-  <br>
-  <br><b>Forretningsudvikling</b> 
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202020?lang=da-DK" target="_blank">- IT som styringsredskab (15 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202017?lang=da-DK" target="_blank">- IT og digitalisering: Business Intelligence (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202018?lang=da-DK" target="_blank">- Organisation og ledelse: Offentlig budgetlægning og økonomistyring (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202019?lang=da-DK" target="_blank">- Innovation og forandring: Ledelse af innovation: Gevinster og gevinstrealisering (5 ECTS)</a></i>
-  <br>
-  <br><b>Informationsstudier</b> 
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM20208?lang=da-DK" target="_blank">- Organisationskommunikation (20 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM202019?lang=da-DK" target="_blank">- Kommunikationsdesign: Kultur og værdier (10 ECTS)</a></i>
-  <br>
-  <br><b>Teknologiudvikling</b> 
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB510?lang=da-DK" target="_blank">- Agil systemudvikling på tværs af projekter (15 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB512?lang=da-DK" target="_blank">- Agil software engineering (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB511?lang=da-DK" target="_blank">- Computerarkitektur og operativsystemer (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB512?lang=da-DK" target="_blank">- Algoritmik og datastrukturer (5 ECTS)</a></i>
-  <br>
-  <br><font size="5"><b><u>6 Semester</u></b></font>
-  <br> De tre spor fortsætter hver for sig på 6. semester:
-  <br>
-  <br><b>Forretningsudvikling</b> 
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/baid202022?lang=da-DK" target="_blank">- Bachelorprojekt (15 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAIDIT20211?lang=da-DK" target="_blank">- Design og styring af digitaliserings- og innovationsprojekter (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAIDIT20212?lang=da-DK" target="_blank">- Fra data til værdi og forandring i organisation og samfund (10 ECTS)</a></i>
-  <br>
-  <br><b>Informationsstudier</b> 
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM202021?lang=da-DK" target="_blank">- Bachelorprojekt: IKT i brug (15 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM202040?lang=da-DK" target="_blank">- Datadrevet design, udvikling og evaluering af IKT (10 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/BAKDM202034?lang=da-DK" target="_blank">- Virksomhedsledelse (5 ECTS)</a></i>
-  <br>
-  <br><b>Teknologiudvikling</b> 
-  <br>Projekter:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB610?lang=da-DK" target="_blank">- Bachelorprojekt: Udvikling af en IoT-solution (15 ECTS)</a></i>
-  <br>Kurser:
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNBAITB611?lang=da-DK" target="_blank">- Programmering af IoT-applikationer (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB412?lang=da-DK" target="_blank">- Syntaks og semantik (5 ECTS)</a></i>
-  <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB212?lang=da-DK" target="_blank">- Internetværk og web-programmering (5 ECTS)</a></i>
-  <br>`,
-  
   Frafald: [
     {
       value: 17,
