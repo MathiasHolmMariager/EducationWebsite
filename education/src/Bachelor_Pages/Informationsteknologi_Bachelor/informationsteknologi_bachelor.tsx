@@ -467,7 +467,7 @@ function InformationsteknologiBachelor() {
                       {semester.semester.map((subj, idx) => (
                         
                         <div key={idx} style={{ marginLeft: "2%",}}>
-                          <p style={{ fontSize: "20px", fontWeight:500 }}>{subj.track}:</p>
+                          <p style={{ fontSize: "20px", fontWeight:500 }}>{subj.track}</p>
                           <div style={{marginLeft: subj.track === '' ? "0%" : "3%" }}>
                           <p style={{ fontSize: "20px" }}>projekter:</p>
                           <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
