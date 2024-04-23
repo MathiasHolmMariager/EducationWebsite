@@ -34,17 +34,266 @@ const dropdownContent = {
 
   Adgangskvotient: `Alle optaget (2023)`,
 
+  kandidater: [
+    {
+      name: 'Computer Science (IT)',
+      location: 'Aalborg university',
+      href: 'https://www.aau.dk/uddannelser/kandidat/computer-science-it',
+    },
+    {
+      name: 'Information Studies (Human Centered Informatics)',
+      location: 'Aalborg university',
+      href: 'https://www.en.aau.dk/education/master/information-studies',
+    },
+    {
+      name: 'Interaktive digitale medier',
+      location: 'Aalborg university',
+      href: 'https://www.aau.dk/uddannelser/kandidat/interaktive-digitale-medier',
+    },
+    {
+      name: 'It-ledelse',
+      location: 'Aalborg university',
+      href: 'https://www.aau.dk/uddannelser/kandidat/it-ledelse',
+    },
+    {
+      name: 'It, læring og organisatorisk omstilling',
+      location: 'Aalborg university',
+      href: 'https://www.aau.dk/uddannelser/kandidat/it-laering-organisatorisk-omstilling',
+    },
+    {
+      name: 'It, læring og organisatorisk omstilling',
+      location: 'AAU København',
+      href: 'https://www.aau.dk/uddannelser/kandidat/it-laering-organisatorisk-omstilling-kbh',
+    },
+    {
+      name: 'Informationsvidenskab',
+      location: 'Aalborg university',
+      href: 'https://www.aau.dk/uddannelser/kandidat/informationsvidenskab',
+    },
+    {
+      name: 'Interaktionsdesign',
+      location: 'Aalborg university',
+      href: 'https://www.aau.dk/uddannelser/kandidat/interaktionsdesign',
+    },
+    {
+      name: 'Cyber Security',
+      location: 'Aalborg university',
+      href: 'https://www.aau.dk/uddannelser/kandidat/cyber-security',
+    },
+  ],
 
-  "Kandidat muligheder": `
-  <a href="https://www.aau.dk/uddannelser/kandidat/computer-science-it" target="_blank">- Computer Science (IT)</a>
-  <br><a href="https://www.en.aau.dk/education/master/information-studies" target="_blank">- Information Studies (Human Centered Informatics)</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/interaktive-digitale-medier" target="_blank">- Interaktive digitale medier</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/it-ledelse" target="_blank">- It-ledelse</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/it-laering-organisatorisk-omstilling" target="_blank">- It, læring og organisatorisk omstilling (Aalborg)</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/it-laering-organisatorisk-omstilling-kbh" target="_blank">- It, læring og organisatorisk omstilling (København)</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/informationsvidenskab" target="_blank">- Informationsvidenskab</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/interaktionsdesign" target="_blank">- Interaktionsdesign</a>
-  <br><a href="https://www.aau.dk/uddannelser/kandidat/cyber-security" target="_blank">- Cyber Security</a>`,
+  Semestrene: [
+    {
+      name: "1. semester",
+      semester: [
+        {
+          projects: [
+            {
+              projectName: "Det mindre projekt: Pervasive Computing: Kommunikation, teknologi og forretning i en digital tidsalder (5 ECTS)",
+              href: ""
+            },
+            {
+              projectName: "Det større projekt: Vurdering af et IT-system i brug (10 ECTS)",
+              href: ""
+            }
+          ],
+          courses: [
+            {
+              courseName: "Problembaseret læring (5 ECTS)",
+              href: ""
+            },
+            {
+              courseName: "kursus1",
+              href: ""
+            },
+            {
+              courseName: "kursus1",
+              href: ""
+            }
+          ],
+        }        
+      ],
+    },
+    {
+      name: "2. semester",
+      semester: [
+        {
+          projects: [
+            {
+              projectName: "projekt2",
+              href: ""
+            }
+          ],
+          courses: [
+            {
+              courseName: "kursus2",
+              href: ""
+            },
+            {
+              courseName: "kursus2",
+              href: ""
+            },
+            {
+              courseName: "kursus2",
+              href: ""
+            }
+          ],
+        }        
+      ],
+    },
+    {
+      name: "3. semester",
+      semester: [
+        {
+          projects: [
+            {
+              projectName: "projekt3",
+              href: ""
+            }
+          ],
+          courses: [
+            {
+              courseName: "kursus3",
+              href: ""
+            },
+            {
+              courseName: "kursus3",
+              href: ""
+            },
+            {
+              courseName: "kursus3",
+              href: ""
+            }
+          ],
+        }        
+      ],
+    },
+    {
+      name: "4. semester",
+      semester: [
+        {
+          projects: [
+            {
+              projectName: "projekt4",
+              href: ""
+            },
+          ],
+          courses: [
+            {
+              courseName: "kursus4",
+              href: ""
+            },
+            {
+              courseName: "kursus4",
+              href: ""
+            },
+            {
+              courseName: "kursus4",
+              href: ""
+            }
+          ],
+        }        
+      ],
+    },
+    {
+      name: "5. semester",
+      semester: [
+        {
+          projects: [
+            {
+              projectName: "projekt5a",
+              href: ""
+            }
+          ],
+          courses: [
+            {
+              courseName: "kursus5",
+              href: ""
+            },
+            {
+              courseName: "kursus5",
+              href: ""
+            },
+            {
+              courseName: "kursus5",
+              href: ""
+            }
+          ],
+        },
+        {
+          projects: [
+            {
+              projectName: "projekt5b",
+              href: ""
+            }
+          ],
+          courses: [
+            {
+              courseName: "kursus5",
+              href: ""
+            },
+            {
+              courseName: "kursus5",
+              href: ""
+            },
+            {
+              courseName: "kursus5",
+              href: ""
+            }
+          ],
+        },
+        {
+          projects: [
+            {
+              projectName: "projekt5c",
+              href: ""
+            }
+          ],
+          courses: [
+            {
+              courseName: "kursus5",
+              href: ""
+            },
+            {
+              courseName: "kursus5",
+              href: ""
+            },
+            {
+              courseName: "kursus5",
+              href: ""
+            }
+          ],
+        }        
+      ],
+    },
+    {
+      name: "6. semester",
+      semester: [
+        {
+          projects: [
+            {
+              projectName: "projekt6",
+              href: ""
+            }
+          ],
+          courses: [
+            {
+              courseName: "kursus6",
+              href: ""
+            },
+            {
+              courseName: "kursus6",
+              href: ""
+            },
+            {
+              courseName: "kursus6",
+              href: ""
+            }
+          ],
+        }        
+      ],
+    },
+  ],
 
   Semestre: `<font size="5"><b><u>1 Semester</u></b></font>
   <br>Projekter:
@@ -129,15 +378,32 @@ const dropdownContent = {
   <br><i><a href="https://moduler.aau.dk/course/2021-2022/DSNDATFB212?lang=da-DK" target="_blank">- Internetværk og web-programmering (5 ECTS)</a></i>
   <br>`,
   
-  Frafald: `- Første år: <i>17%</i>
-  <br>- Andet år: <i>?%</i>
-  <br>- Tredje år: <i>?%</i>`,
+  Frafald: [
+    {
+      value: 17,
+      n: 1,
+    },
+    {
+      value: 0,
+      n: 1,
+    },
+    {
+      value: 0,
+      n: 1,
+    },
+  ],
+
+  tidsforbruget: [
+    { name: "Informationsteknologi", value: 26, fill: "lightgreen", unit: "Timer" },
+    { name: "Gns. bachelor", value: 33, fill: "lightblue", unit: "Timer" },
+  ],
+
+  Tidsfordelingen: [
+    { name: "Forberedelse", value: 57, fill: "orange" },
+    { name: "Undervisning", value: 43, fill: "pink" },
+  ],
   
-  Tidsforbrug: `-33 timer gennemsnit 
-  -26 timer informationsteknologi `,
-  
-  Tidsfordeling: `-57% forberedelse
-  -43% undevisnig`,
+
 };
 
 export default dropdownContent;

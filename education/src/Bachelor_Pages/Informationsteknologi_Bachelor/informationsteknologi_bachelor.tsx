@@ -26,20 +26,6 @@ function InformationsteknologiBachelor() {
   const [dropdown6Visible, setDropdown6Visible] = useState(false);
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [uid, setUid] = useState<string | null>(null);
-  const value1 = parseFloat(dropdownContent.Tidsforbrug.split("-")[1]);
-  const value2 = parseFloat(dropdownContent.Tidsforbrug.split("-")[2]);
-  const value3 = parseFloat(dropdownContent.Tidsfordeling.split("-")[1]);
-  const value4 = parseFloat(dropdownContent.Tidsfordeling.split("-")[2]);
-
-  const tidsforbrug = [
-    { name: "Informationsteknologi", value: value2, fill: "lightgreen", unit: "Timer" },
-    { name: "Gns. bachelor", value: value1, fill: "lightblue", unit: "Timer" },
-  ];
-
-  const Tidsfordeling = [
-    { name: "Forberedelse", value: value3, fill: "orange" },
-    { name: "Undervisning", value: value4, fill: "pink" },
-  ];
 
   const renderCustomizedLabel = ({
     cx,
@@ -236,6 +222,7 @@ function InformationsteknologiBachelor() {
           alignItems:"center"
         }}
       >
+        
         <div className="text" style={{display:"flex", flexDirection:"row", height:"100%"}}>
         <div style={{width:"60%"}}>
           {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
@@ -347,15 +334,13 @@ function InformationsteknologiBachelor() {
                 </ul><p>{dropdownContent.Adgangskvotient}</p></div>
           ) : (
             <div style={{ width:"98%", margin:"auto"}}><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul>
-            {dropdownContent.Adgangskrav.map((subject, index) => {
-              return (
+            {dropdownContent.Adgangskrav.map((subject, index) => (
                 <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
                   <li key={index} style={{ marginLeft: "1%" }}>
                     {subject.fag} {subject.niveau}
                   </li>
                 </div>
-              );
-            })}
+            ))}
           </ul><p>{dropdownContent.Adgangskvotient}</p></div>
             )}          
             </div>
@@ -389,11 +374,20 @@ function InformationsteknologiBachelor() {
           </button>
           {dropdown3Visible && (
             <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Kandidat muligheder"],
-                }}
-              />
+              <div style={{ width: "98%", margin: "auto" }}>
+                <p style={{ fontSize: "20px" }}>Kandidat muligheder:</p>
+                <ul>
+                  {dropdownContent.kandidater.map((subject, index) => (
+                    <div key={index} style={{ marginBottom: "2%" }}>
+                      <a href={subject.href} target="_blank" style={{ display: "block", fontSize: "20px" }}>
+                        <li style={{ marginLeft: "1%" }}>
+                          {subject.name}, {subject.location}
+                        </li>
+                      </a>
+                    </div>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
         </div>
@@ -465,11 +459,39 @@ function InformationsteknologiBachelor() {
           </button>
           {dropdown5Visible && (
             <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Semestre"],
-                }}
-              />
+              <div style={{ width: "98%", margin: "auto" }}>
+                <ul>
+                  {dropdownContent.Semestrene.map((semester, index) => (
+                    <li key={index} style={{ fontSize: "20px", listStyleType:"none" }}>
+                      <p style={{ fontWeight: 500}}>{semester.name}</p>
+                      {semester.semester.map((subj, idx) => (
+                        <div key={idx} style={{ marginLeft: "2%" }}>
+                          <p style={{ fontSize: "20px" }}>projekter:</p>
+                          <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
+                            {subj.projects.map((project, i) => (
+                              <a href="/">
+                              <li key={i} style={{ fontSize: "20px" }}>
+                                {project.projectName}
+                              </li>
+                              </a>
+                            ))}
+                          </ul>
+                          <p style={{ fontSize: "20px" }}>kurser:</p>
+                          <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
+                            {subj.courses.map((course, i) => (
+                              <a href="/">
+                              <li key={i} style={{ fontSize: "20px" }}>
+                                {course.courseName}
+                              </li>
+                              </a>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
         </div>
@@ -527,7 +549,7 @@ function InformationsteknologiBachelor() {
                       width: "50%",
                     }}
                   >
-                    <BarChart data={tidsforbrug} width={200} height={250} />
+                    <BarChart data={dropdownContent.tidsforbruget} width={200} height={250} />
                   </div>
                   <div
                     style={{
@@ -538,7 +560,7 @@ function InformationsteknologiBachelor() {
                       <ResponsiveContainer width="100%" height={336}>
                         <PieChart >
                           <Pie
-                            data={Tidsfordeling}
+                            data={dropdownContent.Tidsfordelingen}
                             cx="50%"
                             cy="50%"
                             innerRadius="20%"
@@ -549,7 +571,7 @@ function InformationsteknologiBachelor() {
                             labelLine={false}
                             isAnimationActive={false}
                           >
-                            {Tidsfordeling.map((_entry, index) => (
+                            {dropdownContent.Tidsfordelingen.map((_entry, index) => (
                               <Cell key={`cell-${index}`} />
                             ))}
                           </Pie>
@@ -565,7 +587,7 @@ function InformationsteknologiBachelor() {
                         width: "100%",
                       }}
                     >
-                      {Tidsfordeling.map((item, index) => (
+                      {dropdownContent.Tidsfordelingen.map((item, index) => (
                         <div
                           key={index}
                           style={{

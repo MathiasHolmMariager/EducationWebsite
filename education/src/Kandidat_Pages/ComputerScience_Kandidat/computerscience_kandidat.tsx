@@ -307,8 +307,7 @@ function ComputerscienceKandidat() {
           </button>
           {dropdown2Visible && (
             <div style={{ width:"98%", margin:"auto"}}><p style={{fontSize:"20px"}}>Bachelor’s degrees that qualify for admission</p><ul>
-            {dropdownContent.Adgangskrav.map((subject, index) => {
-              return (
+            {dropdownContent.Adgangskrav.map((subject, index) => (
                 <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
                   <a style={{width:"100%"}} href={subject.href} target="_blank">
                   <li key={index} style={{ marginLeft: "1%", fontSize:"20px" }}>
@@ -316,8 +315,7 @@ function ComputerscienceKandidat() {
                   </li>
                   </a>
                 </div>
-              );
-            })}
+            ))}
           </ul><p style={{fontSize:"20px"}}>All qualified applicants who apply before the application deadline 1 March will be offered admission.</p></div>
           )}
         </div>
