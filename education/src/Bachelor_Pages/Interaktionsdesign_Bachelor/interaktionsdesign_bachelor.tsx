@@ -4,12 +4,17 @@ import StarGold from "../../assets/Star_Gold.png";
 import "./interaktionsdesign_bachelor.css";
 import dropdownContent from "./Dictionaries/IxdBach";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import { get, getDatabase, ref, remove, set } from "firebase/database";
+import { get, getDatabase, onValue, ref, remove, set } from "firebase/database";
 import Chatbox from "../../Components/ChatBox/chatbox";
 import collapseLogo from "../../assets/collapse.png";
 import expandLogo from "../../assets/expand.png";
 import BarChart from "../../Components/barchart";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import checkIcon from "../../assets/checkmark.png"
+import redExIcon from "../../assets/redExMark.png"
+import yellowExIcon from "../../assets/yellowExMark.png"
+import checkedIcon from "../../assets/checked.png"
+import uncheckedIcon from "../../assets/unchecked.png"
 
 function InteraktionsdesignBachelor() {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
@@ -18,24 +23,8 @@ function InteraktionsdesignBachelor() {
   const [dropdown4Visible, setDropdown4Visible] = useState(false);
   const [dropdown5Visible, setDropdown5Visible] = useState(false);
   const [dropdown6Visible, setDropdown6Visible] = useState(false);
-  const [dropdown7Visible, setDropdown7Visible] = useState(false);
-  const [dropdown8Visible, setDropdown8Visible] = useState(false);
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [uid, setUid] = useState<string | null>(null);
-  const value1 = parseFloat(dropdownContent.Tidsforbrug.split("-")[1]);
-  const value2 = parseFloat(dropdownContent.Tidsforbrug.split("-")[2]);
-  const value3 = parseFloat(dropdownContent.Tidsfordeling.split("-")[1]);
-  const value4 = parseFloat(dropdownContent.Tidsfordeling.split("-")[2]);
-
-  const tidsforbrug = [
-    { name: "Informationsteknologi", value: value2, fill: "lightgreen" },
-    { name: "Gns. bachelor", value: value1, fill: "lightblue" },
-  ];
-
-  const Tidsfordeling = [
-    { name: "Forberedelse", value: value3, fill: "orange" },
-    { name: "Undervisning", value: value4, fill: "pink" },
-  ];
 
   const renderCustomizedLabel = ({
     cx,
@@ -67,7 +56,7 @@ function InteraktionsdesignBachelor() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Interaktionsdesign, Bachelor";
+        const title = `${dropdownContent.urlCode}`;
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef)
           .then((snapshot: { exists: () => any }) => {
@@ -88,8 +77,8 @@ function InteraktionsdesignBachelor() {
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
     const pairToSave = {
-      title: "Interaktionsdesign, Bachelor",
-      code: "Interaktionsdesign, Bachelor",
+      title: `${dropdownContent.urlCode}`,
+      code: `${dropdownContent.urlCode}`,
     };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
@@ -111,9 +100,51 @@ function InteraktionsdesignBachelor() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Interaktionsdesign, Bachelor");
+    localStorage.setItem("PAGE_ID", `${dropdownContent.urlCode}`);
   }, []);
-  //#####################LAST_SEEN_STUDY_PROGRAMS############################
+  //##########################################################################
+
+  const [accesStatus, setAccesStatus] = useState<"true" | "partly" | "false" | "na">("na");
+  const [firebaseData, setFirebaseData] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (uid) {
+      const db = getDatabase();
+      const diplomaRef = ref(db, `users/${uid}/diploma/highSchoolDiploma`);
+  
+      onValue(diplomaRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          setFirebaseData(data);
+          const adgangskravSubjects = dropdownContent.Adgangskrav;
+  
+          const allExist = adgangskravSubjects.every(subject => (
+            data.some((item: any) => (
+              item.fag === subject.fag && item.n >= subject.n
+            ))
+          ));
+  
+          const someExist = adgangskravSubjects.some(subject => (
+            data.some((item: any) => (
+              item.fag === subject.fag && item.n >= subject.n
+            ))
+          ));
+  
+          if (allExist) {
+            setAccesStatus("true");
+          } else if (!allExist && someExist) {
+            setAccesStatus("partly");
+          } else {
+            setAccesStatus("false");
+          }
+        } else {
+          setAccesStatus("na");
+        }
+      });
+    }
+  }, [uid]);
+  
+  
 
   const toggleDropdown = (dropdownNumber: number) => {
     switch (dropdownNumber) {
@@ -135,12 +166,6 @@ function InteraktionsdesignBachelor() {
       case 6:
         setDropdown6Visible(!dropdown6Visible);
         break;
-      case 7:
-        setDropdown7Visible(!dropdown7Visible);
-        break;
-      case 8:
-        setDropdown8Visible(!dropdown8Visible);
-        break;
       default:
         break;
     }
@@ -148,8 +173,8 @@ function InteraktionsdesignBachelor() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Interaktionsdesign, Bachelor";
-      const code = "Interaktionsdesign, Bachelor";
+      const title = `${dropdownContent.urlCode}`;
+      const code = `${dropdownContent.urlCode}`;
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
 
@@ -176,7 +201,7 @@ function InteraktionsdesignBachelor() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Interaktionsdesign - Aalborg - Bachelor</h1>
+        <h1>{dropdownContent.studyTitel}</h1>
         <img
           src={isStarClicked ? StarGold : Star}
           onClick={handleStarClick}
@@ -190,19 +215,32 @@ function InteraktionsdesignBachelor() {
           border: "0px",
           boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)",
           borderRadius: "10px",
+          height:"40vh",
+          display:"flex",
+          justifyContent:"center",
+          alignItems:"center"
         }}
       >
-        <div className="text">
-          <p>{dropdownContent["Beskrivelse"]}</p>
-        </div>
-        <div>
+        
+        <div className="text" style={{display:"flex", flexDirection:"row", height:"100%"}}>
+        <div style={{width:"60%"}}>
+          {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"5%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"4%", marginRight:"1%"}}/><p > Du opfylder alle krav til denne uddanelse </p></div>}
+          {accesStatus === "partly" && <div style={{marginTop:"0%",marginBottom:"5%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
+          {accesStatus === "false" && <div style={{marginTop:"0%",marginBottom:"5%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+          {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"5.8%", display: "flex", alignItems:"center"}}></div>}
+          <div>
+          <p style={{marginBottom:"10%", fontSize:"20px",paddingRight:"1%", fontWeight:500}}>{dropdownContent["Beskrivelse"]}</p>
+          </div>
+          </div>
+          <div style={{width:"40%"}}>
           <iframe
             className="iframe-container"
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/DgJl6oxDY8o"
+            width="100%"
+            height="100%"
+            src={dropdownContent.headerSrcLink}
             style={{ border: "0px" }}
           ></iframe>
+          </div>
         </div>
       </div>
       <div className="dropdowns">
@@ -216,7 +254,7 @@ function InteraktionsdesignBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown1Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Beskrivelse
@@ -224,10 +262,10 @@ function InteraktionsdesignBachelor() {
               <img
                 src={!dropdown1Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown1Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown1Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
@@ -236,14 +274,14 @@ function InteraktionsdesignBachelor() {
             <div className="dropdown-content">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Længere beskrivelse"],
+                  __html: dropdownContent["langBeskrivelse"],
                 }}
               />
               <iframe
                 className="iframe-container"
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/M2tW5UH21Po?si=glrP6o_xwRIrONZ4"
+                src={dropdownContent.beskrivelseSrcLink}
                 style={{ border: "0px" }}
               ></iframe>
             </div>
@@ -260,7 +298,7 @@ function InteraktionsdesignBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown2Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Adgangskrav
@@ -268,25 +306,50 @@ function InteraktionsdesignBachelor() {
               <img
                 src={!dropdown2Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown2Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown2Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
           </button>
           {dropdown2Visible && (
             <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Adgangskrav"],
-                }}
-              />
+            <div/>
+            {uid ? (
+            < div style={{ width:"98%", margin:"auto"}}><p>Bestået adgangsgivende eksamen:</p><ul style={{ listStyleType: "none" }}>
+                  {dropdownContent.Adgangskrav.map((subject, index) => {
+                    const existsInFirebase = firebaseData.length > 0 && firebaseData.some((item: any) => (item.fag === subject.fag && item.n >= subject.n));
+                    return (
+                      <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
+                        <img src={existsInFirebase ? checkedIcon : uncheckedIcon} style={{width:"3%", marginTop:"0.2%"}} />
+                        <li key={index} style={{ marginLeft: "1%", fontSize:"20px" }}>
+                          {subject.fag} {subject.niveau}
+                        </li>
+                      </div>
+                    );
+                  })}
+                </ul>
+                {accesStatus === "true" && <div ><p > Du opfylder alle krav til denne uddanelse </p></div>}
+                {accesStatus === "partly" && <div ><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
+                {accesStatus === "false" && <div ><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+                <p>{dropdownContent.Adgangskvotient}</p></div>
+          ) : (
+            <div style={{ width:"98%", margin:"auto"}}><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul>
+            {dropdownContent.Adgangskrav.map((subject, index) => (
+                <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
+
+                    <li key={index} style={{ marginLeft: "1%" }}>
+                      {subject.fag} {subject.niveau}
+                    </li>
+                </div>
+            ))}
+          </ul><p>{dropdownContent.Adgangskvotient}</p></div>
+            )}          
             </div>
           )}
         </div>
-
         <div
           className="dropdown"
           style={{ background: "white", border: "0px", width: "100%" }}
@@ -297,29 +360,38 @@ function InteraktionsdesignBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown3Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
-                Adgangskvotient
+                Kandidat muligheder
               </p>
               <img
                 src={!dropdown3Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown3Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown3Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
           </button>
           {dropdown3Visible && (
             <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Adgangskvotient"],
-                }}
-              />
+              <div style={{ width: "98%", margin: "auto" }}>
+                <p style={{ fontSize: "20px" }}>Kandidat muligheder:</p>
+                <ul>
+                  {dropdownContent.kandidater.map((subject, index) => (
+                    <div key={index} style={{ marginBottom: "2%" }}>
+                      <a href={subject.href} target="_blank" style={{ display: "block", fontSize: "20px" }}>
+                        <li style={{ marginLeft: "1%" }}>
+                          {subject.name}, {subject.location}
+                        </li>
+                      </a>
+                    </div>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
         </div>
@@ -334,60 +406,23 @@ function InteraktionsdesignBachelor() {
                 style={{
                   margin: "0%",
                   width: dropdown4Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
-                }}
-              >
-                Kandidat muligheder
-              </p>
-              <img
-                src={!dropdown4Visible ? expandLogo : collapseLogo}
-                style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown4Visible ? "75px": "100px",
-                  marginTop:"0.5%",
-                }}
-              />
-            </div>
-          </button>
-          {dropdown4Visible && (
-            <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Kandidat muligheder"],
-                }}
-              />
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown"
-          style={{ background: "white", border: "0px", width: "100%" }}
-        >
-          <button className="dropdown-button" onClick={() => toggleDropdown(5)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown5Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Lokation
               </p>
               <img
-                src={!dropdown5Visible ? expandLogo : collapseLogo}
+                src={!dropdown4Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown5Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown4Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
           </button>
-          {dropdown5Visible && (
+          {dropdown4Visible && (
             <div className="dropdown-content">
               <iframe
                 className="iframe-container"
@@ -404,101 +439,99 @@ function InteraktionsdesignBachelor() {
           className="dropdown"
           style={{ background: "white", border: "0px", width: "100%" }}
         >
+          <button className="dropdown-button" onClick={() => toggleDropdown(5)}>
+            <div style={{ display: "flex" }}>
+              <p
+                style={{
+                  margin: "0%",
+                  width: dropdown5Visible ? "90%" : "calc(90% - 5px)",
+                  color: "rgb(75,75,75)",
+                }}
+              >
+                Semestre
+              </p>
+              <img
+                src={!dropdown5Visible ? expandLogo : collapseLogo}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown5Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
+                }}
+              />
+            </div>
+          </button>
+          {dropdown5Visible && (
+            <div className="dropdown-content">
+              <div style={{ width: "98%", margin: "auto" }}>
+                <ul>
+                  {dropdownContent.Semestrene.map((semester, index) => (
+                    <li key={index} style={{ fontSize: "20px", listStyleType:"none" }}>
+                      <p style={{ fontWeight: 700}}>{semester.name}</p>
+                      {semester.semester.map((subj, idx) => (
+                        <div key={idx} style={{ marginLeft: "2%",}}>
+                          <p style={{ fontSize: "20px", fontWeight:500 }}>{subj.track}</p>
+                          <div style={{marginLeft: subj.track === '' ? "0%" : "3%" }}>
+                          <p style={{ fontSize: "20px" }}>{subj.projektTitel}</p>
+                          <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
+                            {subj.projects.map((project, i) => (
+                              <a href={project.href} target="none">
+                              <li key={i} style={{ fontSize: "20px" }}>
+                                {project.projectName}
+                              </li>
+                              </a>
+                            ))}
+                          </ul>
+                            <div>
+                              <p style={{ fontSize: "20px" }}>{subj.kursusTitel}</p>
+                              <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
+                                {subj.courses.map((course, i) => (
+                                  <a href={course.href} target="none">  
+                                  <li key={i} style={{ fontSize: "20px" }}>
+                                    {course.courseName}
+                                  </li>
+                                  </a>
+                                ))}
+                              </ul>
+                          </div>
+                          </div>
+                        </div>
+                      ))}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div
+          className="dropdown"
+          style={{ background: "white", border: "0px", width: "100%" }}
+        >
           <button className="dropdown-button" onClick={() => toggleDropdown(6)}>
             <div style={{ display: "flex" }}>
               <p
                 style={{
                   margin: "0%",
                   width: dropdown6Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
-                }}
-              >
-                Semestre
-              </p>
-              <img
-                src={!dropdown6Visible ? expandLogo : collapseLogo}
-                style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown6Visible ? "75px": "100px",
-                  marginTop:"0.5%",
-                }}
-              />
-            </div>
-          </button>
-          {dropdown6Visible && (
-            <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Semestre"],
-                }}
-              />
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown"
-          style={{ background: "white", border: "0px", width: "100%" }}
-        >
-          <button className="dropdown-button" onClick={() => toggleDropdown(7)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown7Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
-                }}
-              >
-                Frafald
-              </p>
-              <img
-                src={!dropdown7Visible ? expandLogo : collapseLogo}
-                style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown7Visible ? "75px": "100px",
-                  marginTop:"0.5%",
-                }}
-              />
-            </div>
-          </button>
-          {dropdown7Visible && (
-            <div className="dropdown-content">
-              <div
-                dangerouslySetInnerHTML={{ __html: dropdownContent["Frafald"] }}
-              />
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown"
-          style={{ background: "white", border: "0px", width: "100%" }}
-        >
-          <button className="dropdown-button" onClick={() => toggleDropdown(8)}>
-            <div style={{ display: "flex" }}>
-              <p
-                style={{
-                  margin: "0%",
-                  width: dropdown8Visible ? "90%" : "calc(90% - 5px)",
-                  color:"rgb(75,75,75)"
+                  color: "rgb(75,75,75)",
                 }}
               >
                 Tidsforbrug
               </p>
               <img
-                src={!dropdown8Visible ? expandLogo : collapseLogo}
+                src={!dropdown6Visible ? expandLogo : collapseLogo}
                 style={{
-                  width:"30px",
-                  height:"30px",
-                  marginLeft: !dropdown8Visible ? "75px": "100px",
-                  marginTop:"0.5%",
+                  width: "30px",
+                  height: "30px",
+                  marginLeft: !dropdown6Visible ? "75px" : "100px",
+                  marginTop: "0.5%",
                 }}
               />
             </div>
           </button>
-          {dropdown8Visible && (
+          {dropdown6Visible && (
             <div className="dropdown-content">
               <div style={{ pointerEvents: 'none' }}>
                 <div
@@ -525,7 +558,7 @@ function InteraktionsdesignBachelor() {
                       width: "50%",
                     }}
                   >
-                    <BarChart data={tidsforbrug} width={200} height={250} />
+                    <BarChart data={dropdownContent.tidsforbruget} width={200} height={250} />
                   </div>
                   <div
                     style={{
@@ -536,7 +569,7 @@ function InteraktionsdesignBachelor() {
                       <ResponsiveContainer width="100%" height={336}>
                         <PieChart >
                           <Pie
-                            data={Tidsfordeling}
+                            data={dropdownContent.Tidsfordelingen}
                             cx="50%"
                             cy="50%"
                             innerRadius="20%"
@@ -547,7 +580,7 @@ function InteraktionsdesignBachelor() {
                             labelLine={false}
                             isAnimationActive={false}
                           >
-                            {Tidsfordeling.map((_entry, index) => (
+                            {dropdownContent.Tidsfordelingen.map((_entry, index) => (
                               <Cell key={`cell-${index}`} />
                             ))}
                           </Pie>
@@ -563,7 +596,7 @@ function InteraktionsdesignBachelor() {
                         width: "100%",
                       }}
                     >
-                      {Tidsfordeling.map((item, index) => (
+                      {dropdownContent.Tidsfordelingen.map((item, index) => (
                         <div
                           key={index}
                           style={{

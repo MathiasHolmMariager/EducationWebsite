@@ -1,8 +1,14 @@
 const dropdownContent = {
+
+  urlCode: "Informationsteknologi, Bachelor",
+
+  studyTitel: "Informationsteknologi - Aalborg - Bachelor",
+
+  headerSrcLink: "https://prod-aaudxp-cms-001-app.azurewebsites.net/media/zxrjlfgt/studieguide_pic_bait2.png?width=960",
  
   Beskrivelse: `På uddannelsen lærer du at skabe løsninger med fokus på både kommunikation, teknologi- og forretningsudvikling. Du skal fordybe dig i emner som analyse og usability-evaluering, teknikker til softwareudvikling og design af brugergrænseflader. Du får en eftertragtet tværfaglig jobprofil.`,
 
-  "Længere beskrivelse": `Informationsteknologi er en uddannelse for dig, der gerne vil udvikle kommunikations- og IT-løsninger, der gør en forskel for mennesker og virksomheder. Du lærer at analysere og forstå data i tæt samspil med design af IT-systemer og du bliver en værdifuld medspiller i udviklingen af software, forretningssystemer, apps, business intelligence og meget mere.
+  langBeskrivelse: `Informationsteknologi er en uddannelse for dig, der gerne vil udvikle kommunikations- og IT-løsninger, der gør en forskel for mennesker og virksomheder. Du lærer at analysere og forstå data i tæt samspil med design af IT-systemer og du bliver en værdifuld medspiller i udviklingen af software, forretningssystemer, apps, business intelligence og meget mere.
   <br><br>
   Uddannelsen bygger på tre elementer:  Teknologiudvikling, informationsstudier og forretningsudvikling. Tilsammen med fag som bl.a. programmering, innovation og forretningsledelse og med direkte adgang til den nyeste viden på området får du metoder og værktøjer til at påvirke og forandre vores forhold til og brug af IT. 
   <br><br>
@@ -13,6 +19,8 @@ const dropdownContent = {
   Informationsteknologi er som alle andre uddannelser på AAU formet af problembaseret læring, PBL. Det betyder, at undervisningen ved siden af forelæsninger og øvelser består af team- og projektarbejde i tæt samarbejde med erhvervslivet og andre eksterne partnere. Du vil opleve, at denne tilgang ikke bare giver studiet en ekstra social dimension, men også gør, at du hurtigt får indsigt i de forskellige udfordringer, som IT-teams arbejder med i virkeligheden.
   <br><br>
   `,
+
+  beskrivelseSrcLink: "https://www.youtube-nocookie.com/embed/2GCY7KQvAY4?autoplay=1&enablejsapi=1&origin=https%3A%2F%2Fwww.aau.dk",
 
   Adgangskrav: [
     {
@@ -84,9 +92,13 @@ const dropdownContent = {
 
   Semestrene: [
     {
+      note: "",
       name: "1. Semester",
       semester: [
         {
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
           track: "",
           projects: [
             {
@@ -116,9 +128,13 @@ const dropdownContent = {
       ],
     },
     {
+      note: "",
       name: "2. Semester",
       semester: [
         {
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
           track: "",
           projects: [
             {
@@ -144,9 +160,13 @@ const dropdownContent = {
       ],
     },
     {
+      note: "",
       name: "3. Semester",
       semester: [
         {
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
           track: "",
           projects: [
             {
@@ -172,9 +192,13 @@ const dropdownContent = {
       ],
     },
     {
+      note: "",
       name: "4. Semester",
       semester: [
         {
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
           track: "",
           projects: [
             {
@@ -196,10 +220,14 @@ const dropdownContent = {
       ],
     },
     {
+      note: "På 5. semester skal man Vælge et af de følgende tre spor:",
       name: "5. Semester",
       semester: [
         {
-          track: "Forretningsudvikling",
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
+          track: "Forretningsudvikling:",
           projects: [
             {
               projectName: "IT som styringsredskab (15 ECTS)",
@@ -222,7 +250,10 @@ const dropdownContent = {
           ],
         },
         {
-          track: "Informationsstudier",
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
+          track: "Informationsstudier:",
           projects: [
             {
               projectName: "Organisationskommunikation (20 ECTS)",
@@ -237,7 +268,10 @@ const dropdownContent = {
           ],
         },
         {
-          track: "TeknologiudviklingTeknologiudvikling",
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
+          track: "Teknologiudvikling:",
           projects: [
             {
               projectName: "Agil systemudvikling på tværs af projekter (15 ECTS)",
@@ -262,10 +296,14 @@ const dropdownContent = {
       ],
     },
     {
+      note: "På 6. semester forbliver man på valgte spor",
       name: "6. Semester",
       semester: [
         {
-          track: "",
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
+          track: "Forretningsudvikling:",
           projects: [
             {
               projectName: "Bachelorprojekt (15 ECTS)",
@@ -284,7 +322,10 @@ const dropdownContent = {
           ],
         },   
         {
-          track: "",
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
+          track: "Informationsstudier:",
           projects: [
             {
               projectName: "Bachelorprojekt: IKT i brug (15 ECTS)",
@@ -303,7 +344,10 @@ const dropdownContent = {
           ],
         },
         {
-          track: "",
+          projektTitel: "Projekter:",
+          kursusTitel: "Kurser:",
+          valgKursusTitel: "",
+          track: "Teknologiudvikling:",
           projects: [
             {
               projectName: "Bachelorprojekt: Udvikling af en IoT-solution (15 ECTS)",
