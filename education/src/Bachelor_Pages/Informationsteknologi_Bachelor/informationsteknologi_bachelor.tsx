@@ -10,7 +10,6 @@ import collapseLogo from "../../assets/collapse.png";
 import expandLogo from "../../assets/expand.png";
 import BarChart from "../../Components/barchart";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import studieBillede from "../../assets/studieguide_pic_bait2.png"
 import checkIcon from "../../assets/checkmark.png"
 import redExIcon from "../../assets/redExMark.png"
 import yellowExIcon from "../../assets/yellowExMark.png"
@@ -57,7 +56,7 @@ function InformationsteknologiBachelor() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Informationsteknologi, Bachelor";
+        const title = `${dropdownContent.urlCode}`;
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef)
           .then((snapshot: { exists: () => any }) => {
@@ -78,8 +77,8 @@ function InformationsteknologiBachelor() {
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
     const pairToSave = {
-      title: "Informationsteknologi, Bachelor",
-      code: "Informationsteknologi, Bachelor",
+      title: `${dropdownContent.urlCode}`,
+      code: `${dropdownContent.urlCode}`,
     };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
@@ -101,7 +100,7 @@ function InformationsteknologiBachelor() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Informationsteknologi, Bachelor");
+    localStorage.setItem("PAGE_ID", `${dropdownContent.urlCode}`);
   }, []);
   //##########################################################################
 
@@ -174,8 +173,8 @@ function InformationsteknologiBachelor() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Informationsteknologi, Bachelor";
-      const code = "Informationsteknologi, Bachelor";
+      const title = `${dropdownContent.urlCode}`;
+      const code = `${dropdownContent.urlCode}`;
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
 
@@ -202,7 +201,7 @@ function InformationsteknologiBachelor() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Informationsteknologi - Aalborg - Bachelor</h1>
+        <h1>{dropdownContent.studyTitel}</h1>
         <img
           src={isStarClicked ? StarGold : Star}
           onClick={handleStarClick}
@@ -225,10 +224,10 @@ function InformationsteknologiBachelor() {
         
         <div className="text" style={{display:"flex", flexDirection:"row", height:"100%"}}>
         <div style={{width:"60%"}}>
-          {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder alle krav til denne uddanelse </p></div>}
-          {accesStatus === "partly" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
-          {accesStatus === "false" && <div style={{marginTop:"0%",marginBottom:"7%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
-          {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"7.8%", display: "flex", alignItems:"center"}}></div>}
+          {accesStatus === "true" && <div style={{marginTop:"0%",marginBottom:"5%", display: "flex", alignItems:"center"}}><img src={checkIcon} style={{width:"4%", marginRight:"1%"}}/><p > Du opfylder alle krav til denne uddanelse </p></div>}
+          {accesStatus === "partly" && <div style={{marginTop:"0%",marginBottom:"5%", display: "flex", alignItems:"center"}}><img src={yellowExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
+          {accesStatus === "false" && <div style={{marginTop:"0%",marginBottom:"5%", display: "flex", alignItems:"center"}}><img src={redExIcon} style={{width:"4%", marginRight:"1%"}}/><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+          {accesStatus === "na" && <div style={{marginTop:"0%",marginBottom:"5.8%", display: "flex", alignItems:"center"}}></div>}
           <div>
           <p style={{marginBottom:"10%", fontSize:"20px",paddingRight:"1%", fontWeight:500}}>{dropdownContent["Beskrivelse"]}</p>
           </div>
@@ -238,7 +237,7 @@ function InformationsteknologiBachelor() {
             className="iframe-container"
             width="100%"
             height="100%"
-            src={studieBillede}
+            src={dropdownContent.headerSrcLink}
             style={{ border: "0px" }}
           ></img>
           </div>
@@ -275,14 +274,14 @@ function InformationsteknologiBachelor() {
             <div className="dropdown-content">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: dropdownContent["Længere beskrivelse"],
+                  __html: dropdownContent["langBeskrivelse"],
                 }}
               />
               <iframe
                 className="iframe-container"
                 width="560"
                 height="315"
-                src="https://www.youtube-nocookie.com/embed/2GCY7KQvAY4?autoplay=1&enablejsapi=1&origin=https%3A%2F%2Fwww.aau.dk"
+                src={dropdownContent.beskrivelseSrcLink}
                 style={{ border: "0px" }}
               ></iframe>
             </div>
@@ -331,14 +330,19 @@ function InformationsteknologiBachelor() {
                       </div>
                     );
                   })}
-                </ul><p>{dropdownContent.Adgangskvotient}</p></div>
+                </ul>
+                {accesStatus === "true" && <div ><p > Du opfylder alle krav til denne uddanelse </p></div>}
+                {accesStatus === "partly" && <div ><p >  Du opfylder nogle af kravene til denne uddannelse </p></div>}
+                {accesStatus === "false" && <div ><p >  Du opfylder desværre ingen af kravene til denne uddannelse </p></div>}
+                <p>{dropdownContent.Adgangskvotient}</p></div>
           ) : (
             <div style={{ width:"98%", margin:"auto"}}><h3>Adgangskrav:</h3><p>Bestået adgangsgivende eksamen:</p><ul>
             {dropdownContent.Adgangskrav.map((subject, index) => (
                 <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
-                  <li key={index} style={{ marginLeft: "1%" }}>
-                    {subject.fag} {subject.niveau}
-                  </li>
+
+                    <li key={index} style={{ marginLeft: "1%" }}>
+                      {subject.fag} {subject.niveau}
+                    </li>
                 </div>
             ))}
           </ul><p>{dropdownContent.Adgangskvotient}</p></div>
@@ -465,30 +469,31 @@ function InformationsteknologiBachelor() {
                     <li key={index} style={{ fontSize: "20px", listStyleType:"none" }}>
                       <p style={{ fontWeight: 700}}>{semester.name}</p>
                       {semester.semester.map((subj, idx) => (
-                        
                         <div key={idx} style={{ marginLeft: "2%",}}>
                           <p style={{ fontSize: "20px", fontWeight:500 }}>{subj.track}</p>
                           <div style={{marginLeft: subj.track === '' ? "0%" : "3%" }}>
-                          <p style={{ fontSize: "20px" }}>projekter:</p>
+                          <p style={{ fontSize: "20px" }}>{subj.projektTitel}</p>
                           <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
                             {subj.projects.map((project, i) => (
-                              <a href="/">
+                              <a href={project.href} target="none">
                               <li key={i} style={{ fontSize: "20px" }}>
                                 {project.projectName}
                               </li>
                               </a>
                             ))}
                           </ul>
-                          <p style={{ fontSize: "20px" }}>kurser:</p>
-                          <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
-                            {subj.courses.map((course, i) => (
-                              <a href="/">
-                              <li key={i} style={{ fontSize: "20px" }}>
-                                {course.courseName}
-                              </li>
-                              </a>
-                            ))}
-                          </ul>
+                            <div>
+                              <p style={{ fontSize: "20px" }}>{subj.kursusTitel}</p>
+                              <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
+                                {subj.courses.map((course, i) => (
+                                  <a href={course.href} target="none">  
+                                  <li key={i} style={{ fontSize: "20px" }}>
+                                    {course.courseName}
+                                  </li>
+                                  </a>
+                                ))}
+                              </ul>
+                          </div>
                           </div>
                         </div>
                       ))}
