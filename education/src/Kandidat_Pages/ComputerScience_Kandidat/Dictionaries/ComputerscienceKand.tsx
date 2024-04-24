@@ -1,5 +1,3 @@
-
-
 const dropdownContent = {
     "Beskrivelse": 
     `Are you interested in programming, programming languages, software engineering, machine intelligence, 
@@ -21,112 +19,281 @@ const dropdownContent = {
     so if you have a professional bachelor in Software Development and have completed courses in syntax and semantics 
     as well as discrete mathematics, you are able to be enrolled.
     `,
-  
-    "Semestre": 
-    `<font size="5"><b><u>1 Semester</u></b></font>
-    <br>Projects:
-    <br><i><a href="?" target="_blank">- Secure, Scalable and Useful Systems (15 ECTS)</a></i>
-    <br>Courses:
-    <br><i><a href="?" target="_blank">- Programming Paradigms (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Machine Intelligence (5 ECTS)</a></i>
-    <br>Choose one of the following:
-    <br><i><a href="?" target="_blank">- Selected Topics in Database Research and Practice (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Distributed Systems (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Selected Topics in HCI (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Quantum Information and Computing (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Systems Development in Praxis (5 ECTS)</a></i>
-    <br>
-    <br><font size="5"><b><u>2 Semester</u></b></font>
-    <br>Track A (Computer science)
-    <br>Projects:
-    <br><i><a href="?" target="_blank">- Reliable Innovative Systems (15 ECTS)</a></i>
-    <br>Courses:
-    <br><i><a href="?" target="_blank">- Machine Learning (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Selected Topics in Modelling and Verification (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Software Innovation (5 ECTS)</a></i>
-    <br>Track B (Information technology)
-    <br>Projects:
-    <br><i><a href="?" target="_blank">- Design, Definition and Implementation of Programming Languages (15 ECTS)</a></i>
-    <br>Courses:
-    <br><i><a href="?" target="_blank">- Agile Software Engineering (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Languages and Compilers (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Computability and Complexity (5 ECTS)</a></i>
-    <br>
-    <br><font size="5"><b><u>3 Semester</u></b></font>
-    <br>Projects:
-    <br><i><a href="?" target="_blank">- Pre-Specialisation in Computer Science (20 ECTS)</a></i>
-    <br>Courses:
-    <br><i><a href="?" target="_blank">- Entrepreneurship (5 ECTS)</a></i>
-    <br>Choose one of the following:
-    <br><i><a href="?" target="_blank">- Specialisation Course in Human-Computer Interaction (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Specialisation Course in Database Technology (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Specialisation Course in Distributed Systems (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Specialisation Course in Semantics and Verification (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Specialisation Course in Machine Intelligence (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Specialisation Course in Programming Technology (5 ECTS)</a></i>
-    <br><i><a href="?" target="_blank">- Specialisation Course in System Development (5 ECTS)</a></i>
-    <br>
-    <br><font size="5"><b><u>4 Semester</u></b></font>
-    <br>Projects:
-    <br><i><a href="?" target="_blank">- Master's Thesis (30 ECTS)</a></i>
-    `,
+
+    Semestrene: [
+      {
+        name: "1. Semester",
+        ManName: "Courses:",
+        OptName: "Choose one of the following courses:",
+        semester: [
+          {
+            track: "",
+            projects: [
+              {
+                projectName: "Secure, Scalable and Useful Systems (15 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK120"
+              },
+            ],
+            ManNote:"",
+            ManCourses: [
+              {
+                courseName: "Programming Paradigms (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK115"
+              },
+              {
+                courseName: "Machine Intelligence (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK121"
+              },
+            ],
+            
+            Note:"Choose one of the following courses:",
+            OptCourses: [
+              {
+                courseName: "Selected Topics in Database Research and Practice (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK116"
+              },
+              {
+                courseName: "Distributed Systems (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK117"
+              },
+              {
+                courseName: "Selected Topics in HCI (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK118"
+              }
+            ],
+          }      
+        ],
+      },
+      {
+        name: "2. Semester",
+        ManName: "Courses:",
+        OptName: "",
+        semester: [
+          {
+            track: "Track A (Computer science)",
+            projects: [
+              {
+                projectName: "Reliable Innovative Systems (15 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK220"
+              }
+            ],
+            ManNote:"",
+            ManCourses: [
+            ],
+            Note:"",
+            OptCourses: [
+              {
+                courseName: "Machine Learning (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK225"
+              },
+              {
+                courseName: "Selected Topics in Modelling and Verification (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK226"
+              },
+              {
+                courseName: "Software Innovation (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK227"
+              }
+            ],
+          },
+          {
+            track: "Track B (Information technology)",
+            projects: [
+              {
+                projectName: "Design, Definition and Implementation of Programming Languages (15 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK221"
+              }
+            ],
+            ManNote:"",
+            ManCourses: [
+              {
+                courseName: "Agile Software Engineering (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK224"
+              },
+              {
+                courseName: "Languages and Compilers (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK222"
+              },
+              {
+                courseName: "Computability and Complexity (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK223"
+              }
+            ],
+            Note:"",
+            OptCourses: [
+            ],
+          }       
+        ],
+      },
+      {
+        name: "3. Semester",
+        ManName: "Courses:",
+        OptName: "Choose one of the following courses:",
+        semester: [
+          {
+            track: "",
+            projects: [
+              {
+                projectName: "Pre-Specialisation in Computer Science (20 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK301"
+              }
+            ],
+            ManNote:"",
+            ManCourses: [
+              {
+                courseName: "Entrepreneurship (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK320"
+              },
+            ],
+            Note:"Choose one of the following courses:",
+            OptCourses: [
+              {
+                courseName: "Specialisation Course in Human-Computer Interaction (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK321"
+              },
+              {
+                courseName: "Specialisation Course in Database Technology (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK322"
+              },
+              {
+                courseName: "Specialisation Course in Distributed Systems (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK323"
+              },
+              {
+                courseName: "Specialisation Course in Semantics and Verification (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK324"
+              },
+              {
+                courseName: "Specialisation Course in Machine Intelligence (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK325"
+              },
+              {
+                courseName: "Specialisation Course in Programming Technology (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK326"
+              },
+              {
+                courseName: "Specialisation Course in System Development (5 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK327"
+              }
+            ],
+          }        
+        ],
+      },
+      {
+        name: "4. Semester",
+        ManName: "",
+        OptName: "",
+        semester: [
+          {
+            track: "",
+            projects: [
+              {
+                projectName: "Master's Thesis (30 ECTS)",
+                href: "https://moduler.aau.dk/course/2024-2025/DSNCSITK411"
+              },
+            ],
+            ManNote:"",
+            ManCourses: [
+            ],
+            Note:"",
+            OptCourses: [
+            ],
+          },     
+        ],
+      },
+    ],
   
     Tidsforbrug: `-33 timer gennemsnit 
-    -36 timer informationsteknologi `,
+    -39 timer informationsteknologi `,
 
-    Tidsfordeling: `-57% forberedelse
-    -43% undevisnig`,
+    Tidsfordeling: `-62% forberedelse
+    -38% undevisnig`,
   
-    "Mulige jobs": 
-    `?`,
+    Jobs: [
+        {
+          name: "Software developer"
+        },
+        {
+          name: "Software architect"
+        },
+        {
+          name: "IT infrastructure specialist"
+        },
+        {
+          name: "System administrator"
+        },
+        {
+          name: "Development consultants"
+        },
+        {
+          name: "Database engineer"
+        },
+        {
+          name: "Project manager"
+        },
+        {
+          name: "IT-supporter"
+        },
+      ],
+    
   
     "Gennemsnitlig løn": 
     `?`,
+
+    FørsteÅrLøn: [
+      { name: "Computer science graduate", value: 41500, fill: "lightgreen", unit: "dkk" },
+      { name: "Denmark median", value: 39500, fill: "lightblue", unit: "dkk" },
+    ],
+  
+    TiÅrLøn: [
+      { name: "Computer science graduate", value: 54200, fill: "orange", unit: "dkk" },
+      { name: "Denmark median", value: 45000, fill: "pink", unit: "dkk" },
+    ],
   
     "Social bedømmelse": 
-    `3`,
+    `394`,
   
     "Jobmulighed bedømmelse": 
-    `4`,
+    `20`,
 
     Adgangskrav: [
       {
         bachelor: 'Informationsteknologi',
         location: 'Aalborg Universitet',
         Note: 'med specialisering i teknologi',
-        href: 'https://www.google.dk/',
+        href: 'https://www.aau.dk/uddannelser/bachelor/informationsteknologi',
       },
       {
-        bachelor: 'Datavidenskab',
+        bachelor: 'Datavidenskab og machine learning',
         location: 'Aalborg Universitet',
         Note: '',
-        href: 'https://www.google.dk/',
+        href: 'https://www.aau.dk/uddannelser/bachelor/datavidenskab-og-machine-learning#',
       },
       {
         bachelor: 'Interaktionsdesign',
         location: 'Aalborg Universitet',
         Note: '',
-        href: 'https://www.google.dk/',
+        href: 'https://www.aau.dk/uddannelser/bachelor/interaktionsdesign',
       },
       {
         bachelor: 'Data Science',
         location: 'IT-Universitetet i København',
         Note: '',
-        href: 'https://www.google.dk/',
+        href: 'https://itu.dk/Uddannelser/Bacheloruddannelser/Data-Science',
       },
       {
-        bachelor: 'Data Science',
+        bachelor: 'Datavidenskab',
         location: 'Aarhus Universitet',
         Note: '',
-        href: 'https://www.google.dk/',
+        href: 'https://bachelor.au.dk/datavidenskab',
       },
       {
-        bachelor: 'Professionsbachelor i Softwareudvikling',
-        location: 'Aalborg Universitet',
-        Note: 'University College Nordjylland',
-        href: 'https://www.google.dk/',
+        bachelor: 'Computer Science',
+        location: 'University College Nordjylland',
+        Note: '',
+        href: 'https://www.ucn.dk/english/study-at-ucn/computer-science',
       },
     ],
-  };  
+  };
   
   export default dropdownContent;

@@ -206,7 +206,7 @@ function ComputerscienceKandidat() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Computerscience (IT) - Aalborg - Masters</h1>
+        <h1>Computer Science (IT) - Aalborg - Masters</h1>
         <img
           src={isStarClicked ? StarGold : Star}
           onClick={handleStarClick}
@@ -354,8 +354,11 @@ function ComputerscienceKandidat() {
           )}
         </div>
 
-        <div className="dropdown" style={{ background: "white", border: "0px", width: "100%" }}>
-      <button className="dropdown-button" onClick={() => toggleDropdown(4)}>
+        <div
+          className="dropdown"
+          style={{ background: "white", border: "0px", width: "100%" }}
+        >
+          <button className="dropdown-button" onClick={() => toggleDropdown(4)}>
             <div style={{ display: "flex" }}>
               <p
                 style={{
@@ -379,7 +382,51 @@ function ComputerscienceKandidat() {
           </button>
           {dropdown4Visible && (
             <div className="dropdown-content">
-              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Semestre"] }}/>
+              <div style={{ width: "98%", margin: "auto" }}>
+                <ul>
+                  {dropdownContent.Semestrene.map((semester, index) => (
+                    <li key={index} style={{ fontSize: "20px", listStyleType:"none" }}>
+                      <p style={{ fontWeight: 700}}>{semester.name}</p>
+                      {semester.semester.map((subj, idx) => (
+                        
+                        <div key={idx} style={{ marginLeft: "2%",}}>
+                          <p style={{ fontSize: "20px", fontWeight:500 }}>{subj.track}</p>
+                          <div style={{marginLeft: subj.track === '' ? "0%" : "3%" }}>
+                          <p style={{ fontSize: "20px" }}>Projects:</p>
+                          <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
+                            {subj.projects.map((project, i) => (
+                              <a href={project.href} target="_blank">
+                              <li key={i} style={{ fontSize: "20px" }}>
+                                {project.projectName}
+                              </li>
+                              </a>
+                            ))}
+                          </ul>
+                          <p style={{ fontSize: "20px" }}>{semester.ManName}</p>
+                          <ul style={{ listStyleType: "disc", marginLeft: "2%" }}>
+                            {subj.ManCourses.map((course, i) => (
+                              <a href={course.href} target="_blank">
+                              <li key={i} style={{ fontSize: "20px" }}>
+                                {course.courseName}
+                              </li>
+                              </a>
+                            ))}
+                          <p style={{ fontSize: "20px", marginLeft:"-6.7%" }}>{semester.OptName}</p>
+                              {subj.OptCourses.map((course, i) => (
+                              <a href={course.href} target="_blank">
+                              <li key={i} style={{ fontSize: "20px" }}>
+                                {course.courseName}
+                              </li>
+                              </a>
+                            ))}
+                          </ul>
+                          </div>
+                        </div>
+                      ))}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
         </div>
@@ -422,6 +469,7 @@ function ComputerscienceKandidat() {
                 </div>
                 <div
                   style={{
+                    fontSize:"18px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -525,9 +573,16 @@ function ComputerscienceKandidat() {
             </div>
           </button>
           {dropdown6Visible && (
-            <div className="dropdown-content">
-              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Mulige jobs"] }}/>
-            </div>
+            <div style={{ width:"98%", margin:"auto"}}><p style={{fontSize:"20px"}}>Some of the possible future jobs a graduated computer scientist could pursue are:</p><ul>
+            {dropdownContent.Jobs.map((subject, index) => (
+                <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
+                  <li key={index} style={{ marginLeft: "1%", fontSize:"20px" }}>
+                    {subject.name}
+                  </li>
+                </div>
+            ))}
+          </ul>
+          </div>
           )}
         </div>
 
@@ -541,7 +596,7 @@ function ComputerscienceKandidat() {
                   color: "rgb(75,75,75)",
                 }}
               >
-                Average salary
+                Wages
               </p>
               <img
                 src={!dropdown7Visible ? expandLogo : collapseLogo}
@@ -556,7 +611,55 @@ function ComputerscienceKandidat() {
           </button>
           {dropdown7Visible && (
             <div className="dropdown-content">
-              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Gennemsnitlig løn"] }}/>
+              <div style={{ pointerEvents: 'none' }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <h4 style={{ margin: "auto" }}>Wage after graduation:</h4>
+                  <h4 style={{ margin: "auto" }}>Wage after 10 years:</h4>
+                </div>
+                <div
+                  style={{
+                    fontSize:"18px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      padding: "0px",
+                      margin: "0px",
+                      width: "50%",
+                    }}
+                  >
+                    <BarChart data={dropdownContent.FørsteÅrLøn} width={200} height={250} />
+                  </div>
+                  <div
+                    style={{
+                      width: "50%",
+                    }}
+                  >
+                    <div style={{ marginBottom: "20px" }}>
+                      <BarChart data={dropdownContent.TiÅrLøn} width={200} height={250} />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "-40px",
+                        marginLeft: "0%",
+                        width: "100%",
+                      }}
+                    >
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -587,8 +690,8 @@ function ComputerscienceKandidat() {
         {dropdown8Visible && (
           <div className="dropdown-content">
             <div>
-              <p>The evaluation of the socail aspects</p>
-              <progress className="progress-bar" value={dropdownContent["Social bedømmelse"]} max="5"></progress>
+              <p>Social aspects evaluated by the students on the study program</p>
+              <progress className="progress-bar" value={dropdownContent["Social bedømmelse"]} max="500"></progress>
             </div>
           </div>
         )}
@@ -620,8 +723,8 @@ function ComputerscienceKandidat() {
         {dropdown9Visible && (
           <div className="dropdown-content">
             <div>
-              <p>The evaluation of the job possibility</p>
-              <progress className="progress-bar" value={dropdownContent["Jobmulighed bedømmelse"]} max="5"></progress>
+              <p>Unemployment rate among recent graduated students from the study program</p>
+              <progress className="progress-bar" value={dropdownContent["Jobmulighed bedømmelse"]} max="500"></progress>
             </div>
           </div>
         )}
