@@ -11,6 +11,7 @@ import MedialogiBachelor from "../Bachelor_Pages/Medialogi_Bachelor/medialogi_ba
 import InteraktionsdesignKandidat from "../Kandidat_Pages/Interaktionsdesign_Kandidat/interaktionsdesign_kandidat.tsx";
 import MedialogyKandidat from "../Kandidat_Pages/Medialogy_Kandidat/medialogy_kandidat.tsx";
 import ComputerscienceKandidat from "../Kandidat_Pages/ComputerScience_Kandidat/computerscience_kandidat.tsx";
+import ComparePage from "../Compare_Page/compare_page.tsx";
 
 
 
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       { path: "/profile", element: <ProfilePage /> },
       { path: "/chat", element: <ChatPage/> },
       { path: "/nopage", element: <NoPage /> },
+      { path: "/compare", element: <ComparePage /> },
     ],
   },
 ]);
