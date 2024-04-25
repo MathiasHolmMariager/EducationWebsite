@@ -81,3 +81,25 @@
     border: 1px solid rgba(0, 0, 0, 1);
     border-radius: 10px;
 }
+
+.progress-bar.Mprimary-progress::after {
+    content: "60%";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.progress-bar.Msecondary-progress::after {
+    content: "19%";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(33, 26, 82, 1);
+    font-size: 12px;
+    font-weight: bold;
+}

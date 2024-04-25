@@ -644,7 +644,7 @@ function ComputerscienceKandidat() {
           <div className="dropdown-content">
             <div>
               <p>Social aspects evaluated by the students on the study program</p>
-              <progress className="progress-bar" value={dropdownContent.socialBedømmelse} max="500"></progress>
+              <progress className="progress-bar Cprimary-progress" value={dropdownContent.socialBedømmelse} max="500"></progress>
             </div>
           </div>
         )}
@@ -677,7 +677,7 @@ function ComputerscienceKandidat() {
           <div className="dropdown-content">
             <div>
               <p>Unemployment rate among recent graduated students from the study program</p>
-              <progress className="progress-bar" value={dropdownContent.jobbedømmelse} max="500"></progress>
+              <progress className="progress-bar Csecondary-progress" value={dropdownContent.jobbedømmelse} max="500"></progress>
             </div>
           </div>
         )}

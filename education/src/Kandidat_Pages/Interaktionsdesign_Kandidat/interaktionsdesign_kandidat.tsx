@@ -677,7 +677,7 @@ function InteraktionsdesignKandidat() {
           <div className="dropdown-content">
             <div>
               <p>Sociale aspekter vurderet af de studerende på uddannelsen</p>
-              <progress className="progress-bar" value={dropdownContent.socialBedømmelse} max="500"></progress>
+              <progress className="progress-bar Iprimary-progress" value={dropdownContent.socialBedømmelse} max="500"></progress>
             </div>
           </div>
         )}
@@ -710,7 +710,7 @@ function InteraktionsdesignKandidat() {
           <div className="dropdown-content">
             <div>
               <p>Ledighed blandt nyuddannede studerende fra uddannelsen</p>
-              <progress className="progress-bar" value={dropdownContent.jobbedømmelse} max="500"></progress>
+              <progress className="progress-bar Isecondary-progress" value={dropdownContent.jobbedømmelse} max="500"></progress>
             </div>
           </div>
         )}

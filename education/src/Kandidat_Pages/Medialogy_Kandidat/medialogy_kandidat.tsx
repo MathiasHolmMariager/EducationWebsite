@@ -820,7 +820,7 @@ function MedialogyKandidat() {
                   Social aspects evaluated by the students on the study program
                 </p>
                 <progress
-                  className="progress-bar"
+                  className="progress-bar Mprimary-progress"
                   value={dropdownContent.socialBedømmelse}
                   max="500"
                 ></progress>
@@ -863,7 +863,7 @@ function MedialogyKandidat() {
                   study program
                 </p>
                 <progress
-                  className="progress-bar"
+                  className="progress-bar Msecondary-progress"
                   value={dropdownContent.jobbedømmelse}
                   max="500"
                 ></progress>
