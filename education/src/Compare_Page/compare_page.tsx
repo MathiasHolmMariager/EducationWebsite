@@ -32,13 +32,19 @@ function ComparePage() {
             </div>
         )}
         {underPage === '2' && (
-            <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}></div>
+            <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
+                compare 1 side
+            </div>
         )}
         {underPage === '3' && (
-            <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}></div>
+            <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
+                compare 2 side
+            </div>
         )}
         {underPage === '4' && (
-            <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}></div>
+            <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
+                compare 3 side
+            </div>
         )}
       </div>
     </div>
