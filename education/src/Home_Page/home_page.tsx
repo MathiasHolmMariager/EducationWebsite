@@ -94,9 +94,9 @@ function HomePage() {
         }}
       >
         <div style={{width:"100%", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column"}}>
-          <h1 style={{marginTop:"1%"}}>EducationHelper</h1>
-          <h2 style={{marginTop:"-2.5%"}}>Guiding your path to academic success</h2>
-          <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", width:"70%", marginTop:"1.5%"}}>
+          <h1 style={{marginTop:"2%"}}>EducationHelper</h1>
+          <h2 style={{marginTop:"-2%"}}>Guiding your path to academic success</h2>
+          <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", width:"70%", marginTop:"2%"}}>
           <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}}><a style={{color:"white", width:"100%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center",}} href="/search"><img src={searchIcon} style={{width:"15%", marginRight:"5%"}}/>Søg efter uddannelser</a></button>
           <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}}><a style={{color:"white", width:"100%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center",}} href="/compare"><img src={compareIcon} style={{width:"15%", marginRight:"5%"}}/> Sammenlign uddanelser</a></button>
           <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}}><a style={{color:"white", width:"100%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center",}} href="/chat"> <img src={chatIcon} style={{width:"15%", marginRight:"5%",}}/>Skriv til uddannelser</a></button>
@@ -117,7 +117,7 @@ function HomePage() {
           style={{
             width: "40%",
             margin: "auto",
-            height: "92%",
+            height: "82%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -181,7 +181,7 @@ function HomePage() {
           style={{
             width: "40%",
             margin: "auto",
-            height: "92%",
+            height: "82%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
