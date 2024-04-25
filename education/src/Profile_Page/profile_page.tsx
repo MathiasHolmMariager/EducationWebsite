@@ -140,7 +140,7 @@ function ProfilePage() {
               {diploma.highSchoolDiploma && Object.values(diploma.highSchoolDiploma).map((subject: any, index: number) => (
                 <li key={index}>
                   <div style={{display:"flex", width:"95%", borderBottom: '0.5px solid rgb(75,75,75)',}}>
-                    <p style={{ width:"85%"}}>{subject.fag} {subject.niveau} {subject.type}</p><p style={{ width:"15%", textAlign:"left"}}><b>Karakter:</b> {subject.årsKarakter}</p> 
+                  <p style={{ width:"60%"}}>{subject.fag} {subject.niveau}</p><p style={{ width:"20%" }}><b> Års karakter:</b> {subject.årsKarakter}</p><p style={{ width:"20%" }}><b> Prøve karakter: </b>{subject.prøveKarakter}</p>  
                   </div>
                 </li>
               ))}

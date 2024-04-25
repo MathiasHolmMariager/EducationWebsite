@@ -469,11 +469,7 @@ function ComputerscienceKandidat() {
                   >
                     <BarChart data={dropdownContent.tidsforbrug} width={200} height={250} />
                   </div>
-                  <div
-                    style={{
-                      width: "50%",
-                    }}
-                  >
+                  <div           >
                     <div style={{ marginBottom: "20px" }}>
                       <ResponsiveContainer width="100%" height={336}>
                         <PieChart >
@@ -500,7 +496,7 @@ function ComputerscienceKandidat() {
                       style={{
                         display: "flex",
                         justifyContent: "center",
-                        marginTop: "-45px",
+                        marginTop: "-47px",
                         marginLeft: "0%",
                         width: "100%",
                       }}
@@ -596,52 +592,24 @@ function ComputerscienceKandidat() {
           </button>
           {dropdown7Visible && (
             <div className="dropdown-content">
-              <div style={{ pointerEvents: 'none' }}>
+              <div style={{ pointerEvents: 'none', display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center",}}>
                 <div
                   style={{
+                    width:"100%",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{ margin: "auto" }}>Wage after graduation:</h4>
-                  <h4 style={{ margin: "auto" }}>Wage after 10 years:</h4>
+                  <h4 style={{marginRight:"10%",}}>Wage after graduation:</h4>
+                  <h4 style={{marginLeft:"10%"}}>Wage after 10 years:</h4>
                 </div>
-                <div
-                  style={{
-                    fontSize:"18px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      padding: "0px",
-                      margin: "0px",
-                      width: "50%",
-                    }}
-                  >
+                <div style={{display:"flex"}}>
+                  <div>
                     <BarChart data={dropdownContent.FørsteÅrLøn} width={200} height={250} />
                   </div>
-                  <div
-                    style={{
-                      width: "50%",
-                    }}
-                  >
-                    <div style={{ marginBottom: "20px" }}>
-                      <BarChart data={dropdownContent.TiÅrLøn} width={200} height={250} />
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        marginTop: "-40px",
-                        marginLeft: "0%",
-                        width: "100%",
-                      }}
-                    >
-                    </div>
+                  <div style={{ marginBottom: "20px", width:"100%" }}>
+                    <BarChart data={dropdownContent.TiÅrLøn} width={200} height={250} />
                   </div>
                 </div>
               </div>
