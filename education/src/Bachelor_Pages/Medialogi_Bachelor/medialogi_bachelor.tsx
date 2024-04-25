@@ -565,6 +565,7 @@ function MedialogiBachelor() {
                 </div>
                 <div
                   style={{
+                    fontSize:"18px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",

@@ -343,11 +343,6 @@ const dropdownContent = {
     { name: "Undervisning", value: 25, fill: "pink" },
     { name: "Opgaver", value: 25, fill: "yellow" },
   ],
-  
-
-
-
-
 };
 
 export default dropdownContent;
