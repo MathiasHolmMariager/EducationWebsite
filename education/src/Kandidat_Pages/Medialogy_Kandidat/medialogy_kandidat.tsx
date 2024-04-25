@@ -482,7 +482,7 @@ function MedialogyKandidat() {
                               marginLeft: subj.track === "" ? "0%" : "3%",
                             }}
                           >
-                            <p style={{ fontSize: "20px" }}>Projects:</p>
+                            <p style={{ fontSize: "20px" }}>{semester.ProjectName}</p>
                             <ul
                               style={{
                                 listStyleType: "disc",

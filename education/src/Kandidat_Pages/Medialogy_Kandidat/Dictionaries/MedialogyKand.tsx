@@ -68,7 +68,8 @@ const dropdownContent = {
   Semestrene: [
     {
       name: "1. Semester",
-      ManName: "Mandatory courses:",
+      ProjectName: "Projects:",
+      ManName: "Courses:",
       OptName: "Choose two of the following courses:",
       semester: [
         {
@@ -104,7 +105,8 @@ const dropdownContent = {
     },
     {
       name: "2. Semester",
-      ManName: "Mandatory courses:",
+      ProjectName: "Projects:",
+      ManName: "Courses:",
       OptName: "Choose two of the following courses:",
       semester: [
         {
@@ -144,11 +146,12 @@ const dropdownContent = {
     },
     {
       name: "3. Semester",
+      ProjectName: "Choose one of the following projects:",
       ManName: "",
       OptName: "",
       semester: [
         {
-          track: "Choose one of the following projects:",
+          track: "",
           projects: [
             {
               projectName: "Project-oriented study in an external organisation (30 ECTS)",
@@ -170,6 +173,7 @@ const dropdownContent = {
     },
     {
       name: "4. Semester",
+      ProjectName: "Projects:",
       ManName: "",
       OptName: "",
       semester: [

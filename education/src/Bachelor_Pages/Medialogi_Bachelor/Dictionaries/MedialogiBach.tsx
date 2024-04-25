@@ -286,7 +286,7 @@ const dropdownContent = {
       semester: [
         {
           projektTitel: "Projekter:",
-          kursusTitel: "Kurser (vælg to):",
+          kursusTitel: "Vælg to af de følgende kurser:",
           valgKursusTitel: "",
           track: "",
           projects: [
