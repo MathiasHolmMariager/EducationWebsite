@@ -568,7 +568,7 @@ function MedialogyKandidat() {
           </button>
           {dropdown5Visible && (
             <div className="dropdown-content">
-              <div style={{ pointerEvents: "none" }}>
+              <div style={{ pointerEvents: 'none' }}>
                 <div
                   style={{
                     display: "flex",
@@ -576,14 +576,12 @@ function MedialogyKandidat() {
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{ margin: "auto" }}>Weekly working hours:</h4>
-                  <h4 style={{ margin: "auto" }}>
-                    Distribution of working hours:
-                  </h4>
+                  <h4 style={{ margin: "auto" }}>Ugentlige arbejdstimer:</h4>
+                  <h4 style={{ margin: "auto" }}>Fordeling af arbejdstimer:</h4>
                 </div>
                 <div
                   style={{
-                    fontSize: "18px",
+                    fontSize:"18px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -596,16 +594,16 @@ function MedialogyKandidat() {
                       width: "50%",
                     }}
                   >
-                    <BarChart
-                      data={dropdownContent.tidsforbrug}
-                      width={200}
-                      height={250}
-                    />
+                    <BarChart data={dropdownContent.tidsforbrug} width={200} height={250} />
                   </div>
-                  <div>
+                  <div
+                    style={{
+                      width: "50%",
+                    }}
+                  >
                     <div style={{ marginBottom: "20px" }}>
                       <ResponsiveContainer width="100%" height={336}>
-                        <PieChart>
+                        <PieChart >
                           <Pie
                             data={dropdownContent.Tidsfordeling}
                             cx="50%"
@@ -618,11 +616,9 @@ function MedialogyKandidat() {
                             labelLine={false}
                             isAnimationActive={false}
                           >
-                            {dropdownContent.Tidsfordeling.map(
-                              (_entry, index) => (
-                                <Cell key={`cell-${index}`} />
-                              )
-                            )}
+                            {dropdownContent.Tidsfordeling.map((_entry, index) => (
+                              <Cell key={`cell-${index}`} />
+                            ))}
                           </Pie>
                         </PieChart>
                       </ResponsiveContainer>
@@ -631,7 +627,7 @@ function MedialogyKandidat() {
                       style={{
                         display: "flex",
                         justifyContent: "center",
-                        marginTop: "-47px",
+                        marginTop: "-45px",
                         marginLeft: "0%",
                         width: "100%",
                       }}

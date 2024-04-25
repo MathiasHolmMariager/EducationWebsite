@@ -449,8 +449,8 @@ function ComputerscienceKandidat() {
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{ margin: "auto" }}>Weekly working hours:</h4>
-                  <h4 style={{ margin: "auto" }}>Distribution of working hours:</h4>
+                  <h4 style={{ margin: "auto" }}>Ugentlige arbejdstimer:</h4>
+                  <h4 style={{ margin: "auto" }}>Fordeling af arbejdstimer:</h4>
                 </div>
                 <div
                   style={{
@@ -469,7 +469,11 @@ function ComputerscienceKandidat() {
                   >
                     <BarChart data={dropdownContent.tidsforbrug} width={200} height={250} />
                   </div>
-                  <div           >
+                  <div
+                    style={{
+                      width: "50%",
+                    }}
+                  >
                     <div style={{ marginBottom: "20px" }}>
                       <ResponsiveContainer width="100%" height={336}>
                         <PieChart >
@@ -496,7 +500,7 @@ function ComputerscienceKandidat() {
                       style={{
                         display: "flex",
                         justifyContent: "center",
-                        marginTop: "-47px",
+                        marginTop: "-45px",
                         marginLeft: "0%",
                         width: "100%",
                       }}
