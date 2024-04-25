@@ -245,7 +245,7 @@ const dropdownContent = {
 
   socialBedømmelse: 300,
 
-  jobbedømmelse: 400,
+  jobbedømmelse: 95,
 
   Adgangskrav: [
     {

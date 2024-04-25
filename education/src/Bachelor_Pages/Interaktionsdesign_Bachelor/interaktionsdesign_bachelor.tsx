@@ -96,8 +96,8 @@ function InteraktionsdesignBachelor() {
       existingList.splice(index, 1);
     }
     existingList.unshift(pairToSave);
-    if (existingList.length > 5) {
-      existingList = existingList.slice(0, 5);
+    if (existingList.length > 6) {
+      existingList = existingList.slice(0, 6);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
     localStorage.setItem("PAGE_ID", `${dropdownContent.urlCode}`);
