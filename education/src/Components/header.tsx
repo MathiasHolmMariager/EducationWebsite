@@ -9,6 +9,7 @@ import UserModal from "./login_create_user";
 import profileIcon from "../assets/profileLogo.png"
 import loginIcon from "../assets/loginIcon.png"
 import logoutIcon from "../assets/logoutIcon.png"
+import compare_Icon from "../assets/compare.png"
 
 function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -87,7 +88,7 @@ function Header() {
         marginLeft: "-8px"
       }}
     >
-      <div style={{ width: "2.5%", height: "70%", marginLeft: "2.5%", marginRight:"79.8%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+      <div style={{ width: "2.5%", height: "70%", marginLeft: "2.5%", marginRight:"75%", display:"flex", justifyContent: "center", alignItems:"center"}}>
         <a href="/" style={{ width: "100%", height: "100%", display:"flex", justifyContent: "center", alignItems:"center"}}>
           <img
             src={home_icon}
@@ -99,7 +100,15 @@ function Header() {
         <a href="/search" style={{ width: "100%", height: "100%", display:"flex", justifyContent: "center", alignItems:"center"}}>
           <img
             src={search_icon}
-            style={{ width: "90%", height: "90%",}}
+            style={{ width: "90%",}}
+          />
+        </a>
+      </div>
+      <div style={{ width: "2.5%", height: "70%", marginLeft: "2%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+        <a href="/compare" style={{ width: "100%", height: "100%", display:"flex", justifyContent: "center", alignItems:"center"}}>
+          <img
+            src={compare_Icon}
+            style={{ width: "90%"}}
           />
         </a>
       </div>
@@ -107,16 +116,15 @@ function Header() {
         <a href="/chat" style={{ width: "100%", height: "100%", display:"flex", justifyContent: "center", alignItems:"center"}}>
           <img
             src={chat_icon}
-            style={{ width: "95%", height: "100%",}}
+            style={{ width: "100%",}}
           />
         </a>
       </div>
-
         <div className="profileDropdown" style={{ width: "2.5%", height: "70%", marginLeft: "2%", marginRight:"0%", display:"flex", justifyContent: "center", alignItems:"center"}}>
           <img
             src={profile_icon}
             style={{
-              width: "90%",
+              width: "100%",
               height: "90%",
               cursor: "pointer",
             }}
