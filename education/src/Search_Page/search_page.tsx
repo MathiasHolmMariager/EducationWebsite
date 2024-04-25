@@ -48,7 +48,7 @@ function SearchPage() {
     },
     {
       name: "Medialogy - Aalborg - Kandidat",
-      code: "Medialogiy, Kandidat",
+      code: "Medialogy, Kandidat",
       students: 248,
       degree: "master",
     },
