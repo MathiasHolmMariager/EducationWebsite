@@ -23,18 +23,27 @@ const dropdownContent = {
   Adgangskrav: [
     {
       fag: 'Dansk',
-      niveau: 'A',
-      n: 3 
+      niveau: "A",
+      n: 3,
+      avg: 2,
+      n2: 3,
+      avg2: 2,
     },
     {
       fag: 'Engelsk',
-      niveau: 'B',
-      n: 2
+      niveau: "B",
+      n: 2,
+      avg: 2,
+      n2: 2,
+      avg2: 2,
     },
     {
       fag: 'Matematik',
-      niveau: 'A',
-      n: 3 
+      niveau: "A med et gennemsnit på minimum 2,0 eller matematik B med et gennemsnit på minimum 7,0",
+      n: 3, 
+      avg: 2,
+      n2: 2,
+      avg2: 7,
     },
   ],
 

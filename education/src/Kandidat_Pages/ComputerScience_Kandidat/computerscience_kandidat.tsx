@@ -26,21 +26,6 @@ function ComputerscienceKandidat() {
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [uid, setUid] = useState<string | null>(null);
 
-  const value1 = parseFloat(dropdownContent.Tidsforbrug.split("-")[1]);
-  const value2 = parseFloat(dropdownContent.Tidsforbrug.split("-")[2]);
-  const value3 = parseFloat(dropdownContent.Tidsfordeling.split("-")[1]);
-  const value4 = parseFloat(dropdownContent.Tidsfordeling.split("-")[2]);
-
-  const tidsforbrug = [
-    { name: "Computerscience", value: value2, fill: "lightgreen", unit: "Hours" },
-    { name: "Avg. masters", value: value1, fill: "lightblue", unit: "Hours" },
-  ];
-
-  const Tidsfordeling = [
-    { name: "Preparation", value: value3, fill: "orange" },
-    { name: "Lectures", value: value4, fill: "pink" },
-  ];
-
   const renderCustomizedLabel = ({
     cx,
     cy,
@@ -71,7 +56,7 @@ function ComputerscienceKandidat() {
       if (user) {
         setUid(user.uid);
         const db = getDatabase();
-        const title = "Computerscience, Kandidat";
+        const title = `${dropdownContent.urlCode}`;
         const favRef = ref(db, `users/${user.uid}/favorites/${title}`);
         get(favRef).then((snapshot: { exists: () => any; }) => {
           if (snapshot.exists()) {
@@ -89,7 +74,7 @@ function ComputerscienceKandidat() {
 
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
   useEffect(() => {
-    const pairToSave = { title: "Computerscience, Kandidat", code: "Computerscience, Kandidat" };
+    const pairToSave = { title: `${dropdownContent.urlCode}`, code: `${dropdownContent.urlCode}` };
     const savedListString = localStorage.getItem("LAST_SEEN");
     let existingList = savedListString ? JSON.parse(savedListString) : [];
     let index = -1;
@@ -110,7 +95,7 @@ function ComputerscienceKandidat() {
       existingList = existingList.slice(0, 5);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", "Computerscience, Kandidat");
+    localStorage.setItem("PAGE_ID", `${dropdownContent.urlCode}`);
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -150,8 +135,8 @@ function ComputerscienceKandidat() {
 
   const handleStarClick = () => {
     if (uid) {
-      const title = "Computerscience, Kandidat";
-      const code = "Computerscience, Kandidat";
+      const title = `${dropdownContent.urlCode}`;
+      const code = `${dropdownContent.urlCode}`;
       const db = getDatabase();
       const favRef = ref(db, `users/${uid}/favorites/${title}`);
       
@@ -206,7 +191,7 @@ function ComputerscienceKandidat() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Computer Science (IT) - Aalborg - Masters</h1>
+        <h1>{dropdownContent.studyTitel}</h1>
         <img
           src={isStarClicked ? StarGold : Star}
           onClick={handleStarClick}
@@ -241,7 +226,7 @@ function ComputerscienceKandidat() {
             className="iframe-container"
             width="100%"
             height="100%"
-            src="https://prod-aaudxp-cms-001-app.azurewebsites.net/media/vibdkgbz/292717_computer-science-it-aalborg-universitet-kandidatuddannelse-2.jpg?width=960"
+            src= {dropdownContent.headerSrcLink}
             style={{ border: "0px" }}
           ></img>
           </div>
@@ -277,7 +262,7 @@ function ComputerscienceKandidat() {
           </button>
           {dropdown1Visible && (
             <div className="dropdown-content">
-              <div dangerouslySetInnerHTML={{ __html: dropdownContent["Længere beskrivelse"] }}/>
+              <div dangerouslySetInnerHTML={{ __html: dropdownContent.langBeskrivelse}}/>
             </div>
           )}
         </div>
@@ -482,7 +467,7 @@ function ComputerscienceKandidat() {
                       width: "50%",
                     }}
                   >
-                    <BarChart data={tidsforbrug} width={200} height={250} />
+                    <BarChart data={dropdownContent.tidsforbrug} width={200} height={250} />
                   </div>
                   <div
                     style={{
@@ -493,7 +478,7 @@ function ComputerscienceKandidat() {
                       <ResponsiveContainer width="100%" height={336}>
                         <PieChart >
                           <Pie
-                            data={Tidsfordeling}
+                            data={dropdownContent.Tidsfordeling}
                             cx="50%"
                             cy="50%"
                             innerRadius="20%"
@@ -504,7 +489,7 @@ function ComputerscienceKandidat() {
                             labelLine={false}
                             isAnimationActive={false}
                           >
-                            {Tidsfordeling.map((_entry, index) => (
+                            {dropdownContent.Tidsfordeling.map((_entry, index) => (
                               <Cell key={`cell-${index}`} />
                             ))}
                           </Pie>
@@ -520,7 +505,7 @@ function ComputerscienceKandidat() {
                         width: "100%",
                       }}
                     >
-                      {Tidsfordeling.map((item, index) => (
+                      {dropdownContent.Tidsfordeling.map((item, index) => (
                         <div
                           key={index}
                           style={{
@@ -573,7 +558,7 @@ function ComputerscienceKandidat() {
             </div>
           </button>
           {dropdown6Visible && (
-            <div style={{ width:"98%", margin:"auto"}}><p style={{fontSize:"20px"}}>Some of the possible future jobs a graduated computer scientist could pursue are:</p><ul>
+            <div style={{ width:"98%", margin:"auto"}}><p style={{fontSize:"20px"}}>Some of the possible future jobs are:</p><ul>
             {dropdownContent.Jobs.map((subject, index) => (
                 <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
                   <li key={index} style={{ marginLeft: "1%", fontSize:"20px" }}>
@@ -691,7 +676,7 @@ function ComputerscienceKandidat() {
           <div className="dropdown-content">
             <div>
               <p>Social aspects evaluated by the students on the study program</p>
-              <progress className="progress-bar" value={dropdownContent["Social bedømmelse"]} max="500"></progress>
+              <progress className="progress-bar" value={dropdownContent.socialBedømmelse} max="500"></progress>
             </div>
           </div>
         )}
@@ -724,7 +709,7 @@ function ComputerscienceKandidat() {
           <div className="dropdown-content">
             <div>
               <p>Unemployment rate among recent graduated students from the study program</p>
-              <progress className="progress-bar" value={dropdownContent["Jobmulighed bedømmelse"]} max="500"></progress>
+              <progress className="progress-bar" value={dropdownContent.jobbedømmelse} max="500"></progress>
             </div>
           </div>
         )}

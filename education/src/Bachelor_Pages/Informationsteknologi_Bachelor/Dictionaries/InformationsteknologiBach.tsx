@@ -21,24 +21,33 @@ const dropdownContent = {
   `,
 
   beskrivelseSrcLink: "https://www.youtube-nocookie.com/embed/2GCY7KQvAY4?autoplay=1&enablejsapi=1&origin=https%3A%2F%2Fwww.aau.dk",
-
   Adgangskrav: [
     {
       fag: 'Dansk',
-      niveau: 'A',
-      n: 3 
+      niveau: "A",
+      n: 3,
+      avg: 2,
+      n2: 3,
+      avg2: 2,
     },
     {
       fag: 'Engelsk',
-      niveau: 'B',
-      n: 2
+      niveau: "B",
+      n: 2,
+      avg: 2,
+      n2: 2,
+      avg2: 2,
     },
     {
       fag: 'Matematik',
-      niveau: 'A',
-      n: 3 
+      niveau: "A",
+      n: 3, 
+      avg: 2,
+      n2: 3,
+      avg2: 2,
     },
   ],
+
 
   Adgangskvotient: `Alle optaget (2023)`,
 

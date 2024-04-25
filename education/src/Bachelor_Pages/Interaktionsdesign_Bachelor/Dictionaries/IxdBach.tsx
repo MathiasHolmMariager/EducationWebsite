@@ -44,20 +44,30 @@ const dropdownContent = {
   Adgangskrav: [
     {
       fag: 'Dansk',
-      niveau: 'A',
-      n: 3 
+      niveau: "A",
+      n: 3,
+      avg: 2,
+      n2: 3,
+      avg2: 2,
     },
     {
       fag: 'Engelsk',
-      niveau: 'B',
-      n: 2
+      niveau: "B",
+      n: 2,
+      avg: 2,
+      n2: 2,
+      avg2: 2,
     },
     {
       fag: 'Matematik',
-      niveau: 'B',
-      n: 2 
+      niveau: "b",
+      n: 2, 
+      avg: 2,
+      n2: 2,
+      avg2: 2,
     },
   ],
+
 
   Adgangskvotient: `Alle optaget (2023)`,
 

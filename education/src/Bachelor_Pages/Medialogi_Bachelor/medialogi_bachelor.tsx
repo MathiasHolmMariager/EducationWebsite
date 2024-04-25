@@ -118,17 +118,35 @@ function MedialogiBachelor() {
           setFirebaseData(data);
           const adgangskravSubjects = dropdownContent.Adgangskrav;
   
+          const matchingData = adgangskravSubjects.map(subject => {
+            const filteredData = data.filter((item: { fag: string;}) => item.fag === subject.fag);
+            const dataN = filteredData.map((item: {n: number}) => [item.n]).flat();
+            const sumN = dataN.reduce((total: number, num: number) => total + num, 0);
+            const averageN = sumN / dataN.length;
+            const mappedData = filteredData.map((item: { årsKarakter: number; prøveKarakter: number; }) => [item.årsKarakter, item.prøveKarakter]).flat();
+            const noUndefined = mappedData.filter((item: number) => item !== undefined);
+            const sum = noUndefined.reduce((total: number, num: number) => total + num, 0);
+            const average = sum / noUndefined.length;
+            return {
+              fag: subject.fag,
+              n: averageN,
+              avg: average,
+            };
+          });
+
           const allExist = adgangskravSubjects.every(subject => (
-            data.some((item: any) => (
-              item.fag === subject.fag && item.n >= subject.n
+            matchingData.some((item: any) => (
+              (item.fag === subject.fag && item.n >= subject.n && item.avg >= subject.avg) || (item.fag === subject.fag && item.n >= subject.n2 && item.avg >= subject.avg2 )  
             ))
           ));
   
           const someExist = adgangskravSubjects.some(subject => (
-            data.some((item: any) => (
-              item.fag === subject.fag && item.n >= subject.n
+            matchingData.some((item: any) => (
+              item.fag === subject.fag && item.n >= subject.n && item.avg >= subject.avg
             ))
           ));
+
+          console.log(matchingData);
   
           if (allExist) {
             setAccesStatus("true");
@@ -139,6 +157,7 @@ function MedialogiBachelor() {
           }
         } else {
           setAccesStatus("na");
+
         }
       });
     }
@@ -603,6 +622,7 @@ function MedialogiBachelor() {
                             display: "flex",
                             padding: "2%",
                             margin: "auto",
+                            background:"yellow"
                           }}
                         >
                           <div
