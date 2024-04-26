@@ -105,7 +105,7 @@ function SearchPage() {
     } else if (sortOption === "popularity") {
       return b.students - a.students;
     } else {
-      return a.name.localeCompare(b.name);
+      return b.name.localeCompare(a.name);
     }
   });
 

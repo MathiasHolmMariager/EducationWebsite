@@ -110,7 +110,7 @@ function ProfilePage() {
           <p style={{width:"", textAlign:"left", paddingLeft:"19%"}}>Log ud</p>
         </button>
       </div>
-      <div style={{ marginLeft:"25%", width:"75%", height:"100%", display:"flex", flexDirection:"column", alignItems:"center"}}>
+      <div style={{ marginLeft:"25%", width:"75%", height:"100%", display:"flex", flexDirection:"column", alignItems:"center", background:"white"}}>
         {underPage === 'pro' && (
           <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
             <h2 style={{marginTop:"-1.5%"}}>kontaktoplysninger:</h2>
