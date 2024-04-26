@@ -446,12 +446,11 @@ function InteraktionsdesignKandidat() {
                 <div
                   style={{
                     display: "flex",
-                    justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{ margin: "auto" }}>Ugentlige arbejdstimer:</h4>
-                  <h4 style={{ margin: "auto" }}>Fordeling af arbejdstimer:</h4>
+                  <h4 style={{ margin: "auto", marginLeft: "140px " }}>Ugentlige arbejdstimer:</h4>
+                  <h4 style={{ margin: "auto", marginLeft: "140px" }}>Fordeling af arbejdstimer:</h4>
                 </div>
                 <div
                   style={{
@@ -600,6 +599,7 @@ function InteraktionsdesignKandidat() {
               <div style={{ pointerEvents: 'none' }}>
                 <div
                   style={{
+                    width: "100%",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",

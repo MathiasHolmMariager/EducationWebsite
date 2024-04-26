@@ -149,7 +149,7 @@ function HomePage() {
               overflow: "auto",
               borderBottomLeftRadius: "10px",
               borderBottomRightRadius: "10px",
-
+              background:"white",
             }}
           >
             <ul style={{ margin: "0%", padding:"0%", marginTop:"2%" }}>
@@ -157,7 +157,7 @@ function HomePage() {
                 <li
                   key={index}
                   style={{
-                    background: "lightgrey",
+                    background: "rgb(239, 239, 239",
                     margin: "auto",
                     width: "96%",
                     marginBottom: "2%",
@@ -169,7 +169,7 @@ function HomePage() {
                   }}
                 >
                   <a href={item.code} style={{ width:"100%", height:"100%", borderRadius:"8px", display:"flex", alignItems:"center", textAlign:"left", color:"rgb(75,75,75)", paddingLeft:"2%"}}>
-                    <p style={{width:"92%"}}>{item.title}</p>
+                    <p style={{width:"92%",color:"rgb(75,75,75)"}}>{item.title}</p>
                     <img src={arrowClick} style={{width:"30px", height:"30px", marginTop:"0.2%"}} />
                     </a>
                 </li>
@@ -237,7 +237,7 @@ function HomePage() {
                     <li
                       key={index}
                       style={{
-                        background: "lightgrey",
+                        background: "rgb(239, 239, 239",
                         margin: "auto",
                         width: "96%",
                         marginBottom: "2%",
@@ -249,7 +249,7 @@ function HomePage() {
                       }}
                     >
                       <a href={`/${favorite.code}`} style={{ width:"100%", height:"100%", borderRadius:"8px", display:"flex", alignItems:"center", textAlign:"left", color:"rgb(75,75,75)", paddingLeft:"2%"}}>
-                        <p style={{width:"92%"}}>{favorite.title}</p>
+                        <p style={{width:"92%",color:"rgb(75,75,75)"}}>{favorite.title}</p>
                         <img src={arrowClick} style={{width:"30px", height:"30px", marginTop:"0.2%"}} />
                       </a>
                     </li>

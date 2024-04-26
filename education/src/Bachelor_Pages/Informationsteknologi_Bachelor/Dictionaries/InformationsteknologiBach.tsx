@@ -4,7 +4,7 @@ const dropdownContent = {
 
   studyTitel: "Informationsteknologi - Aalborg - Bachelor",
 
-  headerSrcLink: "https://prod-aaudxp-cms-001-app.azurewebsites.net/media/zxrjlfgt/studieguide_pic_bait2.png?width=960",
+  headerSrcLink: "https://prod-aaudxp-cms-001-app.azurewebsites.net/media/sy3j04z3/intro_featured-image.jpg?width=960",
  
   Beskrivelse: `På uddannelsen lærer du at skabe løsninger med fokus på både kommunikation, teknologi- og forretningsudvikling. Du skal fordybe dig i emner som analyse og usability-evaluering, teknikker til softwareudvikling og design af brugergrænseflader. Du får en eftertragtet tværfaglig jobprofil.`,
 
