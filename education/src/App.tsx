@@ -3,7 +3,6 @@ import Header from "./Components/header";
 import { useEffect, useState } from "react";
 import UserModal from "./Components/login_create_user";
 import { auth } from "./Components/firebase";
-import "./App.css"
 import Baggrund from "../src/assets/Baggrund.png"
 
 function App() {
@@ -33,7 +32,7 @@ function App() {
   return (
     <div className="Page" style={{display:"flex", flexDirection:"column"}}>
       <Header />
-      <img style={{position:"relative", zIndex:-1,height:"100vh",width:"100%"}}
+      <img style={{position:"relative", zIndex:-1, height:"100vh", width:"110%", marginLeft:"-5%"}}
       src={Baggrund}/>
       <div style={{marginTop:"-93vh"}}>
       <Outlet />
