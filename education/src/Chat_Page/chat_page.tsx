@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { get, getDatabase, onValue, ref, remove, set } from "firebase/database";
 import React from "react";
-import { OpenAIchat } from "../Components/openai";
+import { OpenAIchat } from "../Components/Openai/openai";
 import "../Chat_Page/chat_page.css";
 import sendButton from "../assets/send.png";
 import searchIcon from "../assets/searchIcon.png"
@@ -24,9 +24,12 @@ function ChatPage() {
   const conversationHistoryRef = useRef<HTMLDivElement | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [createChatQuery, setCreateChatQuery] = useState('');
   const [pageID, setPageID] = useState<string | null>(
     localStorage.getItem("PAGE_ID")
   );
+  const [showChat, setShowChat] = useState<boolean>(true); // Add state to control whether to show chat or not
+  const createChats = ["Interaktionsdesign, Bachelor", "Interaktionsdesign, Kandidat", "Informationsteknologi, Bachelor", "Computerscience, Kandidat", "Medialogi, Bachelor", "Medialogy, Kandidat"];
 
 
   //finder firebase user:
@@ -149,6 +152,12 @@ function ChatPage() {
     localStorage.setItem("PAGE_ID", selectedPageID);
   };
 
+  const handleCreateChatItemClick = (selectedPageID: string) => {
+    setPageID(selectedPageID);
+    localStorage.setItem("PAGE_ID", selectedPageID);
+    setShowChat(true);
+  };
+
   //chat search:
   const filteredChats = chats.filter(chatID =>
     chatID.toLowerCase().includes(searchQuery.toLowerCase())
@@ -157,8 +166,23 @@ function ChatPage() {
   const handleSearchInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setSearchQuery(event.target.value);
   };
-  
 
+  const filteredCreateChats = createChats.filter(createChatID =>
+    createChatID.toLowerCase().includes(createChatQuery.toLowerCase())
+  );
+
+  const handleCreateChatInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    setCreateChatQuery(event.target.value);
+  };
+  
+  useEffect(() => {
+    if (chats.length === 0) {
+      setShowChat(false);
+      console.log("Ingen chats");
+    } else {
+      setShowChat(true);
+    }
+  }, [chats]);
 
   //#####################################################################
   
@@ -172,8 +196,60 @@ function ChatPage() {
         display: "flex",
         flexDirection: "row",
       }}
-    >
-      <div
+    > 
+      {!showChat ? (<div style={{ width: "25%", boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)"}}><input
+          type="text"
+          placeholder="Søg efter chats..."
+          style={{
+            width: "85%",
+            height:"10%",
+            border: "none",
+            borderRadius: "2px 0px 0px 2px",
+            paddingLeft: "2%",
+            outline: "none",
+            fontSize: "100%"
+          }}
+          value={createChatQuery}
+          onChange={handleCreateChatInputChange}
+        />{createChatQuery === '' ? (<div></div>) : (<div
+        className="chatChoices"
+        style={{ overflow: "auto", height: "90%", padding: "0%" }}
+      >
+        <ul
+          style={{
+            listStyleType: "none",
+            width: "100%",
+            padding: "2.5%",
+            height: "90%",
+            marginTop: "0%",
+            marginBottom: "0%",
+          }}
+        >
+          {filteredCreateChats.map((createChatID) => (
+            <li
+              key={createChatID}
+              onClick={() => handleCreateChatItemClick(createChatID)}
+              style={{
+                background: createChatID === pageID ? "rgba(100, 100, 100, 0.1)" : "rgba(100, 100, 100, 0.03)",
+                color: "rgb(75,75,75)",
+                marginBottom: "2.5%",
+                cursor: "pointer",
+                width: "95%",
+                height: "10%",
+                borderRadius: "8px",
+                justifyContent: "center",
+                display: "flex",
+                alignItems: "center",
+                fontSize: "100%",
+              }}
+            >
+              <p style={{ width:"80%", height:"100%", display:"flex", alignItems:"center", paddingLeft:"2%", borderRadius:"8px"}}>{createChatID}</p>   
+              <div style={{width:"20%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center"}}><img src={arrowIcon} style={{width:"40%"}}/></div>
+                        
+            </li>
+          ))}
+        </ul>
+      </div>)}</div>) : (<div
         style={{ width: "25%", boxShadow: "0px 0px 8px 2px rgba(0,0,0,0.1)" }}
       >
         <div style={{height:"6%", width:"94%", display:"flex", justifyContent:"center", alignItems:"center", padding:"3% 2% 2% 3%", marginTop:"1%"}}>
@@ -237,7 +313,8 @@ function ChatPage() {
             ))}
           </ul>
         </div>
-      </div>
+      </div>)}
+      
       <div style={{ width: "75%", height: "100%" }}>
         <div
           style={{
@@ -257,42 +334,39 @@ function ChatPage() {
               width: "100%",
             }}
           >
-            <div
-              style={{
+{/*Chat-skrivefelt*/}
+            {!showChat ? (<div></div>) : (<div style={{
                 width: "90%",
                 height: "82.6%",
                 borderRadius: "2px",
                 display: "flex",
                 boxShadow: "0px 0px 1.5px 0px rgba(0,0,1)",
+              }}><input
+              type="text"
+              placeholder="Skriv din besked..."
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              style={{
+                width: "90%",
+                border: "none",
+                borderRadius: "2px 0px 0px 2px",
+                paddingLeft: "2%",
+                outline: "none",
+                fontSize: "100%",
+              }}
+              onKeyPress={handleKeyPress}
+            />
+            <button
+              style={{
+                width: "10%",
+                height: "100%",
+                borderRadius: "0px 2px 2px 0px",
+                background: "white",
+                outline: "none",
               }}
             >
-              <input
-                type="text"
-                placeholder="Skriv din besked..."
-                value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
-                style={{
-                  width: "90%",
-                  border: "none",
-                  borderRadius: "2px 0px 0px 2px",
-                  paddingLeft: "2%",
-                  outline: "none",
-                  fontSize: "100%",
-                }}
-                onKeyPress={handleKeyPress}
-              />
-              <button
-                style={{
-                  width: "10%",
-                  height: "100%",
-                  borderRadius: "0px 2px 2px 0px",
-                  background: "white",
-                  outline: "none",
-                }}
-              >
-                <img src={sendButton} style={{ width: "55%", height: "80%", marginTop:"3%" }} />
-              </button>
-            </div>
+              <img src={sendButton} style={{ width: "55%", height: "80%", marginTop:"3%" }} />
+            </button></div>)}
           </div>
           <div
             className="chat"
@@ -334,7 +408,8 @@ function ChatPage() {
                   flexDirection: "column-reverse",
                 }}
               >
-                <p>Stil spørgsmål til uddannelsen</p>
+                {!showChat ? (<div><p>Søg efter en ny uddannelse</p></div>) : (<div><p>Stil et spørgsmål</p></div>)}
+                
               </div>
             ) : (
               conversationHistory
@@ -393,20 +468,22 @@ function ChatPage() {
               alignItems: "center",
             }}
           >
-            <h2 style={{ marginLeft: "2%", width: "85%" }}>{pageID}</h2>
-            <a href={`${pageID}`} style={{ width: "5%", height: "80%", margin: "0% 1% 0% 0%", padding:"0%", background:"white" }}>
-            <button
-              style={{ width: "100%", height: "100%", margin: "0% 1% 0% 0%", padding:"0%", background:"white" }}
-            >
-              <img src={goToIcon} style={{ width: "80%", height: "95%",marginTop:"2.5%"}}/>
-            </button>
-            </a>
-            <button
-              style={{ width: "5%", height: "80%", margin: "0% 2% 0% 0%", padding:"0%", background:"white", }}
-              onClick={handleDeleteChat}
-            >
-              <img src={trashIcon} style={{ width: "80%", height: "75%",marginTop:"4%"}}/>
-            </button>
+            {!showChat ? (<div><h2>Ingen igangværende chats</h2></div>) : (<div style={{width: "100%", display: "flex"}}>
+              <h2 style={{ marginLeft: "2%", width: "85%" }}>{pageID}</h2>
+              <a href={`${pageID}`} style={{ width: "5%", height: "80%", margin: "0% 1% 0% 0%", padding:"0%", background:"white" }}>
+              <button
+               style={{ width: "110%", height: "100%", margin: "30% 1% 0% 0%", padding:"0%", background:"white" }}
+              >
+                <img src={goToIcon} style={{ width: "80%", height: "95%",marginTop:"2.5%"}}/>
+              </button>
+              </a>
+              <button
+                style={{ width: "5.5%", height: "80%", margin: "1.3% 2% 0% 0%", padding:"0%", background:"white", }}
+                onClick={handleDeleteChat}
+              >
+                <img src={trashIcon} style={{ width: "80%", height: "75%",marginTop:"4%"}}/>
+              </button>
+            </div>)}
           </div>
         </div>
       </div>
