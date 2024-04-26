@@ -291,7 +291,7 @@ function ComputerscienceKandidat() {
             </div>
           </button>
           {dropdown2Visible && (
-            <div style={{ width:"98%", margin:"auto"}}><p style={{fontSize:"20px"}}>Bachelor’s degrees that qualify for admission</p><ul>
+            <div style={{ width:"98%", margin:"auto"}}><p style={{fontSize:"20px"}}>Bachelor degrees that qualify for admission</p><ul>
             {dropdownContent.Adgangskrav.map((subject, index) => (
                 <div style={{ display: "flex", alignItems: "center", marginBottom: "2%" }}>
                   <a style={{width:"100%"}} href={subject.href} target="_blank">
@@ -301,7 +301,8 @@ function ComputerscienceKandidat() {
                   </a>
                 </div>
             ))}
-          </ul><p style={{fontSize:"20px"}}>All qualified applicants who apply before the application deadline 1 March will be offered admission.</p></div>
+          </ul>
+          </div>
           )}
         </div>
 
@@ -445,12 +446,11 @@ function ComputerscienceKandidat() {
                 <div
                   style={{
                     display: "flex",
-                    justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{ margin: "auto" }}>Ugentlige arbejdstimer:</h4>
-                  <h4 style={{ margin: "auto" }}>Fordeling af arbejdstimer:</h4>
+                  <h4 style={{ margin: "auto", marginLeft: "140px " }}>Weekly working hours:</h4>
+                  <h4 style={{ margin: "auto", marginLeft: "140px" }}>Distribution of working hours:</h4>
                 </div>
                 <div
                   style={{
@@ -596,19 +596,25 @@ function ComputerscienceKandidat() {
           </button>
           {dropdown7Visible && (
             <div className="dropdown-content">
-              <div style={{ pointerEvents: 'none', display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center",}}>
+              <div style={{
+                  pointerEvents: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <div
                   style={{
                     width:"100%",
                     display: "flex",
-                    justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{marginRight:"10%",}}>Wage after graduation:</h4>
-                  <h4 style={{marginLeft:"10%"}}>Wage after 10 years:</h4>
+                  <h4 style={{marginLeft:"180px"}}>Wage after graduation:</h4>
+                  <h4 style={{marginLeft:"200px"}}>Wage after 10 years:</h4>
                 </div>
-                <div style={{display:"flex"}}>
+                <div style={{ display:"flex", fontSize:"18px", }}>
                   <div>
                     <BarChart data={dropdownContent.FørsteÅrLøn} width={200} height={250} />
                   </div>

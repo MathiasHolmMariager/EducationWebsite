@@ -218,14 +218,14 @@ const dropdownContent = {
 
   FørsteÅrLøn: [
     {
-      name: "Computer science graduate", value: 35750, fill: "lightgreen", unit: "dkk",
+      name: "Medialogy graduate", value: 35750, fill: "lightgreen", unit: "dkk",
     },
     { name: "Denmark median", value: 39500, fill: "lightblue", unit: "dkk" },
   ],
 
   TiÅrLøn: [
     {
-      name: "Computer science graduate",
+      name: "Medialogy graduate",
       value: 42300,
       fill: "orange",
       unit: "dkk",
