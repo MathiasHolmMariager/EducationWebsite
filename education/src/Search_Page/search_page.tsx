@@ -213,6 +213,7 @@ function SearchPage() {
           padding: "0px",
           justifyContent: "center",
           alignItems: "center",
+          marginTop: "-42px"
         }}
       >
       {sortedFilteredData.length === 0 ? (
@@ -227,7 +228,7 @@ function SearchPage() {
                     display: "flex",
                     textAlign: "left",
                     width: "98%",
-                    backgroundColor: "rgba(100, 100, 100, 0.1)",
+                    backgroundColor: "rgb(239, 239, 239",
                     color: "rgb(75, 75, 75)",
                     padding: "1%",
                     borderRadius: "8px",
