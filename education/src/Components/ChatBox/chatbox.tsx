@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { OpenAIchat } from "../openai";
+import { OpenAIchat } from "../Openai/openai";
 import "../ChatBox/chatbox.css";
 import React from "react";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
