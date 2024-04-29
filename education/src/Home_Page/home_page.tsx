@@ -34,6 +34,7 @@ function HomePage() {
     return () => unsubscribe();
   }, []);
 
+  //få favorit uddannelser:
   useEffect(() => {
     if (user) {
       const db = getDatabase();

@@ -100,7 +100,6 @@ function MedialogyKandidat() {
       existingList = existingList.slice(0, 6);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", `${dropdownContent.urlCode}`);
   }, []);
   //#####################LAST_SEEN_STUDY_PROGRAMS############################
 
@@ -154,9 +153,15 @@ function MedialogyKandidat() {
             console.error("Error removing data:", error);
           });
       } else {
-        set(favRef, { code: code, title: title })
-          .then(() => {
-            setIsStarClicked(true);
+        set(favRef, { 
+          code: code, 
+          title: title, 
+          lønNiveau: dropdownContent.FørsteÅrLøn[0], 
+          lønNiveauTi: dropdownContent.TiÅrLøn[0], 
+          tidsforbrug: dropdownContent.tidsforbrug[0], 
+          type: "master" 
+        }).then(() => {
+          setIsStarClicked(true);
           })
           .catch((error) => {
             console.error("Error adding data:", error);
@@ -862,7 +867,7 @@ function MedialogyKandidat() {
           )}
         </div>
       </div>
-      <Chatbox />
+      <Chatbox chatBotID={dropdownContent.urlCode}/>
     </div>
   );
 }

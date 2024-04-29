@@ -100,26 +100,26 @@ function ProfilePage() {
 
   return (
     <div style={{width:"90%",height:"100%", margin:"auto", display:"flex", flexDirection:"row", overflowY:"auto"}}>
-      <div style={{width:"25%", height:"100%", display:"flex", alignItems:"center", flexDirection:"column", position:"fixed"}}>
-        <button style={{width:"80%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'pro' ? "rgb(33, 26, 82)" : "", color: underPage === 'pro' ? "white" : "" }} onClick={() => setUnderPage('pro')}>Profiloplysninger</button>
-        <button style={{width:"80%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'int' ? "rgb(33, 26, 82)" : "", color: underPage === 'int' ? "white" : ""}} onClick={() => setUnderPage('int')}>Dine interesser</button>
-        <button style={{width:"80%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'gym' ? "rgb(33, 26, 82)" : "", color: underPage === 'gym' ? "white" : ""}} onClick={() => setUnderPage('gym')}>Gymnasium Bevis</button>
-        <button style={{width:"80%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'bac' ? "rgb(33, 26, 82)" : "", color: underPage === 'bac' ? "white" : ""}} onClick={() => setUnderPage('bac')}>Bachelor bevis</button>
-        <button style={{marginTop:"80%", display:"flex", width:"40%", height:"7%", alignItems:"center", justifyContent:"center"}} onClick={handleSignOut}>
+      <div style={{width:"20%", height:"100%", display:"flex", alignItems:"center", flexDirection:"column", position:"fixed", background:"white", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)"}}>
+        <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'pro' ? "rgb(33, 26, 82)" : "", color: underPage === 'pro' ? "white" : "" }} onClick={() => setUnderPage('pro')}>Profiloplysninger</button>
+        <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'int' ? "rgb(33, 26, 82)" : "", color: underPage === 'int' ? "white" : ""}} onClick={() => setUnderPage('int')}>Dine interesser</button>
+        <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'gym' ? "rgb(33, 26, 82)" : "", color: underPage === 'gym' ? "white" : ""}} onClick={() => setUnderPage('gym')}>Gymnasium Bevis</button>
+        <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'bac' ? "rgb(33, 26, 82)" : "", color: underPage === 'bac' ? "white" : ""}} onClick={() => setUnderPage('bac')}>Bachelor bevis</button>
+        <button style={{marginTop:"100%", display:"flex", width:"40%", height:"7%", alignItems:"center", justifyContent:"center"}} onClick={handleSignOut}>
           <img src={logoutIcon} style={{width:"20%",}} />
           <p style={{width:"", textAlign:"left", paddingLeft:"19%"}}>Log ud</p>
         </button>
       </div>
-      <div style={{ marginLeft:"25%", width:"75%", height:"100%", display:"flex", flexDirection:"column", alignItems:"center", background:"white"}}>
+      <div style={{ marginLeft:"25%", width:"75%", height:"100%", display:"flex", flexDirection:"column", alignItems:"center"}}>
         {underPage === 'pro' && (
-          <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
+          <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white"}}>
             <h2 style={{marginTop:"-1.5%"}}>kontaktoplysninger:</h2>
             <p style={{width:"100%"}}><b>Email:</b> {user?.email}
             </p>
           </div>
         )}
         {underPage === 'int' && (
-          <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
+          <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white"}}>
             <h2 style={{marginTop:"-1.5%"}}>Vælg dine interesser:</h2>
             <ul style={{listStyleType:"none", columnCount:"2", marginLeft:"-2%", width:"94%", height:""}}>
               {interests.map((interest, index) => (
@@ -134,7 +134,7 @@ function ProfilePage() {
           </div>
         )}
         {underPage === 'gym' && (
-          <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
+          <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white"}}>
             <h2 style={{marginTop:"-1.5%"}}>Karakterblad for gymnasiet:</h2>
             <ul style={{listStyleType:"none"}}>
               {diploma.highSchoolDiploma && Object.values(diploma.highSchoolDiploma).map((subject: any, index: number) => (
@@ -148,7 +148,7 @@ function ProfilePage() {
           </div>
         )}
         {underPage === 'bac' && (
-          <div style={{width:"80%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%"}}>
+          <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white"}}>
             <div style={{display:"flex", width:"100%", alignItems:"center", justifyContent:"space-between" , }}>
             <h2 style={{marginTop:"-1.5%",}}>Karakterblad for bachelor:</h2>
             <h2 style={{marginTop:"-1.5%",}}>{diploma.bachelorTitel}</h2>

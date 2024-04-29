@@ -30,11 +30,11 @@ function App() {
 
 
   return (
-    <div className="Page" style={{display:"flex", flexDirection:"column"}}>
+    <div className="Page" style={{display:"flex", flexDirection:"column",}}>
       <Header />
-      <img style={{position:"relative", zIndex:-1, height:"100vh", width:"110%", marginLeft:"-5%"}}
+      <img style={{position:"relative", zIndex:-1, height:"90vh", width:"calc(100% + 16px)", marginLeft:"-8px"}}
       src={Baggrund}/>
-      <div style={{marginTop:"-93vh"}}>
+      <div style={{marginTop:"-83vh"}}>
       <Outlet />
       </div>
       <div

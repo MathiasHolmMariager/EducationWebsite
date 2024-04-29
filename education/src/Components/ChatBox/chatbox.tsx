@@ -13,7 +13,11 @@ interface Message {
   content: string;
 }
 
-function Chatbox() {
+interface ChatBot {
+  chatBotID: string;
+}
+
+function Chatbox({chatBotID}: ChatBot) {
   const [isChatboxOpen, setIsChatboxOpen] = useState(false);
   const [conversationHistory, setConversationHistory] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState("");
@@ -21,13 +25,12 @@ function Chatbox() {
   const conversationHistoryRef = useRef<HTMLDivElement | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
-  const pageID = localStorage.getItem("PAGE_ID");
-  const splitPageID = pageID ? pageID.split(",")[0] : null;
+  const splitPageID = chatBotID ? chatBotID.split(",")[0] : null;
 
   useEffect(() => {
     if (isChatboxOpen && user) {
       const db = getDatabase();
-      const chatRef = ref(db, `users/${user.uid}/chat/${pageID}`);
+      const chatRef = ref(db, `users/${user.uid}/chat/${chatBotID}/chatHistorik`);
 
       const fetchConversationHistory = async () => {
         try {
@@ -44,7 +47,7 @@ function Chatbox() {
 
       fetchConversationHistory();
     }
-  }, [isChatboxOpen, user, pageID]);
+  }, [isChatboxOpen, user, chatBotID]);
 
   useEffect(() => {
     const auth = getAuth();
@@ -70,7 +73,7 @@ function Chatbox() {
 
   const handleUserInput = async () => {
     if (userInput.trim() === "") return;
-
+    const tidspunkt = Date.now();
     const updatedHistory = [
       ...conversationHistory,
       { role: "user", content: userInput },
@@ -83,7 +86,9 @@ function Chatbox() {
     setAssistantReply(assistantReply);
     if (user) {
       const db = getDatabase();
-      const chatRef = ref(db, `users/${user.uid}/chat/${pageID}`);
+      const chatRefTime = ref(db, `users/${user.uid}/chat/${chatBotID}`);
+      const chatRef = ref(db,`users/${user.uid}/chat/${chatBotID}/chatHistorik`);
+      set(chatRefTime, { timestamp: tidspunkt });
       set(chatRef, updatedHistory);
     }
     setIsLoading(false);

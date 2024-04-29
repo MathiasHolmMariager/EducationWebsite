@@ -100,7 +100,6 @@ function InteraktionsdesignBachelor() {
       existingList = existingList.slice(0, 6);
     }
     localStorage.setItem("LAST_SEEN", JSON.stringify(existingList));
-    localStorage.setItem("PAGE_ID", `${dropdownContent.urlCode}`);
   }, []);
   //##########################################################################
 
@@ -645,7 +644,7 @@ function InteraktionsdesignBachelor() {
           )}
         </div>
       </div>
-      <Chatbox />
+      <Chatbox chatBotID={dropdownContent.urlCode}/>
     </div>
   );
 }
