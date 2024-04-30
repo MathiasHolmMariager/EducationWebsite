@@ -159,6 +159,7 @@ function MedialogyKandidat() {
           lønNiveau: dropdownContent.FørsteÅrLøn[0], 
           lønNiveauTi: dropdownContent.TiÅrLøn[0], 
           tidsforbrug: dropdownContent.tidsforbrug[0], 
+          tidsfordeling: dropdownContent.Tidsfordeling,
           type: "master" 
         }).then(() => {
           setIsStarClicked(true);

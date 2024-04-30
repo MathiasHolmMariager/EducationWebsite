@@ -1,6 +1,6 @@
 const dropdownContent = {
 
-  "Semestre": 
+  Semestre: 
   `<font size="5"><b><u>1 Semester</u></b></font>
   <br>Projekter:
   <br><i><a href="?" target="_blank">- </a></i>
@@ -32,11 +32,6 @@ const dropdownContent = {
   <br>Projekter:
   <br><i><a href="?" target="_blank">- </a></i>
   `,
-
-
-  "Mulige jobs": 
-  `?`,
-
   
   urlCode: "Medialogy, Kandidat",
 
