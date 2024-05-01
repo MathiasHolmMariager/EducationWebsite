@@ -699,8 +699,7 @@ const uddannelseData = [
                   ],
                 },
               ],
-
-        }
+        },
     ]; 
 
 export default uddannelseData;
