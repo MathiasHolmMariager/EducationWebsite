@@ -239,8 +239,8 @@ const uddannelseData = [
                 { name: "Preparation", value: 62, fill: "orange" },
                 { name: "Lectures", value: 38, fill: "pink" },
               ],
-            socialBedømmelse: 394,
-            jobbedømmelse: 20,
+            socialBedømmelse: 78.8,
+            jobbedømmelse: 4,
             Adgangskrav: [
                 {
                   bachelor: "Informationsteknologi",
@@ -455,9 +455,9 @@ const uddannelseData = [
                 { name: "Undervisning", value: 50, fill: "pink" },
               ],
                 
-              socialBedømmelse: 415,
+              socialBedømmelse: 83,
   
-              jobbedømmelse: 125,
+              jobbedømmelse: 25,
 
               Adgangskrav: [
                 {
@@ -554,9 +554,9 @@ const uddannelseData = [
                 { name: "Lectures", value: 22, fill: "pink" },
               ],
             
-              socialBedømmelse: 300,
+              socialBedømmelse: 60,
             
-              jobbedømmelse: 95,
+              jobbedømmelse: 19,
 
               Adgangskrav: [
                 {
