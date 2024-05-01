@@ -11,10 +11,13 @@ import BarChartCompare from "../Components/Compare/barchart_compare";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
 import uddannelseData from "./uddannelseData";
-
+import {OpenAIchat} from "./openaiS";
+import sendButton from "../assets/send.png"
 
 function ComparePage() {
     const [underPage, setUnderPage] = useState<string>('0');
+    const [inputValue, setInputValue] = useState<string>("");
+    const [outputValue, setOutputValue] = useState<string>("");
     const [options, setOptions] = useState<string>('');
     const [user, setUser] = useState<User | null>(null);
     const [favoritesStudy, setFavoritesStudy] = useState<string[]>([]);
@@ -28,8 +31,7 @@ function ComparePage() {
     const tidsfordelingData = uddannelseData.filter(item => favoritesStudy.includes(item.title) && item.type === "master" ).map(item => ({id: item.title, data: item.Tidsfordeling.map(({ name, value, fill }) => ({ name, value, fill }))}));
     const jobmuligheder = uddannelseData.filter(item => favoritesStudy.includes(item.title) && item.type === "master").map(item => ({id: item.title, data: item.Jobs.flatMap(jobs => jobs) }));
     const adgangskrav = uddannelseData.filter(item => favoritesStudy.includes(item.title) && item.type === "master").map(item => ({id: item.title, data: item.Adgangskrav?.flatMap(adgangskrav => adgangskrav)}));   
-
-    console.log(favoritesKandidat, favoritesBachelor);
+  
   //henter UID fra firebase
   useEffect(() => {
     const auth = getAuth();
@@ -90,6 +92,26 @@ function ComparePage() {
   };
 //##########################################################################
 
+//###########################Reverse search#################################
+const handleOpenAIRequest = async () => {
+    try {
+      const response = await OpenAIchat(inputValue);
+      // Check if response is null
+      if (response !== null) {
+        // If it's not null, set the output value
+        setOutputValue(response);
+      } else {
+        // Handle the case where response is null
+        console.error("Response from OpenAI is null.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error here
+    }
+};
+
+//##########################################################################
+
   return (
     <div style={{width:"90%",height:"100%", margin:"auto", display:"flex", flexDirection:"row", overflowY:"auto"}}>
       <div style={{width:"20%", height:"100%", display:"flex", alignItems:"center", flexDirection:"column", position:"fixed", background:"white", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)"}}>
@@ -131,8 +153,26 @@ function ComparePage() {
         )}
         {underPage === '1' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                <p style={{width:"100%", textAlign:"center", fontWeight: 500}}>Indtast dit drømme job så finder vi vejen dertil for dig</p>
-                                
+                <h2 style={{textAlign:"center"}}>Indtast dit drømmejob eller beskrivelsen på dette</h2>
+                <div style={{display: "flex", alignItems: "center", boxShadow: "0px 0px 1.5px 0px rgba(0,0,1)"}}>
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        placeholder="Hvad er dit drømmejob?"
+                        style={{ height: "50px", flex: 1, marginRight: "10px", marginLeft: "10px", borderRadius: "8px", fontSize: "20px", border: "none", outline: "none"}}
+                    />
+                    <button
+                        onClick={handleOpenAIRequest}
+                        style={{ height: "56px", width: "100px", borderRadius: "0px 2px 2px 0px", background:"white"}}>
+                        <img
+                            src={sendButton}
+                            style={{ width:"56%", height: "100%" }}/>
+                    </button>
+                </div>
+                <div style={{height: "100%", width: "100%",marginTop: "10px", background:""}}>
+                    <p style={{padding:"10px", background: "white"}}>{outputValue}</p>
+                </div>                 
             </div>
         )}
         {underPage === '2' && (
@@ -273,5 +313,3 @@ function ComparePage() {
 }
 
 export default ComparePage;
-
-
