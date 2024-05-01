@@ -11,21 +11,20 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true
 });
 
-export async function OpenAIchat(prompt, conversationHistory = []) {
-  const localStorageValue = localStorage.getItem('PAGE_ID');
+export async function OpenAIchat(prompt, conversationHistory = [], chatbotID) {
 
   let systemMessageContent;
-  if (localStorageValue === 'Interaktionsdesign, Bachelor') {
+  if (chatbotID === 'Interaktionsdesign, Bachelor') {
     systemMessageContent = interaktionsdesignBachPrompt;
-  } else if (localStorageValue === 'Informationsteknologi, Bachelor') {
+  } else if (chatbotID === 'Informationsteknologi, Bachelor') {
     systemMessageContent = informationsteknologiBachPrompt;
-  } else if (localStorageValue === 'Medialogi, Bachelor') {
+  } else if (chatbotID === 'Medialogi, Bachelor') {
     systemMessageContent = medialogiBachPrompt;
-  } else if (localStorageValue === 'Interaktionsdesign, Kandidat') {
+  } else if (chatbotID === 'Interaktionsdesign, Kandidat') {
     systemMessageContent = interaktionsdesignKandPrompt;
-  } else if (localStorageValue === 'Medialogy, Kandidat') {
+  } else if (chatbotID === 'Medialogy, Kandidat') {
     systemMessageContent = medialogiKandPrompt;
-  } else if (localStorageValue === 'Computer Science (IT), Kandidat') {
+  } else if (chatbotID === 'Computer Science (IT), Kandidat') {
     systemMessageContent = computerScienceKandPrompt;
   } else {
     systemMessageContent = "Du er en hjælpsom chatbot der skal agere studievejleder og hjælpe folk med at få information om bacheloruddannelser og kandidatuddannelser.";

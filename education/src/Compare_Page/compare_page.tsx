@@ -17,7 +17,6 @@ import sendButton from "../assets/send.png"
 import checkedIcon from "../assets/checked.png"
 import uncheckedIcon from "../assets/unchecked.png"
 import star from "../assets/Star.png"
-import starGold from "../assets/Star_Gold.png"
 import goTo from "../assets/arrow.png"
 
 
