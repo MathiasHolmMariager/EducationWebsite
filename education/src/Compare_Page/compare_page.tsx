@@ -12,6 +12,8 @@ import { getDatabase, onValue, ref } from "firebase/database";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
 import uddannelseDataBach from "./uddannelseDataBach";
 import uddannelseData from "./uddannelseData";
+import {OpenAIchat} from "./openaiS";
+import sendButton from "../assets/send.png"
 import checkedIcon from "../assets/checked.png"
 import uncheckedIcon from "../assets/unchecked.png"
 import star from "../assets/Star.png"
@@ -21,6 +23,8 @@ import goTo from "../assets/arrow.png"
 
 function ComparePage() {
     const [underPage, setUnderPage] = useState<string>('0');
+    const [inputValue, setInputValue] = useState<string>("");
+    const [outputValue, setOutputValue] = useState<string>("");
     const [options, setOptions] = useState<string>('');
     const [user, setUser] = useState<User | null>(null);
     const [favoritesStudy, setFavoritesStudy] = useState<string[]>([]);
@@ -30,6 +34,7 @@ function ComparePage() {
     const favorites = or === "bachelor" ? favoritesBachelor : favoritesKandidat;
     const [optionSelect, setOptionSelect] = useState('');
     const barColors = ['#09214C', '#FAA712', '#FBD607', '#DBDE4F', '#4FA169'];
+
     //bachelor data
     const [accesStatus, setAccesStatus] = useState<"true" | "partly" | "false" | "na">("na");
     const [firebaseData, setFirebaseData] = useState<any[]>([]);
@@ -110,6 +115,25 @@ function ComparePage() {
   };
 //##########################################################################
 
+//###########################Reverse search#################################
+const handleOpenAIRequest = async () => {
+    try {
+      const response = await OpenAIchat(inputValue);
+      // Check if response is null
+      if (response !== null) {
+        // If it's not null, set the output value
+        setOutputValue(response);
+      } else {
+        // Handle the case where response is null
+        console.error("Response from OpenAI is null.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error here
+    }
+};
+
+//##########################################################################
 const handleChosenEducation = (Subject: {
             id: string;
             data: {
@@ -237,7 +261,26 @@ const handleChosenEducation = (Subject: {
         )}
         {underPage === '1' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                <p style={{width:"100%", textAlign:"center", fontWeight: 500}}>Indtast dit drømme job så finder vi vejen dertil for dig</p>                               
+                <h2 style={{textAlign:"center"}}>Indtast dit drømmejob eller beskrivelsen på dette</h2>
+                <div style={{display: "flex", alignItems: "center", boxShadow: "0px 0px 1.5px 0px rgba(0,0,1)"}}>
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        placeholder="Hvad er dit drømmejob?"
+                        style={{ height: "50px", flex: 1, marginRight: "10px", marginLeft: "10px", borderRadius: "8px", fontSize: "20px", border: "none", outline: "none"}}
+                    />
+                    <button
+                        onClick={handleOpenAIRequest}
+                        style={{ height: "56px", width: "100px", borderRadius: "0px 2px 2px 0px", background:"white"}}>
+                        <img
+                            src={sendButton}
+                            style={{ width:"56%", height: "100%" }}/>
+                    </button>
+                </div>
+                <div style={{height: "100%", width: "100%",marginTop: "10px", background:""}}>
+                    <p style={{padding:"10px", background: "white"}}>{outputValue}</p>
+                </div>                 
             </div>
         )}
         {underPage === '2' && (
@@ -556,5 +599,3 @@ const handleChosenEducation = (Subject: {
 }
 
 export default ComparePage;
-
-

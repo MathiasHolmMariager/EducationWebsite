@@ -1,5 +1,10 @@
 import OpenAI from "openai";
 import { interaktionsdesignBachPrompt } from "./interaktionsdesign_bach_prompt";
+import { informationsteknologiBachPrompt } from "./informationsteknologi_bach_prompt";
+import { medialogiBachPrompt } from "./medialogi_bach_prompt";
+import { interaktionsdesignKandPrompt } from "./interaktionsdesign_kand_prompt";
+import { medialogiKandPrompt } from "./medialogi_kand_prompt";
+import { computerScienceKandPrompt } from "./computer_science_kand_prompt";
 
 const openai = new OpenAI({
   apiKey: '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',
@@ -12,6 +17,16 @@ export async function OpenAIchat(prompt, conversationHistory = []) {
   let systemMessageContent;
   if (localStorageValue === 'Interaktionsdesign, Bachelor') {
     systemMessageContent = interaktionsdesignBachPrompt;
+  } else if (localStorageValue === 'Informationsteknologi, Bachelor') {
+    systemMessageContent = informationsteknologiBachPrompt;
+  } else if (localStorageValue === 'Medialogi, Bachelor') {
+    systemMessageContent = medialogiBachPrompt;
+  } else if (localStorageValue === 'Interaktionsdesign, Kandidat') {
+    systemMessageContent = interaktionsdesignKandPrompt;
+  } else if (localStorageValue === 'Medialogy, Kandidat') {
+    systemMessageContent = medialogiKandPrompt;
+  } else if (localStorageValue === 'Computer Science (IT), Kandidat') {
+    systemMessageContent = computerScienceKandPrompt;
   } else {
     systemMessageContent = "Du er en hjælpsom chatbot der skal agere studievejleder og hjælpe folk med at få information om bacheloruddannelser og kandidatuddannelser.";
   }
