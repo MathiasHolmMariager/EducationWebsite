@@ -82,7 +82,7 @@ function Chatbox({chatBotID}: ChatBot) {
     setUserInput("");
 
     setIsLoading(true);
-    const { assistantReply } = await OpenAIchat(userInput, updatedHistory);
+    const { assistantReply } = await OpenAIchat(userInput, updatedHistory, chatBotID);
     setAssistantReply(assistantReply);
     if (user) {
       const db = getDatabase();
