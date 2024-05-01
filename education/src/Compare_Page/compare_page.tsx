@@ -14,7 +14,7 @@ import uddannelseData from "./uddannelseData";
 
 
 function ComparePage() {
-    const [underPage, setUnderPage] = useState<string>('0');
+    const [underPage, setUnderPage] = useState<string>('7');
     const [options, setOptions] = useState<string>('');
     const [user, setUser] = useState<User | null>(null);
     const [favoritesStudy, setFavoritesStudy] = useState<string[]>([]);
@@ -27,9 +27,12 @@ function ComparePage() {
     const tidsforbrugData = uddannelseData.filter(item => favoritesStudy.includes(item.title) && item.type === "master" ).flatMap(item => item.tidsforbrug).map((tidsforbrug, index) => ({ ...tidsforbrug, fill: barColors[index % barColors.length], unit: "timer"}));
     const tidsfordelingData = uddannelseData.filter(item => favoritesStudy.includes(item.title) && item.type === "master" ).map(item => ({id: item.title, data: item.Tidsfordeling.map(({ name, value, fill }) => ({ name, value, fill }))}));
     const jobmuligheder = uddannelseData.filter(item => favoritesStudy.includes(item.title) && item.type === "master").map(item => ({id: item.title, data: item.Jobs.flatMap(jobs => jobs) }));
-    const adgangskrav = uddannelseData.filter(item => favoritesStudy.includes(item.title) && item.type === "master").map(item => ({id: item.title, data: item.Adgangskrav?.flatMap(adgangskrav => adgangskrav)}));   
+    const adgangskrav = uddannelseData.filter(item => favoritesStudy.includes(item.title) && item.type === "master").map(item => ({id: item.title, data: item.Adgangskrav?.flatMap(adgangskrav => adgangskrav)}));  
+    const socialrating = uddannelseData.filter(item=> favoritesStudy.includes(item.title) && item.type === "master").map((item, index) => ({name: item.title, value: item.socialBedømmelse, fill: barColors[index % barColors.length], unit: "%" })); 
+    const jobrating = uddannelseData.filter(item=> favoritesStudy.includes(item.title) && item.type === "master").map((item, index) => ({name: item.title, value: item.jobbedømmelse, fill: barColors[index % barColors.length], unit: "%" })); 
+    const semesterKand = uddannelseData.filter(item=> favoritesStudy.includes(item.title) && item.type === "master").map(item => ({name: item.title, data: item.Semestrene})); 
 
-    console.log(favoritesKandidat, favoritesBachelor);
+    console.log(semesterKand);
   //henter UID fra firebase
   useEffect(() => {
     const auth = getAuth();
@@ -108,7 +111,7 @@ function ComparePage() {
         {options === 'kandidat' && (
             <div style={{width:"90%", display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"end" , marginBottom:"-3%"}}>
                 <button style={{ outline:"none", textAlign:"left", width:"95%", marginTop:"2%", borderLeft: underPage === '6' ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}} onClick={() => {setUnderPage('6'); setOptionSelect(favoritesKandidat[0]);}}>Kandidat adgangskrav</button> 
-                <button style={{ outline:"none", textAlign:"left", width:"95%", marginTop:"2%", borderLeft: underPage === '7' ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}} onClick={() => setUnderPage('7')}>Kandidat semestre</button> 
+                <button style={{ outline:"none", textAlign:"left", width:"95%", marginTop:"2%", borderLeft: underPage === '7' ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}} onClick={() => {setUnderPage('7'); setOptionSelect(favoritesKandidat[0]);}}>Kandidat semestre</button> 
                 <button style={{ outline:"none", textAlign:"left", width:"95%", marginTop:"2%", borderLeft: underPage === '8' ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}} onClick={() => {setUnderPage('8'); setOptionSelect(favoritesKandidat[0]);}}>Tidsforbrug på kandidat</button> 
                 <button style={{ outline:"none", textAlign:"left", width:"95%", marginTop:"2%", borderLeft: underPage === '9' ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}} onClick={() => {setUnderPage('9'); setOptionSelect(favoritesKandidat[0]);}}>Jobmuligheder</button> 
                 <button style={{ outline:"none", textAlign:"left", width:"95%", marginTop:"2%", borderLeft: underPage === '10' ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}} onClick={() => setUnderPage('10')}>løn niveau</button>
@@ -160,7 +163,7 @@ function ComparePage() {
                 <div style={{width:"100%", display:"flex", flexDirection:"row"}}>
                 <div style={{width:"30%", display:"flex", flexDirection:"column", alignItems:"center", borderRight:"1px solid rgba(100, 100, 100, 0.1)"}}>
                     {adgangskrav.map((Subject) => (
-                        <button onClick={() => setOptionSelect(Subject.id)} style={{width:"90%", margin:"2%", borderLeft: Subject.id === optionSelect ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}}>{Subject.id}</button>
+                        <button onClick={() => setOptionSelect(Subject.id)} style={{width:"90%", margin:"2%", borderLeft: Subject.id === optionSelect ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)", outline:"none"}}>{Subject.id}</button>
                     ))}
                 </div>
                 <div style={{width:"67%",marginLeft:"2%", display:"flex",flexDirection:"column"}}>
@@ -179,8 +182,31 @@ function ComparePage() {
             </div>
         )}
         {underPage === '7' && (
-            <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-
+            <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"row"}}>
+                <div style={{width:"30%", display:"flex", alignItems:"center", flexDirection:"column", borderRight:"1px solid rgba(100, 100, 100, 0.1)" }}>
+                    {semesterKand.map((Subject) => (
+                        <button onClick={() => setOptionSelect(Subject.name)} style={{width:"90%", margin:"2%", borderLeft: Subject.name === optionSelect ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)", outline:"none"}}>{Subject.name}</button>
+                    ))}
+                </div>
+                <div style={{width:"70%"}}>
+                {optionSelect && (semesterKand.find(subject => subject.name === optionSelect)?.data || []).map((item) => ( 
+                <ul>
+                    {item.name}
+                    
+                    {item.ManName}
+                    {item.semester.map((data) => (
+                    <div>
+                    <p>{data.track}</p>
+                    <li>
+                        
+                    </li>
+                    </div>
+                    ))}
+                    {}
+                </ul>
+                ))}
+                    
+                </div>
             </div>
         )}
         {underPage === '8' && (
@@ -192,7 +218,7 @@ function ComparePage() {
                 <div style={{display:"flex"}}>
                 <div style={{width:"30%", display:"flex", flexDirection:"column", alignItems:"center"}}>
                     {tidsfordelingData.map((subject) => (
-                        <button onClick={() => {setOptionSelect(subject.id);}} style={{width:"90%", margin:"2%", borderLeft: subject.id === optionSelect ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}}>
+                        <button onClick={() => {setOptionSelect(subject.id);}} style={{width:"90%", margin:"2%", borderLeft: subject.id === optionSelect ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)", outline:"none"}}>
                             {subject.id}
                         </button>
                     ))}
@@ -230,7 +256,7 @@ function ComparePage() {
                 <div style={{width:"100%", display:"flex", flexDirection:"row"}}>
                 <div style={{width:"30%", display:"flex", flexDirection:"column", alignItems:"center", borderRight:"1px solid rgba(100, 100, 100, 0.1)"}}>
                     {jobmuligheder.map((Subject) => (
-                        <button onClick={() => setOptionSelect(Subject.id)} style={{width:"90%", margin:"2%", borderLeft: Subject.id === optionSelect ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)"}}>{Subject.id}</button>
+                        <button onClick={() => setOptionSelect(Subject.id)} style={{width:"90%", margin:"2%", borderLeft: Subject.id === optionSelect ? "10px solid rgb(33, 26, 82)" : "", background:"rgb(239,239,239)", outline:"none"}}>{Subject.id}</button>
                     ))}
                 </div>
                 <div style={{width:"67%",marginLeft:"2%", display:"flex",flexDirection:"column"}}>
@@ -259,12 +285,14 @@ function ComparePage() {
         )}
         {underPage === '11' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                kandidat compare 10 side
+                <h2>Social bedømmelser for dine favorit udddannelser</h2>
+                <BarChartCompare data={socialrating} width={300} height={200}/>
             </div>
         )}
         {underPage === '12' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                kandidat compare 11 side
+                <h2>gennemsnitlig arbejdsløshed for dine favorit udddannelser</h2>
+                <BarChartCompare data={jobrating} width={300} height={200}/>
             </div>
         )}
       </div>
