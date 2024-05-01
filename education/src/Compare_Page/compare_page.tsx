@@ -14,6 +14,9 @@ import uddannelseDataBach from "./uddannelseDataBach";
 import uddannelseData from "./uddannelseData";
 import checkedIcon from "../assets/checked.png"
 import uncheckedIcon from "../assets/unchecked.png"
+import star from "../assets/Star.png"
+import starGold from "../assets/Star_Gold.png"
+import goTo from "../assets/arrow.png"
 
 
 function ComparePage() {
@@ -23,6 +26,8 @@ function ComparePage() {
     const [favoritesStudy, setFavoritesStudy] = useState<string[]>([]);
     const favoritesKandidat = uddannelseData.filter(item => favoritesStudy.includes(item.title)).flatMap(index => index.title);
     const favoritesBachelor = uddannelseDataBach.filter(item => favoritesStudy.includes(item.title)).flatMap(index => index.title);
+    const [or, setOr] = useState<string>("bachelor");
+    const favorites = or === "bachelor" ? favoritesBachelor : favoritesKandidat;
     const [optionSelect, setOptionSelect] = useState('');
     const barColors = ['#09214C', '#FAA712', '#FBD607', '#DBDE4F', '#4FA169'];
     //bachelor data
@@ -207,12 +212,32 @@ const handleChosenEducation = (Subject: {
                 <p style={{marginLeft:"2%"}}>Brug denne side til at få et hurtigt overblik over statestikken for dine favorit bachelor uddannelser.</p>
                 <h3 style={{margin:"0%"}}>Sammenlign kandidater</h3>
                 <p style={{marginLeft:"2%"}}>Brug denne side til at få et hurtigt overblik over statestikken for dine favorit kandidat uddannelser.</p>
+                <h3 style={{margin:"0%"}}>Dine favoritter:</h3>
+                <div style={{width:"100%"}}>
+                    <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
+                        <button style={{margin:"0% 2.5% 0% 2.5%",width:"40%", borderRadius:"3px", background:"white", borderBottom: or === "bachelor" ? "4px solid rgb(33, 26, 82)" : "",outline:"none"}} onClick={() => setOr("bachelor")}>Favorit Bachelore</button>
+                        <div style={{border:"1px solid rgba(100, 100, 100, 0.1)"}}></div>
+                        <button style={{margin:"0% 2.5% 0% 2.5%",width:"40%", borderRadius:"3px", background:"white", borderBottom: or === "kandidat" ? "4px solid rgb(33, 26, 82)" : "",outline:"none"}} onClick={() => setOr("kandidat")}>Favorit kandidat</button>
+                    </div>
+                    {favorites.flatMap((subject) => (
+                        <ul style={{listStyleType:"none", display:"flex", justifyContent:"center", width:"100%", padding:"0%"}}>
+                            <li style={{width:"100%", display:"flex", justifyContent:"center"}}>
+                                <div style={{width:"88%", textAlign:"left", display:"flex", alignItems:"center", justifyContent:"space-between", outline:"none", background:"rgb(239,239,239)", borderRadius:"8px", padding:"0% 0% 0% 2%"}}>
+                                    <div style={{width:"80%", display:"flex", alignItems:"center", justifyContent:"left"}}>
+                                    <button style={{width:"7%", marginRight:"2%", padding:"0%", background:"none", display:"flex", alignItems:"none", justifyContent:"center", outline:"none"}}><img style={{width:"80%", margin:"10% 0% 10% 0%"}} src={star}/></button>
+                                    <h3>{subject}</h3>
+                                    </div>
+                                    <button style={{width:"5.6%", marginRight:"2%", padding:"0%", background:"none", display:"flex", alignItems:"none", justifyContent:"center", outline:"none"}}><img style={{width:"60%", margin:"20% 0% 20% 0%"}} src={goTo}/></button>
+                                </div>
+                            </li>
+                        </ul>
+                    ))}
+                </div>
             </div>
         )}
         {underPage === '1' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                <p style={{width:"100%", textAlign:"center", fontWeight: 500}}>Indtast dit drømme job så finder vi vejen dertil for dig</p>
-                                
+                <p style={{width:"100%", textAlign:"center", fontWeight: 500}}>Indtast dit drømme job så finder vi vejen dertil for dig</p>                               
             </div>
         )}
         {underPage === '2' && (
