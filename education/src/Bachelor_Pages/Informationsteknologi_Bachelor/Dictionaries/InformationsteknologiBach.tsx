@@ -406,7 +406,6 @@ const dropdownContent = {
     { name: "Forberedelse", value: 57, fill: "orange" },
     { name: "Undervisning", value: 43, fill: "pink" },
   ],
-  
 
 };
 

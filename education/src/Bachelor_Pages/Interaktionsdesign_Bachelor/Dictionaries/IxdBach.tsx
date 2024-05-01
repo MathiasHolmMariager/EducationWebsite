@@ -60,7 +60,7 @@ const dropdownContent = {
     },
     {
       fag: 'Matematik',
-      niveau: "b",
+      niveau: "B",
       n: 2, 
       avg: 2,
       n2: 2,
