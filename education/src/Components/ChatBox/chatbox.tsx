@@ -18,7 +18,7 @@ interface ChatBot {
 }
 
 function Chatbox({chatBotID}: ChatBot) {
-  const [isChatboxOpen, setIsChatboxOpen] = useState(false);
+  const [isChatboxOpen, setIsChatboxOpen] = useState(true);
   const [conversationHistory, setConversationHistory] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState("");
   const [, setAssistantReply] = useState<string | null>(null);
@@ -261,9 +261,12 @@ function Chatbox({chatBotID}: ChatBot) {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  textAlign:"center",
+                  flexDirection:"column"
                 }}
               >
                 <p>Stil spørgsmål til uddannelsen</p>
+                <p>Her kan du får mere uddybene svar på dine spørgsmål</p>
               </div>
             ) : (
               conversationHistory.slice().reverse().map((message, index) => (

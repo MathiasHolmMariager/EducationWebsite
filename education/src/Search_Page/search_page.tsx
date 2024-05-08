@@ -8,12 +8,15 @@ interface DataItem {
   code: string;
   students: number;
   degree: string;
+  interests: string[]; 
+  adgangskrav: any[];
 }
 
 function SearchPage() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortOption, setSortOption] = useState<string>("alpha");
   const [selectedDegree, setSelectedDegree] = useState<string>("all");
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
 
   const data: DataItem[] = [
     {
@@ -21,36 +24,48 @@ function SearchPage() {
       code: "Interaktionsdesign, Bachelor",
       students: 100,
       degree: "bachelor",
+      interests: ["Matematik"],
+      adgangskrav: [],
     },
     {
       name: "Computer science (IT) - Aalborg - Kandidat",
       code: "Computerscience, Kandidat",
       students: 200,
       degree: "master",
+      interests: ["Fysik"],
+      adgangskrav: [],
     },
     {
       name: "Interaktionsdesign - Aalborg - Kandidat",
       code: "Interaktionsdesign, Kandidat",
       students: 123,
       degree: "master",
+      interests: ["Programmering"],
+      adgangskrav: [],
     },
     {
       name: "Informationsteknologi - Aalborg - Bachelor",
       code: "Informationsteknologi, Bachelor",
       students: 342,
       degree: "bachelor",
+      interests: ["Matematik"],
+      adgangskrav: [],
     },
     {
       name: "Medialogi - Aalborg - Bachelor",
       code: "Medialogi, Bachelor",
       students: 113,
       degree: "bachelor",
+      interests: ["Matematik"],
+      adgangskrav: [],
     },
     {
       name: "Medialogy - Aalborg - Kandidat",
       code: "Medialogy, Kandidat",
       students: 248,
       degree: "master",
+      interests: ["Fysik"],
+      adgangskrav: [],
     },
   ];
 
@@ -72,6 +87,12 @@ function SearchPage() {
     { value: "master", label: "Kandidat uddannelser" },
   ];
 
+  const availableOptions = [
+    { value: "all", label: "Alle uddannelser" },
+    { value: "available", label: "Uddannelser hvor du opfylder alle optagelsekrav" },
+    { value: "master", label: "Uddannelser hvor du delvis opfylder optagelseskrav" },
+  ];
+
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -87,6 +108,11 @@ function SearchPage() {
     setSelectedDegree(selectedOption.value);
   };
 
+  const handleInterestChange = (selectedInterests: any) => {
+    const selectedInterestValues = selectedInterests.map((interest: any) => interest.value);
+    setSelectedInterests(selectedInterestValues);
+  };
+
   const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -96,6 +122,12 @@ function SearchPage() {
       return true;
     } else {
       return item.degree === selectedDegree;
+    }
+  }).filter((item) => {
+    if (selectedInterests.length === 0) {
+      return true;
+    } else {
+      return selectedInterests.some((interest) => item.interests.includes(interest));
     }
   });
 
@@ -175,6 +207,7 @@ function SearchPage() {
             <Select
               className="filter"
               options={interests}
+              onChange={handleInterestChange}
               isMulti
               placeholder="Interesser"
               styles={{
@@ -189,9 +222,8 @@ function SearchPage() {
             />
             <Select
               className="filter"
-              options={interests}
-              isMulti
-              placeholder="Interesser"
+              options={availableOptions}
+              defaultValue={availableOptions[0]}
               styles={{
                 control: (provided) => ({
                   ...provided,

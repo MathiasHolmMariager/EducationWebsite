@@ -228,7 +228,7 @@ const handleChosenEducation = (Subject: {
       <div style={{ marginLeft:"25%", width:"75%", height:"100%", display:"flex", flexDirection:"column", alignItems:"center"}}>
         {underPage === '0' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>               
-                <p style={{width:"100%", textAlign:"center", fontWeight: 500}}>På denne side kan du bruge de forskellige undersider til at sammenligne dinde favorit uddannelser:</p>
+                <p style={{width:"100%", textAlign:"center", fontWeight: 500}}>På denne side kan du bruge de forskellige undersider til at sammenligne dine favorit uddannelser:</p>
                 <h3 style={{margin:"0%"}}>Reverse search</h3>
                 <p style={{marginLeft:"2%"}}>Brug reverse search til at finde din vej til et job. Denne underside kan finde den bachlor og/eller kandidat der giver adgang til dit drømme job.</p>
                 <h3 style={{margin:"0%"}}>Sammenlign Bachelor</h3>
