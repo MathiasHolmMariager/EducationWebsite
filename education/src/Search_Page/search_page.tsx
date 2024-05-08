@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./search_page.css";
 import Select from "react-select";
 import ArrowLink from "../assets/arrow.png";
+import { User, getAuth, onAuthStateChanged } from "firebase/auth";
+import { child, get, getDatabase, onValue, push, ref } from "firebase/database";
+
+interface AdgangskravBachItem {
+  fag: string;
+  niveau: string;
+  n: number;
+  avg: number;
+  n2: number;
+  avg2: number;
+}
 
 interface DataItem {
   name: string;
@@ -9,14 +20,20 @@ interface DataItem {
   students: number;
   degree: string;
   interests: string[]; 
-  adgangskrav: any[];
+  adgangskravBach: AdgangskravBachItem[];
+  adgangskravKand: string[];
 }
 
 function SearchPage() {
+  const [user, setUser] = useState<User | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortOption, setSortOption] = useState<string>("alpha");
   const [selectedDegree, setSelectedDegree] = useState<string>("all");
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [selectedAvailable, setSelectedAvailable] = useState<string>("all");
+  const [userBachelor, setUserBachelor] = useState<string>("none")
+  const [userHigh] = useState<any[]>([]);
+
 
   const data: DataItem[] = [
     {
@@ -25,7 +42,33 @@ function SearchPage() {
       students: 100,
       degree: "bachelor",
       interests: ["Matematik"],
-      adgangskrav: [],
+      adgangskravBach: [
+        {
+          fag: 'Dansk',
+          niveau: "A",
+          n: 3,
+          avg: 2,
+          n2: 3,
+          avg2: 2,
+        },
+        {
+          fag: 'Engelsk',
+          niveau: "B",
+          n: 2,
+          avg: 2,
+          n2: 2,
+          avg2: 2,
+        },
+        {
+          fag: 'Matematik',
+          niveau: "B",
+          n: 2, 
+          avg: 2,
+          n2: 2,
+          avg2: 2,
+        },
+      ],
+      adgangskravKand: [],
     },
     {
       name: "Computer science (IT) - Aalborg - Kandidat",
@@ -33,7 +76,8 @@ function SearchPage() {
       students: 200,
       degree: "master",
       interests: ["Fysik"],
-      adgangskrav: [],
+      adgangskravKand: ["Informationsteknologi","Datavidenskab og machine learning","Interaktionsdesign","Data Science","Datavidenskab","Computer Science"],
+      adgangskravBach: [],
     },
     {
       name: "Interaktionsdesign - Aalborg - Kandidat",
@@ -41,7 +85,8 @@ function SearchPage() {
       students: 123,
       degree: "master",
       interests: ["Programmering"],
-      adgangskrav: [],
+      adgangskravKand: ["Interaktionsdesign", "Informationsteknologi", "Medialogi", "Datalogi", "Software", "Digital design", "Datalogi"],
+      adgangskravBach: [],
     },
     {
       name: "Informationsteknologi - Aalborg - Bachelor",
@@ -49,7 +94,33 @@ function SearchPage() {
       students: 342,
       degree: "bachelor",
       interests: ["Matematik"],
-      adgangskrav: [],
+      adgangskravBach:[
+        {
+          fag: 'Dansk',
+          niveau: "A",
+          n: 3,
+          avg: 2,
+          n2: 3,
+          avg2: 2,
+        },
+        {
+          fag: 'Engelsk',
+          niveau: "B",
+          n: 2,
+          avg: 2,
+          n2: 2,
+          avg2: 2,
+        },
+        {
+          fag: 'Matematik',
+          niveau: "A",
+          n: 3, 
+          avg: 2,
+          n2: 3,
+          avg2: 2,
+        },
+      ],
+      adgangskravKand: [],
     },
     {
       name: "Medialogi - Aalborg - Bachelor",
@@ -57,7 +128,33 @@ function SearchPage() {
       students: 113,
       degree: "bachelor",
       interests: ["Matematik"],
-      adgangskrav: [],
+      adgangskravBach: [
+        {
+          fag: 'Dansk',
+          niveau: "A",
+          n: 3,
+          avg: 2,
+          n2: 3,
+          avg2: 2,
+        },
+        {
+          fag: 'Engelsk',
+          niveau: "B",
+          n: 2,
+          avg: 2,
+          n2: 2,
+          avg2: 2,
+        },
+        {
+          fag: 'Matematik',
+          niveau: "A med et gennemsnit på minimum 2,0 eller matematik B med et gennemsnit på minimum 7,0",
+          n: 3, 
+          avg: 2,
+          n2: 2,
+          avg2: 7,
+        },
+      ],
+      adgangskravKand: [],
     },
     {
       name: "Medialogy - Aalborg - Kandidat",
@@ -65,7 +162,8 @@ function SearchPage() {
       students: 248,
       degree: "master",
       interests: ["Fysik"],
-      adgangskrav: [],
+      adgangskravKand: ["Medialogi","Bachelor of Science (BSc) in Engineering (Electronic Engineering)"],
+      adgangskravBach: [],
     },
   ];
 
@@ -88,10 +186,71 @@ function SearchPage() {
   ];
 
   const availableOptions = [
-    { value: "all", label: "Alle uddannelser" },
+    { value: "all", label: "Alle uddannelser (også dem hvor du ikke opfylder adgangskrav" },
     { value: "available", label: "Uddannelser hvor du opfylder alle optagelsekrav" },
-    { value: "master", label: "Uddannelser hvor du delvis opfylder optagelseskrav" },
   ];
+
+  useEffect(() => { 
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  useEffect (() => {
+    if (user) {
+      const db = getDatabase();
+      const diplomaRef = ref(db, `users/${user.uid}/diploma/`);
+      const diplomaRefBachelor = ref(db, `users/${user.uid}/diploma/highSchoolDiploma`);
+
+      get(child(diplomaRef, "bachelorTitel")).then((snapshot) => {
+        if (snapshot.exists()) {
+          const value = snapshot.val();
+          if (value) {
+            setUserBachelor(value);        
+          }
+        } 
+      });
+      
+      onValue(diplomaRefBachelor, (snapshot) => {
+        const firebaseData = snapshot.val();
+        if (firebaseData) {  
+          const bachelorData = data.filter(item => item.degree === 'bachelor');
+          const dataSet = bachelorData.map(({ adgangskravBach, name }) => ({ adgangskravBach, name }));
+
+          for (const index of dataSet) {
+            const matchingData = index.adgangskravBach.map(subject => {
+              const filteredData = firebaseData.filter((item: { fag: string;}) => item.fag === subject.fag);
+              const dataN = filteredData.map((item: {n: number}) => [item.n]).flat();
+              const sumN = dataN.reduce((total: number, num: number) => total + num, 0);
+              const averageN = sumN / dataN.length;
+              const mappedData = filteredData.map((item: { årsKarakter: number; prøveKarakter: number; }) => [item.årsKarakter, item.prøveKarakter]).flat();
+              const noUndefined = mappedData.filter((item: number) => item !== undefined);
+              const sum = noUndefined.reduce((total: number, num: number) => total + num, 0);
+              const average = sum / noUndefined.length;
+              return {
+                fag: subject.fag,
+                n: averageN,
+                avg: average,
+              };
+            });
+
+            const allExist = index.adgangskravBach.every(subject => (
+              matchingData.some((item: any) => (
+                (item.fag === subject.fag && item.n >= subject.n && item.avg >= subject.avg) || (item.fag === subject.fag && item.n >= subject.n2 && item.avg >= subject.avg2 )  
+              ))
+            ));
+
+            if (allExist && !userHigh.includes(index.name)) {
+              userHigh.push(index.name);
+            }
+          }
+        } 
+      });
+    }
+  }, [user]);
+
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -113,6 +272,10 @@ function SearchPage() {
     setSelectedInterests(selectedInterestValues);
   };
 
+  const handleAvailableChange = (selectedOption: any) => {
+    setSelectedAvailable(selectedOption.value);
+  };
+
   const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -129,6 +292,12 @@ function SearchPage() {
     } else {
       return selectedInterests.some((interest) => item.interests.includes(interest));
     }
+  }).filter((item) => {
+    if (selectedAvailable === "all") {
+      return true
+    } else if (selectedAvailable === "available") {
+      return item.adgangskravKand.includes(userBachelor) || userHigh.includes(item.name);
+    } 
   });
 
   const sortedFilteredData = filteredAndSortedData.sort((a, b) => {
@@ -224,6 +393,7 @@ function SearchPage() {
               className="filter"
               options={availableOptions}
               defaultValue={availableOptions[0]}
+              onChange={handleAvailableChange}
               styles={{
                 control: (provided) => ({
                   ...provided,

@@ -181,7 +181,6 @@ function MedialogyKandidat() {
       get(child(diplomaRef, "bachelorTitel")).then((snapshot) => {
         if (snapshot.exists()) {
           const value = snapshot.val();
-          console.log(value);
           if (value) {
             const adgangskravSubjects = dropdownContent.Adgangskrav;
 
