@@ -133,6 +133,14 @@ const handleOpenAIRequest = async () => {
 };
 
 //##########################################################################
+
+const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    handleOpenAIRequest();
+  }
+};
+
 const handleChosenEducation = (Subject: {
             id: string;
             data: {
@@ -267,6 +275,7 @@ const handleChosenEducation = (Subject: {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         placeholder="Hvad er dit drømmejob?"
+                        onKeyPress={handleKeyPress}
                         style={{ height: "50px", flex: 1, marginRight: "10px", marginLeft: "10px", borderRadius: "8px", fontSize: "20px", border: "none", outline: "none"}}
                     />
                     <button

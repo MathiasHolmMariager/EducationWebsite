@@ -3,7 +3,7 @@ import "./search_page.css";
 import Select from "react-select";
 import ArrowLink from "../assets/arrow.png";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import { child, get, getDatabase, onValue, push, ref } from "firebase/database";
+import { child, get, getDatabase, onValue, ref } from "firebase/database";
 
 interface AdgangskravBachItem {
   fag: string;
