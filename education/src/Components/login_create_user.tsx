@@ -106,7 +106,15 @@ const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
     { value: "Matematik", label: "Matematik" },
     { value: "Fysik", label: "Fysik" },
     { value: "Programmering", label: "Programmering" },
+    { value: "Design", label: "Design" },
+    { value: "Psykologi", label: "Psykologi" },
+    { value: "Engelsk", label: "Engelsk" },
+    { value: "Dansk", label: "Dansk" },
+    { value: "Historie", label: "Historie" },
+    { value: "Spiludvikling", label: "Spiludvikling" },
+    { value: "Entreprenørskab", label: "Entreprenørskab" },
   ];
+
 
   const highSchoolClick = () => {
     if (highSchoolText === "Hent gymnasiebevis") {

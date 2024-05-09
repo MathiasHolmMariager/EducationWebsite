@@ -77,10 +77,10 @@ function ProfilePage() {
     'Design',
     'Psykologi',
     'Engelsk',
-    'Interest 7',
-    'Interest 8',
-    'Interest 9',
-    'Interest 10',
+    'Dansk',
+    'Historie',
+    'Biologi',
+    'Tysk',
   ]);
 
   //Ændring i firebase

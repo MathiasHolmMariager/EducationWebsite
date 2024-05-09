@@ -34,14 +34,13 @@ function SearchPage() {
   const [userBachelor, setUserBachelor] = useState<string>("none")
   const [userHigh] = useState<any[]>([]);
 
-
   const data: DataItem[] = [
     {
       name: "Interaktionsdesign - Aalborg - Bachelor",
       code: "Interaktionsdesign, Bachelor",
       students: 100,
       degree: "bachelor",
-      interests: ["Matematik"],
+      interests: ["Programmering","Design","Psykologi","Dansk"],
       adgangskravBach: [
         {
           fag: 'Dansk',
@@ -75,7 +74,7 @@ function SearchPage() {
       code: "Computerscience, Kandidat",
       students: 200,
       degree: "master",
-      interests: ["Fysik"],
+      interests: ["Matematik","Programmering","Engelsk"],
       adgangskravKand: ["Informationsteknologi","Datavidenskab og machine learning","Interaktionsdesign","Data Science","Datavidenskab","Computer Science"],
       adgangskravBach: [],
     },
@@ -84,7 +83,7 @@ function SearchPage() {
       code: "Interaktionsdesign, Kandidat",
       students: 123,
       degree: "master",
-      interests: ["Programmering"],
+      interests: ["Programmering","Design","Psykologi","Dansk"],
       adgangskravKand: ["Interaktionsdesign", "Informationsteknologi", "Medialogi", "Datalogi", "Software", "Digital design", "Datalogi"],
       adgangskravBach: [],
     },
@@ -93,7 +92,7 @@ function SearchPage() {
       code: "Informationsteknologi, Bachelor",
       students: 342,
       degree: "bachelor",
-      interests: ["Matematik"],
+      interests: ["Programmering","Design","Dansk","Entreprenørskab"],
       adgangskravBach:[
         {
           fag: 'Dansk',
@@ -127,7 +126,7 @@ function SearchPage() {
       code: "Medialogi, Bachelor",
       students: 113,
       degree: "bachelor",
-      interests: ["Matematik"],
+      interests: ["Matematik","Spiludvikling","Psykologi","Dansk"],
       adgangskravBach: [
         {
           fag: 'Dansk',
@@ -161,7 +160,7 @@ function SearchPage() {
       code: "Medialogy, Kandidat",
       students: 248,
       degree: "master",
-      interests: ["Fysik"],
+      interests: ["Matematik","Spiludvikling","Psykologi","Engelsk"],
       adgangskravKand: ["Medialogi","Bachelor of Science (BSc) in Engineering (Electronic Engineering)"],
       adgangskravBach: [],
     },
@@ -177,17 +176,24 @@ function SearchPage() {
     { value: "Matematik", label: "Matematik" },
     { value: "Fysik", label: "Fysik" },
     { value: "Programmering", label: "Programmering" },
+    { value: "Design", label: "Design" },
+    { value: "Psykologi", label: "Psykologi" },
+    { value: "Engelsk", label: "Engelsk" },
+    { value: "Dansk", label: "Dansk" },
+    { value: "Historie", label: "Historie" },
+    { value: "Spiludvikling", label: "Spiludvikling" },
+    { value: "Entreprenørskab", label: "Entreprenørskab" },
   ];
 
   const degreeOptions = [
-    { value: "all", label: "Alle uddannelser" },
+    { value: "all", label: "Bachelor og kandidat uddannelser" },
     { value: "bachelor", label: "Bachelor uddannelser" },
     { value: "master", label: "Kandidat uddannelser" },
   ];
 
   const availableOptions = [
-    { value: "all", label: "Alle uddannelser (også dem hvor du ikke opfylder adgangskrav" },
-    { value: "available", label: "Uddannelser hvor du opfylder alle optagelsekrav" },
+    { value: "all", label: "Alle uddannelser" },
+    { value: "available", label: "Uddannelser hvor du opfylder optagelsekrav" },
   ];
 
   useEffect(() => { 
