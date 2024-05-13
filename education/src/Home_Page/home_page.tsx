@@ -8,6 +8,9 @@ import UserModal from "../Components/login_create_user";
 import searchIcon from "../assets/search.png"
 import compareIcon from "../assets/compare.png"
 import chatIcon from "../assets/chat.png"
+import { useNavigate } from "react-router-dom";
+
+
 
 interface LastSeenItem {
   title: string;
@@ -24,6 +27,7 @@ function HomePage() {
   const [user, setUser] = useState<User | null>(null);
   const [favoritesStudy, setFavoritesStudy] = useState<FavoriteItem[]>([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const auth = getAuth();
@@ -98,9 +102,9 @@ function HomePage() {
           <h1 style={{marginTop:"2%"}}>EducationHelper</h1>
           <h2 style={{marginTop:"-2%"}}>Guiding your path to academic success</h2>
           <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", width:"70%", marginTop:"2%"}}>
-          <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}}><a style={{color:"white", width:"100%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center",}} href="/search"><img src={searchIcon} style={{width:"15%", marginRight:"5%"}}/>Søg efter uddannelser</a></button>
-          <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}}><a style={{color:"white", width:"100%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center",}} href="/compare"><img src={compareIcon} style={{width:"15%", marginRight:"5%"}}/> Sammenlign uddanelser / omvendt søgning</a></button>
-          <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}}><a style={{color:"white", width:"100%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center",}} href="/chat"> <img src={chatIcon} style={{width:"15%", marginRight:"5%",}}/>Skriv til uddannelser</a></button>
+          <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}} onClick={() => navigate("/search")}><img src={searchIcon} style={{width:"15%", marginRight:"5%"}}/>Søg efter uddannelser</button>
+          <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}} onClick={() => navigate("/compare")}><img src={compareIcon} style={{width:"15%", marginRight:"5%"}}/> Sammenlign uddanelser / omvendt søgning</button>
+          <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}} onClick={() => navigate("/chat")}><img src={chatIcon} style={{width:"15%", marginRight:"5%",}}/>Skriv til uddannelser</button>
           </div>
         </div>
       </div>

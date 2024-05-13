@@ -18,6 +18,7 @@ import checkedIcon from "../assets/checked.png"
 import uncheckedIcon from "../assets/unchecked.png"
 import star from "../assets/Star.png"
 import goTo from "../assets/arrow.png"
+import loadingGIF from "../assets/loading_gif.gif"
 
 
 function ComparePage() {
@@ -33,6 +34,7 @@ function ComparePage() {
     const favorites = or === "bachelor" ? favoritesBachelor : favoritesKandidat;
     const [optionSelect, setOptionSelect] = useState('');
     const barColors = ['#09214C', '#FAA712', '#FBD607', '#DBDE4F', '#4FA169'];
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     //bachelor data
     const [accesStatus, setAccesStatus] = useState<"true" | "partly" | "false" | "na">("na");
@@ -116,6 +118,7 @@ function ComparePage() {
 
 //###########################Reverse search#################################
 const handleOpenAIRequest = async () => {
+  setIsLoading(true);
     try {
       const response = await OpenAIchat(inputValue);
       // Check if response is null
@@ -130,6 +133,7 @@ const handleOpenAIRequest = async () => {
       console.error("Error:", error);
       // Handle error here
     }
+  setIsLoading(false);
 };
 
 //##########################################################################
@@ -286,8 +290,12 @@ const handleChosenEducation = (Subject: {
                             style={{ width:"56%", height: "100%" }}/>
                     </button>
                 </div>
-                <div style={{height: "100%", width: "100%",marginTop: "10px", background:""}}>
+                <div style={{display:"flex", justifyContent:"center"}}>
+                  {isLoading ? (
+                    <img src={loadingGIF} style={{width:"5%", margin:"3% 0% 0% 0%"}}/>
+                  ) : (
                     <p style={{padding:"10px", background: "white"}}>{outputValue}</p>
+                  )}
                 </div>                 
             </div>
         )}

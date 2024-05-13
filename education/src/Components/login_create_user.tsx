@@ -53,7 +53,6 @@ const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
       const user = userCredential.user.uid;
       const db = getDatabase();
       const userData = {
-        email: email,
         interests: selectedInterests.map((interest) => interest.value),
       };
       set(ref(db, "users/" + user), userData);

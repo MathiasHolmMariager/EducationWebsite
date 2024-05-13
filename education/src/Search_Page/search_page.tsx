@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./search_page.css";
-import Select from "react-select";
+import Select, { MultiValue } from "react-select";
 import ArrowLink from "../assets/arrow.png";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { child, get, getDatabase, onValue, ref } from "firebase/database";
@@ -12,6 +12,11 @@ interface AdgangskravBachItem {
   avg: number;
   n2: number;
   avg2: number;
+}
+
+interface Option {
+  value: string;
+  label: string;
 }
 
 interface DataItem {
@@ -29,7 +34,7 @@ function SearchPage() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortOption, setSortOption] = useState<string>("alpha");
   const [selectedDegree, setSelectedDegree] = useState<string>("all");
-  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [selectedInterests, setSelectedInterests] = useState<Option[]>([]);
   const [selectedAvailable, setSelectedAvailable] = useState<string>("all");
   const [userBachelor, setUserBachelor] = useState<string>("none")
   const [userHigh] = useState<any[]>([]);
@@ -126,7 +131,7 @@ function SearchPage() {
       code: "Medialogi, Bachelor",
       students: 113,
       degree: "bachelor",
-      interests: ["Matematik","Spiludvikling","Psykologi","Dansk"],
+      interests: ["Matematik","Spiludvikling","Psykologi","Dansk","programmering"],
       adgangskravBach: [
         {
           fag: 'Dansk',
@@ -160,7 +165,7 @@ function SearchPage() {
       code: "Medialogy, Kandidat",
       students: 248,
       degree: "master",
-      interests: ["Matematik","Spiludvikling","Psykologi","Engelsk"],
+      interests: ["Matematik","Spiludvikling","Psykologi","Engelsk","programmering"],
       adgangskravKand: ["Medialogi","Bachelor of Science (BSc) in Engineering (Electronic Engineering)"],
       adgangskravBach: [],
     },
@@ -172,7 +177,8 @@ function SearchPage() {
     { value: "popularity", label: "Popularitet" },
   ];
 
-  const interests = [
+  const interests: Option[] = [
+    { value: "userInterest", label: "Dine interesser" },
     { value: "Matematik", label: "Matematik" },
     { value: "Fysik", label: "Fysik" },
     { value: "Programmering", label: "Programmering" },
@@ -273,11 +279,24 @@ function SearchPage() {
     setSelectedDegree(selectedOption.value);
   };
 
-  const handleInterestChange = (selectedInterests: any) => {
-    const selectedInterestValues = selectedInterests.map((interest: any) => interest.value);
-    setSelectedInterests(selectedInterestValues);
+  const handleInterestChange = (newValue: MultiValue<Option>) => {
+    const selectedInterests = newValue as Option[];
+    if (selectedInterests.some(option => option.value === "userInterest")) {
+      const db = getDatabase();
+      const dbRef = ref(db, `/users/${user?.uid}`)
+      get(child(dbRef, "interests")).then((snapshot) => {
+        if (snapshot.exists()) {
+          const dbInterestList = snapshot.val();
+          if (dbInterestList) {
+            setSelectedInterests(dbInterestList.map((interests: string) => ({value: interests, label: interests}))); 
+          }
+        }
+      })
+      
+    } else {
+      setSelectedInterests(selectedInterests); 
+    }
   };
-
   const handleAvailableChange = (selectedOption: any) => {
     setSelectedAvailable(selectedOption.value);
   };
@@ -296,7 +315,7 @@ function SearchPage() {
     if (selectedInterests.length === 0) {
       return true;
     } else {
-      return selectedInterests.some((interest) => item.interests.includes(interest));
+      return selectedInterests.some((interest) => item.interests.includes(interest.value));
     }
   }).filter((item) => {
     if (selectedAvailable === "all") {
@@ -383,6 +402,7 @@ function SearchPage() {
               className="filter"
               options={interests}
               onChange={handleInterestChange}
+              value={selectedInterests}
               isMulti
               placeholder="Interesser"
               styles={{
