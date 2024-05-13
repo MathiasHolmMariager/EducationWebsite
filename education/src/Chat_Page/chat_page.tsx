@@ -65,7 +65,6 @@ function ChatPage() {
             setConversationHistory(conversationHistoryFromFirebase);
             scrollToBottom();
           } else {
-            console.log("den blir called");
             setConversationHistory([]);
           }
         } catch (error) {

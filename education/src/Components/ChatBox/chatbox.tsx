@@ -347,6 +347,7 @@ function Chatbox({chatBotID}: ChatBot) {
                 onKeyPress={handleKeyPress}
               />
               <button
+              onClick={handleUserInput}
                 style={{
                   width: "20%",
                   height: "100%",
