@@ -16,9 +16,9 @@ import {OpenAIchat} from "./openaiS";
 import sendButton from "../assets/send.png"
 import checkedIcon from "../assets/checked.png"
 import uncheckedIcon from "../assets/unchecked.png"
-import star from "../assets/Star.png"
 import goTo from "../assets/arrow.png"
 import loadingGIF from "../assets/loading_gif.gif"
+import { useNavigate } from "react-router-dom";
 
 
 function ComparePage() {
@@ -35,6 +35,7 @@ function ComparePage() {
     const [optionSelect, setOptionSelect] = useState('');
     const barColors = ['#09214C', '#FAA712', '#FBD607', '#DBDE4F', '#4FA169'];
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     //bachelor data
     const [accesStatus, setAccesStatus] = useState<"true" | "partly" | "false" | "na">("na");
@@ -241,7 +242,7 @@ const handleChosenEducation = (Subject: {
         {underPage === '0' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>               
                 <p style={{width:"100%", textAlign:"center", fontWeight: 500}}>På denne side kan du bruge de forskellige undersider til at sammenligne dine favorit uddannelser:</p>
-                <h3 style={{margin:"0%"}}>Reverse search</h3>
+                <h3 style={{margin:"0%"}}>Omvendt søgning</h3>
                 <p style={{marginLeft:"2%"}}>Brug reverse search til at finde din vej til et job. Denne underside kan finde den bachlor og/eller kandidat der giver adgang til dit drømme job.</p>
                 <h3 style={{margin:"0%"}}>Sammenlign Bachelor</h3>
                 <p style={{marginLeft:"2%"}}>Brug denne side til at få et hurtigt overblik over statestikken for dine favorit bachelor uddannelser.</p>
@@ -259,10 +260,9 @@ const handleChosenEducation = (Subject: {
                             <li style={{width:"100%", display:"flex", justifyContent:"center"}}>
                                 <div style={{width:"88%", textAlign:"left", display:"flex", alignItems:"center", justifyContent:"space-between", outline:"none", background:"rgb(239,239,239)", borderRadius:"8px", padding:"0% 0% 0% 2%"}}>
                                     <div style={{width:"80%", display:"flex", alignItems:"center", justifyContent:"left"}}>
-                                    <button style={{width:"7%", marginRight:"2%", padding:"0%", background:"none", display:"flex", alignItems:"none", justifyContent:"center", outline:"none"}}><img style={{width:"80%", margin:"10% 0% 10% 0%"}} src={star}/></button>
                                     <h3>{subject}</h3>
                                     </div>
-                                    <button style={{width:"5.6%", marginRight:"2%", padding:"0%", background:"none", display:"flex", alignItems:"none", justifyContent:"center", outline:"none"}}><img style={{width:"60%", margin:"20% 0% 20% 0%"}} src={goTo}/></button>
+                                    <button style={{width:"5.6%", marginRight:"2%", padding:"0%", background:"none", display:"flex", alignItems:"none", justifyContent:"center", outline:"none"}} onClick={() => (navigate(`/${subject}`))}><img style={{width:"60%", margin:"20% 0% 20% 0%"}} src={goTo}/></button>
                                 </div>
                             </li>
                         </ul>

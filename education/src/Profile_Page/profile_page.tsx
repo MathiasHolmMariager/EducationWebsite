@@ -79,8 +79,8 @@ function ProfilePage() {
     'Engelsk',
     'Dansk',
     'Historie',
-    'Biologi',
-    'Tysk',
+    'Spiludvikling',
+    'Entreprenørskab',
   ]);
 
   //Ændring i firebase

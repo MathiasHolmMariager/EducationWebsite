@@ -147,7 +147,7 @@ const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
             <div style={{ width: "100%", marginTop: "20px" }}>
               <input
                 type="email"
-                placeholder="Enter Email"
+                placeholder="Email (test1@email.com)"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -163,7 +163,7 @@ const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
             <div style={{ width: "100%", marginTop: "20px" }}>
               <input
                 type="password"
-                placeholder="Enter Password"
+                placeholder="Password (123456)"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -280,7 +280,7 @@ const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
             <div style={{ width: "100%", marginTop: "20px" }}>
               <input
                 type="email"
-                placeholder="Enter Email"
+                placeholder="Email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -296,7 +296,7 @@ const UserModal: React.FC<UserModalProps> = ({ onRequestClose}) => {
             <div style={{ width: "100%", marginTop: "20px" }}>
               <input
                 type="password"
-                placeholder="Enter Password"
+                placeholder="Password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
