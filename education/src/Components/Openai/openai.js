@@ -12,7 +12,6 @@ const openai = new OpenAI({
 });
 
 export async function OpenAIchat(prompt, conversationHistory = [], chatbotID) {
-
   let systemMessageContent;
   if (chatbotID === 'Interaktionsdesign, Bachelor') {
     systemMessageContent = interaktionsdesignBachPrompt;
@@ -27,7 +26,9 @@ export async function OpenAIchat(prompt, conversationHistory = [], chatbotID) {
   } else if (chatbotID === 'Computer Science (IT), Kandidat') {
     systemMessageContent = computerScienceKandPrompt;
   } else {
-    systemMessageContent = "Du er en hjælpsom chatbot der skal agere studievejleder og hjælpe folk med at få information om bacheloruddannelser og kandidatuddannelser.";
+    systemMessageContent = `Du er en hjælpsom chatbot der skal agere studievejleder 
+    og hjælpe folk med at få information om bacheloruddannelser 
+    og kandidatuddannelser.`;
   }
 
   const completion = await openai.chat.completions.create({
@@ -44,3 +45,12 @@ export async function OpenAIchat(prompt, conversationHistory = [], chatbotID) {
 
   return { assistantReply, conversationHistory };
 }
+
+
+
+
+
+
+
+
+
