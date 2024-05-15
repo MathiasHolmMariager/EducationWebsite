@@ -23,7 +23,7 @@ export async function OpenAIchat(prompt, conversationHistory = [], chatbotID) {
     systemMessageContent = interaktionsdesignKandPrompt;
   } else if (chatbotID === 'Medialogy, Kandidat') {
     systemMessageContent = medialogiKandPrompt;
-  } else if (chatbotID === 'Computer Science (IT), Kandidat') {
+  } else if (chatbotID === 'Computerscience, Kandidat') {
     systemMessageContent = computerScienceKandPrompt;
   } else {
     systemMessageContent = `Du er en hjælpsom chatbot der skal agere studievejleder 
