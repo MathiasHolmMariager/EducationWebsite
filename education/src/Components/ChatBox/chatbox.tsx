@@ -266,7 +266,7 @@ function Chatbox({chatBotID}: ChatBot) {
                 }}
               >
                 <p>Stil spørgsmål til uddannelsen</p>
-                <p>Her kan du får mere uddybene svar på dine spørgsmål</p>
+                <p>Her kan du får mere uddybende svar på dine spørgsmål</p>
               </div>
             ) : (
               conversationHistory.slice().reverse().map((message, index) => (

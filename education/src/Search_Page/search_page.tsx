@@ -199,7 +199,7 @@ function SearchPage() {
 
   const availableOptions = [
     { value: "all", label: "Alle uddannelser" },
-    { value: "available", label: "Uddannelser hvor du opfylder optagelsekrav" },
+    { value: "available", label: "Uddannelser hvor du opfylder optagelseskrav" },
   ];
 
   useEffect(() => { 

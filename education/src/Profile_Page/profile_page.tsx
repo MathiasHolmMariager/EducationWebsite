@@ -103,7 +103,7 @@ function ProfilePage() {
       <div style={{width:"20%", height:"100%", display:"flex", alignItems:"center", flexDirection:"column", position:"fixed", background:"white", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)"}}>
         <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'pro' ? "rgb(33, 26, 82)" : "", color: underPage === 'pro' ? "white" : "" }} onClick={() => setUnderPage('pro')}>Profiloplysninger</button>
         <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'int' ? "rgb(33, 26, 82)" : "", color: underPage === 'int' ? "white" : ""}} onClick={() => setUnderPage('int')}>Dine interesser</button>
-        <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'gym' ? "rgb(33, 26, 82)" : "", color: underPage === 'gym' ? "white" : ""}} onClick={() => setUnderPage('gym')}>Gymnasium Bevis</button>
+        <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'gym' ? "rgb(33, 26, 82)" : "", color: underPage === 'gym' ? "white" : ""}} onClick={() => setUnderPage('gym')}>Gymnasium bevis</button>
         <button style={{width:"90%", height:"7%", outline:"none", marginTop:"5%", background: underPage === 'bac' ? "rgb(33, 26, 82)" : "", color: underPage === 'bac' ? "white" : ""}} onClick={() => setUnderPage('bac')}>Bachelor bevis</button>
         <button style={{marginTop:"100%", display:"flex", width:"40%", height:"7%", alignItems:"center", justifyContent:"center"}} onClick={handleSignOut}>
           <img src={logoutIcon} style={{width:"20%",}} />
@@ -113,7 +113,7 @@ function ProfilePage() {
       <div style={{ marginLeft:"25%", width:"75%", height:"100%", display:"flex", flexDirection:"column", alignItems:"center"}}>
         {underPage === 'pro' && (
           <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white"}}>
-            <h2 style={{marginTop:"-1.5%"}}>kontaktoplysninger:</h2>
+            <h2 style={{marginTop:"-1.5%"}}>Kontaktoplysninger:</h2>
             <p style={{width:"100%"}}><b>Email:</b> {user?.email}
             </p>
           </div>
@@ -140,7 +140,7 @@ function ProfilePage() {
               {diploma.highSchoolDiploma && Object.values(diploma.highSchoolDiploma).map((subject: any, index: number) => (
                 <li key={index}>
                   <div style={{display:"flex", width:"95%", borderBottom: '0.5px solid rgb(75,75,75)',}}>
-                  <p style={{ width:"60%"}}>{subject.fag} {subject.niveau}</p><p style={{ width:"20%" }}><b> Års karakter:</b> {subject.årsKarakter}</p><p style={{ width:"20%" }}><b> Prøve karakter: </b>{subject.prøveKarakter}</p>  
+                  <p style={{ width:"60%"}}>{subject.fag} {subject.niveau}</p><p style={{ width:"20%" }}><b> Årskarakter:</b> {subject.årsKarakter}</p><p style={{ width:"20%" }}><b> Prøvekarakter: </b>{subject.prøveKarakter}</p>  
                   </div>
                 </li>
               ))}

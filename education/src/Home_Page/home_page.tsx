@@ -103,7 +103,7 @@ function HomePage() {
           <h2 style={{marginTop:"-2%"}}>Guiding your path to academic success</h2>
           <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", width:"70%", marginTop:"2%"}}>
           <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}} onClick={() => navigate("/search")}><img src={searchIcon} style={{width:"15%", marginRight:"5%"}}/>Søg efter uddannelser</button>
-          <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}} onClick={() => navigate("/compare")}><img src={compareIcon} style={{width:"15%", marginRight:"5%"}}/> Sammenlign uddanelser / omvendt søgning</button>
+          <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}} onClick={() => navigate("/compare")}><img src={compareIcon} style={{width:"15%", marginRight:"5%"}}/> Sammenlign uddannelser / omvendt søgning</button>
           <button style={{background:"rgb(33, 26, 82)", color:"white", width:"26%", display:"flex", alignItems:"center", justifyContent:"center",}} onClick={() => navigate("/chat")}><img src={chatIcon} style={{width:"15%", marginRight:"5%",}}/>Skriv til uddannelser</button>
           </div>
         </div>

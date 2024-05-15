@@ -399,7 +399,7 @@ function ChatPage() {
                   }
                 }}
               >
-                annuller
+                Annuller
               </button>
               <div
                 style={{

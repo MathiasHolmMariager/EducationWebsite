@@ -245,15 +245,15 @@ const handleChosenEducation = (Subject: {
                 <h3 style={{margin:"0%"}}>Omvendt søgning</h3>
                 <p style={{marginLeft:"2%"}}>Brug reverse search til at finde din vej til et job. Denne underside kan finde den bachlor og/eller kandidat der giver adgang til dit drømme job.</p>
                 <h3 style={{margin:"0%"}}>Sammenlign Bachelor</h3>
-                <p style={{marginLeft:"2%"}}>Brug denne side til at få et hurtigt overblik over statestikken for dine favorit bachelor uddannelser.</p>
+                <p style={{marginLeft:"2%"}}>Brug denne side til at få et hurtigt overblik over statistikken for dine favorit bachelor uddannelser.</p>
                 <h3 style={{margin:"0%"}}>Sammenlign kandidater</h3>
-                <p style={{marginLeft:"2%"}}>Brug denne side til at få et hurtigt overblik over statestikken for dine favorit kandidat uddannelser.</p>
+                <p style={{marginLeft:"2%"}}>Brug denne side til at få et hurtigt overblik over statistikken for dine favorit kandidat uddannelser.</p>
                 <h3 style={{margin:"0%"}}>Dine favoritter:</h3>
                 <div style={{width:"100%"}}>
                     <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
-                        <button style={{margin:"0% 2.5% 0% 2.5%",width:"40%", borderRadius:"3px", background:"white", borderBottom: or === "bachelor" ? "4px solid rgb(33, 26, 82)" : "",outline:"none"}} onClick={() => setOr("bachelor")}>Favorit Bachelore</button>
+                        <button style={{margin:"0% 2.5% 0% 2.5%",width:"40%", borderRadius:"3px", background:"white", borderBottom: or === "bachelor" ? "4px solid rgb(33, 26, 82)" : "",outline:"none"}} onClick={() => setOr("bachelor")}>Favorit bachelorer</button>
                         <div style={{border:"1px solid rgba(100, 100, 100, 0.1)"}}></div>
-                        <button style={{margin:"0% 2.5% 0% 2.5%",width:"40%", borderRadius:"3px", background:"white", borderBottom: or === "kandidat" ? "4px solid rgb(33, 26, 82)" : "",outline:"none"}} onClick={() => setOr("kandidat")}>Favorit kandidat</button>
+                        <button style={{margin:"0% 2.5% 0% 2.5%",width:"40%", borderRadius:"3px", background:"white", borderBottom: or === "kandidat" ? "4px solid rgb(33, 26, 82)" : "",outline:"none"}} onClick={() => setOr("kandidat")}>Favorit kandidater</button>
                     </div>
                     {favorites.flatMap((subject) => (
                         <ul style={{listStyleType:"none", display:"flex", justifyContent:"center", width:"100%", padding:"0%"}}>
@@ -364,7 +364,7 @@ const handleChosenEducation = (Subject: {
                     ))}
                 </div>
                 <div style={{width:"64%",marginLeft:"2%", display:"flex",flexDirection:"column"}}>
-                    <h3 style={{marginTop:"-0%", width:"100%", textAlign:"left"}}>Kandidat muligheder for {optionSelect}:</h3>
+                    <h3 style={{marginTop:"-0%", width:"100%", textAlign:"left"}}>Semestrene på {optionSelect}:</h3>
                     {optionSelect && (semesterBach.find(subject => subject.name === optionSelect)?.data || []).map((item, index) => (
                     <li key={index} style={{ fontSize: "20px", listStyleType:"none" }}>
                     <p style={{ fontWeight: 700}}>{item.name}</p>
@@ -406,9 +406,9 @@ const handleChosenEducation = (Subject: {
         {underPage === '5' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
                 <h2>Gennemsnit arbejdstimer på dine favorit uddannelser</h2>
-                <h3>ugentlige arbejdstimer:</h3>
+                <h3>Ugentlige arbejdstimer:</h3>
                 <BarChartCompare data = {tidsforbrugDataBach} width={300} height={200} />
-                <h3>tidsfordeling af arbejdstimer:</h3>
+                <h3>Tidsfordeling af arbejdstimer:</h3>
                 <div style={{display:"flex"}}>
                 <div style={{width:"33%", display:"flex", flexDirection:"column", alignItems:"center", borderRight:"1px solid rgba(100, 100, 100, 0.1)"}}>
                     {tidsfordelingDataBach.map((subject) => (
@@ -454,7 +454,7 @@ const handleChosenEducation = (Subject: {
                     ))}
                 </div>
                 <div style={{width:"67%",marginLeft:"2%", display:"flex",flexDirection:"column"}}>
-                    <h3 style={{marginTop:"-0%", width:"100%", textAlign:"left"}}>Adgangsgivende bachelore for {optionSelect}:</h3>
+                    <h3 style={{marginTop:"-0%", width:"100%", textAlign:"left"}}>Adgangsgivende bachelorer for {optionSelect}:</h3>
                     {optionSelect && (adgangskrav.find(subject => subject.id === optionSelect)?.data || []).map((item, index) => (
                         <div key={index} style={{marginLeft:"5%"}}>
                             <ul>
@@ -525,10 +525,10 @@ const handleChosenEducation = (Subject: {
         )}
         {underPage === '8' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                <h2>Gennemsnit arbejdstimer på dine favorit uddannelser</h2>
-                <h3>ugentlige arbejdstimer:</h3>
+                <h2>Gennemsnitlig arbejdstimer på dine favorit uddannelser</h2>
+                <h3>Ugentlige arbejdstimer:</h3>
                 <BarChartCompare data = {tidsforbrugData} width={300} height={200} />
-                <h3>tidsfordeling af arbejdstimer:</h3>
+                <h3>Tidsfordeling af arbejdstimer:</h3>
                 <div style={{display:"flex"}}>
                 <div style={{width:"30%", display:"flex", flexDirection:"column", alignItems:"center"}}>
                     {tidsfordelingData.map((subject) => (
@@ -590,7 +590,7 @@ const handleChosenEducation = (Subject: {
         )}
         {underPage === '10' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                <h2>Gennemsnit løn niveau for dine favorit uddannelser</h2>
+                <h2>Gennemsnitlig løn niveau for dine favorit uddannelser</h2>
                 <h3>Første års løn:</h3>
                 <BarChartCompare data = {lønData} width={300} height={200} />
                 <h3>Løn efter 10 år:</h3>
@@ -599,13 +599,13 @@ const handleChosenEducation = (Subject: {
         )}
         {underPage === '11' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                <h2>Social bedømmelser for dine favorit udddannelser</h2>
+                <h2>Sociale bedømmelser for dine favorit udddannelser</h2>
                 <BarChartCompare data={socialrating} width={300} height={200}/>
             </div>
         )}
         {underPage === '12' && (
             <div style={{width:"90%", height:"10%", marginTop:"5%", boxShadow:"0px 0px 8px 1px rgba(0,0,0,0.1)", borderRadius:"8px", padding:"3%", marginBottom:"4%", background:"white", display:"flex", flexDirection:"column"}}>
-                <h2>gennemsnitlig arbejdsløshed for dine favorit udddannelser</h2>
+                <h2>Gennemsnitlig arbejdsløshed for dine favorit udddannelser</h2>
                 <BarChartCompare data={jobrating} width={300} height={200}/>
             </div>
         )}
